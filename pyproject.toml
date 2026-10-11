@@ -16,7 +16,7 @@ canopy = ["canopy-jev @ git+https://github.com/Camellia86/Canopy-Jev.git@b71f97b
 torch = ["torch>=2.6,<3"]
 
 [project.urls]
-Repository = "https://github.com/Camellia86/jev-context-routing"
+Repository = "https://github.com/Camellia86/Jev-for-MoR-and-MoE"
 Canopy = "https://github.com/Camellia86/Canopy-Jev"
 
 [tool.setuptools.packages.find]

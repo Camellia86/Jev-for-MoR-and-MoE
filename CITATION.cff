@@ -1,15 +1,15 @@
 cff-version: 1.2.0
 message: "If you use this research code, please cite this repository and Canopy-Jev."
 type: software
-title: "Context-Complete JEV Routing for Mixtures of Experts and Recursions"
+title: "Jev for MoR and MoE"
 authors:
   - family-names: Qiu
     given-names: Ruoxi
 version: 0.1.0
 date-released: 2026-10-11
 license: MIT
-url: "https://github.com/Camellia86/jev-context-routing"
-repository-code: "https://github.com/Camellia86/jev-context-routing"
+url: "https://github.com/Camellia86/Jev-for-MoR-and-MoE"
+repository-code: "https://github.com/Camellia86/Jev-for-MoR-and-MoE"
 references:
   - type: software
     title: "Canopy-Jev: Shared-State Numerical Decision Inference"

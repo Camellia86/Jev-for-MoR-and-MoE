@@ -1,4 +1,4 @@
-# Context-Complete JEV Routing for Mixtures of Experts and Recursions
+# Jev for MoR and MoE
 
 **Ruoxi Qiu · 2026 · Research implementation · MIT**
 
@@ -60,8 +60,8 @@ already present in the shared state.
 Lightweight protocol/routing code needs Python 3.10–3.12:
 
 ```bash
-git clone https://github.com/Camellia86/jev-context-routing.git
-cd jev-context-routing
+git clone https://github.com/Camellia86/Jev-for-MoR-and-MoE.git
+cd Jev-for-MoR-and-MoE
 python -m pip install -e .
 python -m unittest discover -s tests -v
 python scripts/offline_replay.py
@@ -128,10 +128,10 @@ establish implementation behavior, not MoE/MoR quality or speed gains.
 ```bibtex
 @software{qiu2026jevcontext,
   author  = {Qiu, Ruoxi},
-  title   = {Context-Complete JEV Routing for Mixtures of Experts and Recursions},
+  title   = {Jev for MoR and MoE},
   year    = {2026},
   version = {0.1.0},
-  url     = {https://github.com/Camellia86/jev-context-routing}
+  url     = {https://github.com/Camellia86/Jev-for-MoR-and-MoE}
 }
 
 @software{qiu2026canopyjev,
