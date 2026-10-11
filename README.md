@@ -114,7 +114,9 @@ establish implementation behavior, not MoE/MoR quality or speed gains.
 [Validation record](docs/VALIDATION.md)
 
 Shared-backbone depth-control experiment: [中文实验计划](docs/EXPERIMENT_PLAN.zh-CN.md)
-and [protocol configuration](docs/EXPERIMENT_CONFIG.v1.json).
+and [protocol configuration](docs/EXPERIMENT_CONFIG.v1.json). See the
+[mathematical audit](docs/MATHEMATICAL_AUDIT.zh-CN.md) and the
+[completed CPU algebra checks](docs/EXPERIMENT_MATH_CHECK.v1.json).
 The plan uses RTX 5080 for the pilot and 3×A10 for the formal study; it is a
 proposed experiment, with no training or results from this protocol yet.
 
