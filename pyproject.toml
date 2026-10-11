@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jev-context-routing"
+version = "0.1.0"
+description = "Context-complete Canopy-Jev computation plans for mixtures of experts and recursions"
+requires-python = ">=3.10,<3.13"
+authors = [{name = "Ruoxi Qiu"}]
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+canopy = ["canopy-jev @ git+https://github.com/Camellia86/Canopy-Jev.git@b71f97b3bffd28c90306bfea607d2089d75e7d43"]
+torch = ["torch>=2.6,<3"]
+
+[project.urls]
+Repository = "https://github.com/Camellia86/jev-context-routing"
+Canopy = "https://github.com/Camellia86/Canopy-Jev"
+
+[tool.setuptools.packages.find]
+where = ["src"]

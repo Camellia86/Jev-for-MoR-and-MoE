@@ -1,0 +1,36 @@
+{
+  "fixture_notice": "The replay_probabilities below are hand-authored fixture values for a controlled routing-contract replay. They are not Canopy-Jev predictions, calibration evidence, task accuracy, or training results.",
+  "routing_context": {
+    "tokens": ["Solve", "the", "prefix", "before", "the", "target"],
+    "targets": [
+      {"position": 1, "depth": 0, "observation": {"prefix_fact": "an arithmetic dependency is already visible"}},
+      {"position": 5, "depth": 0, "observation": {"prefix_fact": "a code lookup may be useful"}}
+    ],
+    "experts": [
+      {"id": "math", "description": "Performs bounded arithmetic reasoning", "capacity": 3},
+      {"id": "code", "description": "Retrieves a compact code-level fact", "capacity": 2}
+    ],
+    "task": "Choose a legal additional computation for each target under a hard cost budget.",
+    "mode": "causal",
+    "history": [
+      {"visible_after": 1, "event": "prefix parsed"},
+      {"visible_after": 5, "event": "late observation"}
+    ],
+    "metadata": [
+      {"visible_after": 0, "domain": "controlled example"}
+    ]
+  },
+  "actions": [
+    {"id": "math-depth-2", "expert_id": "math", "steps": 2, "cost": 2, "description": "Spend two arithmetic-reasoning steps."},
+    {"id": "code-depth-1", "expert_id": "code", "steps": 1, "cost": 1, "description": "Retrieve one code-level fact."}
+  ],
+  "offers": {
+    "1": ["math-depth-2", "code-depth-1"],
+    "5": ["math-depth-2", "code-depth-1"]
+  },
+  "budget": 3,
+  "replay_probabilities": {
+    "joint:1": {"skip": 0.15, "math-depth-2": 0.75, "code-depth-1": 0.10},
+    "joint:5": {"skip": 0.25, "math-depth-2": 0.25, "code-depth-1": 0.50}
+  }
+}

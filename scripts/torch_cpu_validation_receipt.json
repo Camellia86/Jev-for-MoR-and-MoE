@@ -1,0 +1,23 @@
+{
+  "schema": "jev-routing-validation-receipt-v1",
+  "created_at_utc": "2026-10-11T10:51:11.226655+00:00",
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-v"
+  ],
+  "python": "3.9.12 (main, Apr  4 2022, 05:22:27) [MSC v.1916 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "tests_run": 27,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true,
+  "notes": [
+    "Optional torch tests are reported as skipped when torch is unavailable.",
+    "No Canopy-Jev model was loaded; actual 27B inference requires its documented GPU environment."
+  ],
+  "unittest_output": "test_exact_allocator_matches_small_bruteforce_solution (tests.test_allocation_routing.AllocationTests) ... ok\ntest_expert_capacity_counts_steps_not_selected_token_rows (tests.test_allocation_routing.AllocationTests) ... ok\ntest_negative_compute_values_choose_the_zero_work_skip (tests.test_allocation_routing.AllocationTests) ... ok\ntest_bidirectional_slate_filters_budget_and_capacity_before_choice (tests.test_allocation_routing.CompletePlanSlateTests) ... ok\ntest_causal_mode_refuses_a_multi_token_complete_plan (tests.test_allocation_routing.CompletePlanSlateTests) ... ok\ntest_causal_early_route_is_invariant_to_future_target_scores_and_tokens (tests.test_allocation_routing.RouterTests)\nA causal route is committed before later targets exist for the router. ... ok\ntest_custom_skip_id_is_preserved_for_a_skip_only_target (tests.test_allocation_routing.RouterTests) ... ok\ntest_router_rejects_more_than_ten_route_candidates (tests.test_allocation_routing.RouterTests) ... ok\ntest_utility_router_allows_many_independent_score_questions (tests.test_allocation_routing.RouterTests)\nFixture: 14 actions each use a three-level Score axis, never a 14-way Choice. ... ok\ntest_utility_router_preserves_negative_gain_as_a_skip (tests.test_allocation_routing.RouterTests) ... ok\ntest_zero_elicited_gain_keeps_the_no_work_baseline (tests.test_allocation_routing.RouterTests) ... ok\ntest_backend_rejects_missing_and_invalid_probabilities (tests.test_context_backend.CanopyAdapterTests) ... ok\ntest_candidate_axis_is_limited_to_ten (tests.test_context_backend.CanopyAdapterTests) ... ok\ntest_oversized_packed_request_is_split_without_changing_the_state (tests.test_context_backend.CanopyAdapterTests) ... ok\ntest_single_request_that_exceeds_limit_fails_before_any_model_call (tests.test_context_backend.CanopyAdapterTests) ... ok\ntest_bidirectional_mode_explicitly_includes_the_full_token_context (tests.test_context_backend.ContextContractTests) ... ok\ntest_causal_target_receives_strict_legal_prefix_and_stamped_history (tests.test_context_backend.ContextContractTests) ... ok\ntest_target_must_be_declared_in_the_context (tests.test_context_backend.ContextContractTests) ... ok\ntest_adaptive_second_call_receives_only_current_execution_observation (tests.test_execution_training.AdaptiveTests) ... ok\ntest_bidirectional_stop_is_not_requeried_on_the_next_pass (tests.test_execution_training.AdaptiveTests) ... ok\ntest_missing_executor_rejects_selected_adaptive_work (tests.test_execution_training.AdaptiveTests) ... ok\ntest_causal_callback_receives_only_selected_target_prefix_and_step_depth (tests.test_execution_training.CausalCallbackTests) ... ok\ntest_executor_rejects_a_ledger_that_counts_rows_instead_of_steps (tests.test_execution_training.SparseExecutionTests) ... ok\ntest_selected_rows_receive_exact_residual_steps_and_unselected_rows_are_unchanged (tests.test_execution_training.SparseExecutionTests) ... ok\ntest_distillation_example_binds_causal_target_candidate_axis_and_digest (tests.test_execution_training.TrainingContractTests) ... ok\ntest_teacher_distribution_is_detached_and_student_receives_gradient (tests.test_execution_training.TrainingContractTests) ... ok\ntest_training_rejects_nonfinite_student_logits_on_legal_candidates (tests.test_execution_training.TrainingContractTests) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 0.011s\n\nOK\n"
+}
