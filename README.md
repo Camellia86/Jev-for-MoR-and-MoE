@@ -1,5 +1,7 @@
 # Jev for MoR and MoE
 
+由于当今JEV paper泛滥，我决定开源[**Jev-for-MoR-and-MoE**](https://github.com/Camellia86/Jev-for-MoR-and-MoE)**，并欢迎任何开发者提交PR！**
+
 **Ruoxi Qiu · 2026 · Research implementation · MIT**
 
 Let a router see the problem, the available computations, and what has already
@@ -114,7 +116,7 @@ establish implementation behavior, not MoE/MoR quality or speed gains.
 ## 简体中文
 
 核心想法是把路由写成一份可执行的计算计划：**哪些 token 值得继续计算、
-由哪些专家计算、追加多少递归深度。** JEV 使用你的 Canopy-Jev 原始实现，
+由哪些专家计算、追加多少递归深度。** JEV使用本家[Canopy-Jev](https://github.com/Camellia86/Canopy-Jev)实现，
 输入完整合法上下文、专家能力卡、当前深度和执行回执，直接得到数值决策。
 目前实现了联合动作选择、收益代理预算分配、执行后重路由、完整计划选择四条路线。
 
