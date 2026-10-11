@@ -113,6 +113,11 @@ establish implementation behavior, not MoE/MoR quality or speed gains.
 [Closest prior work](docs/RELATED_WORK.md) ·
 [Validation record](docs/VALIDATION.md)
 
+Shared-backbone depth-control experiment: [中文实验计划](docs/EXPERIMENT_PLAN.zh-CN.md)
+and [protocol configuration](docs/EXPERIMENT_CONFIG.v1.json).
+The plan uses RTX 5080 for the pilot and 3×A10 for the formal study; it is a
+proposed experiment, with no training or results from this protocol yet.
+
 ## 简体中文
 
 核心想法是把路由写成一份可执行的计算计划：**哪些 token 值得继续计算、

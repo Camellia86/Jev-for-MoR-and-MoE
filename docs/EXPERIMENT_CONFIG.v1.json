@@ -1,0 +1,243 @@
+{
+  "protocol_id": "jev-shared-depth-v1",
+  "protocol_date": "2026-10-11",
+  "status": "design_not_run",
+  "configuration_kind": "research_protocol_not_runner_configuration",
+  "plan": "EXPERIMENT_PLAN.zh-CN.md",
+  "sources": {
+    "host_model": {
+      "repository": "tomg-group-umd/huginn-0125",
+      "revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+      "tokenizer_revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+      "layers_prelude_core_coda": [2, 4, 2],
+      "hidden_size": 5280
+    },
+    "canopy_source": {
+      "repository": "Camellia86/Canopy-Jev",
+      "revision": "b71f97b3bffd28c90306bfea607d2089d75e7d43"
+    },
+    "dataset": {
+      "repository": "HuggingFaceTB/smollm-corpus",
+      "subset": "fineweb-edu-dedup",
+      "revision": "3ba9d605774198c5868892d7a8deda78031a781f",
+      "shard": "first_training_parquet",
+      "shard_sha256": "220d0c36f13f24046f080dcd9a9339862d6a0e43f214dd430ed20552c265e309"
+    },
+    "implementation_commit": null,
+    "runtime_manifest": null
+  },
+  "resources": {
+    "hardware_confirmed_by_user": true,
+    "pilot": {"gpu": "RTX 5080", "count": 1, "proposed_gpu_hour_cap": 8},
+    "formal": {
+      "gpu": "A10",
+      "count": 3,
+      "preferred_parallelism": "one_training_seed_per_gpu",
+      "proposed_gpu_hour_cap": 168,
+      "budget_allocation_gpu_hours": {
+        "labels_and_common_preparation": 48,
+        "training": 72,
+        "quality_and_decode": 36,
+        "numerical_audit": 12
+      },
+      "admission_microbenchmark": {"documents": 8, "updates": 100, "requests": 8},
+      "measured_vram_bytes": null,
+      "measured_runtime": null
+    },
+    "original_60_layer_phase_included_in_cap": false
+  },
+  "data": {
+    "minimum_source_row": 24096,
+    "qualifying_document_pool": 4656,
+    "minimum_token_count": 256,
+    "prefix_tokens": 128,
+    "target_tokens": 128,
+    "segments_per_document": 1,
+    "deduplication": "sha256_full_text_exclude_all_historical_used_documents",
+    "partition_order": "sha256(jev-shared-v1 || full_text_sha256)",
+    "special_token_policy": null,
+    "historical_exclusion_manifest": null,
+    "partitions": {
+      "pilot_train": 128,
+      "pilot_cal": 16,
+      "pilot_screen": 32,
+      "train": 2048,
+      "cal": 128,
+      "screen": 256,
+      "confirm_default": 512,
+      "confirm_maximum": 2048
+    },
+    "confirm_size_locked_before_formal_screen": true,
+    "confirm_reserve": "last_2048_sorted_documents_use_first_locked_n",
+    "confirmed_base_pretraining_disjointness": false
+  },
+  "execution": {
+    "prefix_depth": 4,
+    "actions_total_depth": [4, 16, 32],
+    "decisions_per_document": 1,
+    "continuation": "reuse_first_four_steps_and_original_initialization",
+    "generation_coda_commit": "fork_before_endpoint_coda_write_final_endpoint_once",
+    "cache_policy": "latest-m4",
+    "adaptive_evaluation_batch_size": 1,
+    "isolated_controller_and_candidate_caches": true,
+    "latent_seed_rule": "big_endian_first_8_bytes(sha256(latent-v1 || document_sha256)) mod (2^63-1)",
+    "additional_evaluation_recurrence_noise": 0,
+    "baseline_native_reference": "full_prefix_32_and_continuation_32"
+  },
+  "controller": {
+    "input": "complete_legal_prefix_states_after_four_recurrences",
+    "coda_layers": 2,
+    "share_frozen_base_weight_storage": true,
+    "lora": {
+      "rank": 16,
+      "scale": 32,
+      "dropout": 0,
+      "projections": ["attention_q", "attention_o", "mlp_gate", "mlp_up", "mlp_down"],
+      "actual_module_names": null,
+      "independent_parameter_count": null
+    },
+    "common_readout": {
+      "training_documents": 256,
+      "updates": 400,
+      "batch_size": 32,
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 0,
+      "selected_update": 400,
+      "seed": 17,
+      "frozen_during_three_arm_training": true
+    }
+  },
+  "labeling": {
+    "method": "independent_full_plan_teacher_forcing",
+    "nll_unit": "nat_per_target_token",
+    "include_action_induced_future_cache_effects": true,
+    "cost": "C_i(r)=NLL_i(r)+lambda*host_F_i(r)/host_F_i(16)",
+    "lambda_grid": [0, 0.01, 0.03],
+    "lambda_selection": "train_soft_label_expected_host_work_closest_to_fixed16_tie_smaller_lambda",
+    "temperature": "median_absolute_pairwise_train_nll_difference",
+    "temperature_floor": 0.0001,
+    "actor_cost_scale": "median_absolute_pairwise_train_cost_difference",
+    "actor_cost_scale_floor": 0.0001,
+    "oracle_includes_measured_controller_cost": true,
+    "oracle_budget_rounding_max_relative_error": 0.001
+  },
+  "comparisons": {
+    "fixed_policies": ["F4", "F16", "F32"],
+    "random_policy": "MIX_complete_plan_per_document",
+    "quality_baseline_pool": ["F4", "F16", "F32", "MIX", "H-LIN", "H-MLP"],
+    "learned_policies": ["H-LIN", "H-MLP", "T-S", "T-E", "T-J"],
+    "head_mlp_parameter_matching_relative_tolerance": 0.02,
+    "auxiliary_loss_weights": {"soft_ce": 0.1, "brier_sum": 0.01, "fixed_reference_kl": 0.1},
+    "kl_direction": "current_to_fixed_reference",
+    "actor_loss_weight": 0.1,
+    "dirichlet": {
+      "mix_epsilon": 0.01,
+      "concentration": 256,
+      "alpha_floor": 0.001,
+      "samples_per_state": 64,
+      "baseline": "leave_one_out_mean_reward",
+      "reward": "negative_sample_weighted_scaled_complete_plan_cost",
+      "estimator": "detached_samples_score_function",
+      "density_and_reduction_dtype": "float64",
+      "probability_and_auxiliary_dtype": "float32",
+      "analytic_comparator": "same_auxiliary_loss_plus_exact_dirichlet_expected_cost"
+    }
+  },
+  "training": {
+    "pilot_seeds": [17],
+    "pilot_epochs": 4,
+    "pilot_common_readout_documents": 64,
+    "pilot_common_readout_updates": 100,
+    "formal_readout_retrained_on_formal_train": true,
+    "formal_seeds": [17, 43, 101],
+    "formal_default_epochs": 16,
+    "formal_resource_admission_minimum_epochs": 8,
+    "epoch_lock_before_formal_cal_or_screen_quality": true,
+    "batch_size": 4,
+    "optimizer": "AdamW",
+    "tail_lora_learning_rate": 0.0001,
+    "head_learning_rates_locked_after_pilot": null,
+    "weight_decay": 0.01,
+    "gradient_clip_norm": 1,
+    "checkpoint_epochs": [4, 8, 12, 16],
+    "checkpoint_rule": "retain_epochs_le_common_maximum_and_add_common_final_epoch",
+    "selection": "lowest_cal_nll_after_work_matching_tie_earlier",
+    "still_improving_last_four_epoch_fraction_threshold": 0.1
+  },
+  "admission": {
+    "fp32_prefix_and_targets": [8, 8],
+    "fp32_logits_atol": 0.00003,
+    "fp32_logits_rtol": 0.00003,
+    "fp32_max_nll_error": 0.0001,
+    "bf16_prefix_and_targets": [128, 128],
+    "bf16_mean_absolute_nll_error": 0.001,
+    "gradient_repeats": 1000,
+    "gradient_mean_min_cosine": 0.99,
+    "gradient_mean_max_relative_error": 0.1,
+    "required_checks": [
+      "independent_fixed_depth_reference",
+      "shared_prefix_continuation_equivalence",
+      "future_suffix_invariance_and_timestamp_rejection",
+      "cache_branch_isolation",
+      "zero_lora_and_reference_kl",
+      "declared_trainable_parameters_only",
+      "fp32_teacher_mixed_precision_finite_gradients",
+      "sampled_vs_analytic_gradient",
+      "forced_actions_recover_fixed_policies",
+      "nonduplicated_cuda_phase_costs"
+    ]
+  },
+  "deployment_budget": {
+    "reference": "fixed16_same_four_step_prefix_without_controller",
+    "include_controller_prefix_coda_vocab_cache_and_dispatch": true,
+    "normalized_cost_prediction": "predicted_policy_total_F_i(r)/predicted_reference_total_F_i(16)",
+    "offset_grid": [-8, -4, -2, -1, -0.5, 0, 0.5, 1, 2, 4, 8],
+    "offset_selection": "cal_work_closest_to_reference_then_abs_offset_then_numeric_offset",
+    "action_score_tie_break": "shallower",
+    "maximum_relative_budget_error_each_partition": 0.02,
+    "jev_vs_exact_maximum_relative_budget_difference": 0.01
+  },
+  "statistics": {
+    "pilot_minimum_oracle_gain_nat_per_token": 0.01,
+    "minimum_quality_gain_nat_per_token": 0.005,
+    "confirm_power_formula": "ceil((2.40+0.84)^2*max_pilot_paired_sigma^2/0.005^2)",
+    "power_planning_correction": "bonferroni_two_sided_0.05_over_3_tests_normal_quantile_rounded_up",
+    "confirm_size_rounding_multiple": 128,
+    "bootstrap_unit": "document_after_averaging_three_training_seeds",
+    "bootstrap_replicates": 5000,
+    "nominal_confidence_level": 0.95,
+    "require_all_three_seed_gain_directions_positive": true,
+    "maximum_confirm_finalists": 2,
+    "run_locked_T_E_reference_when_T_J_is_finalist": true,
+    "familywise_correction": "Holm_quality_and_jev_increment_joint_family",
+    "familywise_alpha": 0.05,
+    "p_value": "two_sided_centered_document_bootstrap_with_plus_one_correction",
+    "maximum_confirm_tests": 3
+  },
+  "decode": {
+    "confirm_prefix_count": 64,
+    "sampling": "greedy",
+    "stop": "eos_or_128_new_tokens",
+    "batch_size": 1,
+    "warmup_requests": 8,
+    "interleaved_rounds": 5,
+    "minimum_paired_total_latency_reduction": 0.1,
+    "maximum_nll_regression_nat_per_token": 0.005,
+    "report_actual_generated_lengths_and_fixed_text_replay": true
+  },
+  "original_60_layer_phase": {
+    "status": "conditional_separate_recursion_adaptation_and_resource_admission",
+    "base_model": "Qwen/Qwen3.8-27B",
+    "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0",
+    "shared_layer_indices_inclusive": [0, 59],
+    "generation_coda_indices_inclusive": [60, 63],
+    "controller_coda_indices_inclusive": [62, 63],
+    "total_depth_actions": [1, 2, 3],
+    "recurrence_design": "F((1-sigmoid(a))*embedding+sigmoid(a)*N(previous_state))",
+    "required_shared_training_before_routing": true,
+    "full_and_linear_attention_state_semantics": null,
+    "distributed_loader_and_backward_admission": null,
+    "separate_measured_gpu_hour_budget": null
+  }
+}
