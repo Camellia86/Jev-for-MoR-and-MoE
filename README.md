@@ -149,6 +149,15 @@ end 0.0040): detected, but below the 0.005 practical threshold. Across three see
 gradient raised generation NLL by 0.0017, and separate optimizer states removed about 77% of
 that harm ([v3.3 report](docs/EXPERIMENT_REPORT.v3.3.zh-CN.md)).
 
+All experiments from v1 to v4 are consolidated in the
+[experiment summary](docs/EXPERIMENT_SUMMARY.zh-CN.md). The v4 row-loop architecture on
+Qwen3-30B-A3B ([architecture](docs/ARCHITECTURE.v4.zh-CN.md),
+[flow](docs/ARCHITECTURE_FLOW.v4.zh-CN.md), [mathematics](docs/ARCHITECTURE_MATH.v4.zh-CN.md),
+[one-day plan](docs/EXPERIMENT_PLAN.v4-one-day.zh-CN.md)) has been reviewed against these
+results ([review](docs/ARCHITECTURE_REVIEW.v4.zh-CN.md)) and frozen for implementation as
+protocol `jev-v4-rowloop` ([configuration](docs/EXPERIMENT_CONFIG.v4-rowloop.json)). No v4 run
+has started.
+
 ## 简体中文
 
 核心想法是把路由写成一份可执行的计算计划：**哪些 token 值得继续计算、
@@ -164,6 +173,8 @@ that harm ([v3.3 report](docs/EXPERIMENT_REPORT.v3.3.zh-CN.md)).
 另有一份独立的[共享末端深度控制实验计划](docs/EXPERIMENT_PLAN.zh-CN.md)：在冻结的 Huginn-0125 循环模型上训练共享的末端两层 LoRA，
 让同一段前向同时完成生成和循环深度选择。它不调用 Canopy-Jev，也不使用本仓库的路由代码；
 RTX 5080 先导已经运行并判定不放行：在计划的预算点上，冻结模型几乎没有可分配给不同请求的深度空间，详见[先导报告](docs/PILOT_REPORT.v2.1.zh-CN.md)。后续的 [v3.1 计划](docs/EXPERIMENT_PLAN.v3.1.zh-CN.md)改在 GSM8K 解答上按步骤决定深度；冻结模型的第 0 阶段已按在线语义重做。v3.1 的 RTX 5080 先导判定不放行：同成本下，联合训练的控制器没有超过最好的位置日程（−0.0064 nat/token，95% 区间 [−0.0134, 0.0005]）；它的读出饱和，生成参数在固定日程下差 0.012 nat/token，详见 [v3.1 先导报告](docs/PILOT_REPORT.v3.1.zh-CN.md)。[v3.2 计划](docs/EXPERIMENT_PLAN.v3.2.zh-CN.md)在冻结的生成参数上检验新读出，阶段一不放行：相对位置日程改善 +0.0038 nat/token，95% 区间 [−0.0039, 0.0116]，详见[阶段一报告](docs/PILOT_REPORT.v3.2-stage1.zh-CN.md)。追加的匹配实验从同一组已适配参数出发，只差控制损失：同一固定日程下控制损失使生成 NLL 升高 0.0016 nat/token（95% 区间 [0.0005, 0.0028]）；整体策略差 +0.0038 偏向含控制损失的一臂，未达到证据门槛，详见[追加实验报告](docs/PILOT_REPORT.v3.2-followup.zh-CN.md)。v3.3 在 3×A10 上做了确认性实验（2,397 篇，严格同成本）：模型自身表示相对位置日程改善 +0.0019 nat/token，单侧 95% 下界 +0.0002，区间上端 0.0040，检出增益但低于 0.005 的实用门槛；三个种子上控制梯度使生成 NLL 升高 0.0017，分开维护优化器状态消除了其中约 77%，详见[正式实验报告](docs/EXPERIMENT_REPORT.v3.3.zh-CN.md)。
+
+全部实验（v1 到 v4）的汇总见[实验汇总](docs/EXPERIMENT_SUMMARY.zh-CN.md)。v4 在 Qwen3-30B-A3B 上的按行循环架构（[架构正文](docs/ARCHITECTURE.v4.zh-CN.md)、[流程](docs/ARCHITECTURE_FLOW.v4.zh-CN.md)、[数学验证](docs/ARCHITECTURE_MATH.v4.zh-CN.md)、[一天方案](docs/EXPERIMENT_PLAN.v4-one-day.zh-CN.md)）已按这些结果完成[审核](docs/ARCHITECTURE_REVIEW.v4.zh-CN.md)，定稿为协议 `jev-v4-rowloop`（[配置](docs/EXPERIMENT_CONFIG.v4-rowloop.json)），尚未开始运行。
 
 ## Citation
 
