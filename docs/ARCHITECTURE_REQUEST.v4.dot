@@ -1,0 +1,47 @@
+digraph Qwen {
+  graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.35", ranksep="0.5", splines=polyline, fontname="Noto Sans CJK SC", fontsize=20, labelloc=t, label="校正版：请求级两动作循环架构\n整次回答只决策一次 · 单尾 · 总轮数 r∈{1,2}"];
+  node [shape=box, style="rounded", fontname="Noto Sans CJK SC", fontsize=13, margin="0.16,0.10", penwidth=1.3];
+  edge [fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.75];
+  input [label="消费已知输入\n首次：整段提示词；随后：新生成的 token"];
+  s [label="S：第 0–31 层\n原权重冻结"];
+  u [label="u：共享前缀出口", shape=ellipse];
+  f1 [label="F¹：第 32–43 层，首轮\n启用生成 LoRA · 写入首轮 KV"];
+  h1 [label="h¹：首轮出口", shape=ellipse];
+  kv1 [label="首轮 KV：逐层独立保存\n第 43 层提示词 KV 可供 Q 只读"];
+  input -> s -> u -> f1 -> h1;
+  f1 -> kv1 [style=dashed, label="建立 / 更新"];
+  subgraph cluster_control {
+    label="决策路径：仅提示词处理完毕时执行；生成期间不再调用";
+    fontname="Noto Sans CJK SC"; fontsize=15; style="rounded,dashed"; penwidth=1.2;
+    h [label="H：小型非线性 MLP\n预测完整答案 NLL 差 Δℓ̂_H"];
+    cost [label="公共成本模型\n预测 Ĉ₁、Ĉ₂；所有控制器共用"];
+    gate [shape=diamond, label="预计查询改善\n> λ × 查询成本？", fontsize=12];
+    q [label="Q：两层只读查询控制器\n512 维查询；读取已有 KV\n不写生成缓存、不增加 token\n输出 Δℓ̂_Q"];
+    choose [label="同一选择规则\n若 Δℓ̂ + λ(Ĉ₂−Ĉ₁) < 0，选 r=2\n否则选 r=1；整次回答锁定"];
+    h -> gate;
+    gate -> choose [label="否：使用 H"];
+    gate -> q [label="是：支付 Q 费用"];
+    q -> choose [label="使用 Q"];
+    cost -> choose [style=dashed];
+  }
+  h1 -> h [style=dashed, label="仅提示词末位 + 已知状态"];
+  kv1 -> q [style=dashed, label="仅提示词 KV；只读"];
+  route [shape=diamond, label="沿锁定的 r 执行\n不重新决策", fontsize=12];
+  h1 -> route;
+  choose -> route [style=dashed, label="一次性控制信号"];
+  mix [label="追加轮输入\nv² = u + tanh(g) ⊙ (h¹−u)"];
+  f2 [label="F²：再次执行第 32–43 层\n与 F¹ 共用权重及 LoRA\n独立第二轮 KV"];
+  h2 [label="h²：第二轮出口", shape=ellipse];
+  tail [label="唯一生成尾 T：第 44–47 层 + LoRA\n提示词按所选出口完整预填充\n生成中持续更新同一条尾缓存"];
+  head [label="原最终归一化 + 词表头\n生成下一个 token"];
+  eos [shape=diamond, label="EOS / 长度上限？", fontsize=12];
+  end [label="结束", shape=ellipse];
+  route -> tail [label="r=1：使用 h¹"];
+  route -> mix [label="r=2"];
+  u -> mix [style=dashed, label="保留当前输入 u"];
+  mix -> f2 -> h2 -> tail -> head -> eos;
+  eos -> end [label="是"];
+  eos -> input [label="否：自回归继续；保持 r 不变", constraint=false];
+  note [shape=note, label="执行不变量\n1. 第二轮在提示词上也必须完整预填充，费用单列。\n2. F¹/F² 共享权重，不共享 KV；没有第二个生成尾。\n3. 生成中不切换深度，因此无历史补写或尾追赶。\n4. H/Q 只读生成表示；固定动作时，开启 Q 不得改变生成分布。\n5. 本图取代此前两张与正文冲突的自动附图。", fontsize=12];
+  end -> note [style=invis];
+}
