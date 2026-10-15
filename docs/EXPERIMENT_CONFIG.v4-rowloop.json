@@ -85,14 +85,19 @@
       "weight_decay_gamma": 0.0,
       "grad_clip_norm": 1.0
     },
-    "seed": 17
+    "seed": 17,
+    "scheduling_gflops_per_token": {
+      "one_day_plan": {"G_plain": 15.69, "G_loop_mean_2_5_rounds": 20.37, "G_loop_4_rounds": 29.13},
+      "recomputed_from_math_section_7_1": {"G_plain": 15.64, "G_loop_mean_2_5_rounds": 20.12, "G_loop_4_rounds": 28.28}
+    }
   },
   "labels": {
     "same_history_candidates": true,
     "behavior_policy": "by document hash: half of the documents keep one random legal action for the whole document; the other half choose a legal action uniformly on every line; candidate losses never select the committed action",
-    "behavior_seed_rule": "SHA256 of document id and seed 17",
+    "behavior_seed_rule": "generator seed = first 8 bytes, big-endian unsigned, of SHA256(UTF-8('jev-v4-rowloop-behavior') || 0x00 || UTF-8(document id) || 0x00 || UTF-8('17'))",
     "quota_target_line_tokens": {"protocol_4": 1000000, "protocol_8": 1000000},
     "quota_source": "GSM8K fit buckets first, then a held-out part of the math training corpus that is excluded from generator training",
+    "gl2_labels": "calibration-document protocol-4 labels used by GL2 are not counted in the quota",
     "candidate_scoring_target_tokens_max": 12000000,
     "second_round_on_fitted_policy_histories": "post-pilot extension"
   },
@@ -115,23 +120,34 @@
     },
     "D_reg": {
       "representation": "four-layer branch from layers 44-47 over stop-gradient first-round exits, with its own LoRA and KV cache",
-      "training": "weighted squared error on line-total NLL; AdamW, weight decay 0.01; seed 17",
-      "head_refit": "ridge regression as for H, with the same folds and standardisation",
+      "training": "weighted squared error on line-total NLL",
+      "head_refit": "ridge regression as for H, with the same folds, standardisation and grid rules",
       "alpha_grid": [1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0, 1000.0],
       "deployment": "argmin of predicted NLL plus lambda times predicted cost"
     },
     "D_ec": {
-      "training": "expected cost with entropy regulariser; tau_c = 0.05 times line target tokens; fixed lambda_D",
+      "training": "expected cost with entropy regulariser; tau_c = 0.05 times line target tokens",
+      "lambda_D_rule": "the H price, among its 12 locked prices, whose predicted cost is closest to the main budget",
       "deployment": "argmax of q minus beta times predicted cost",
       "saturation_diagnostic": "share of states with max pi >= 0.999"
     },
+    "D_training": {
+      "optimizer": "AdamW, lr warmup over the first 5% to 0.0001, cosine decay to 0.00001, weight decay 0.01, grad clip 1",
+      "passes": 3,
+      "documents_per_step": 32,
+      "validation": "10% of fit documents held out by document hash; keep the checkpoint with the lowest validation loss",
+      "seed": 17,
+      "evaluation_scope_first_round": "teacher-forced NLL only; no free generation"
+    },
     "alpha_grid_rule": "weights normalised to sum to 1 (ARCHITECTURE_MATH section 9.3); if the selected value lies on a grid edge, extend two decades on that side once, then lock",
+    "alpha_tie_rule": "smaller alpha",
     "cross_validation": "5 folds grouped by document"
   },
   "gates": {
     "GL1": {
       "data": "r* chosen on fit documents; tested on calibration documents; tail T0 fixed; teacher forced",
       "statistic": "L_U(1) - L_U(r*)",
+      "meaning": "depth-level NLL difference; it includes the loop LoRA, which is active only for r >= 2; report G_plain versus G_loop(r = 1) alongside",
       "threshold_nat_per_token": 0.005,
       "one_sided_lower_95_must_exceed": 0.0,
       "on_fail": "stop controller comparisons; report the uniform-depth curve and G_loop versus G_plain"
@@ -139,6 +155,7 @@
     "GL2": {
       "data": "calibration documents, protocol-4 same-history label table",
       "statistic": "Gamma(B) = L_U_table(B) - sup over lambda >= 0 of [O(lambda) - lambda * B]",
+      "scope": "upper bound on improvement over uniform depth (P1); it does not bound R versus H (P2)",
       "threshold_nat_per_token": 0.005,
       "budget_selection": "candidate with the largest Gamma(B); ties go to the smaller budget",
       "on_fail": "controllers still run; all comparisons are descriptive"
@@ -146,21 +163,31 @@
   },
   "evaluation": {
     "primary_metric": "document-equal NLL in nat/token under strict common cost",
-    "secondary_metrics": ["token-weighted NLL", "free-generation accuracy (128 problems, up to 256)", "latency"],
-    "budget_unit": "complete ledger of G_loop with r = 1 and tail T0 on every line of the same document",
+    "secondary_metrics": ["token-weighted NLL", "free-generation accuracy (128 problems, up to 256; D excluded in the first round)", "latency"],
+    "budget_cost": "complete ledger minus the shared prefix and first-round forward over prompt positions, which every policy executes identically; D's per-token branch over prompt positions stays charged to D",
+    "budget_unit": "the same cost of G_loop with r = 1 and tail T0 on every line of the same document",
     "budget_candidates": [1.125, 1.25, 1.375, 1.5],
+    "budget_candidate_rule": "drop candidates outside the calibration-set cost range of uniform depth before reading the confirmation set, and record them",
     "price_points_per_family": 12,
     "price_offsets": [-0.045, -0.03, -0.02, -0.012, -0.006, -0.002, 0.002, 0.006, 0.012, 0.02, 0.03, 0.045],
     "extra_points_rule": "if the pair bracketing B differs by more than 0.02 in actual cost, add points between them during calibration, at most 4 per family",
+    "D_family_price_targets": "predicted cost on the complete ledger including D's per-token cost; targets below the family's attainable minimum are truncated to it, and duplicated prices move to the next unused offset (27B plan rule); a budget D cannot reach is recorded as not estimable for D",
     "primary_tests": {
       "P1": "L_U(B) - L_R(B)",
       "P2": "L_R(B) - L_H(B)",
       "protocol": "protocol_4",
-      "multiplicity": "Holm, one-sided family-wise error rate 0.05"
+      "multiplicity": "Holm, one-sided family-wise error rate 0.05",
+      "lower_bound_levels": "the test with the smaller p uses the 2.5% quantile; the other uses the 5% quantile if the first is rejected, otherwise the 2.5% quantile"
     },
-    "estimates_only": ["H versus D_reg", "D_reg versus D_ec", "protocol_8 versus protocol_4", "best G_loop policy versus G_plain"],
+    "estimates_only": [
+      "H versus D_reg",
+      "D_reg versus D_ec",
+      "protocol_8 versus protocol_4",
+      "H policy locked on calibration at the main budget on G_loop versus G_plain (costs differ; report both NLL and cost differences)"
+    ],
+    "estimates_only_lower_bound_level": "5% quantile",
     "practical_threshold_nat_per_token": 0.005,
-    "decision_table": "v3.3 categories based on the one-sided 95% lower bound and the two-sided 95% upper end; report both one-sided and two-sided intervals and the relative improvement g / L_U(B)",
+    "decision_table": "v3.3 categories with three changes: 'at threshold' uses the one-sided lower bound >= 0.005; bracket failure is reported outside the table; a row for 'the latter has higher NLL' is added. Report both one-sided and two-sided intervals and the relative improvement g / L_U(B)",
     "bootstrap": {"unit": "document", "repeats": 10000, "seed": 20261015, "bracket_failure": "interval not estimable"},
     "sample_size": {
       "confirm_min_documents": 1410,
@@ -170,12 +197,29 @@
       "power": 0.8,
       "delta": 0.005,
       "power_if_true_effect_0_002": 0.2
-    }
+    },
+    "deferral_order": [
+      "256-problem free-generation extension",
+      "D_ec",
+      "D_reg",
+      "reduce price points from 12 to the 6 with offsets +-{0.002, 0.006, 0.012}; supplementary points kept",
+      "reduce confirmation documents, never below 1410"
+    ]
   },
+  "schedule_24h": [
+    {"hours": "0-6", "work": "executor acceptance (I1-I12, V1-V4), memory and throughput short runs"},
+    {"hours": "6-16", "work": "G_loop and G_plain generator training, 2e8 tokens each"},
+    {"hours": "16-17", "work": "GL1 on calibration documents"},
+    {"hours": "17-18.5", "work": "same-history labels, GL2 and main budget, R/H and cost head fits, price calibration"},
+    {"hours": "18.5-20", "work": "D_reg and D_ec caching, training and price calibration (deferrable)"},
+    {"hours": "20-23", "work": "paired NLL and free-generation evaluation"},
+    {"hours": "23-24", "work": "verification, saving and report"},
+    {"rule": "stop adding optional experiments at hour 20"}
+  ],
   "data_roles_default": {
     "status": "default pending user confirmation",
     "evaluation_corpus": "GSM8K train (openai/gsm8k, main)",
-    "bucket_rule": "SHA256('jev-v4-rowloop' || 0x00 || question) mod 100",
+    "bucket_rule": "SHA256(UTF-8('jev-v4-rowloop') || 0x00 || UTF-8(raw question)) as a 32-byte big-endian integer mod 100, as in experiments/chunk_depth_v31/data.py",
     "fit_buckets": [0, 44],
     "calibration_buckets": [45, 59],
     "confirm_buckets": [60, 99],
@@ -196,23 +240,33 @@
     "frozen_base_bf16": 56.9,
     "generator_lora_fp32_and_adamw": 5.2,
     "activations_with_recompute": 6.0,
-    "total_before_workspace": 68.0,
-    "limit_85_percent": 119.3
+    "vocab_logits_and_grad_chunked_1024_tokens": 1.2,
+    "vocab_logits_fp32_unchunked_reference": 9.3,
+    "total_before_workspace": 69.3,
+    "limit_85_percent": 119.3,
+    "fp32_reference_weights": 113.7
   },
   "infra_acceptance": [
-    {"id": "I1", "check": "zero-initialisation equivalence against the Hugging Face reference", "threshold": "FP32, 2 short documents: max probability error <= 1e-5; BF16, 64 documents: 95% interval of the mean signed per-token NLL difference within +-5e-4 and containing 0"},
+    {"id": "I1", "check": "zero-initialisation equivalence against the Hugging Face reference", "threshold": "FP32, 2 short documents: max probability error <= 1e-5; BF16, 64 documents: absolute pooled mean signed per-token NLL difference <= 5e-4 with a 95% interval containing 0, and absolute mean difference per loop count <= 1e-3"},
     {"id": "I2", "check": "online execution (KV, backfill, tail catch-up) against an independent masked reference with nonzero gamma and LoRA", "threshold": "FP32, 16 documents: max absolute logit error <= 1e-4; BF16: absolute mean signed per-token NLL difference <= 5e-4"},
-    {"id": "I3", "check": "future-token invariance", "threshold": "logits, control features and actions at positions <= i bitwise identical in FP32"},
+    {"id": "I3", "check": "future-token invariance with deterministic, batch-invariant kernels", "threshold": "logits, control features and actions at positions <= i bitwise identical in FP32"},
     {"id": "I4", "check": "line boundaries on constructed tokenisations (multiple newlines, newline inside a token, EOS with newline)", "threshold": "exact agreement with the boundary rule"},
     {"id": "I5", "check": "tail catch-up against continuous processing from position 1", "threshold": "FP32 max error <= 1e-5"},
     {"id": "I6", "check": "candidate cloning leaves the committed state unchanged", "threshold": "hash equality of KV, tail progress and execution record"},
     {"id": "I7", "check": "cache versioning after a parameter update", "threshold": "caches depending on trainable parameters are rebuilt; reuse of a stale version raises"},
     {"id": "I8", "check": "cost counters against the ledger on 32 random-action documents", "threshold": "exact"},
-    {"id": "I9", "check": "MoE top-8 expert sets against the reference in FP32 at non-tie positions", "threshold": "100% agreement"},
-    {"id": "I10", "check": "gradients", "threshold": "two-layer slice finite-difference relative error <= 1e-3; full-model BF16 gradient against FP32 cosine >= 0.99 and relative norm error <= 5%"},
+    {"id": "I9", "check": "MoE top-8 expert sets against the reference in FP32 where the 8th and 9th router scores differ by more than 1e-4", "threshold": "100% agreement; disagreements at margins <= 1e-4 are recorded only"},
+    {"id": "I10", "check": "gradients (thresholds set in this revision; form follows K10 of the 27B plan)", "threshold": "two-layer slice finite-difference relative error <= 1e-3; full-model BF16 gradient against FP32 cosine >= 0.99 and relative norm error <= 5%"},
     {"id": "I11", "check": "peak memory of both generator arms and D training", "threshold": "<= 85% of device memory"},
     {"id": "I12", "check": "aggregate 8-GPU input tokens/s", "threshold": "throughput admission rule"},
     {"id": "I13", "check": "determinism of the first 10 updates with the same seed", "threshold": "recorded, not a gate"}
+  ],
+  "infra_acceptance_gating": "I1-I12 must pass before generator training; I13 is recorded",
+  "analysis_acceptance": [
+    {"id": "V1", "check": "GL2 Gamma computation", "threshold": "lower bound 1.5 on the ARCHITECTURE_MATH section 14.2 example; on 200 random small tables, the minimum NLL over all cost-feasible deterministic rules found by enumeration is never below the computed dual bound"},
+    {"id": "V2", "check": "D_ec gradient", "threshold": "autograd against the closed form pi_b (J_tilde_b - L), max absolute error <= 1e-10 in FP64"},
+    {"id": "V3", "check": "ridge regression and grouped cross-validation", "threshold": "normal-equation solution against an independent solver, max difference <= 1e-8 in FP64; every fold contains whole documents"},
+    {"id": "V4", "check": "strict common cost interpolation and bracket resampling", "threshold": "reproduce analytic interpolated values and bracket-failure shares on synthetic data, and match v3.3 analyze.py on the same synthetic data"}
   ],
   "diagnostics": [
     "backfill semantics against full recomputation: NLL difference with interval on 64 documents"
