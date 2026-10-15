@@ -1,0 +1,446 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "pilot_warm_readout_and_lambda",
+  "created_at_utc": "2026-10-11T23:48:04.776648+00:00",
+  "config_sha256": "a1bdbc2bbc4ad6b8a84375eec5d7790bbc978a46a5033acaec84ffbe5c0bf0f2",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "protocol_revision": "2.1",
+  "selected_lambda": 0.05,
+  "rule": "warm_set_uncalibrated_expected_plan_cost_closest_to_1_in_log_space; tie -> smaller lambda",
+  "f_plan": {
+    "4": 0.29708390383566435,
+    "8": 0.5455801291004397,
+    "16": 1.0141908618440487,
+    "32": 1.9514123273312665
+  },
+  "f_static": {
+    "4": 0.2970839008845867,
+    "8": 0.5313892672563911,
+    "16": 1.0,
+    "32": 1.9372214654872177
+  },
+  "static_frozen_pilot_cal": {
+    "support": [
+      [
+        "frozen@16",
+        1.0
+      ]
+    ],
+    "cost": 1.0,
+    "nll": 2.1722316835075617,
+    "order": [
+      2
+    ]
+  },
+  "base_mean_nll": {
+    "warm": [
+      2.684889848867897,
+      2.3047838509082794,
+      2.225173198763514,
+      2.221893887675833
+    ],
+    "pilot_train": [
+      2.6470332969911397,
+      2.271203374955803,
+      2.1939857710385695,
+      2.190883765812032
+    ],
+    "pilot_cal": [
+      2.6505927331745625,
+      2.249420626088977,
+      2.1722316835075617,
+      2.1694400468841195
+    ],
+    "pilot_screen": [
+      2.6773821556319795,
+      2.30095922605445,
+      2.221303090763589,
+      2.217591011120627
+    ]
+  },
+  "rows": [
+    {
+      "lambda": 0,
+      "warm_uncalibrated_mean_plan_cost": 1.6682404852510249,
+      "abs_log_cost": 0.5117694693541888,
+      "warm_expected_nll_b0": 2.223105453306343,
+      "pilot_cal_expected_nll_b0": 2.173083646258288,
+      "warm_minus_cal_expected_cost_gap": 0.050021807048055145,
+      "diag_pilot_screen_nll_at_budget1": 2.3623373330241244,
+      "diag_pilot_screen_cost_at_budget1": 1.0023570766311247,
+      "diag_calibration": {
+        "b": 3.641165792942047,
+        "cost": 1.0000005126930371,
+        "boundary": null
+      },
+      "warm_mean_policy": [
+        0.0025038754652326675,
+        0.004003949519584141,
+        0.2917141130910433,
+        0.70177806192414
+      ],
+      "train_log": [
+        {
+          "step": 0,
+          "loss": 2.6630604291443376
+        },
+        {
+          "step": 50,
+          "loss": 2.553552818103942
+        },
+        {
+          "step": 100,
+          "loss": 2.621796903237069
+        },
+        {
+          "step": 150,
+          "loss": 2.696883377192116
+        },
+        {
+          "step": 200,
+          "loss": 2.686203820212486
+        },
+        {
+          "step": 250,
+          "loss": 2.635393230192927
+        },
+        {
+          "step": 300,
+          "loss": 2.7513832259112734
+        },
+        {
+          "step": 350,
+          "loss": 2.5134993189262858
+        },
+        {
+          "step": 399,
+          "loss": 2.734888434918802
+        }
+      ]
+    },
+    {
+      "lambda": 0.005,
+      "warm_uncalibrated_mean_plan_cost": 1.3380638750312128,
+      "abs_log_cost": 0.29122369975281576,
+      "warm_expected_nll_b0": 2.2240501550276295,
+      "pilot_cal_expected_nll_b0": 2.172392191466374,
+      "warm_minus_cal_expected_cost_gap": 0.05168717101325049,
+      "diag_pilot_screen_nll_at_budget1": 2.279748587932062,
+      "diag_pilot_screen_cost_at_budget1": 0.9933120616766704,
+      "diag_calibration": {
+        "b": 3.5874098539352417,
+        "cost": 0.999999370643939,
+        "boundary": null
+      },
+      "warm_mean_policy": [
+        0.0025038741078476654,
+        0.015522356302749304,
+        0.6267295570384921,
+        0.35524421255091104
+      ],
+      "train_log": [
+        {
+          "step": 0,
+          "loss": 2.6682587394002515
+        },
+        {
+          "step": 50,
+          "loss": 2.570220966364048
+        },
+        {
+          "step": 100,
+          "loss": 2.6400151177887925
+        },
+        {
+          "step": 150,
+          "loss": 2.7035362944397834
+        },
+        {
+          "step": 200,
+          "loss": 2.646653388038194
+        },
+        {
+          "step": 250,
+          "loss": 2.727220382626723
+        },
+        {
+          "step": 300,
+          "loss": 2.7850811596661065
+        },
+        {
+          "step": 350,
+          "loss": 2.5375322067566937
+        },
+        {
+          "step": 399,
+          "loss": 2.752701121483941
+        }
+      ]
+    },
+    {
+      "lambda": 0.01,
+      "warm_uncalibrated_mean_plan_cost": 1.320165798044902,
+      "abs_log_cost": 0.27775733329015595,
+      "warm_expected_nll_b0": 2.224253360902812,
+      "pilot_cal_expected_nll_b0": 2.1736221484339606,
+      "warm_minus_cal_expected_cost_gap": 0.051343316625360735,
+      "diag_pilot_screen_nll_at_budget1": 2.274929398639872,
+      "diag_pilot_screen_cost_at_budget1": 1.0021301870352863,
+      "diag_calibration": {
+        "b": 3.5512447357177734,
+        "cost": 1.0000004344383624,
+        "boundary": null
+      },
+      "warm_mean_policy": [
+        0.0025039200899379054,
+        0.02173415036816517,
+        0.6365087406662664,
+        0.3392531888756305
+      ],
+      "train_log": [
+        {
+          "step": 0,
+          "loss": 2.6734420810308754
+        },
+        {
+          "step": 50,
+          "loss": 2.5821662291127687
+        },
+        {
+          "step": 100,
+          "loss": 2.6651355781225794
+        },
+        {
+          "step": 150,
+          "loss": 2.691838118488079
+        },
+        {
+          "step": 200,
+          "loss": 2.7033045399565574
+        },
+        {
+          "step": 250,
+          "loss": 2.6975638158275057
+        },
+        {
+          "step": 300,
+          "loss": 2.8179362807580484
+        },
+        {
+          "step": 350,
+          "loss": 2.5150139292747813
+        },
+        {
+          "step": 399,
+          "loss": 2.774175349889153
+        }
+      ]
+    },
+    {
+      "lambda": 0.02,
+      "warm_uncalibrated_mean_plan_cost": 1.0966820756419522,
+      "abs_log_cost": 0.09228932674780257,
+      "warm_expected_nll_b0": 2.2262171214356323,
+      "pilot_cal_expected_nll_b0": 2.1716275600958563,
+      "warm_minus_cal_expected_cost_gap": 0.054797437617421174,
+      "diag_pilot_screen_nll_at_budget1": 2.24498179871558,
+      "diag_pilot_screen_cost_at_budget1": 0.9929874044218406,
+      "diag_calibration": {
+        "b": 3.3678412437438965,
+        "cost": 0.9999997019559268,
+        "boundary": null
+      },
+      "warm_mean_policy": [
+        0.002503869195263832,
+        0.058413535769073106,
+        0.8199432349905817,
+        0.11913936004508127
+      ],
+      "train_log": [
+        {
+          "step": 0,
+          "loss": 2.683743109757209
+        },
+        {
+          "step": 50,
+          "loss": 2.5894360188866035
+        },
+        {
+          "step": 100,
+          "loss": 2.6869929269949524
+        },
+        {
+          "step": 150,
+          "loss": 2.696610908825584
+        },
+        {
+          "step": 200,
+          "loss": 2.6693432600094464
+        },
+        {
+          "step": 250,
+          "loss": 2.7221774176208107
+        },
+        {
+          "step": 300,
+          "loss": 2.7978755569804425
+        },
+        {
+          "step": 350,
+          "loss": 2.5359760018157305
+        },
+        {
+          "step": 399,
+          "loss": 2.803381560170564
+        }
+      ]
+    },
+    {
+      "lambda": 0.05,
+      "warm_uncalibrated_mean_plan_cost": 0.9807690968247513,
+      "abs_log_cost": 0.01941822242795269,
+      "warm_expected_nll_b0": 2.228111394434673,
+      "pilot_cal_expected_nll_b0": 2.1776363845797038,
+      "warm_minus_cal_expected_cost_gap": 0.05008108908089426,
+      "diag_pilot_screen_nll_at_budget1": 2.22487295938209,
+      "diag_pilot_screen_cost_at_budget1": 1.008776320717618,
+      "diag_calibration": {
+        "b": -1.47247314453125,
+        "cost": 1.0000005671124228,
+        "boundary": null
+      },
+      "warm_mean_policy": [
+        0.00250388517914746,
+        0.08276670008070407,
+        0.9070907159907649,
+        0.007638698749383553
+      ],
+      "train_log": [
+        {
+          "step": 0,
+          "loss": 2.713792423446204
+        },
+        {
+          "step": 50,
+          "loss": 2.589360093998912
+        },
+        {
+          "step": 100,
+          "loss": 2.7131622027609383
+        },
+        {
+          "step": 150,
+          "loss": 2.7125810800567423
+        },
+        {
+          "step": 200,
+          "loss": 2.6862313780567035
+        },
+        {
+          "step": 250,
+          "loss": 2.6925705683254666
+        },
+        {
+          "step": 300,
+          "loss": 2.8075818383397344
+        },
+        {
+          "step": 350,
+          "loss": 2.5430471201725466
+        },
+        {
+          "step": 399,
+          "loss": 2.784994515919098
+        }
+      ]
+    },
+    {
+      "lambda": 0.1,
+      "warm_uncalibrated_mean_plan_cost": 0.8726571195546007,
+      "abs_log_cost": 0.13621256139922103,
+      "warm_expected_nll_b0": 2.238447623946261,
+      "pilot_cal_expected_nll_b0": 2.19086912097866,
+      "warm_minus_cal_expected_cost_gap": 0.04830683256560686,
+      "diag_pilot_screen_nll_at_budget1": 2.231276786282026,
+      "diag_pilot_screen_cost_at_budget1": 1.0238004443365238,
+      "diag_calibration": {
+        "b": -3.3156871795654297,
+        "cost": 0.9999990426964913,
+        "boundary": null
+      },
+      "warm_mean_policy": [
+        0.002503978338191807,
+        0.3070713547381226,
+        0.6859872839772612,
+        0.00443738294642439
+      ],
+      "train_log": [
+        {
+          "step": 0,
+          "loss": 2.7599430580691227
+        },
+        {
+          "step": 50,
+          "loss": 2.675007354328534
+        },
+        {
+          "step": 100,
+          "loss": 2.7451014077594875
+        },
+        {
+          "step": 150,
+          "loss": 2.733330557882379
+        },
+        {
+          "step": 200,
+          "loss": 2.720730790708206
+        },
+        {
+          "step": 250,
+          "loss": 2.7320179628529138
+        },
+        {
+          "step": 300,
+          "loss": 2.820935789353663
+        },
+        {
+          "step": 350,
+          "loss": 2.5531132947172703
+        },
+        {
+          "step": 399,
+          "loss": 2.7800780959644307
+        }
+      ]
+    }
+  ],
+  "costs": {
+    "model_load_seconds": 22.73224320000736,
+    "control_rep_seconds": 43.49133280001115,
+    "readout_training_seconds": 4.32836009998573
+  }
+}

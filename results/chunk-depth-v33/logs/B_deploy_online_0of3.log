@@ -1,0 +1,23 @@
+
+===== 2026-10-14 04:41:30 experiments.chunk_depth_v33.worker B_deploy_online --shard 0 --nshards 3
+04:41:32 start B_deploy_online 0 3 full
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.47it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.69it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.72it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.40it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.15it/s]
+04:43:51 deploy_online_B 25/437 5.36 s/doc
+04:45:59 deploy_online_B 50/437 5.24 s/doc
+04:48:24 deploy_online_B 75/437 5.43 s/doc
+04:50:43 deploy_online_B 100/437 5.46 s/doc
+04:52:59 deploy_online_B 125/437 5.45 s/doc
+04:55:21 deploy_online_B 150/437 5.49 s/doc
+04:57:31 deploy_online_B 175/437 5.45 s/doc
+04:59:57 deploy_online_B 200/437 5.50 s/doc
+05:02:17 deploy_online_B 225/437 5.51 s/doc
+05:04:43 deploy_online_B 250/437 5.54 s/doc
+05:07:08 deploy_online_B 275/437 5.57 s/doc
+05:09:24 deploy_online_B 300/437 5.56 s/doc
+05:11:36 deploy_online_B 325/437 5.53 s/doc
+05:13:58 deploy_online_B 350/437 5.55 s/doc
+05:16:19 deploy_online_B 375/437 5.55 s/doc
+05:18:45 deploy_online_B 400/437 5.57 s/doc
+05:21:06 deploy_online_B 425/437 5.57 s/doc
+05:22:12 deploy_online_B shard finished 437
+05:22:12 end B_deploy_online 0

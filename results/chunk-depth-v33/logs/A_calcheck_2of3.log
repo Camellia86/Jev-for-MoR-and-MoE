@@ -1,0 +1,14 @@
+
+===== 2026-10-14 00:24:29 experiments.chunk_depth_v33.worker A_calcheck --shard 2 --nshards 3
+00:24:30 start A_calcheck 2 3 full
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.80it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.87it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.91it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.68it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.40it/s]
+00:25:21 calcheck 25/204 1.82 s/doc
+00:26:07 calcheck 50/204 1.83 s/doc
+00:26:54 calcheck 75/204 1.85 s/doc
+00:27:40 calcheck 100/204 1.85 s/doc
+00:28:24 calcheck 125/204 1.83 s/doc
+00:29:13 calcheck 150/204 1.85 s/doc
+00:30:02 calcheck 175/204 1.87 s/doc
+00:30:48 calcheck 200/204 1.87 s/doc
+00:30:56 calcheck shard finished 204
+00:30:56 end A_calcheck 2

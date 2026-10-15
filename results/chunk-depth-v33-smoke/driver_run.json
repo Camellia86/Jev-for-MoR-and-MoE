@@ -1,0 +1,99 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "v33_driver_run",
+  "created_at_utc": "2026-10-13T22:43:23.705260+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.2-followup.json",
+      "docs/EXPERIMENT_CONFIG.v3.2-followup.secondary.json",
+      "docs/EXPERIMENT_CONFIG.v3.2.json",
+      "docs/EXPERIMENT_CONFIG.v3.3.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2-followup.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.3.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.v3.2-followup.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.2-followup.zh-CN.md",
+      "docs/PILOT_REPORT.v3.2-stage1.zh-CN.md",
+      "experiments/",
+      "results/",
+      "scripts/a10/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "protocol_v33": "jev-chunk-depth-v3.3",
+  "smoke": true,
+  "config_v33_sha256": "eaec677b55fbc9f550a61b676f9db4735f89c3f4498dc23cb5af7c49340decae",
+  "code_v33_sha256": {
+    "__init__.py": "eaebc43d791c97330bd9fd96b4d7ea20ea0f579dde56394be92bb840595aa434",
+    "analyze.py": "88ab0803cc1dbd73e51bdd556a5d9f3626e8d557ae85f802b65b671f0ddff361",
+    "common.py": "30c601a30c949d5f52eeec158bb46b07fe96b83c4e97c4da7362c01d6d7c7ac1",
+    "driver.py": "d4751494a9a8ab3ac3026228a4e16e1d6f938a646d6f5ad584eedbdcd36aa6e2",
+    "lock.py": "2400cbfec2528eb6706b29595301cef349b31fc3cf458ddbea117da03964a976",
+    "policies.py": "a1f3e4d70da393d1a9658e421ae7e7c115a3a6e2eb1df6ede66923ba7d86e5d8",
+    "worker.py": "cc11fa56862739e9711094e3d887ec8f16c61ded49108e030c95af299a4b4804"
+  },
+  "timing": {
+    "A_online": {
+      "seconds": 108.91869570000563,
+      "gpu_hours": 0.030255193250001564
+    },
+    "A_analyze": {
+      "seconds": 3.075657699999283,
+      "gpu_hours": 0.0008543493611109119
+    },
+    "B_features": {
+      "seconds": 15.799823699999251,
+      "gpu_hours": 0.004388839916666458
+    },
+    "B_train": {
+      "seconds": 103.92352430000028,
+      "gpu_hours": 0.028867645638888967
+    },
+    "B_eval": {
+      "seconds": 65.10583010000119,
+      "gpu_hours": 0.018084952805555884
+    },
+    "B_deploy_tables": {
+      "seconds": 46.26351020000584,
+      "gpu_hours": 0.012850975055557178
+    },
+    "B_deploy_lock": {
+      "seconds": 3.3840334999986226,
+      "gpu_hours": 0.000940009305555173
+    },
+    "B_deploy_online": {
+      "seconds": 53.06332849999308,
+      "gpu_hours": 0.014739813472220299
+    },
+    "B_analyze": {
+      "seconds": 3.113125600008061,
+      "gpu_hours": 0.0008647571111133504
+    }
+  },
+  "seconds": 402.6717024999962
+}

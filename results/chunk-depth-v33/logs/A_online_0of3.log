@@ -1,0 +1,37 @@
+
+===== 2026-10-14 00:30:56 experiments.chunk_depth_v33.worker A_online --shard 0 --nshards 3
+00:30:57 start A_online 0 3 full
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.07it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  2.00it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  2.15it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.64it/s]
+00:37:09 online_A 25/799 14.62 s/doc
+00:43:01 online_A 50/799 14.37 s/doc
+00:48:21 online_A 75/799 13.84 s/doc
+00:53:56 online_A 100/799 13.73 s/doc
+00:59:42 online_A 125/799 13.75 s/doc
+01:05:17 online_A 150/799 13.69 s/doc
+01:10:38 online_A 175/799 13.57 s/doc
+01:16:01 online_A 200/799 13.49 s/doc
+01:21:58 online_A 225/799 13.58 s/doc
+01:27:27 online_A 250/799 13.54 s/doc
+01:32:38 online_A 275/799 13.44 s/doc
+01:38:01 online_A 300/799 13.39 s/doc
+01:43:31 online_A 325/799 13.38 s/doc
+01:49:11 online_A 350/799 13.39 s/doc
+01:55:12 online_A 375/799 13.46 s/doc
+02:00:50 online_A 400/799 13.47 s/doc
+02:06:41 online_A 425/799 13.50 s/doc
+02:12:21 online_A 450/799 13.51 s/doc
+02:18:18 online_A 475/799 13.55 s/doc
+02:24:02 online_A 500/799 13.56 s/doc
+02:29:49 online_A 525/799 13.57 s/doc
+02:35:34 online_A 550/799 13.58 s/doc
+02:41:23 online_A 575/799 13.60 s/doc
+02:47:09 online_A 600/799 13.61 s/doc
+02:52:33 online_A 625/799 13.58 s/doc
+02:58:40 online_A 650/799 13.63 s/doc
+03:04:15 online_A 675/799 13.62 s/doc
+03:10:31 online_A 700/799 13.67 s/doc
+03:16:20 online_A 725/799 13.68 s/doc
+03:22:06 online_A 750/799 13.68 s/doc
+03:28:24 online_A 775/799 13.73 s/doc
+03:33:44 online_A shard finished 799
+03:33:44 end A_online 0

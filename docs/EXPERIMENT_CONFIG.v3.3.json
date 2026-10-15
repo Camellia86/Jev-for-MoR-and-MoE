@@ -1,0 +1,329 @@
+{
+  "schema_version": "3.3",
+  "protocol": "jev-chunk-depth-v3.3",
+  "follows": [
+    "jev-chunk-depth-v3.2 (stage 1 no-go)",
+    "jev-chunk-depth-v3.2-followup"
+  ],
+  "date": "2026-10-13",
+  "status": "completed",
+  "plan": "docs/EXPERIMENT_PLAN.v3.3.zh-CN.md",
+  "model": {
+    "id": "tomg-group-umd/huginn-0125",
+    "revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+    "dtype": "bfloat16 at load time",
+    "transfer": "original FP32 files kept on the local machine; after the job starts they are streamed through the login node with 'srun --jobid --overlap' into the node's $TMPDIR, SHA256 checked per file; never stored in the home area"
+  },
+  "inherits": {
+    "chunking_execution_cost": "docs/EXPERIMENT_CONFIG.v3.1.json",
+    "candidate_depths": [
+      4,
+      6,
+      8,
+      12,
+      16
+    ],
+    "relative_cost_per_depth": [
+      0.301,
+      0.418,
+      0.534,
+      0.767,
+      1.0
+    ],
+    "kv": {
+      "kappa_s": 0.013001121873651982,
+      "kappa_e": -0.0022825558298829535,
+      "source": "results/chunk-depth-v31/kv.json"
+    }
+  },
+  "reused_artifacts_sha256": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7"
+  },
+  "data_roles": {
+    "bucket_function": "experiments/chunk_depth_v31/data.py:bucket",
+    "fit": {
+      "split": "train",
+      "buckets": [
+        10,
+        49
+      ],
+      "documents": 3024
+    },
+    "calibration": {
+      "split": "train",
+      "buckets": [
+        [
+          75,
+          77
+        ],
+        [
+          85,
+          89
+        ]
+      ],
+      "documents": 612
+    },
+    "confirm": {
+      "parts": [
+        {
+          "split": "train",
+          "buckets": [
+            50,
+            64
+          ],
+          "documents": 1087
+        },
+        {
+          "split": "test",
+          "documents": 1310
+        }
+      ],
+      "documents": 2397,
+      "decision": "GSM8K test included (agreed 2026-10-13)"
+    },
+    "b_training": {
+      "split": "train",
+      "buckets": [
+        70,
+        74
+      ],
+      "documents": 373
+    },
+    "unused": [
+      [
+        0,
+        9
+      ],
+      [
+        65,
+        69
+      ],
+      [
+        78,
+        84
+      ],
+      [
+        90,
+        99
+      ]
+    ]
+  },
+  "experiment_A": {
+    "generation_parameters": "theta_S",
+    "tables": "theta_S teacher forcing at each depth for fit, calibration and confirm documents",
+    "R": {
+      "features": "position features phi (10)",
+      "target": "per-token table NLL per depth (5)",
+      "rows": "one per scored line",
+      "alpha_grid": [
+        0.01,
+        0.1,
+        1,
+        10,
+        100,
+        1000,
+        10000
+      ]
+    },
+    "H": {
+      "features": "[z_tilde(k) (5280); one-hot previous depth (5); phi (10)]",
+      "target": "per-token table NLL per depth (5)",
+      "rows": "one per scored line and previous depth (line 1: depth 16 only)",
+      "alpha_grid": [
+        1000.0,
+        10000.0,
+        100000.0,
+        1000000.0,
+        10000000.0
+      ]
+    },
+    "alpha_selection": "5-fold grouped cross-validation by document on the fit set, squared error; per-dimension standardisation, intercept unpenalised",
+    "decision": "argmin_d [ell_hat(d) + kappa_s * shortfall(d) + kappa_e * excess(d) + nu * r(d)], history from executed depths",
+    "nu_search_grid": {
+      "from": 0,
+      "to": 6,
+      "step": 0.005
+    },
+    "policy_targets": {
+      "B0.5": [
+        0.47,
+        0.485,
+        0.495,
+        0.505,
+        0.515,
+        0.53
+      ],
+      "B0.6": [
+        0.57,
+        0.585,
+        0.595,
+        0.605,
+        0.615,
+        0.63
+      ]
+    },
+    "uniform_reference": [
+      6,
+      8,
+      12
+    ],
+    "calibration_check": "two policies per family nearest 0.5 executed online on calibration; |online - predicted| <= 0.01",
+    "primary": "g_A = L_R(0.5) - L_H(0.5), each L_a(B) the exact loss of the cost-B mixture of the adjacent pair bracketing B on the confirm set",
+    "test": {
+      "hypothesis": "g_A > 0",
+      "level": "one-sided 0.05",
+      "practical_threshold": 0.005,
+      "conclusions": "see plan section 4.6 (two-directional: lower bound > 0, upper end < 0.005)"
+    },
+    "bracket_failure": "any resample without a bracketing pair for either family makes the interval not estimable; no clipping, no dropping",
+    "secondary": [
+      "g_A at B = 0.6",
+      "both families against uniform depth",
+      "depth shares",
+      "table-online action agreement",
+      "g_A by confirm part (test / buckets 50-64)"
+    ]
+  },
+  "experiment_B": {
+    "arms": {
+      "G": "generation gradient only, one AdamW",
+      "C": "generation + control gradients summed, one AdamW, clip the sum at 1",
+      "D": "generation gradient to AdamW 1 (weight decay 0.01), control gradient to AdamW 2 (weight decay 0), each clipped at 1, parameter update is the sum of both displacements"
+    },
+    "seeds": [
+      17,
+      23,
+      31
+    ],
+    "shared": {
+      "initialisation": "theta_S, fresh optimizer states",
+      "readout": "artifacts/chunk-depth-v32/head.pt, frozen",
+      "control_objective": "follow-up E-C: expected local cost + 0.1 CE + 0.01 Brier + 0.1 KL(p || p_ref theta_S)",
+      "lambda": 1.0,
+      "tau": 0.05,
+      "data": "buckets 70-74, 373 documents, 2 epochs, batch 8, 93 updates",
+      "optimizer": "AdamW lr 1e-4 cosine to 1e-5, warmup 5%, betas (0.9, 0.999), eps 1e-8",
+      "history_and_order": "derived from the training seed, identical rules across arms"
+    },
+    "fixed_schedule": {
+      "artifact": "artifacts/chunk-depth-v32/R.pt",
+      "nu": 1.47,
+      "mixture": false
+    },
+    "primary": {
+      "h_C": "L(theta_C, pi_F) - L(theta_G, pi_F)",
+      "Delta_CD": "h_C - h_D",
+      "pooling": "per-document mean over the three seeds, then document mean; document bootstrap conditional on the trained models"
+    },
+    "tests": {
+      "B1": "h_C > 0",
+      "B2": "Delta_CD > 0",
+      "multiplicity": "Holm, one-sided family-wise 0.05"
+    },
+    "cross_seed_claim": "requires all three per-seed estimates to share the sign of the pooled estimate; per-seed t interval (df 2) reported",
+    "secondary": {
+      "deployment": "seed 17 G, C, D deployed with head.pt; four b per model chosen on calibration predicted cost (0.480, 0.495, 0.505, 0.520); GSM8K test 1,310 documents only; strict common cost differences"
+    },
+    "scale_decision": "follow-up setting kept (agreed 2026-10-13)"
+  },
+  "statistics": {
+    "bootstrap": {
+      "repeats": 10000,
+      "seed": 20261013,
+      "unit": "document"
+    },
+    "signs": "g positive favours the second term; h positive means the second term has lower generation NLL"
+  },
+  "compute": {
+    "cluster": "gecko partition, 3 x NVIDIA A10 24 GB per node",
+    "job": {
+      "submissions": 1,
+      "partition": "gecko",
+      "account": "pgt",
+      "gres": "gpu:3",
+      "cpus_per_task": 48,
+      "mem": "192G",
+      "time": "2-00:00:00"
+    },
+    "environment": "uv-created Python 3.12 virtual environment in $TMPDIR, versions pinned to the local environment",
+    "pinned_packages": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.52.4",
+      "tokenizers": "0.21.4",
+      "safetensors": "0.8.0",
+      "huggingface-hub": "0.36.2",
+      "accelerate": "1.15.0",
+      "pyarrow": "26.0.0",
+      "numpy": "2.5.4"
+    },
+    "storage": {
+      "home": "/dcs/pg26/<cluster-user> (network file system, soft quota 30 GB): code, about 40 MB of inputs, results only",
+      "tmpdir": "node-local disk: environment, model, tables and caches; removed at job end"
+    },
+    "estimate_gpu_hours": 28.8,
+    "cap_gpu_hours": 40,
+    "pre_submission_checks": [
+      "local end-to-end smoke on RTX 5080 with 4 documents per role and 2 training updates",
+      "code and inputs uploaded by scp through warwick, SHA256 checked per file",
+      "environment created once in /tmp on the login node, imports checked, then removed",
+      "sbatch --test-only on the job script"
+    ],
+    "resume": "stage completion markers with hashes; resubmitting the same script skips completed stages and fills missing shards",
+    "failure_policy": "after a failure the executor fixes, re-runs the local smoke and may resubmit once; a second failure stops and is reported",
+    "model_transfer": {
+      "ready_file": "~/jev-v33/run/<jobid>.ready with node and $TMPDIR",
+      "channel_test": "small file first; on failure cancel the job at once",
+      "measured_upload_MBps": 35.8,
+      "expected_minutes": "7-15",
+      "job_wait_limit_minutes": 60,
+      "slurm_version": "22.05.11"
+    }
+  },
+  "result": {
+    "report": "docs/EXPERIMENT_REPORT.v3.3.zh-CN.md",
+    "job": 63272,
+    "node": "gecko-04",
+    "wall_hours": 5.58,
+    "gpu_hours": 16.8,
+    "A": {
+      "g_A_0.5": 0.0019,
+      "ci95": [
+        -0.0002,
+        0.004
+      ],
+      "lower_one_sided_95": 0.0002,
+      "p": 0.036,
+      "conclusion": "gain detected, below practical threshold",
+      "g_A_0.6": 0.0024,
+      "R_over_uniform_0.5": 0.0158,
+      "H_over_uniform_0.5": 0.0177
+    },
+    "B": {
+      "h_C": 0.00168,
+      "h_C_ci95": [
+        0.00134,
+        0.00203
+      ],
+      "Delta_CD": 0.0013,
+      "Delta_CD_ci95": [
+        0.00109,
+        0.00151
+      ],
+      "h_D": 0.00037,
+      "h_D_ci95": [
+        3e-05,
+        0.00073
+      ],
+      "holm": {
+        "B1": "rejected H0",
+        "B2": "rejected H0"
+      },
+      "deployment_seed17": {
+        "G_minus_C": 0.004,
+        "G_minus_D": 0.0053
+      }
+    }
+  }
+}

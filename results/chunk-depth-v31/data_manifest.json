@@ -1,0 +1,94 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_data_manifest",
+  "created_at_utc": "2026-10-13T06:49:16.340261+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "gsm8k_commit": "740312add88f781978c0658806c59bc2815b9866",
+  "parquet_sha256": {
+    "train": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+    "test": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"
+  },
+  "tokenizer_sha256": "9cc201a5061b70aba0d227ef9766fcfe21e0989e0c0ba442b4d7732c4de12308",
+  "counts": {
+    "train_rows": 7473,
+    "test_rows": 1319,
+    "too_long": 54
+  },
+  "roles": {
+    "phase0_survey": {
+      "documents": 720,
+      "mean_tokens": 140.55138888888888,
+      "mean_lines": 3.5527777777777776
+    },
+    "formal_train": {
+      "documents": 4111,
+      "mean_tokens": 141.66382875212844,
+      "mean_lines": 3.576502067623449
+    },
+    "warm": {
+      "documents": 362,
+      "mean_tokens": 141.69060773480663,
+      "mean_lines": 3.4751381215469612
+    },
+    "pilot_train": {
+      "documents": 373,
+      "mean_tokens": 141.88739946380696,
+      "mean_lines": 3.5415549597855227
+    },
+    "pilot_cal": {
+      "documents": 223,
+      "mean_tokens": 140.81614349775785,
+      "mean_lines": 3.6278026905829597
+    },
+    "pilot_screen": {
+      "documents": 505,
+      "mean_tokens": 137.42772277227724,
+      "mean_lines": 3.510891089108911
+    },
+    "formal_cal": {
+      "documents": 389,
+      "mean_tokens": 141.41902313624678,
+      "mean_lines": 3.55012853470437
+    },
+    "formal_screen": {
+      "documents": 745,
+      "mean_tokens": 138.83892617449663,
+      "mean_lines": 3.508724832214765
+    },
+    "confirm": {
+      "documents": 1310,
+      "mean_tokens": 144.34732824427482,
+      "mean_lines": 3.6297709923664123
+    }
+  }
+}

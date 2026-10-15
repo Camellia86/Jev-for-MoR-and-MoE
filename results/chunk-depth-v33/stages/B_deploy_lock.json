@@ -1,0 +1,8 @@
+{
+  "stage": "B_deploy_lock",
+  "finished_at": "2026-10-14T04:41:30",
+  "node": "gecko-04",
+  "scratch": "/tmp/dcs-tmp.<cluster-user>/jev-v33-63272/work",
+  "seconds": 5.747952251986135,
+  "workers": 1
+}

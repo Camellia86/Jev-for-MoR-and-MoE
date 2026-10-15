@@ -1,0 +1,356 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "pilot_go_no_go",
+  "created_at_utc": "2026-10-12T00:00:14.559948+00:00",
+  "config_sha256": "a1bdbc2bbc4ad6b8a84375eec5d7790bbc978a46a5033acaec84ffbe5c0bf0f2",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "protocol_revision": "2.1",
+  "decision": "no_go",
+  "criteria": {
+    "technical_checks": true,
+    "resource_forecast": true,
+    "predictability_probe": false
+  },
+  "lambda_": 0.05,
+  "static_comparator": {
+    "support": [
+      [
+        "frozen@16",
+        1.0
+      ]
+    ],
+    "cost": 1.0,
+    "nll": 2.172231666304668,
+    "order": [
+      2
+    ]
+  },
+  "static_screen_nll": 2.2213030805309746,
+  "probe": {
+    "calibration": {
+      "b": -1.47247314453125,
+      "cost": 1.000000573648965,
+      "boundary": null
+    },
+    "screen_expected_cost": 1.0087763187770131,
+    "screen_expected_nll": 2.224872948366794,
+    "gain_vs_static": {
+      "mean": -0.0035698678358192467,
+      "sd": 0.02794946052661926,
+      "n": 384,
+      "ci95": [
+        -0.006740494657284624,
+        -0.0014228543476643156
+      ],
+      "lower_one_sided_95": -0.00614570119930485,
+      "upper_one_sided_95": -0.0016252294839064437,
+      "p_one_sided_greater": 0.9849,
+      "p_two_sided": 0.0151
+    },
+    "screen_mean_policy": [
+      0.0008923825857458523,
+      0.03071532972686956,
+      0.9581290529895132,
+      0.0102632346978713
+    ],
+    "passed": false
+  },
+  "diagnostics": {
+    "hindsight_oracle": {
+      "nu": 0.03385052875377936,
+      "cost": 1.0,
+      "nll": 2.219395976521269,
+      "gain_vs_static": 0.001907104009705396,
+      "depth_share": [
+        0.0,
+        0.10416666666666667,
+        0.859375,
+        0.036458333333333336
+      ]
+    },
+    "split_half_oracle": {
+      "nu": 0.03280156174201372,
+      "cost": 1.0,
+      "nll_second_half": 2.2363693013136716,
+      "static_nll_second_half": 2.2266423789126923,
+      "gain_vs_static": -0.009726922400979277
+    }
+  },
+  "arms": {
+    "E": {
+      "checkpoint": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\shared-depth-v2\\pilot\\E_s17\\lora_u64.pt",
+      "update": 64,
+      "screen_nll_by_depth": [
+        2.6766238175332546,
+        2.3000720754886665,
+        2.2207002074768147,
+        2.216725232390066
+      ],
+      "own_static": {
+        "mixture": {
+          "support": [
+            [
+              "E@16",
+              1.0
+            ]
+          ],
+          "cost": 1.0,
+          "nll": 2.1711821630597115,
+          "order": [
+            2
+          ]
+        },
+        "gain_vs_frozen_static": {
+          "mean": 0.0006028730541601136,
+          "sd": 0.0027789617697288943,
+          "n": 384,
+          "ci95": [
+            0.00032906004217972564,
+            0.0008809833667625446
+          ],
+          "lower_one_sided_95": 0.00037175898421448706,
+          "upper_one_sided_95": 0.0008355987500770301,
+          "p_one_sided_greater": 0.0,
+          "p_two_sided": 0.0
+        }
+      },
+      "dynamic": {
+        "calibration": {
+          "b": -1.4847517013549805,
+          "cost": 1.0000002170089393,
+          "boundary": null
+        },
+        "screen_cost": 1.0093557470645278,
+        "screen_nll": 2.223923697634867,
+        "mean_policy": [
+          0.0008839497894046411,
+          0.029800172571106922,
+          0.9588984332797948,
+          0.01041744435969349
+        ],
+        "gain_vs_frozen_static": {
+          "mean": -0.002620617103892354,
+          "sd": 0.022537642124047092,
+          "n": 384,
+          "ci95": [
+            -0.00512557749029934,
+            -0.0007881313931534552
+          ],
+          "lower_one_sided_95": -0.004663302295440034,
+          "upper_one_sided_95": -0.000970306444637731,
+          "p_one_sided_greater": 0.9786,
+          "p_two_sided": 0.0214
+        },
+        "gain_vs_own_static": {
+          "mean": -0.0032234901580524672,
+          "sd": 0.022380626973824695,
+          "n": 384,
+          "ci95": [
+            -0.005707408229508427,
+            -0.0014033806130530895
+          ],
+          "lower_one_sided_95": -0.005249626816537536,
+          "upper_one_sided_95": -0.0016006495139133444,
+          "p_one_sided_greater": 0.9915,
+          "p_two_sided": 0.0085
+        }
+      }
+    },
+    "J": {
+      "checkpoint": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\shared-depth-v2\\pilot\\J_s17\\lora_u64.pt",
+      "update": 64,
+      "screen_nll_by_depth": [
+        2.676632719114423,
+        2.30015835709249,
+        2.2206428636175892,
+        2.216779407579452
+      ],
+      "own_static": {
+        "mixture": {
+          "support": [
+            [
+              "J@16",
+              1.0
+            ]
+          ],
+          "cost": 1.0,
+          "nll": 2.1713730907067657,
+          "order": [
+            2
+          ]
+        },
+        "gain_vs_frozen_static": {
+          "mean": 0.0006602169133856252,
+          "sd": 0.0028950420075265553,
+          "n": 384,
+          "ci95": [
+            0.00037036935036570564,
+            0.0009519636856605064
+          ],
+          "lower_one_sided_95": 0.0004191160139469564,
+          "upper_one_sided_95": 0.000907435033210118,
+          "p_one_sided_greater": 0.0,
+          "p_two_sided": 0.0
+        }
+      },
+      "dynamic": {
+        "calibration": {
+          "b": -1.474142074584961,
+          "cost": 1.0000009046729246,
+          "boundary": null
+        },
+        "screen_cost": 1.0095512209791047,
+        "screen_nll": 2.223743347786575,
+        "mean_policy": [
+          0.000889955048740366,
+          0.029125792273055822,
+          0.9596908361199069,
+          0.010293416558296707
+        ],
+        "gain_vs_frozen_static": {
+          "mean": -0.0024402672556002596,
+          "sd": 0.0204347526531571,
+          "n": 384,
+          "ci95": [
+            -0.004695399287504527,
+            -0.0007383685608956731
+          ],
+          "lower_one_sided_95": -0.004271009178485553,
+          "upper_one_sided_95": -0.000912873434591922,
+          "p_one_sided_greater": 0.9822,
+          "p_two_sided": 0.0182
+        },
+        "gain_vs_own_static": {
+          "mean": -0.003100484168985885,
+          "sd": 0.020404854351579738,
+          "n": 384,
+          "ci95": [
+            -0.005364125452884932,
+            -0.0014082848454448267
+          ],
+          "lower_one_sided_95": -0.004936949673917535,
+          "upper_one_sided_95": -0.0015993727239355649,
+          "p_one_sided_greater": 0.9945,
+          "p_two_sided": 0.0055
+        }
+      }
+    },
+    "F16-A": {
+      "checkpoint": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\shared-depth-v2\\pilot\\F16-A_s17\\lora_u64.pt",
+      "update": 64,
+      "screen_nll_by_depth": [
+        2.6759428357084594,
+        2.2991279220829406,
+        2.219636319515606,
+        2.215981950207303
+      ],
+      "own_static": {
+        "mixture": {
+          "support": [
+            [
+              "F16-A@16",
+              1.0
+            ]
+          ],
+          "cost": 1.0,
+          "nll": 2.1701044011861086,
+          "order": [
+            2
+          ]
+        },
+        "gain_vs_frozen_static": {
+          "mean": 0.0016667610153689339,
+          "sd": 0.004693053432113074,
+          "n": 384,
+          "ci95": [
+            0.0011891289563457528,
+            0.002130744917076112
+          ],
+          "lower_one_sided_95": 0.0012721712836536927,
+          "upper_one_sided_95": 0.0020607597284488964,
+          "p_one_sided_greater": 0.0,
+          "p_two_sided": 0.0
+        }
+      }
+    },
+    "FMIX-A": {
+      "checkpoint": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\shared-depth-v2\\pilot\\FMIX-A_s17\\lora_u64.pt",
+      "update": 64,
+      "screen_nll_by_depth": [
+        2.67554431517298,
+        2.299173676253607,
+        2.2197178388014436,
+        2.216007390835633
+      ],
+      "own_static": {
+        "mixture": {
+          "support": [
+            [
+              "FMIX-A@16",
+              1.0
+            ]
+          ],
+          "cost": 1.0,
+          "nll": 2.170462319627404,
+          "order": [
+            2
+          ]
+        },
+        "gain_vs_frozen_static": {
+          "mean": 0.0015852417295311248,
+          "sd": 0.004720598889711561,
+          "n": 384,
+          "ci95": [
+            0.001098540885834769,
+            0.0020626962596670888
+          ],
+          "lower_one_sided_95": 0.001184758239918126,
+          "upper_one_sided_95": 0.0019854947089694036,
+          "p_one_sided_greater": 0.0,
+          "p_two_sided": 0.0
+        }
+      }
+    }
+  },
+  "forecast": {
+    "assumption": "RTX 5080 timings used as the A10 estimate for compute-bound phases; decode scaled by the bandwidth ratio 960/600; to be replaced by the 100-update A10 measurement",
+    "feature_extraction_gpu_hours": 1.0255057921111195,
+    "training_gpu_hours": 3.1915349848889227,
+    "seconds_per_update_by_arm": {
+      "E": 0.8519365265628949,
+      "J": 0.8841823421871595,
+      "F16-A": 0.3173173499999393,
+      "FMIX-A": 0.7516238265625361
+    },
+    "training_gpu_hours_x1.2": 3.829841981866707,
+    "within_caps": true
+  },
+  "costs": {
+    "model_load_seconds": 22.2439841000014,
+    "arm_eval_seconds": 93.42621579999104
+  }
+}

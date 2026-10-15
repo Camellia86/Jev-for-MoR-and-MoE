@@ -1,0 +1,6 @@
+
+===== 2026-10-13 23:38:32 experiments.chunk_depth_v33.worker B_features --shard 0 --nshards 1
+23:38:34 start B_features 0 1 smoke
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:01,  2.72it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:02<00:02,  1.27s/it]Loading checkpoint shards:  75%|#######5  | 3/4 [00:04<00:01,  1.62s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:04<00:00,  1.22s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:04<00:00,  1.23s/it]
+23:38:47 features_btrain shard finished 16
+23:38:47 end B_features 0

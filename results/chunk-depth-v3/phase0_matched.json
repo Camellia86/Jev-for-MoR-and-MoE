@@ -1,0 +1,137 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_phase0_matched_budget",
+  "created_at_utc": "2026-10-12T21:11:22.582799+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "note": "document-level mixture of two nu values bracketing the budget on cal; weights fixed on cal and applied on test",
+  "results": {
+    "0.5": {
+      "static": {
+        "doc_mean_nll": 1.063153160398401,
+        "relative_cost": 0.5000002595745675
+      },
+      "position": {
+        "nu_low_cost": 1.75,
+        "nu_high_cost": 1.5,
+        "weight_on_high_cost_nu": 0.8516627711050853,
+        "doc_mean_nll": 1.0289693001929274,
+        "relative_cost": 0.5008970366494943,
+        "gain_vs_static": {
+          "mean": 0.03418386020547361,
+          "sd": 0.058433883564873716,
+          "n": 300,
+          "ci95": [
+            0.027577486956665842,
+            0.040818759849962846
+          ],
+          "lower_one_sided_95": 0.02862903045698354
+        }
+      },
+      "rep": {
+        "nu_low_cost": 1.75,
+        "nu_high_cost": 1.5,
+        "weight_on_high_cost_nu": 0.6723541113990368,
+        "doc_mean_nll": 1.0273403372019374,
+        "relative_cost": 0.4995894385062455,
+        "gain_vs_static": {
+          "mean": 0.03581282319646361,
+          "sd": 0.05930138253196541,
+          "n": 300,
+          "ci95": [
+            0.029068488451559522,
+            0.04258133273395457
+          ],
+          "lower_one_sided_95": 0.030223951390800478
+        }
+      },
+      "rep_vs_position": {
+        "mean": 0.0016289629909900032,
+        "sd": 0.04736162854132653,
+        "n": 300,
+        "ci95": [
+          -0.0036384502498055726,
+          0.00694946311464848
+        ],
+        "lower_one_sided_95": -0.0028059896943491204
+      }
+    },
+    "0.6": {
+      "static": {
+        "doc_mean_nll": 0.9509274082919635,
+        "relative_cost": 0.600000207659654
+      },
+      "position": {
+        "nu_low_cost": 0.75,
+        "nu_high_cost": 0.5,
+        "weight_on_high_cost_nu": 0.33216610757034326,
+        "doc_mean_nll": 0.9282948609549434,
+        "relative_cost": 0.6026607887315223,
+        "gain_vs_static": {
+          "mean": 0.022632547337020123,
+          "sd": 0.0635580292599134,
+          "n": 300,
+          "ci95": [
+            0.01567892215031035,
+            0.030188714116382773
+          ],
+          "lower_one_sided_95": 0.016707309564993077
+        }
+      },
+      "rep": {
+        "nu_low_cost": 0.75,
+        "nu_high_cost": 0.5,
+        "weight_on_high_cost_nu": 0.25943438635268157,
+        "doc_mean_nll": 0.9280427999352268,
+        "relative_cost": 0.5983533009108121,
+        "gain_vs_static": {
+          "mean": 0.02288460835673678,
+          "sd": 0.08274191190358257,
+          "n": 300,
+          "ci95": [
+            0.014028861317526667,
+            0.032788614907574155
+          ],
+          "lower_one_sided_95": 0.015484959744166459
+        }
+      },
+      "rep_vs_position": {
+        "mean": 0.0002520610197166515,
+        "sd": 0.06143625894664927,
+        "n": 300,
+        "ci95": [
+          -0.006735666999452932,
+          0.00747948715899516
+        ],
+        "lower_one_sided_95": -0.0055669977208844005
+      }
+    }
+  }
+}

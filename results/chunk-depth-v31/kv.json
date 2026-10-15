@@ -1,0 +1,60 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_pilot_kv_coverage",
+  "created_at_utc": "2026-10-13T07:04:02.987832+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "lines": 634,
+  "kappa_0": -0.003218280848979783,
+  "kappa_s": 0.013001121873651982,
+  "kappa_e": -0.0022825558298829535,
+  "se": {
+    "kappa_0": 0.005221223532609781,
+    "kappa_s": 0.0018344484355552275,
+    "kappa_e": 0.000992938085247508
+  },
+  "residual_sd": 0.09673982490265672,
+  "groups": {
+    "no_shortfall": {
+      "lines": 322,
+      "token_weighted_mean": -0.0205132951612932
+    },
+    "shortfall_not_above_max": {
+      "lines": 165,
+      "token_weighted_mean": 0.03388980378911557
+    },
+    "above_max": {
+      "lines": 147,
+      "token_weighted_mean": 0.0859167413081088
+    }
+  }
+}

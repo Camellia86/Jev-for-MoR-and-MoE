@@ -1,0 +1,232 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "cpu_mathematical_self_check_not_model_experiment",
+  "status": "passed",
+  "run_at_utc": "2026-10-11T21:57:35.477163+00:00",
+  "seed": 20261011,
+  "runtime": {
+    "python": "3.12.13",
+    "torch": "2.14.1+cpu",
+    "platform": "Windows",
+    "device": "cpu",
+    "dtype": "float64",
+    "threads": 1,
+    "deterministic_algorithms": true
+  },
+  "script_sha256": "5a6aa4aefaae5d4708819ae4bb71c0bfab8c2a600f39893e357ffe39e7e04d31",
+  "constants": {
+    "action_count": 4,
+    "kappa": 256.0,
+    "epsilon": 0.01,
+    "eta": 0.001,
+    "samples_per_state": 64,
+    "monte_carlo_repeats": 4096
+  },
+  "checks": {
+    "dirichlet_mean_and_score_gradient": {
+      "status": "passed",
+      "p": [
+        0.15,
+        0.25,
+        0.3499999999999999,
+        0.25
+      ],
+      "cost": [
+        0.2,
+        0.0,
+        0.7,
+        0.35
+      ],
+      "alpha": [
+        38.657,
+        64.001,
+        89.34499999999998,
+        64.001
+      ],
+      "total_concentration": 256.004,
+      "beta": 0.9899845314916954,
+      "mean_identity_max_abs_error": 2.7755575615628914e-17,
+      "autograd_vs_closed_form_max_abs_error": 2.7755575615628914e-17,
+      "finite_difference_step": 1e-05,
+      "finite_difference_max_abs_error": 5.826790439034113e-12,
+      "score_vs_log_density_autograd_max_abs_error": 5.0959236830294685e-14,
+      "exact_logit_gradient": [
+        -0.02413087295511006,
+        -0.08971734816643488,
+        0.1169419227824565,
+        -0.0030937016609115372
+      ],
+      "loo_mean_logit_gradient": [
+        -0.02399938417442019,
+        -0.08955061728561159,
+        0.11728258947722588,
+        -0.003732588017194098
+      ],
+      "loo_mean_standard_error": [
+        0.00019965219617452964,
+        0.0002901670021869877,
+        0.0003444110763882794,
+        0.0002323043450889061
+      ],
+      "loo_mean_error_in_standard_errors": [
+        0.6585892026698749,
+        0.5746031752978218,
+        0.989128161445401,
+        -2.7502126834435665
+      ],
+      "monte_carlo_acceptance_max_abs_standard_errors": 5.0,
+      "loo_gradient_cosine": 0.9999878336253953,
+      "loo_gradient_relative_error": 0.005050851218906573,
+      "empirical_q_mean": [
+        0.15104756340899594,
+        0.2500337687985681,
+        0.34891583968036005,
+        0.25000282811207597
+      ],
+      "empirical_q_mean_error_in_standard_errors": [
+        1.0562383240602575,
+        0.6404955009583257,
+        -1.4196590804657923,
+        0.05361766640410689
+      ],
+      "constant_cost_max_abs_sample_gradient": 1.810469891755998e-15,
+      "constant_cost_analytic_gradient_max_abs_error": 0.0,
+      "loo_advantage_identity_max_abs_error": 5.551115123125783e-17,
+      "mean_baseline_equals_one_minus_1_over_M_times_loo_max_abs_error": 8.326672684688674e-17,
+      "cost_translation": 17.75,
+      "translation_max_abs_gradient_error": 1.2059797604990763e-14,
+      "interpretation": "The LOO estimator is checked against the same exact fixed-cost objective; this is not evidence of a quality advantage from sampling."
+    },
+    "joint_generation_and_routing_gradient": {
+      "status": "passed",
+      "binary_example_cost_functions": "C_1(theta)=(theta-1)^2, C_2(theta)=2; audit section 3.2",
+      "binary_example_at_theta_zero": {
+        "full_gradient": -1.25,
+        "direct_gradient": -1.0,
+        "routing_gradient": -0.25
+      },
+      "binary_example_at_theta_three": {
+        "C_1": 4.0,
+        "C_2": 2.0,
+        "ranking_reversed": true
+      },
+      "four_action_smoothed_example": {
+        "theta": 0.17,
+        "objective": 0.37084221415500407,
+        "full_gradient": -0.4274694723091124,
+        "direct_gradient": -0.47668051002213985,
+        "routing_gradient": 0.04921103771302744,
+        "split_gradient": -0.4274694723091124,
+        "max_abs_error": 0.0
+      },
+      "surrogate_value_warning": "The direct and routing surrogate scalar values add to twice the objective; only their stopped-gradient derivatives are combined. Log the actual sum(mu * C) separately.",
+      "offline_cost_condition": "C must be recomputed for changed shared generation parameters; frozen core latents may be reused, frozen old costs may not."
+    },
+    "soft_budget_calibration_derivative": {
+      "status": "passed",
+      "offset": 0.7,
+      "calibrated_probabilities": [
+        0.22304114623006888,
+        0.31205576020540465,
+        0.3301853379871919,
+        0.1347177555773346
+      ],
+      "expected_work": 0.837975155330161,
+      "autograd_budget_derivative": -0.2041311191942776,
+      "negative_cost_variance": -0.20413111919427757,
+      "max_abs_error": 2.7755575615628914e-17,
+      "scope": "This derivative is for categorical probabilities mu_b proportional to mu * exp(-b*f). Hard argmax work is a monotone step function, not a differentiable variance identity."
+    },
+    "lora_zero_residual_initialization": {
+      "status": "passed",
+      "dimensions": {
+        "input": 8,
+        "output": 6,
+        "rank": 3
+      },
+      "random_a_zero_b": {
+        "a_gradient_norm": 0.0,
+        "b_gradient_norm": 0.02047163841263625,
+        "initial_residual_max_abs": 0.0
+      },
+      "both_zero": {
+        "a_gradient_norm": 0.0,
+        "b_gradient_norm": 0.0,
+        "initial_residual_max_abs": 0.0
+      }
+    },
+    "parameter_and_storage_arithmetic": {
+      "status": "passed",
+      "hidden_size": 5280,
+      "intermediate_size": 17920,
+      "coda_layers": 2,
+      "lora_rank": 8,
+      "projection_shapes_in_out": {
+        "fused_qkv": [
+          5280,
+          15840
+        ],
+        "attention_output": [
+          5280,
+          5280
+        ],
+        "fused_gate_up": [
+          5280,
+          35840
+        ],
+        "mlp_down": [
+          17920,
+          5280
+        ]
+      },
+      "lora_parameters_per_layer": 768000,
+      "lora_parameters_total": 1536000,
+      "alternative_separate_q_o_gate_up_down_parameters": 1451520,
+      "prefix_tokens": 128,
+      "target_tokens": 128,
+      "consumed_input_positions": 255,
+      "candidate_core_token_step_formula": "depth * (prefix + target - 1)",
+      "latent_storage_formula_bytes": "(4 * 255 + 128) * 5280 * 2",
+      "latent_storage_documents_breakdown": "4096 train + 1024 warm + 256 pilot_train + 64 pilot_cal + 384 pilot_screen + 256 formal_cal + 512 formal_screen + 2048 confirm",
+      "latent_storage_per_document_bytes": 12122880,
+      "documents": 8640,
+      "latent_storage_total_bytes": 104741683200,
+      "latent_storage_total_gib": 97.54829406738281,
+      "dense_kv_formula_bytes": "2 * (2 + 4 * depth + 2) * 255 * 5280 * 2",
+      "per_depth": [
+        {
+          "depth": 4,
+          "candidate_core_token_steps": 1020,
+          "logical_attention_layers": 20,
+          "dense_kv_bytes": 107712000,
+          "dense_kv_mib": 102.72216796875
+        },
+        {
+          "depth": 8,
+          "candidate_core_token_steps": 2040,
+          "logical_attention_layers": 36,
+          "dense_kv_bytes": 193881600,
+          "dense_kv_mib": 184.89990234375
+        },
+        {
+          "depth": 16,
+          "candidate_core_token_steps": 4080,
+          "logical_attention_layers": 68,
+          "dense_kv_bytes": 366220800,
+          "dense_kv_mib": 349.25537109375
+        },
+        {
+          "depth": 32,
+          "candidate_core_token_steps": 8160,
+          "logical_attention_layers": 132,
+          "dense_kv_bytes": 710899200,
+          "dense_kv_mib": 677.96630859375
+        }
+      ],
+      "scope": "Arithmetic for specified shapes only. KV assumes distinct full-width K/V for all logical layers, with no allocator/workspace overhead. Candidate step counts exclude any additional controller-prefix execution. These are not measured VRAM or throughput results."
+    }
+  },
+  "model_loaded": false,
+  "model_training_performed": false,
+  "gpu_benchmark_performed": false
+}

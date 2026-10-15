@@ -1,0 +1,97 @@
+{
+  "schema_version": "3.2",
+  "protocol": "jev-chunk-depth-v3.2",
+  "follows": "jev-chunk-depth-v3.1 (pilot no-go)",
+  "date": "2026-10-13",
+  "status": "stage1_no_go",
+  "plan": "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+  "inherits": {
+    "config": "docs/EXPERIMENT_CONFIG.v3.1.json",
+    "items": ["model", "data.chunking", "execution", "cost", "budget", "alignment", "candidate_depths", "statistics"],
+    "kv_correction": {"kappa_s": 0.013, "kappa_e": -0.00228, "source": "results/chunk-depth-v31/kv.json"}
+  },
+  "data_roles": {
+    "bucket_function": "experiments/chunk_depth_v31/data.py:bucket",
+    "readout_train": {"buckets": [10, 64], "documents": 4111, "items": "items_formal_train.pt"},
+    "calibration": {"buckets": [[75, 77], [85, 89]], "documents": 612, "items": ["items_pilot_cal.pt", "items_formal_cal.pt"]},
+    "development": {"buckets": [78, 84], "documents": 505, "items": "items_pilot_screen.pt", "gate": false},
+    "stage1_screen": {"buckets": [90, 94], "documents": 367, "items": "items_formal_screen.pt filtered by bucket"},
+    "stage2_screen": {"buckets": [95, 99], "documents": 378, "items": "items_formal_screen.pt filtered by bucket"},
+    "confirm": {"split": "test", "documents": 1310, "used": false},
+    "theta_S_training_buckets": [70, 74]
+  },
+  "stage1": {
+    "generation_parameters": {
+      "name": "theta_S",
+      "checkpoint": "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt",
+      "sha256": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625"
+    },
+    "training_rows": {
+      "representation": "coda output at p_{c-1} with the whole prefix at depth k (table run), theta_S",
+      "previous_depths": "k = 16 for line 1, all five candidates otherwise",
+      "cost_per_token": "mean table NLL + lambda r(d) + kappa_s s(d|k) + kappa_e e(d|k), history uniform at k",
+      "soft_label": "softmax(-cost / tau)",
+      "tau": 0.05,
+      "weights": "each document sums to 1; a line gets its share of scored tokens; previous-depth variants split the line weight equally"
+    },
+    "readout": {
+      "form": "p = softmax(W x + beta), x = [(z - m) / sigma ; position features (10)]",
+      "standardisation": "per-dimension mean and sd of z over training rows",
+      "objective": "weighted soft-label cross entropy on p + gamma * ||W||_F^2",
+      "optimiser": {"name": "LBFGS", "precision": "float64", "line_search": "strong_wolfe", "history": 50,
+                    "max_iter": 2000, "grad_inf_tolerance": 1e-7},
+      "gamma_grid": [1e-6, 1e-5, 1e-4, 1e-3, 1e-2],
+      "gamma_selection": "5-fold grouped CV (document index mod 5) on weighted held-out cross entropy, at lambda 1.5; same gamma for all lambda",
+      "lambda_grid": [0.5, 1.0, 1.5, 2.0, 3.0],
+      "lambda_rule": "greedy b = 0 sequential table execution on readout_train documents; min |log(relative cost / 0.5)|; ties to the smaller lambda"
+    },
+    "deployment": {
+      "rule": "argmax_k [log p(k) - b r(k)]",
+      "b_fine_grid": {"from": -20, "to": 20, "step": 0.05},
+      "search": "predicted cost from calibration table scores, online execution of the parameters nearest the budget, outward moves until online costs bracket the budget",
+      "alignment": "document-level mixture of the bracketing pair, weight fixed on calibration"
+    },
+    "comparator_R": {
+      "family": "position ridge on table NLL (v3.1 section 6.1)",
+      "fit_data": "readout_train tables under theta_S",
+      "alpha_grid": [0.01, 0.1, 1, 10, 100],
+      "alpha_selection": "5-fold grouped CV",
+      "nu_fine_grid": {"from": 0, "to": 4, "step": 0.01}
+    },
+    "gate": {
+      "technical": {
+        "lbfgs_final_grad_inf_below": 1e-5,
+        "sharpness": "share(max p >= 0.999) <= share(max s >= 0.999) + 0.05 on calibration table rows",
+        "calibration_resolution": "bracketing predicted cost levels differ by <= 0.02",
+        "online_vs_predicted_cost": "|online - predicted| <= 0.01 at each executed point"
+      },
+      "cost_ratio": [0.98, 1.02],
+      "effect": {"statistic": "g_head = L(theta_S, pi_R) - L(theta_S, pi_head), per-document paired",
+                 "min_point_estimate": 0.005, "one_sided_90_lower_bound_above": 0, "set": "stage1_screen"}
+    },
+    "gpu_hours_cap": 3,
+    "result": {
+      "decision": "no_go",
+      "report": "docs/PILOT_REPORT.v3.2-stage1.zh-CN.md",
+      "receipts": ["results/chunk-depth-v32/tables.json", "results/chunk-depth-v32/head.json",
+                   "results/chunk-depth-v32/stage1.json"],
+      "gate": {"technical": true, "cost_ratio": true, "effect": false},
+      "g_head": {"mean": 0.0038, "ci95": [-0.0039, 0.0116], "lower_one_sided_90": -0.0012, "cost_ratio": 1.005},
+      "selected": {"gamma": 0.01, "lambda": 1.0, "R_alpha": 100, "rep_ridge_alpha": 100000},
+      "diagnostics": {"development_g_head": 0.0007, "rep_ridge_over_R": 0.0058, "rep_ridge_over_R_lower_one_sided_90": 0.0014},
+      "gpu_hours": 2.87
+    }
+  },
+  "stage2": {
+    "status": "structure fixed; numerical details to be written here before stage 2 starts",
+    "arms": {"E-G": {"generation": "sum_d sg(p_{c,d}) L_{c,d}", "control": false},
+             "E-C": {"generation": "same as E-G", "control": "v3.1 E control loss with p in place of mu"}},
+    "shared": ["initial LoRA (zero B, A seed 17)", "readout (stage-1 recipe on frozen-model tables, frozen)",
+               "data order seed 17", "AdamW 1e-4 to 1e-5 cosine, clip 1", "373 documents, 2 epochs, batch 8, 93 updates"],
+    "gradient_diagnostics": {"checkpoints": [0, 23, 46, 92], "held_out_batches": 4,
+                             "quantities": ["||g_G||", "||g_C||", "cos(g_G, g_C)", "g_G . dtheta_G", "g_G . dtheta_J",
+                                            "actual G change after one step from the same optimiser state"]},
+    "statistics": ["g_joint", "h_gen (fixed position schedule pi_F)", "g_E-C over its own position schedule"],
+    "gate": {"cost_ratio": [0.98, 1.02], "g_joint_min": 0.005, "one_sided_90_lower_bound_above": 0, "set": "stage2_screen"}
+  }
+}

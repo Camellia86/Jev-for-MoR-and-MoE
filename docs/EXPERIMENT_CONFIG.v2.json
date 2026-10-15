@@ -1,0 +1,644 @@
+{
+  "schema_version": 2,
+  "protocol": "jev-shared-depth-v2",
+  "supersedes": "jev-shared-depth-v1",
+  "date": "2026-10-11",
+  "status": "pilot_completed_no_go",
+  "repository": "https://github.com/Camellia86/Jev-for-MoR-and-MoE",
+  "model": {
+    "id": "tomg-group-umd/huginn-0125",
+    "revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+    "parameters": 3564976800,
+    "hidden": 5280,
+    "intermediate": 17920,
+    "vocab": 65536,
+    "heads": 55,
+    "head_dim": 96,
+    "tie_embeddings": true,
+    "prelude_layers": 2,
+    "core_layers": 4,
+    "coda_layers": 2,
+    "mean_recurrence": 32,
+    "sampling_scheme": "poisson-lognormal-filling",
+    "freeze_base": true,
+    "core_trainable": false
+  },
+  "task": {
+    "type": "general_language_modeling",
+    "window_tokens": 256,
+    "position_base": 0,
+    "bos_position": 0,
+    "prefix_tokens": 128,
+    "target_tokens": 128,
+    "teacher_forcing_input_tokens": 255,
+    "loss_output_positions": [
+      127,
+      254
+    ],
+    "controller_read_position": 127,
+    "decisions_per_request": 1,
+    "mandatory_depth": 4,
+    "depths": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "deeper_prefix": "continue_entire_known_prefix_from_raw_state",
+    "decode_depth": "fixed_for_all_128_output_tokens",
+    "prefix_controller_cache": "separate_prefix_only_forward"
+  },
+  "runtime": {
+    "dtype": "bfloat16",
+    "loss_dtype": "float32",
+    "actor_dtype": "float64",
+    "cache_lookup_strategy": "full",
+    "continuous_compute": false,
+    "test_time_noise": 0,
+    "max_cached_positions": 255,
+    "tf32": false,
+    "minimum_free_vram_fraction": 0.15,
+    "reference_software": {
+      "python": "3.12.13",
+      "torch": "2.8.0+cu128",
+      "transformers": "4.52.4"
+    },
+    "gpu_environment_recorded_in_pilot": true,
+    "initial_state": {
+      "algorithm": "sha256_keyed_seed_torch_cpu_generator_trunc_normal_fp32_embed_scale_bf16",
+      "key_prefix": "jev-shared-v2-state",
+      "key_fields": [
+        "dataset_commit",
+        "source_row",
+        "absolute_token_position",
+        "initialization_replica"
+      ],
+      "key_field_encoding": "utf8_decimal_strings_joined_by_0x00",
+      "dataset_commit": "3ba9d605774198c5868892d7a8deda78031a781f",
+      "seed": "first_8_bytes_of_sha256_big_endian_unsigned",
+      "generator": "torch.Generator(device='cpu').manual_seed(seed)",
+      "steps": [
+        "x = torch.empty(5280, dtype=torch.float32)",
+        "x.uniform_(2*l-1, 2*u-1, generator=g)",
+        "x.erfinv_()",
+        "x.mul_(sigma*sqrt(2))",
+        "x.clamp_(-3*sigma, 3*sigma)",
+        "x.mul_(embed_scale_fp32)",
+        "x.to(torch.bfloat16)"
+      ],
+      "l": 0.0013498980316301035,
+      "u": 0.9986501019683699,
+      "sigma": 0.008703882797784892,
+      "embed_scale_fp32": 72.66360473632812,
+      "use_text_hash": false,
+      "primary_replica": 0,
+      "robustness_replicas": [
+        1,
+        2
+      ],
+      "robustness_cal_documents": 128,
+      "test_vectors_torch": "2.14.1+cpu",
+      "test_vectors": [
+        {
+          "source_row": 24096,
+          "position": 0,
+          "replica": 0,
+          "seed64": "8501181837933636472",
+          "first_8_bf16_le_hex": "fa3e4cbefc3d903f46bf95bfaabe643f",
+          "sha256_bf16_le": "5b1616314df71bfe0099ac05375331f4010c34c4076a4372ba803e3ddcbb5047"
+        },
+        {
+          "source_row": 24096,
+          "position": 254,
+          "replica": 0,
+          "seed64": "11275438234541557025",
+          "first_8_bf16_le_hex": "14be08bf03bffabe95bf52bf1fbf873f",
+          "sha256_bf16_le": "2064155f078b983bb7f9d51b31c0bc53a113719868f57bb182a0ad707defe8ed"
+        },
+        {
+          "source_row": 24096,
+          "position": 0,
+          "replica": 1,
+          "seed64": "16122981168696210547",
+          "first_8_bf16_le_hex": "04bf0dbc313ffdbd213e963ea63e93be",
+          "sha256_bf16_le": "3e99dded5b734c73b2380bb2d115302cd6ff2fca2abb2f2e9d6a1d6bf1ef4394"
+        }
+      ]
+    },
+    "equivalence_gates": {
+      "fp32_cpu_reference": {
+        "prefix_tokens": 8,
+        "target_tokens": 8,
+        "depths": [
+          4,
+          8
+        ],
+        "max_probability_abs_error": 1e-05,
+        "max_token_nll_abs_error": 0.0001
+      },
+      "bf16_continuation_bitwise": true,
+      "bf16_bias": {
+        "documents": 64,
+        "role": "pilot_train",
+        "depths": [
+          4,
+          8,
+          16,
+          32
+        ],
+        "difference": "incremental_minus_teacher_forcing_document_mean_nll",
+        "pooled_mean_abs_max": 0.0005,
+        "pooled_95ci_contains_zero": true,
+        "per_depth_mean_abs_max": 0.001
+      }
+    }
+  },
+  "lora": {
+    "target": "both_coda_blocks_same_parameter_objects_for_control_and_generation",
+    "modules": [
+      "attn.Wqkv",
+      "attn.proj",
+      "mlp.fc",
+      "mlp.proj"
+    ],
+    "fused_shapes": [
+      [
+        "h",
+        "3h"
+      ],
+      [
+        "h",
+        "h"
+      ],
+      [
+        "h",
+        "2m"
+      ],
+      [
+        "m",
+        "h"
+      ]
+    ],
+    "rank": 8,
+    "alpha": 16,
+    "scale": 2.0,
+    "dropout": 0,
+    "initial_A": "kaiming_uniform_a_sqrt5_equals_U(-1/sqrt(d_in),1/sqrt(d_in))_seeded_by_training_seed",
+    "initial_B": "zero",
+    "trainable_parameters": 1536000,
+    "master_dtype": "float32",
+    "merged_for_inference": true
+  },
+  "readout": {
+    "input": 5280,
+    "output": 4,
+    "bias": true,
+    "parameters": 21124,
+    "warm_documents": 1024,
+    "warm_seed": 20261011,
+    "warm_updates": 400,
+    "warm_batch": 32,
+    "warm_optimizer": "AdamW",
+    "warm_lr": 0.003,
+    "warm_weight_decay": 0.01,
+    "warm_objective": "exact_expected_base_cost + 0.1*CE(soft_label) + 0.01*Brier + 0.1*KL_to_uniform",
+    "warm_overfit_diagnostic": "expected_cost_gap_warm_vs_pilot_cal",
+    "freeze_after_warm": true,
+    "reference_policy": "cached_zero_lora_policy_after_warm"
+  },
+  "objective": {
+    "cost": "current_theta_mean_target_nll + lambda * normalized_inference_flops",
+    "recompute_all_action_losses": true,
+    "cache_losses": false,
+    "lambda_grid": [
+      0,
+      0.005,
+      0.01,
+      0.02,
+      0.05,
+      0.1
+    ],
+    "lambda_rule": "warm_set_uncalibrated_expected_plan_cost_closest_to_1_in_log_space; tie -> smaller lambda",
+    "lambda_selected": 0.05,
+    "kappa": 256,
+    "epsilon": 0.01,
+    "eta": 0.001,
+    "dirichlet_samples": 64,
+    "baseline": "leave_one_out",
+    "q_gradient": "detached_score_function_only",
+    "direct_generation_gradient": "policy_weighted_current_NLL_only",
+    "auxiliary": {
+      "soft_label_temperature": 0.05,
+      "ce_weight": 0.1,
+      "brier_weight": 0.01,
+      "kl_weight": 0.1,
+      "kl_direction": "current_mean_to_cached_reference",
+      "labels": "recomputed_current_cost_then_stop_gradient"
+    },
+    "warm_frozen_base_loss_cache_allowed": true
+  },
+  "arms": {
+    "E": {
+      "direct": "policy_weighted_current_LM",
+      "route": "exact_expected_cost_plus_auxiliary"
+    },
+    "J": {
+      "direct": "policy_weighted_current_LM",
+      "route": "dirichlet_LOO_score_plus_auxiliary"
+    },
+    "F16-A": {
+      "direct": "fixed_depth_16_LM",
+      "route": "none"
+    },
+    "FMIX-A": {
+      "direct": "uniform_four_depth_LM",
+      "training_weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "route": "none"
+    }
+  },
+  "removed_arms": {
+    "S": "removed in v2: S already received cost soft labels, so S versus E did not isolate the exact routing gradient"
+  },
+  "controls_without_training": [
+    "frozen_native_each_depth",
+    "warm_readout_zero_lora",
+    "E_static_same_checkpoint",
+    "J_static_same_checkpoint"
+  ],
+  "data": {
+    "id": "HuggingFaceTB/smollm-corpus",
+    "revision": "3ba9d605774198c5868892d7a8deda78031a781f",
+    "file": "fineweb-edu-dedup/train-00000-of-00234.parquet",
+    "file_bytes": 2395121191,
+    "sha256": "220d0c36f13f24046f080dcd9a9339862d6a0e43f214dd430ed20552c265e309",
+    "rows": 812684,
+    "row_index": "0_based_pyarrow_physical_row_group_order",
+    "record_id_column": true,
+    "first_source_row": 24096,
+    "last_source_row_exclusive": 200000,
+    "historical_exclusion": "none_row_offset_only",
+    "tokenizer": "native_model_same_revision",
+    "bos": 65504,
+    "eos": 65505,
+    "pad": 65509,
+    "tokenization": "[bos] + tokenizer.encode(text, add_special_tokens=False, split_special_tokens=True)",
+    "min_tokens_including_bos": 256,
+    "window": "first_256_tokens_one_per_document",
+    "reject_special_ids_in_window": true,
+    "eos_in_window": false,
+    "padding": "none_fixed_length_255_or_128",
+    "attention_mask": "causal_full_no_padding",
+    "normalization": {
+      "python": "3.12",
+      "unicode": "15.0",
+      "steps": [
+        "unicodedata.normalize('NFKC', text)",
+        "' '.join(s.split())",
+        "no_case_folding"
+      ]
+    },
+    "dedup_key": "SHA256(UTF8(N(text)))",
+    "split_hash": {
+      "salt": "jev-shared-v2",
+      "formula": "SHA256(UTF8(salt) || 0x00 || UTF8(N(text))) as big-endian integer mod 100"
+    },
+    "window_hash": {
+      "salt": "jev-window-v2",
+      "formula": "SHA256(UTF8(salt) || 0x00 || 256 token ids as little-endian uint16)"
+    },
+    "pipeline_order": [
+      "read rows 24096..199999 in row order",
+      "tokenize and test eligibility; take first 256 tokens",
+      "dedup eligible rows by dedup_key keeping smallest row",
+      "dedup remaining rows by window_hash keeping smallest row",
+      "assign bucket by split_hash",
+      "fill each role in ascending row order until quota met",
+      "assert window hashes disjoint across roles"
+    ],
+    "splits": {
+      "formal_train": {
+        "buckets": [
+          0,
+          49
+        ],
+        "documents": 4096
+      },
+      "warm": {
+        "buckets": [
+          50,
+          59
+        ],
+        "documents": 1024
+      },
+      "pilot_train": {
+        "buckets": [
+          60,
+          64
+        ],
+        "documents": 256
+      },
+      "pilot_cal": {
+        "buckets": [
+          65,
+          66
+        ],
+        "documents": 64
+      },
+      "pilot_screen": {
+        "buckets": [
+          67,
+          69
+        ],
+        "documents": 384
+      },
+      "formal_cal": {
+        "buckets": [
+          70,
+          79
+        ],
+        "documents": 256
+      },
+      "formal_screen": {
+        "buckets": [
+          80,
+          89
+        ],
+        "documents": 512
+      },
+      "confirm": {
+        "buckets": [
+          90,
+          99
+        ],
+        "minimum": 512,
+        "maximum": 2048,
+        "power_selected": null
+      }
+    },
+    "max_documents": 8640,
+    "feature_bytes_per_doc": 12122880,
+    "feature_bytes_total": 104741683200,
+    "cache_reserve_gib": 120,
+    "assert_disjoint_window_hashes": true,
+    "cache_header_fields": [
+      "protocol_id",
+      "config_sha256",
+      "model_revision",
+      "tokenizer_sha256",
+      "dataset_revision",
+      "parquet_sha256",
+      "source_row",
+      "doc_id",
+      "window_token_sha256",
+      "initialization_replica",
+      "state_sha256",
+      "feature_kind",
+      "depth",
+      "positions",
+      "position_base",
+      "dtype",
+      "attention",
+      "stage",
+      "code_sha256",
+      "payload_sha256"
+    ],
+    "feature_kind_values": [
+      "coda_input_normalized_once",
+      "raw_recurrent_state"
+    ],
+    "stage_values": [
+      "frozen_core_feature",
+      "warm_base_nll"
+    ],
+    "manifest_fields": [
+      "source_row",
+      "doc_id",
+      "raw_text_sha256",
+      "dedup_key_sha256",
+      "window_token_sha256",
+      "token_count",
+      "bucket",
+      "role"
+    ],
+    "manifest_self_sha256_recorded": true
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "clip_grad_norm": 1,
+    "warmup_fraction": 0.05,
+    "decay": "cosine",
+    "end_lr": 1e-05,
+    "microbatch": 1,
+    "effective_batch": 8,
+    "formal_train_documents": 4096,
+    "formal_epochs": 2,
+    "updates_per_arm_seed": 1024,
+    "formal_seeds": [
+      17,
+      29,
+      43,
+      61
+    ],
+    "formal_runs": 16,
+    "formal_total_updates": 16384,
+    "pilot_seed": 17,
+    "pilot_train_documents": 256,
+    "pilot_epochs": 2,
+    "pilot_updates_per_arm": 64,
+    "checkpoint_selection": "final",
+    "training_diagnostic": "warm_set_soft_label_vs_heldout_cost_rank_agreement"
+  },
+  "cost": {
+    "unit": "FLOPs",
+    "multiply_add_flops": 2,
+    "denominator": "frozen_base_native_depth16_full_128_prefix_128_output_request",
+    "target_budget": 1,
+    "plan_cost": "F_native(D) + F_readout + I[D>4]*F_coda_prefix_128_positions",
+    "static_cost": "F_native(D)",
+    "include_lora_in_inference_cost": false,
+    "lora_merged_for_inference": true,
+    "ledger_status": "requires_implementation_and_profiler_check",
+    "training_separate_from_inference": true
+  },
+  "evaluation": {
+    "primary_policy": "categorical_with_exponentially_tilted_mu",
+    "quality": "exact_expectation_of_action_NLL",
+    "comparator_R": {
+      "set": "formal_cal",
+      "pool": [
+        "frozen_native_each_depth",
+        "F16-A_each_depth",
+        "FMIX-A_each_depth",
+        "E_static_each_depth"
+      ],
+      "selection": "seed_averaged_cal_NLL_convex_frontier_at_static_cost_le_1_common_mixture_across_seeds",
+      "max_support_points": 2,
+      "tie_break": [
+        "lower_cost",
+        "fewer_support_points",
+        "pool_order_then_depth_ascending"
+      ],
+      "cost_symbol": "c_R"
+    },
+    "calibration": {
+      "set": "formal_cal",
+      "method": "bisection_mu_exp_minus_b_f",
+      "target": "c_R",
+      "tolerance": 0.0001,
+      "applies_to": [
+        "E",
+        "J"
+      ],
+      "test_refit": false
+    },
+    "same_cost_rule": {
+      "calibration_set": "E_cost == c_R and J_cost == c_R within 1e-4 (by construction)",
+      "confirm_set": "report realized expected cost with document bootstrap CI; match if within [0.98, 1.02] * c_R",
+      "above_band": "no_same_cost_claim",
+      "below_band": "report_as_lower_budget_result"
+    },
+    "hard_argmax": "secondary_separate_grid_search_on_same_formal_cal",
+    "additional_controls": [
+      "warm_readout_zero_lora",
+      "J_static_same_checkpoint"
+    ],
+    "speed": {
+      "mode": "quality_matched",
+      "b_speed": "largest b on formal_cal with E expected NLL <= R expected NLL",
+      "timing_model": "forced_depth_full_plan_path_per_(checkpoint,depth): 16 prefixes x 3 repeats after 10 warmups, CUDA sync",
+      "expected_time": "sum_d mu_{b_speed}(d|x_i) * Tbar_s(d) over first 64 confirm prefixes; R uses sum_d pi_d * Tbar_native(d)",
+      "end_to_end_check": "sampled-depth run of 64 prefixes per E checkpoint; |measured - expected| <= 5%",
+      "decode": "greedy_128_tokens_ignore_eos_stop",
+      "min_time_reduction": 0.1,
+      "nll_noninferiority_upper_limit": 0.005,
+      "pareto_curve_over_b_grid": true,
+      "report_per_gpu_separately": true
+    },
+    "incremental_quality_check": {
+      "confirm_documents": 64,
+      "policies": [
+        "E_each_depth",
+        "J_each_depth",
+        "R_support_points"
+      ],
+      "targets": "same_ground_truth_suffix",
+      "max_abs_mean_paired_effect_bias_nats": 0.0002,
+      "failure": "teacher_forcing_quality_only_until_full_incremental_reference_evaluation"
+    }
+  },
+  "statistics": {
+    "primary_effect": "R_minus_E",
+    "primary_test": "one_sided_paired_document_bootstrap",
+    "primary_alpha": 0.05,
+    "secondary_effect": "E_minus_J",
+    "secondary_test": "two_sided_paired_document_bootstrap",
+    "secondary_alpha": 0.05,
+    "secondary_in_sample_size": false,
+    "secondary_expected_direction": "no_difference_or_E_slightly_better",
+    "secondary_mde_formula": "(z.975 + z.8) * sd_confirm / sqrt(n)",
+    "familywise_correction": "none_single_primary_conclusion",
+    "min_observed_effect": 0.005,
+    "planning_effect": 0.01,
+    "planning_delta_min": 0.005,
+    "power": 0.8,
+    "power_alpha_one_sided": 0.05,
+    "screen_sd_multiplier": 1.2,
+    "power_formula": "max(((z.95+z.8)*sigma/delta)^2, (z.8*sigma/(delta-delta_min))^2)",
+    "sample_rounding": 128,
+    "confirm_min": 512,
+    "confirm_max": 2048,
+    "bootstrap_repeats": 10000,
+    "pvalue": "null_centered_paired_document_bootstrap",
+    "seed_aggregation": "mean_of_four_fixed_models",
+    "require_each_seed_positive": true,
+    "report_per_seed_intervals": true,
+    "underpowered": "report_interval_and_detectable_effect_do_not_claim_no_effect",
+    "confirm_resize_after_open": false
+  },
+  "resources": {
+    "pilot": {
+      "gpu": "RTX 5080",
+      "count": 1,
+      "nominal_vram_gb": 16,
+      "gpu_hours_cap": 8,
+      "phase_caps": {
+        "implementation": 1.5,
+        "cache_profile": 2,
+        "training": 2.5,
+        "screen_forecast": 2
+      }
+    },
+    "formal": {
+      "gpu": "A10",
+      "count": 3,
+      "nominal_vram_gb_per_card": 24,
+      "parallelism": "independent_runs_round_robin_no_DDP",
+      "gpu_hours_cap": 144,
+      "phase_caps": {
+        "cache_and_runtime": 24,
+        "training": 48,
+        "evaluation_including_incremental_check": 36,
+        "decode_timing": 24,
+        "reserve": 12
+      },
+      "training_seconds_per_update_budget": 10.546875,
+      "profile_updates": 100,
+      "forecast_multiplier": 1.2,
+      "forecast_confirm_documents": 2048
+    }
+  },
+  "pilot_go": {
+    "all_technical_checks": true,
+    "resource_forecast_under_cap": true,
+    "predictability_probe": {
+      "controller": "warm_readout_zero_lora_at_selected_lambda",
+      "static_comparator": "frozen_four_depth_mixture_at_cost_le_1_chosen_on_pilot_cal",
+      "calibrate_on": "pilot_cal_to_static_comparator_cost",
+      "evaluate_on": "pilot_screen_384",
+      "min_point_estimate_nats": 0.002,
+      "lower_bound": "one_sided_95_percent_document_bootstrap_above_zero",
+      "single_stage": true
+    },
+    "diagnostics_not_gates": [
+      "hindsight_oracle_headroom_full_suffix",
+      "split_half_oracle_headroom",
+      "pilot_E_J_F16A_FMIXA_vs_static",
+      "gradient_norms",
+      "routing_distribution",
+      "lambda_sensitivity_of_warm_readout"
+    ],
+    "pilot_training_significance_required": false
+  },
+  "artifacts": {
+    "plan": "docs/EXPERIMENT_PLAN.zh-CN.md",
+    "math": "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+    "math_checker": "scripts/check_experiment_math.py",
+    "math_result": "docs/EXPERIMENT_MATH_CHECK.v2.json"
+  },
+  "revision": "2.1",
+  "amendments": [
+    {
+      "revision": "2.1",
+      "date": "2026-10-11",
+      "section": "3.4",
+      "change": "BF16 per-document NLL/probability gate replaced by mean signed difference gate; FP32 gate unchanged",
+      "evidence": "results/shared-depth-v2/impl_checks.json (v2 run, failed bf16_equivalence) and artifacts bf16_path_bias",
+      "approved_by": "user"
+    }
+  ],
+  "pilot_result": {
+    "decision": "no_go",
+    "report": "docs/PILOT_REPORT.v2.1.zh-CN.md",
+    "receipt": "results/shared-depth-v2/pilot_eval.json",
+    "failed_criterion": "predictability_probe",
+    "probe_gain_nats": -0.00357,
+    "hindsight_upper_bound_nats": 0.0019
+  }
+}

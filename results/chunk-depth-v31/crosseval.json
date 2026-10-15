@@ -1,0 +1,143 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_pilot_crosseval",
+  "created_at_utc": "2026-10-13T12:24:36.033717+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.2.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "documents": 505,
+  "sign": "loss differences in nat/token; positive means the first term has higher NLL",
+  "schedules": {
+    "S": {
+      "ridge_alpha": 10.0,
+      "nu_high_cost": 1.47,
+      "nu_low_cost": 1.48,
+      "weight_high": 0.4299468183813382
+    },
+    "E": {
+      "ridge_alpha": 10.0,
+      "nu_high_cost": 1.5,
+      "nu_low_cost": 1.51,
+      "weight_high": 0.8856912153436933
+    }
+  },
+  "relative_cost": {
+    "pi_S": 0.5013612578227464,
+    "pi_E": 0.5027758369607499
+  },
+  "table": {
+    "theta_E_pi_E": 0.9299296811675672,
+    "theta_E_pi_S": 0.9304669969406835,
+    "theta_S_pi_E": 0.9178224280253979,
+    "theta_S_pi_S": 0.9183639850487824
+  },
+  "diagonal_reproduction": {
+    "theta_S_pi_S": {
+      "value": 0.9183639850487824,
+      "decompose_json": 0.9183639850487824,
+      "abs_diff": 0.0
+    },
+    "theta_E_pi_E": {
+      "value": 0.9299296811675672,
+      "decompose_json": 0.9299296811675672,
+      "abs_diff": 0.0
+    }
+  },
+  "total_EE_minus_SS": {
+    "mean": 0.011565696118784793,
+    "sd": 0.026628534053395474,
+    "n": 505,
+    "ci95": [
+      0.009275582957222424,
+      0.013921794047410622
+    ],
+    "lower_one_sided_90": 0.01005143397186978,
+    "lower_one_sided_95": 0.009639650798501539
+  },
+  "path1_parameters_at_pi_S": {
+    "mean": 0.012103011891901033,
+    "sd": 0.016515176327280837,
+    "n": 505,
+    "ci95": [
+      0.010673134778884022,
+      0.013550844136248448
+    ],
+    "lower_one_sided_90": 0.011175433026610657,
+    "lower_one_sided_95": 0.010917281735294713
+  },
+  "path1_schedule_at_theta_E": {
+    "mean": -0.0005373157731162386,
+    "sd": 0.020064257197807557,
+    "n": 505,
+    "ci95": [
+      -0.002262933768111313,
+      0.0012633887104912226
+    ],
+    "lower_one_sided_90": -0.0016894840631830122,
+    "lower_one_sided_95": -0.0020103850848963013
+  },
+  "path2_parameters_at_pi_E": {
+    "mean": 0.012107253142169268,
+    "sd": 0.016582045927149677,
+    "n": 505,
+    "ci95": [
+      0.010658611916217451,
+      0.013551827964576194
+    ],
+    "lower_one_sided_90": 0.011175979618933976,
+    "lower_one_sided_95": 0.010902998048713725
+  },
+  "path2_schedule_at_theta_S": {
+    "mean": -0.0005415570233844746,
+    "sd": 0.019727405060700413,
+    "n": 505,
+    "ci95": [
+      -0.002244437493646993,
+      0.0012225867869051859
+    ],
+    "lower_one_sided_90": -0.001673545080249718,
+    "lower_one_sided_95": -0.0019909551959374164
+  },
+  "interaction": {
+    "mean": 4.241250268236046e-06,
+    "sd": 0.0017077558070454576,
+    "n": 505,
+    "ci95": [
+      -0.0001438831367571252,
+      0.000157003195889553
+    ],
+    "lower_one_sided_90": -9.386284052158762e-05,
+    "lower_one_sided_95": -0.00011878993154366769
+  }
+}

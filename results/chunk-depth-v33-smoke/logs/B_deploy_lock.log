@@ -1,0 +1,70 @@
+
+===== 2026-10-13 23:42:24 experiments.chunk_depth_v33.lock B_deploy_lock
+{
+ "G": [
+  {
+   "target": 0.48,
+   "param": 3.2,
+   "predicted_cost": 0.48616262929905535
+  },
+  {
+   "target": 0.495,
+   "param": 2.4,
+   "predicted_cost": 0.4954450113028472
+  },
+  {
+   "target": 0.505,
+   "param": -1.65,
+   "predicted_cost": 0.5082874537209768
+  },
+  {
+   "target": 0.52,
+   "param": -2.95,
+   "predicted_cost": 0.5187853490040467
+  }
+ ],
+ "C": [
+  {
+   "target": 0.48,
+   "param": 18.65,
+   "predicted_cost": 0.48116501764932595
+  },
+  {
+   "target": 0.495,
+   "param": 16.55,
+   "predicted_cost": 0.49711695294794567
+  },
+  {
+   "target": 0.505,
+   "param": 15.8,
+   "predicted_cost": 0.5073592743126425
+  },
+  {
+   "target": 0.52,
+   "param": 12.2,
+   "predicted_cost": 0.5228302968084233
+  }
+ ],
+ "D": [
+  {
+   "target": 0.48,
+   "param": 18.45,
+   "predicted_cost": 0.48116501764932595
+  },
+  {
+   "target": 0.495,
+   "param": 16.05,
+   "predicted_cost": 0.49711695294794567
+  },
+  {
+   "target": 0.505,
+   "param": 15.5,
+   "predicted_cost": 0.5073592743126425
+  },
+  {
+   "target": 0.52,
+   "param": 11.4,
+   "predicted_cost": 0.5199808301188706
+  }
+ ]
+}

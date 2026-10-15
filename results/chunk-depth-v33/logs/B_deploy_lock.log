@@ -1,0 +1,70 @@
+
+===== 2026-10-14 04:41:25 experiments.chunk_depth_v33.lock B_deploy_lock
+{
+ "G": [
+  {
+   "target": 0.48,
+   "param": 1.45,
+   "predicted_cost": 0.48015406486070095
+  },
+  {
+   "target": 0.495,
+   "param": 0.0,
+   "predicted_cost": 0.49515659063851303
+  },
+  {
+   "target": 0.505,
+   "param": -0.8,
+   "predicted_cost": 0.504863350439226
+  },
+  {
+   "target": 0.52,
+   "param": -1.95,
+   "predicted_cost": 0.5205002748277943
+  }
+ ],
+ "C": [
+  {
+   "target": 0.48,
+   "param": 3.35,
+   "predicted_cost": 0.4797869041999145
+  },
+  {
+   "target": 0.495,
+   "param": 1.55,
+   "predicted_cost": 0.4950382582012904
+  },
+  {
+   "target": 0.505,
+   "param": -0.1,
+   "predicted_cost": 0.505197477827815
+  },
+  {
+   "target": 0.52,
+   "param": -2.75,
+   "predicted_cost": 0.520142777986534
+  }
+ ],
+ "D": [
+  {
+   "target": 0.48,
+   "param": 3.75,
+   "predicted_cost": 0.480196575694018
+  },
+  {
+   "target": 0.495,
+   "param": 1.9,
+   "predicted_cost": 0.4950479819802904
+  },
+  {
+   "target": 0.505,
+   "param": 0.2,
+   "predicted_cost": 0.5050151227333423
+  },
+  {
+   "target": 0.52,
+   "param": -2.5,
+   "predicted_cost": 0.5200913059373178
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+
+===== 2026-10-14 03:41:26 experiments.chunk_depth_v33.worker B_eval --shard 0 --nshards 3
+03:41:27 start B_eval 0 3 full
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.26it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.82it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.82it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.60it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.29it/s]
+03:43:28 eval_B 25/799 4.63 s/doc
+03:45:19 eval_B 50/799 4.53 s/doc
+03:46:58 eval_B 75/799 4.34 s/doc
+03:48:43 eval_B 100/799 4.30 s/doc
+03:50:31 eval_B 125/799 4.31 s/doc
+03:52:16 eval_B 150/799 4.29 s/doc
+03:53:56 eval_B 175/799 4.24 s/doc
+03:55:37 eval_B 200/799 4.22 s/doc
+03:57:29 eval_B 225/799 4.25 s/doc
+03:59:12 eval_B 250/799 4.24 s/doc
+04:00:49 eval_B 275/799 4.20 s/doc
+04:02:30 eval_B 300/799 4.19 s/doc
+04:04:13 eval_B 325/799 4.19 s/doc
+04:05:58 eval_B 350/799 4.19 s/doc
+04:07:51 eval_B 375/799 4.21 s/doc
+04:09:36 eval_B 400/799 4.21 s/doc
+04:11:25 eval_B 425/799 4.22 s/doc
+04:13:12 eval_B 450/799 4.22 s/doc
+04:15:02 eval_B 475/799 4.23 s/doc
+04:16:49 eval_B 500/799 4.23 s/doc
+04:18:37 eval_B 525/799 4.24 s/doc
+04:20:24 eval_B 550/799 4.24 s/doc
+04:22:14 eval_B 575/799 4.24 s/doc
+04:24:03 eval_B 600/799 4.25 s/doc
+04:25:46 eval_B 625/799 4.25 s/doc
+04:27:40 eval_B 650/799 4.26 s/doc
+04:29:26 eval_B 675/799 4.26 s/doc
+04:31:22 eval_B 700/799 4.27 s/doc
+04:33:11 eval_B 725/799 4.27 s/doc
+04:34:58 eval_B 750/799 4.27 s/doc
+04:36:56 eval_B 775/799 4.29 s/doc
+04:38:35 eval_B shard finished 799
+04:38:35 end B_eval 0

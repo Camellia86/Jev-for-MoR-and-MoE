@@ -1,0 +1,19 @@
+{
+  "protocol": "jev-chunk-depth-v3.2-followup",
+  "document": "pre-declared secondary statistic and execution details (MATHEMATICAL_AUDIT.v3.2-followup section 3.4 and 8.5)",
+  "date": "2026-10-13",
+  "fixed_before": "matched training starts; the screen set (buckets 95-99) has not been read",
+  "primary_unchanged": "docs/EXPERIMENT_CONFIG.v3.2-followup.json evaluation.primary and diagnostic_success are applied as frozen",
+  "secondary_strict_common_cost": {
+    "statistic": "g_B = L_G(B) - L_C(B) at B = 0.5, each arm's NLL interpolated at exactly the budget within its own two-endpoint mixture family on the screen",
+    "policies_per_arm": "four head deployment parameters: the calibration bracket (b_high_cost, b_low_cost) and two outer parameters, the representative parameter of the nearest calibration predicted-cost level with cost >= predicted(b_high_cost) + 0.01 and of the nearest level with cost <= predicted(b_low_cost) - 0.01",
+    "interpolation": "sort the four policies by screen cost; take the adjacent pair c_- <= B <= c_+ with c_+ > c_-; L(B) = L_- + (B - c_-) / (c_+ - c_-) * (L_+ - L_-)",
+    "bootstrap": "10,000 document resamples, seed 20261013; every resample recomputes all policy costs and NLLs, the bracketing pair, the weight and L(B) for both arms",
+    "bracket_failure": "if an arm has no bracketing pair on the full screen sample, g_B is reported as not estimable; the share of resamples without a bracketing pair for either arm is reported, and if it is positive the interval is reported as not estimable (no clipping, no dropping)",
+    "role": "secondary; reported separately from the cost-tolerance primary"
+  },
+  "fixed_schedule_cost": "h_gen uses one position schedule for both arms, so per-document depths and costs are identical; no cost adjustment is needed",
+  "gradient_diagnostics": "already executed by experiments/chunk_depth_v32_followup/gradient_diag.py (results/chunk-depth-v32-followup/gradient_diag.json, 2026-10-13T17:10:51Z) before this file; its update and measurement use the same diagnostic documents and are reported as the fixed-diagnostic-batch one-step surrogate decrease (audit section 1.3)",
+  "execution": "the primary evaluation runs experiments/chunk_depth_v32_followup/evaluate.py unchanged; this secondary statistic is computed afterwards by a separate script from calibration.json, the saved per-document screen runs and two additional screen runs per arm",
+  "not_executed": "g_C (E-C against its own refitted position schedule, audit section 8) is outside this follow-up and is not reported"
+}

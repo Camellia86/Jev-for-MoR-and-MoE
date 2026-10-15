@@ -1,0 +1,107 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_pilot_checks",
+  "created_at_utc": "2026-10-13T07:01:13.910089+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "status": "passed",
+  "gates": {
+    "initial_state_vectors": true,
+    "native_vs_decomposition": true,
+    "latest_m4_toy": true,
+    "decision_representation": true,
+    "lora": true,
+    "ledger": true,
+    "chunk_execution_bias": true
+  },
+  "checks": {
+    "initial_state_vectors": {
+      "vectors": 2,
+      "all_match": true
+    },
+    "native_vs_decomposition": {
+      "max_abs_logit_diff": 0.0
+    },
+    "latest_m4_toy": {
+      "returned_step_tags": [
+        2.0,
+        2.0,
+        2.0,
+        106.0
+      ],
+      "expected": [
+        2.0,
+        2.0,
+        2.0,
+        106.0
+      ],
+      "passed": true
+    },
+    "decision_representation": {
+      "lines": 29,
+      "identical_tensor": true,
+      "max_abs_nll_diff_single_row_head": 8.177757263183594e-05,
+      "passed": true
+    },
+    "lora": {
+      "parameters": 1536000,
+      "zero_B_equals_base": true,
+      "joint_A_grad": 0.0,
+      "joint_B_grad": 14.27143257856369,
+      "gen_B_grad": 1.5985957756638527,
+      "ctl_B_grad": 14.17215782403946,
+      "passed": true
+    },
+    "ledger": {
+      "measured": 1357590220800,
+      "ledger": 1357590220800,
+      "relative_error": 0.0,
+      "passed": true
+    },
+    "chunk_execution_bias": {
+      "documents": 64,
+      "pooled_mean": -0.0004512207763603996,
+      "pooled_se": 0.00032828204793468503,
+      "per_depth": {
+        "4": {
+          "mean": -0.0005066098911164288,
+          "sd": 0.004525347393071897
+        },
+        "16": {
+          "mean": -0.0003958316616043704,
+          "sd": 0.004040345534030988
+        }
+      },
+      "passed": true
+    }
+  }
+}

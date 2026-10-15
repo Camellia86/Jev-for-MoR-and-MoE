@@ -1,0 +1,196 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_phase0_probe",
+  "created_at_utc": "2026-10-12T00:55:23.674058+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "ref_depth": 8,
+  "folds": 5,
+  "choices": [
+    4,
+    6,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "units": 2558,
+  "tokens": 56276,
+  "rows": [
+    {
+      "budget": 0.4,
+      "static_support": [
+        [
+          4,
+          0.15302993645324303
+        ],
+        [
+          6,
+          0.846970063546757
+        ]
+      ],
+      "static_nll_per_token": 1.2346088889843607,
+      "in_sample_oracle_gain": 0.08756902842436952,
+      "representation": {
+        "alpha": 10000.0,
+        "table_gain": 0.007834612961457097,
+        "relative_cost": 0.3982525722930331,
+        "depth_share": {
+          "4": 0.2071931196247068,
+          "6": 0.6082877247849883,
+          "8": 0.17982799061767005,
+          "12": 0.004300234558248631,
+          "16": 0.00039093041438623924,
+          "24": 0.0,
+          "32": 0.0
+        }
+      },
+      "position_only": {
+        "alpha": 1.0,
+        "table_gain": 0.011099642597484855,
+        "relative_cost": 0.39948942313659463,
+        "depth_share": {
+          "4": 0.14386239249413604,
+          "6": 0.772869429241595,
+          "8": 0.08287724784988272,
+          "12": 0.00039093041438623924,
+          "16": 0.0,
+          "24": 0.0,
+          "32": 0.0
+        }
+      }
+    },
+    {
+      "budget": 0.5,
+      "static_support": [
+        [
+          6,
+          0.29419161371103586
+        ],
+        [
+          8,
+          0.7058083862889641
+        ]
+      ],
+      "static_nll_per_token": 1.014192063132483,
+      "in_sample_oracle_gain": 0.07008012070999922,
+      "representation": {
+        "alpha": 10000.0,
+        "table_gain": 0.0161738068196125,
+        "relative_cost": 0.4981917011453418,
+        "depth_share": {
+          "4": 0.002736512900703675,
+          "6": 0.2623143080531665,
+          "8": 0.6880375293197811,
+          "12": 0.04534792806880375,
+          "16": 0.001563721657544957,
+          "24": 0.0,
+          "32": 0.0
+        }
+      },
+      "position_only": {
+        "alpha": 10.0,
+        "table_gain": 0.017340364503325458,
+        "relative_cost": 0.5006474131445625,
+        "depth_share": {
+          "4": 0.0,
+          "6": 0.21931196247068022,
+          "8": 0.7685691946833464,
+          "12": 0.012118842845973418,
+          "16": 0.0,
+          "24": 0.0,
+          "32": 0.0
+        }
+      }
+    },
+    {
+      "budget": 0.6,
+      "static_support": [
+        [
+          8,
+          0.7176766454844143
+        ],
+        [
+          12,
+          0.28232335451558566
+        ]
+      ],
+      "static_nll_per_token": 0.9131007086935365,
+      "in_sample_oracle_gain": 0.06619959649773031,
+      "representation": {
+        "alpha": 10000.0,
+        "table_gain": 0.019183772343206753,
+        "relative_cost": 0.5998046804307547,
+        "depth_share": {
+          "4": 0.0,
+          "6": 0.012900703674745896,
+          "8": 0.6059421422986708,
+          "12": 0.3745113369820172,
+          "16": 0.006645817044566067,
+          "24": 0.0,
+          "32": 0.0
+        }
+      },
+      "position_only": {
+        "alpha": 1.0,
+        "table_gain": 0.01776793214746409,
+        "relative_cost": 0.6007707191146275,
+        "depth_share": {
+          "4": 0.0,
+          "6": 0.0,
+          "8": 0.6098514464425332,
+          "12": 0.38975762314308054,
+          "16": 0.00039093041438623924,
+          "24": 0.0,
+          "32": 0.0
+        }
+      }
+    }
+  ],
+  "realised_latest_m4": [
+    {
+      "budget": 0.4,
+      "items": 720,
+      "tokens": 56276,
+      "realised_gain_per_token": 0.01092781424040373
+    },
+    {
+      "budget": 0.5,
+      "items": 720,
+      "tokens": 56276,
+      "realised_gain_per_token": 0.015043673149771914
+    },
+    {
+      "budget": 0.6,
+      "items": 720,
+      "tokens": 56276,
+      "realised_gain_per_token": 0.017561321213769517
+    }
+  ]
+}

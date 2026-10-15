@@ -1,0 +1,75 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_phase0_question_level",
+  "created_at_utc": "2026-10-12T21:34:14.892417+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "results": {
+    "alpha": 10000.0,
+    "0.5": {
+      "nu_high_cost": 1.75,
+      "nu_low_cost": 1.8,
+      "weight_on_high_cost_nu": 0.6783111326910204,
+      "doc_mean_nll": 1.0195894107853547,
+      "relative_cost": 0.510167229858504,
+      "static_doc_mean_nll": 1.063153160398401,
+      "gain_vs_static": {
+        "mean": 0.04356374961304637,
+        "sd": 0.07620921477879196,
+        "n": 300,
+        "ci95": [
+          0.034820226751184714,
+          0.0519814130210568
+        ],
+        "lower_one_sided_95": 0.0363111706192693
+      }
+    },
+    "0.6": {
+      "nu_high_cost": 0.65,
+      "nu_low_cost": 0.7000000000000001,
+      "weight_on_high_cost_nu": 0.25734668421129325,
+      "doc_mean_nll": 0.9281242708883942,
+      "relative_cost": 0.5943853227121555,
+      "static_doc_mean_nll": 0.9509274082919635,
+      "gain_vs_static": {
+        "mean": 0.0228031374035693,
+        "sd": 0.11039381080426566,
+        "n": 300,
+        "ci95": [
+          0.010940931319740207,
+          0.03578779322583013
+        ],
+        "lower_one_sided_95": 0.012610593632212994
+      }
+    }
+  }
+}

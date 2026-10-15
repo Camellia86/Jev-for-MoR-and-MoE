@@ -1,0 +1,185 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_warm_objective_check",
+  "created_at_utc": "2026-10-13T12:15:07.925559+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "a": 0.9899806644401477,
+  "b": 0.0020038671119704692,
+  "log_ceiling_over_floor": 6.204628644337929,
+  "example_c_t0_cj0.6": {
+    "directional_derivative": 0.08023584370089931,
+    "vertex_optimal": 0
+  },
+  "two_level_gap_threshold": 0.5209591310467442,
+  "lambdas": {
+    "0.25": {
+      "rows": 4842,
+      "vertex_optimum_share": 0.002271788517141677,
+      "vertex_is_cost_argmin_share": 1.0,
+      "gap_best_to_second_quantiles": [
+        0.009345652179119547,
+        0.051446277144031216,
+        0.13021840706477605
+      ],
+      "non_vertex_rows_top_mu_quantiles": [
+        0.41257686466838744,
+        0.5800574151982575,
+        0.807457911993492
+      ],
+      "non_vertex_rows_within_1e-3_of_ceiling": 0.0,
+      "argmin_share": [
+        0.009087154068566708,
+        0.08075175547294507,
+        0.3641057414291615,
+        0.42936802973977695,
+        0.11668731928954977
+      ]
+    },
+    "0.5": {
+      "rows": 4842,
+      "vertex_optimum_share": 0.002271788517141677,
+      "vertex_is_cost_argmin_share": 1.0,
+      "gap_best_to_second_quantiles": [
+        0.010733280505157197,
+        0.059916948732137765,
+        0.1512214107522001
+      ],
+      "non_vertex_rows_top_mu_quantiles": [
+        0.4426488354594722,
+        0.6196455571949431,
+        0.8468433214949538
+      ],
+      "non_vertex_rows_within_1e-3_of_ceiling": 0.0,
+      "argmin_share": [
+        0.018380834365964476,
+        0.1439487814952499,
+        0.4624122263527468,
+        0.3351920693928129,
+        0.04006608839322594
+      ]
+    },
+    "1.0": {
+      "rows": 4842,
+      "vertex_optimum_share": 0.0012391573729863693,
+      "vertex_is_cost_argmin_share": 1.0,
+      "gap_best_to_second_quantiles": [
+        0.013309290950436094,
+        0.0679134768611313,
+        0.18652789428520708
+      ],
+      "non_vertex_rows_top_mu_quantiles": [
+        0.4813267198181197,
+        0.6699613926608898,
+        0.8953925581971329
+      ],
+      "non_vertex_rows_within_1e-3_of_ceiling": 0.0,
+      "argmin_share": [
+        0.046468401486988845,
+        0.30318050392399837,
+        0.49876084262701365,
+        0.14353572903758777,
+        0.0080545229244114
+      ]
+    },
+    "1.5": {
+      "rows": 4842,
+      "vertex_optimum_share": 0.0016522098306484924,
+      "vertex_is_cost_argmin_share": 1.0,
+      "gap_best_to_second_quantiles": [
+        0.012997570980003871,
+        0.07588403519609421,
+        0.20327533034475395
+      ],
+      "non_vertex_rows_top_mu_quantiles": [
+        0.5018263737646794,
+        0.7057997608225932,
+        0.9183814137483433
+      ],
+      "non_vertex_rows_within_1e-3_of_ceiling": 0.0012412081092263137,
+      "argmin_share": [
+        0.10718711276332094,
+        0.4308137133415944,
+        0.3996282527881041,
+        0.0590665014456836,
+        0.003304419661296985
+      ]
+    },
+    "2.0": {
+      "rows": 4842,
+      "vertex_optimum_share": 0.00392399834779017,
+      "vertex_is_cost_argmin_share": 1.0,
+      "gap_best_to_second_quantiles": [
+        0.018131297039416072,
+        0.0881368991282141,
+        0.21984521326237402
+      ],
+      "non_vertex_rows_top_mu_quantiles": [
+        0.5165255259783268,
+        0.7408863155291372,
+        0.9320841509646114
+      ],
+      "non_vertex_rows_within_1e-3_of_ceiling": 0.0026954177897574125,
+      "argmin_share": [
+        0.19950433705080545,
+        0.48141263940520446,
+        0.2940933498554316,
+        0.02292441140024783,
+        0.0020652622883106154
+      ]
+    },
+    "3.0": {
+      "rows": 4842,
+      "vertex_optimum_share": 0.004750103263114415,
+      "vertex_is_cost_argmin_share": 1.0,
+      "gap_best_to_second_quantiles": [
+        0.02042928699278357,
+        0.11022242520856551,
+        0.2659937604156537
+      ],
+      "non_vertex_rows_top_mu_quantiles": [
+        0.5311786107724211,
+        0.802070609913936,
+        0.9581297837168528
+      ],
+      "non_vertex_rows_within_1e-3_of_ceiling": 0.004150238638721726,
+      "argmin_share": [
+        0.42028087567121025,
+        0.45187938868236266,
+        0.12185047501032631,
+        0.0053696819496076,
+        0.0006195786864931846
+      ]
+    }
+  }
+}

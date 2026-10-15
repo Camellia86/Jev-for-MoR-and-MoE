@@ -1,0 +1,13 @@
+{
+  "stage": "verify",
+  "finished_at": "2026-10-13T23:29:56",
+  "node": "JIMPC",
+  "scratch": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\chunk-depth-v33-scratch-smoke",
+  "role_documents": {
+    "fit": 10,
+    "calibration": 6,
+    "confirm_train": 3,
+    "confirm_test": 3,
+    "btrain": 16
+  }
+}

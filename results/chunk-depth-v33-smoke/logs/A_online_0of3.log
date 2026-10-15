@@ -1,0 +1,12 @@
+
+===== 2026-10-13 23:31:39 experiments.chunk_depth_v33.worker A_online --shard 0 --nshards 3
+23:31:41 start A_online 0 3 smoke
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:01,  2.59it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:02<00:02,  1.30s/it]Loading checkpoint shards:  75%|#######5  | 3/4 [00:04<00:01,  1.54s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:04<00:00,  1.20s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:04<00:00,  1.21s/it]
+23:32:08 online_A shard finished 2
+23:32:08 end A_online 0
+
+===== 2026-10-13 23:36:40 experiments.chunk_depth_v33.worker A_online --shard 0 --nshards 3
+23:36:42 start A_online 0 3 smoke
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:00<00:01,  2.47it/s]Loading checkpoint shards:  50%|#####     | 2/4 [00:02<00:02,  1.42s/it]Loading checkpoint shards:  75%|#######5  | 3/4 [00:08<00:03,  3.69s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:09<00:00,  2.48s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:09<00:00,  2.39s/it]
+23:37:15 online_A shard finished 2
+23:37:15 end A_online 0

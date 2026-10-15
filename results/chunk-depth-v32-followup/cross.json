@@ -1,0 +1,117 @@
+{
+  "protocol_id": "jev-chunk-depth-v3.2-followup",
+  "kind": "cross",
+  "created_at_utc": "2026-10-13T17:06:02.810883+00:00",
+  "config_sha256": "fc1b60b907ee3bc59d361380dcaf735e49690c9ba74fb109336802b97b0f7586",
+  "source_sha256": {
+    "__init__.py": "bd136288365f0fa5b4c18002d7947733796dbb7a8cd03bed1f33d87792f9e130",
+    "audit_head.py": "d0017d8ff28ff504d84f51987cba642432606580de6939d9fbacd377e85b8fdd",
+    "common.py": "0d095183cc491d2dcfde46130e269b7249e18f88601b57edf2503af892c3a89a",
+    "cross.py": "e9915ba2501b95439b0dca24484099217a40da24dda12de946e46527d8b66624",
+    "evaluate.py": "b9f11651b46c40f51f9b510b56a14aa11804c93831a30d0ea3a462092a8210d8",
+    "gradient_diag.py": "3cf4184fa1aa701b2fd90e4263018ea948907bb69c7ffbdc14b669c6bf56c14d",
+    "math_check.py": "dcb2fe485d2d9552a5afcf24e19ff0b72f58661c9402e15bd7d5cb6ded3b6303",
+    "train.py": "55337795ad7ce73a5be5070aef5a8d86c086a2e9d01ae7c6ca87bb9172095441"
+  },
+  "input_sha256": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v31/pilot_E_s17.pt": "46326dbc27973d44dc9355ac64f17c1baf87101f47cc2e7584a3e799bf76747d",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "results/chunk-depth-v31/screen.json": "cd5f8e513af8295203383a2c744f13e3e6c988787b58b061ae406947e1433b8e",
+    "results/chunk-depth-v31/decompose.json": "e9e25ef1f92eaee35a394c169180a3368442a6d1a688de33a6b56757b4b4d799",
+    "results/chunk-depth-v32/stage1.json": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "documents": 505,
+  "cells": {
+    "S_S": {
+      "mean": 0.9183639850487824,
+      "cost": 0.5013612578227464,
+      "source": "existing diagonal, checked against decompose.json"
+    },
+    "E_E": {
+      "mean": 0.9299296811675672,
+      "cost": 0.5027758369607499,
+      "source": "existing diagonal, checked against decompose.json"
+    },
+    "E_S": {
+      "mean": 0.9304669969406835,
+      "cost": 0.5013612578227464,
+      "source": "new online execution"
+    },
+    "S_E": {
+      "mean": 0.9178224280253979,
+      "cost": 0.5027758369607499,
+      "source": "new online execution"
+    }
+  },
+  "effects": {
+    "E_minus_S_fixed_schedule_S": {
+      "mean": 0.012103011891901033,
+      "sd": 0.016515176327280837,
+      "n": 505,
+      "ci95": [
+        0.010673134778884022,
+        0.013550844136248448
+      ],
+      "lower_one_sided_90": 0.011175433026610657,
+      "lower_one_sided_95": 0.010917281735294713
+    },
+    "E_minus_S_fixed_schedule_E": {
+      "mean": 0.012107253142169268,
+      "sd": 0.016582045927149677,
+      "n": 505,
+      "ci95": [
+        0.010658611916217451,
+        0.013551827964576194
+      ],
+      "lower_one_sided_90": 0.011175979618933976,
+      "lower_one_sided_95": 0.010902998048713725
+    },
+    "schedule_E_minus_S_fixed_theta_S": {
+      "mean": -0.0005415570233844746,
+      "sd": 0.019727405060700413,
+      "n": 505,
+      "ci95": [
+        -0.002244437493646993,
+        0.0012225867869051859
+      ],
+      "lower_one_sided_90": -0.001673545080249718,
+      "lower_one_sided_95": -0.0019909551959374164
+    },
+    "schedule_E_minus_S_fixed_theta_E": {
+      "mean": -0.0005373157731162386,
+      "sd": 0.020064257197807557,
+      "n": 505,
+      "ci95": [
+        -0.002262933768111313,
+        0.0012633887104912226
+      ],
+      "lower_one_sided_90": -0.0016894840631830122,
+      "lower_one_sided_95": -0.0020103850848963013
+    },
+    "interaction": {
+      "mean": 4.241250268236265e-06,
+      "sd": 0.0017077558070454591,
+      "n": 505,
+      "ci95": [
+        -0.00014388313675712497,
+        0.00015700319588955383
+      ],
+      "lower_one_sided_90": -9.38628405215874e-05,
+      "lower_one_sided_95": -0.0001187899315436681
+    }
+  },
+  "seconds": 912.5576256999921,
+  "interpretation": "Positive E_minus_S means E has higher NLL at exactly the same schedule and cost."
+}

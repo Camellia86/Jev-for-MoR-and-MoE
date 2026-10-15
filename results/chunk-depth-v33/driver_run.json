@@ -1,0 +1,84 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "v33_driver_run",
+  "created_at_utc": "2026-10-14T04:23:45.769349+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "",
+    "dirty": false,
+    "dirty_files": []
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-5.14.0-687.54.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA A10",
+    "device_total_mib": 22589,
+    "transformers": "4.52.4"
+  },
+  "protocol_v33": "jev-chunk-depth-v3.3",
+  "smoke": false,
+  "config_v33_sha256": "eaec677b55fbc9f550a61b676f9db4735f89c3f4498dc23cb5af7c49340decae",
+  "code_v33_sha256": {
+    "__init__.py": "eaebc43d791c97330bd9fd96b4d7ea20ea0f579dde56394be92bb840595aa434",
+    "analyze.py": "88ab0803cc1dbd73e51bdd556a5d9f3626e8d557ae85f802b65b671f0ddff361",
+    "common.py": "30c601a30c949d5f52eeec158bb46b07fe96b83c4e97c4da7362c01d6d7c7ac1",
+    "driver.py": "d4751494a9a8ab3ac3026228a4e16e1d6f938a646d6f5ad584eedbdcd36aa6e2",
+    "lock.py": "2400cbfec2528eb6706b29595301cef349b31fc3cf458ddbea117da03964a976",
+    "policies.py": "a1f3e4d70da393d1a9658e421ae7e7c115a3a6e2eb1df6ede66923ba7d86e5d8",
+    "worker.py": "cc11fa56862739e9711094e3d887ec8f16c61ded49108e030c95af299a4b4804"
+  },
+  "timing": {
+    "A_tables": {
+      "seconds": 336.67697086097905,
+      "gpu_hours": 0.28056414238414923
+    },
+    "A_fit": {
+      "seconds": 138.87419752799906,
+      "gpu_hours": 0.03857616597999974
+    },
+    "A_calcheck": {
+      "seconds": 387.15408354697865,
+      "gpu_hours": 0.3226284029558155
+    },
+    "A_online": {
+      "seconds": 10967.753409836005,
+      "gpu_hours": 9.13979450819667
+    },
+    "A_analyze": {
+      "seconds": 6.712363042985089,
+      "gpu_hours": 0.0018645452897180803
+    },
+    "B_features": {
+      "seconds": 122.90099984698463,
+      "gpu_hours": 0.0341391666241624
+    },
+    "B_train": {
+      "seconds": 331.98326806901605,
+      "gpu_hours": 0.27665272339084673
+    },
+    "B_eval": {
+      "seconds": 3429.4608848269854,
+      "gpu_hours": 2.8578840706891544
+    },
+    "B_deploy_tables": {
+      "seconds": 169.5555449030071,
+      "gpu_hours": 0.14129628741917258
+    },
+    "B_deploy_lock": {
+      "seconds": 5.747952251986135,
+      "gpu_hours": 0.001596653403329482
+    },
+    "B_deploy_online": {
+      "seconds": 2532.1610449459986,
+      "gpu_hours": 2.1101342041216653
+    },
+    "B_analyze": {
+      "seconds": 2.7019722269906197,
+      "gpu_hours": 0.0007505478408307277
+    }
+  },
+  "seconds": 18434.913181262003
+}

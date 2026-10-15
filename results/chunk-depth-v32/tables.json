@@ -1,0 +1,78 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_2_tables",
+  "created_at_utc": "2026-10-13T12:47:12.937787+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.2.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "theta_s_sha256": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+  "roles": {
+    "readout_train": {
+      "documents": 4111,
+      "lines_scored": 14703,
+      "seconds": 885.1280697000038,
+      "mean_line_nll_by_depth": {
+        "4": 1.4537452029287523,
+        "6": 1.040152335546267,
+        "8": 0.8619165023100692,
+        "12": 0.7587797993630169,
+        "16": 0.7336823023728175
+      }
+    },
+    "calibration": {
+      "documents": 612,
+      "lines_scored": 2190,
+      "seconds": 138.16785939999681,
+      "mean_line_nll_by_depth": {
+        "4": 1.4247941622567766,
+        "6": 1.0090298943568723,
+        "8": 0.8316428750184142,
+        "12": 0.7353563941473251,
+        "16": 0.7151029700509968
+      }
+    },
+    "stage1_screen": {
+      "documents": 367,
+      "lines_scored": 1295,
+      "seconds": 80.02691100000811,
+      "mean_line_nll_by_depth": {
+        "4": 1.439632790578657,
+        "6": 1.028831619228013,
+        "8": 0.8622269765026248,
+        "12": 0.7647608716173959,
+        "16": 0.7366326611902236
+      }
+    }
+  }
+}

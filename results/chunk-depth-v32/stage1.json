@@ -1,0 +1,8610 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_2_stage1",
+  "created_at_utc": "2026-10-13T15:23:25.772334+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.2.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "theta_s_sha256": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+  "budget": 0.5,
+  "lambda": 1.0,
+  "gamma": 0.01,
+  "documents": {
+    "calibration": 612,
+    "stage1_screen": 367
+  },
+  "calibration": {
+    "head": {
+      "online_points": [
+        {
+          "param": -0.05,
+          "relative_cost": 0.5026052178741794,
+          "doc_mean_nll": 0.8705347494301499,
+          "depth_share": {
+            "4": 0.0031963470319634705,
+            "6": 0.28904109589041094,
+            "8": 0.6812785388127854,
+            "12": 0.024657534246575342,
+            "16": 0.0018264840182648401
+          }
+        },
+        {
+          "param": 0.0,
+          "relative_cost": 0.5020780515791796,
+          "doc_mean_nll": 0.8714447240490071,
+          "depth_share": {
+            "4": 0.0031963470319634705,
+            "6": 0.29315068493150687,
+            "8": 0.6771689497716895,
+            "12": 0.02511415525114155,
+            "16": 0.0013698630136986301
+          }
+        },
+        {
+          "param": 0.05,
+          "relative_cost": 0.5014641351989958,
+          "doc_mean_nll": 0.8722374493413753,
+          "depth_share": {
+            "4": 0.0031963470319634705,
+            "6": 0.29771689497716897,
+            "8": 0.6730593607305936,
+            "12": 0.024657534246575342,
+            "16": 0.0013698630136986301
+          }
+        },
+        {
+          "param": 0.1,
+          "relative_cost": 0.5007802313708115,
+          "doc_mean_nll": 0.8734015802790854,
+          "depth_share": {
+            "4": 0.0031963470319634705,
+            "6": 0.3013698630136986,
+            "8": 0.6707762557077626,
+            "12": 0.023287671232876714,
+            "16": 0.0013698630136986301
+          }
+        },
+        {
+          "param": 0.15,
+          "relative_cost": 0.4999809172625688,
+          "doc_mean_nll": 0.8748011158124672,
+          "depth_share": {
+            "4": 0.0031963470319634705,
+            "6": 0.30639269406392694,
+            "8": 0.6671232876712329,
+            "12": 0.02237442922374429,
+            "16": 0.0009132420091324201
+          }
+        }
+      ],
+      "bracket": {
+        "param_high_cost": 0.1,
+        "param_low_cost": 0.15,
+        "weight_high": 0.023873890419786475
+      },
+      "cal_matched_nll": 0.8747677034545046,
+      "predicted_levels_near_budget": [
+        {
+          "param": 17.75,
+          "param_range": [
+            17.75,
+            17.75
+          ],
+          "predicted_cost": 0.3503944758
+        },
+        {
+          "param": 17.7,
+          "param_range": [
+            17.7,
+            17.7
+          ],
+          "predicted_cost": 0.350794186
+        },
+        {
+          "param": 17.65,
+          "param_range": [
+            17.65,
+            17.65
+          ],
+          "predicted_cost": 0.3509604258
+        },
+        {
+          "param": 17.6,
+          "param_range": [
+            17.6,
+            17.6
+          ],
+          "predicted_cost": 0.3514320632
+        },
+        {
+          "param": 17.55,
+          "param_range": [
+            17.55,
+            17.55
+          ],
+          "predicted_cost": 0.3515812599
+        },
+        {
+          "param": 17.5,
+          "param_range": [
+            17.5,
+            17.5
+          ],
+          "predicted_cost": 0.3517738605
+        },
+        {
+          "param": 17.45,
+          "param_range": [
+            17.45,
+            17.45
+          ],
+          "predicted_cost": 0.3521398878
+        },
+        {
+          "param": 17.4,
+          "param_range": [
+            17.4,
+            17.4
+          ],
+          "predicted_cost": 0.3525345938
+        },
+        {
+          "param": 17.35,
+          "param_range": [
+            17.35,
+            17.35
+          ],
+          "predicted_cost": 0.3529272054
+        },
+        {
+          "param": 17.3,
+          "param_range": [
+            17.3,
+            17.3
+          ],
+          "predicted_cost": 0.3531607527
+        },
+        {
+          "param": 17.25,
+          "param_range": [
+            17.25,
+            17.25
+          ],
+          "predicted_cost": 0.3534474357
+        },
+        {
+          "param": 17.2,
+          "param_range": [
+            17.2,
+            17.2
+          ],
+          "predicted_cost": 0.3535437378
+        },
+        {
+          "param": 17.15,
+          "param_range": [
+            17.15,
+            17.15
+          ],
+          "predicted_cost": 0.3537266791
+        },
+        {
+          "param": 17.1,
+          "param_range": [
+            17.1,
+            17.1
+          ],
+          "predicted_cost": 0.3539817645
+        },
+        {
+          "param": 17.05,
+          "param_range": [
+            17.05,
+            17.05
+          ],
+          "predicted_cost": 0.354466059
+        },
+        {
+          "param": 17.0,
+          "param_range": [
+            17.0,
+            17.0
+          ],
+          "predicted_cost": 0.3546512857
+        },
+        {
+          "param": 16.95,
+          "param_range": [
+            16.95,
+            16.95
+          ],
+          "predicted_cost": 0.3550271577
+        },
+        {
+          "param": 16.9,
+          "param_range": [
+            16.9,
+            16.9
+          ],
+          "predicted_cost": 0.3551838051
+        },
+        {
+          "param": 16.85,
+          "param_range": [
+            16.85,
+            16.85
+          ],
+          "predicted_cost": 0.3556245975
+        },
+        {
+          "param": 16.8,
+          "param_range": [
+            16.8,
+            16.8
+          ],
+          "predicted_cost": 0.3558991242
+        },
+        {
+          "param": 16.75,
+          "param_range": [
+            16.75,
+            16.75
+          ],
+          "predicted_cost": 0.3564192885
+        },
+        {
+          "param": 16.7,
+          "param_range": [
+            16.7,
+            16.7
+          ],
+          "predicted_cost": 0.3568018713
+        },
+        {
+          "param": 16.65,
+          "param_range": [
+            16.65,
+            16.65
+          ],
+          "predicted_cost": 0.3573295783
+        },
+        {
+          "param": 16.6,
+          "param_range": [
+            16.6,
+            16.6
+          ],
+          "predicted_cost": 0.3576233747
+        },
+        {
+          "param": 16.55,
+          "param_range": [
+            16.55,
+            16.55
+          ],
+          "predicted_cost": 0.3581705639
+        },
+        {
+          "param": 16.5,
+          "param_range": [
+            16.5,
+            16.5
+          ],
+          "predicted_cost": 0.3585795906
+        },
+        {
+          "param": 16.45,
+          "param_range": [
+            16.45,
+            16.45
+          ],
+          "predicted_cost": 0.3588951938
+        },
+        {
+          "param": 16.4,
+          "param_range": [
+            16.4,
+            16.4
+          ],
+          "predicted_cost": 0.3591530858
+        },
+        {
+          "param": 16.35,
+          "param_range": [
+            16.35,
+            16.35
+          ],
+          "predicted_cost": 0.3593288356
+        },
+        {
+          "param": 16.3,
+          "param_range": [
+            16.3,
+            16.3
+          ],
+          "predicted_cost": 0.3595791956
+        },
+        {
+          "param": 16.25,
+          "param_range": [
+            16.25,
+            16.25
+          ],
+          "predicted_cost": 0.3596320051
+        },
+        {
+          "param": 16.2,
+          "param_range": [
+            16.2,
+            16.2
+          ],
+          "predicted_cost": 0.360294209
+        },
+        {
+          "param": 16.15,
+          "param_range": [
+            16.15,
+            16.15
+          ],
+          "predicted_cost": 0.3607299913
+        },
+        {
+          "param": 16.1,
+          "param_range": [
+            16.1,
+            16.1
+          ],
+          "predicted_cost": 0.3609995459
+        },
+        {
+          "param": 16.05,
+          "param_range": [
+            16.05,
+            16.05
+          ],
+          "predicted_cost": 0.3612546525
+        },
+        {
+          "param": 16.0,
+          "param_range": [
+            16.0,
+            16.0
+          ],
+          "predicted_cost": 0.3618786217
+        },
+        {
+          "param": 15.95,
+          "param_range": [
+            15.95,
+            15.95
+          ],
+          "predicted_cost": 0.362608351
+        },
+        {
+          "param": 15.9,
+          "param_range": [
+            15.9,
+            15.9
+          ],
+          "predicted_cost": 0.3631691908
+        },
+        {
+          "param": 15.85,
+          "param_range": [
+            15.85,
+            15.85
+          ],
+          "predicted_cost": 0.3633521913
+        },
+        {
+          "param": 15.8,
+          "param_range": [
+            15.8,
+            15.8
+          ],
+          "predicted_cost": 0.3637397003
+        },
+        {
+          "param": 15.75,
+          "param_range": [
+            15.75,
+            15.75
+          ],
+          "predicted_cost": 0.3640958065
+        },
+        {
+          "param": 15.7,
+          "param_range": [
+            15.7,
+            15.7
+          ],
+          "predicted_cost": 0.3641295108
+        },
+        {
+          "param": 15.65,
+          "param_range": [
+            15.65,
+            15.65
+          ],
+          "predicted_cost": 0.3647224103
+        },
+        {
+          "param": 15.6,
+          "param_range": [
+            15.6,
+            15.6
+          ],
+          "predicted_cost": 0.3652859233
+        },
+        {
+          "param": 15.55,
+          "param_range": [
+            15.55,
+            15.55
+          ],
+          "predicted_cost": 0.365610934
+        },
+        {
+          "param": 15.5,
+          "param_range": [
+            15.5,
+            15.5
+          ],
+          "predicted_cost": 0.3662374666
+        },
+        {
+          "param": 15.45,
+          "param_range": [
+            15.45,
+            15.45
+          ],
+          "predicted_cost": 0.3666660802
+        },
+        {
+          "param": 15.4,
+          "param_range": [
+            15.4,
+            15.4
+          ],
+          "predicted_cost": 0.367148158
+        },
+        {
+          "param": 15.35,
+          "param_range": [
+            15.35,
+            15.35
+          ],
+          "predicted_cost": 0.3673576558
+        },
+        {
+          "param": 15.3,
+          "param_range": [
+            15.3,
+            15.3
+          ],
+          "predicted_cost": 0.3679956946
+        },
+        {
+          "param": 15.25,
+          "param_range": [
+            15.25,
+            15.25
+          ],
+          "predicted_cost": 0.368128171
+        },
+        {
+          "param": 15.2,
+          "param_range": [
+            15.2,
+            15.2
+          ],
+          "predicted_cost": 0.3685494902
+        },
+        {
+          "param": 15.15,
+          "param_range": [
+            15.15,
+            15.15
+          ],
+          "predicted_cost": 0.368879213
+        },
+        {
+          "param": 15.1,
+          "param_range": [
+            15.1,
+            15.1
+          ],
+          "predicted_cost": 0.3692115449
+        },
+        {
+          "param": 15.05,
+          "param_range": [
+            15.05,
+            15.05
+          ],
+          "predicted_cost": 0.3694232852
+        },
+        {
+          "param": 15.0,
+          "param_range": [
+            15.0,
+            15.0
+          ],
+          "predicted_cost": 0.3695341142
+        },
+        {
+          "param": 14.95,
+          "param_range": [
+            14.95,
+            14.95
+          ],
+          "predicted_cost": 0.3698087124
+        },
+        {
+          "param": 14.9,
+          "param_range": [
+            14.9,
+            14.9
+          ],
+          "predicted_cost": 0.3700711621
+        },
+        {
+          "param": 14.85,
+          "param_range": [
+            14.85,
+            14.85
+          ],
+          "predicted_cost": 0.3704229105
+        },
+        {
+          "param": 14.8,
+          "param_range": [
+            14.8,
+            14.8
+          ],
+          "predicted_cost": 0.3707818325
+        },
+        {
+          "param": 14.75,
+          "param_range": [
+            14.75,
+            14.75
+          ],
+          "predicted_cost": 0.3709406408
+        },
+        {
+          "param": 14.7,
+          "param_range": [
+            14.7,
+            14.7
+          ],
+          "predicted_cost": 0.371263654
+        },
+        {
+          "param": 14.65,
+          "param_range": [
+            14.65,
+            14.65
+          ],
+          "predicted_cost": 0.3715211912
+        },
+        {
+          "param": 14.6,
+          "param_range": [
+            14.6,
+            14.6
+          ],
+          "predicted_cost": 0.3719399091
+        },
+        {
+          "param": 14.55,
+          "param_range": [
+            14.55,
+            14.55
+          ],
+          "predicted_cost": 0.372582935
+        },
+        {
+          "param": 14.5,
+          "param_range": [
+            14.5,
+            14.5
+          ],
+          "predicted_cost": 0.3729702935
+        },
+        {
+          "param": 14.45,
+          "param_range": [
+            14.45,
+            14.45
+          ],
+          "predicted_cost": 0.3733625432
+        },
+        {
+          "param": 14.4,
+          "param_range": [
+            14.4,
+            14.4
+          ],
+          "predicted_cost": 0.3735360506
+        },
+        {
+          "param": 14.35,
+          "param_range": [
+            14.35,
+            14.35
+          ],
+          "predicted_cost": 0.3738295484
+        },
+        {
+          "param": 14.3,
+          "param_range": [
+            14.3,
+            14.3
+          ],
+          "predicted_cost": 0.3743641167
+        },
+        {
+          "param": 14.25,
+          "param_range": [
+            14.25,
+            14.25
+          ],
+          "predicted_cost": 0.3747662208
+        },
+        {
+          "param": 14.2,
+          "param_range": [
+            14.2,
+            14.2
+          ],
+          "predicted_cost": 0.3749272903
+        },
+        {
+          "param": 14.15,
+          "param_range": [
+            14.15,
+            14.15
+          ],
+          "predicted_cost": 0.3750306974
+        },
+        {
+          "param": 14.1,
+          "param_range": [
+            14.1,
+            14.1
+          ],
+          "predicted_cost": 0.3753968346
+        },
+        {
+          "param": 14.05,
+          "param_range": [
+            14.05,
+            14.05
+          ],
+          "predicted_cost": 0.3759721308
+        },
+        {
+          "param": 14.0,
+          "param_range": [
+            14.0,
+            14.0
+          ],
+          "predicted_cost": 0.3762995981
+        },
+        {
+          "param": 13.95,
+          "param_range": [
+            13.95,
+            13.95
+          ],
+          "predicted_cost": 0.3767282594
+        },
+        {
+          "param": 13.9,
+          "param_range": [
+            13.9,
+            13.9
+          ],
+          "predicted_cost": 0.3774381345
+        },
+        {
+          "param": 13.85,
+          "param_range": [
+            13.85,
+            13.85
+          ],
+          "predicted_cost": 0.3780473547
+        },
+        {
+          "param": 13.8,
+          "param_range": [
+            13.8,
+            13.8
+          ],
+          "predicted_cost": 0.3782735948
+        },
+        {
+          "param": 13.75,
+          "param_range": [
+            13.75,
+            13.75
+          ],
+          "predicted_cost": 0.3791405344
+        },
+        {
+          "param": 13.7,
+          "param_range": [
+            13.7,
+            13.7
+          ],
+          "predicted_cost": 0.3795642286
+        },
+        {
+          "param": 13.65,
+          "param_range": [
+            13.65,
+            13.65
+          ],
+          "predicted_cost": 0.3797111266
+        },
+        {
+          "param": 13.6,
+          "param_range": [
+            13.6,
+            13.6
+          ],
+          "predicted_cost": 0.3801082338
+        },
+        {
+          "param": 13.55,
+          "param_range": [
+            13.55,
+            13.55
+          ],
+          "predicted_cost": 0.3806670465
+        },
+        {
+          "param": 13.5,
+          "param_range": [
+            13.5,
+            13.5
+          ],
+          "predicted_cost": 0.3810813251
+        },
+        {
+          "param": 13.45,
+          "param_range": [
+            13.45,
+            13.45
+          ],
+          "predicted_cost": 0.3817512172
+        },
+        {
+          "param": 13.4,
+          "param_range": [
+            13.4,
+            13.4
+          ],
+          "predicted_cost": 0.381970269
+        },
+        {
+          "param": 13.35,
+          "param_range": [
+            13.35,
+            13.35
+          ],
+          "predicted_cost": 0.3823672048
+        },
+        {
+          "param": 13.3,
+          "param_range": [
+            13.3,
+            13.3
+          ],
+          "predicted_cost": 0.3824825641
+        },
+        {
+          "param": 13.25,
+          "param_range": [
+            13.25,
+            13.25
+          ],
+          "predicted_cost": 0.382906367
+        },
+        {
+          "param": 13.2,
+          "param_range": [
+            13.2,
+            13.2
+          ],
+          "predicted_cost": 0.3834963462
+        },
+        {
+          "param": 13.15,
+          "param_range": [
+            13.15,
+            13.15
+          ],
+          "predicted_cost": 0.3839949446
+        },
+        {
+          "param": 13.1,
+          "param_range": [
+            13.1,
+            13.1
+          ],
+          "predicted_cost": 0.3842644843
+        },
+        {
+          "param": 13.05,
+          "param_range": [
+            13.05,
+            13.05
+          ],
+          "predicted_cost": 0.3846570138
+        },
+        {
+          "param": 13.0,
+          "param_range": [
+            13.0,
+            13.0
+          ],
+          "predicted_cost": 0.3847485267
+        },
+        {
+          "param": 12.95,
+          "param_range": [
+            12.95,
+            12.95
+          ],
+          "predicted_cost": 0.3850399271
+        },
+        {
+          "param": 12.9,
+          "param_range": [
+            12.9,
+            12.9
+          ],
+          "predicted_cost": 0.3855333638
+        },
+        {
+          "param": 12.85,
+          "param_range": [
+            12.85,
+            12.85
+          ],
+          "predicted_cost": 0.3858102277
+        },
+        {
+          "param": 12.8,
+          "param_range": [
+            12.8,
+            12.8
+          ],
+          "predicted_cost": 0.3860267844
+        },
+        {
+          "param": 12.75,
+          "param_range": [
+            12.75,
+            12.75
+          ],
+          "predicted_cost": 0.3861132568
+        },
+        {
+          "param": 12.7,
+          "param_range": [
+            12.7,
+            12.7
+          ],
+          "predicted_cost": 0.3867159499
+        },
+        {
+          "param": 12.65,
+          "param_range": [
+            12.65,
+            12.65
+          ],
+          "predicted_cost": 0.3868847957
+        },
+        {
+          "param": 12.6,
+          "param_range": [
+            12.6,
+            12.6
+          ],
+          "predicted_cost": 0.3870099269
+        },
+        {
+          "param": 12.55,
+          "param_range": [
+            12.55,
+            12.55
+          ],
+          "predicted_cost": 0.38716388
+        },
+        {
+          "param": 12.5,
+          "param_range": [
+            12.5,
+            12.5
+          ],
+          "predicted_cost": 0.3875177708
+        },
+        {
+          "param": 12.45,
+          "param_range": [
+            12.45,
+            12.45
+          ],
+          "predicted_cost": 0.387710423
+        },
+        {
+          "param": 12.4,
+          "param_range": [
+            12.4,
+            12.4
+          ],
+          "predicted_cost": 0.3878162038
+        },
+        {
+          "param": 12.35,
+          "param_range": [
+            12.35,
+            12.35
+          ],
+          "predicted_cost": 0.3880500833
+        },
+        {
+          "param": 12.3,
+          "param_range": [
+            12.3,
+            12.3
+          ],
+          "predicted_cost": 0.3887290239
+        },
+        {
+          "param": 12.25,
+          "param_range": [
+            12.25,
+            12.25
+          ],
+          "predicted_cost": 0.3891117757
+        },
+        {
+          "param": 12.2,
+          "param_range": [
+            12.2,
+            12.2
+          ],
+          "predicted_cost": 0.3896944586
+        },
+        {
+          "param": 12.15,
+          "param_range": [
+            12.15,
+            12.15
+          ],
+          "predicted_cost": 0.3897907888
+        },
+        {
+          "param": 12.1,
+          "param_range": [
+            12.1,
+            12.1
+          ],
+          "predicted_cost": 0.3901090189
+        },
+        {
+          "param": 12.05,
+          "param_range": [
+            12.05,
+            12.05
+          ],
+          "predicted_cost": 0.391132413
+        },
+        {
+          "param": 12.0,
+          "param_range": [
+            12.0,
+            12.0
+          ],
+          "predicted_cost": 0.3916789048
+        },
+        {
+          "param": 11.95,
+          "param_range": [
+            11.95,
+            11.95
+          ],
+          "predicted_cost": 0.3920981114
+        },
+        {
+          "param": 11.9,
+          "param_range": [
+            11.9,
+            11.9
+          ],
+          "predicted_cost": 0.3925383167
+        },
+        {
+          "param": 11.85,
+          "param_range": [
+            11.85,
+            11.85
+          ],
+          "predicted_cost": 0.3930970787
+        },
+        {
+          "param": 11.8,
+          "param_range": [
+            11.8,
+            11.8
+          ],
+          "predicted_cost": 0.3935286198
+        },
+        {
+          "param": 11.75,
+          "param_range": [
+            11.75,
+            11.75
+          ],
+          "predicted_cost": 0.3940318124
+        },
+        {
+          "param": 11.7,
+          "param_range": [
+            11.7,
+            11.7
+          ],
+          "predicted_cost": 0.3945325663
+        },
+        {
+          "param": 11.65,
+          "param_range": [
+            11.65,
+            11.65
+          ],
+          "predicted_cost": 0.394607348
+        },
+        {
+          "param": 11.6,
+          "param_range": [
+            11.6,
+            11.6
+          ],
+          "predicted_cost": 0.3946962852
+        },
+        {
+          "param": 11.55,
+          "param_range": [
+            11.55,
+            11.55
+          ],
+          "predicted_cost": 0.3951536557
+        },
+        {
+          "param": 11.5,
+          "param_range": [
+            11.5,
+            11.5
+          ],
+          "predicted_cost": 0.3954549562
+        },
+        {
+          "param": 11.45,
+          "param_range": [
+            11.45,
+            11.45
+          ],
+          "predicted_cost": 0.3957678161
+        },
+        {
+          "param": 11.4,
+          "param_range": [
+            11.4,
+            11.4
+          ],
+          "predicted_cost": 0.3962158385
+        },
+        {
+          "param": 11.35,
+          "param_range": [
+            11.35,
+            11.35
+          ],
+          "predicted_cost": 0.3964541759
+        },
+        {
+          "param": 11.3,
+          "param_range": [
+            11.3,
+            11.3
+          ],
+          "predicted_cost": 0.3966732531
+        },
+        {
+          "param": 11.25,
+          "param_range": [
+            11.25,
+            11.25
+          ],
+          "predicted_cost": 0.3972099896
+        },
+        {
+          "param": 11.2,
+          "param_range": [
+            11.2,
+            11.2
+          ],
+          "predicted_cost": 0.3976171588
+        },
+        {
+          "param": 11.15,
+          "param_range": [
+            11.15,
+            11.15
+          ],
+          "predicted_cost": 0.3977037406
+        },
+        {
+          "param": 11.1,
+          "param_range": [
+            11.1,
+            11.1
+          ],
+          "predicted_cost": 0.3980527486
+        },
+        {
+          "param": 11.05,
+          "param_range": [
+            11.05,
+            11.05
+          ],
+          "predicted_cost": 0.3984234137
+        },
+        {
+          "param": 11.0,
+          "param_range": [
+            11.0,
+            11.0
+          ],
+          "predicted_cost": 0.3986663489
+        },
+        {
+          "param": 10.95,
+          "param_range": [
+            10.95,
+            10.95
+          ],
+          "predicted_cost": 0.3991381791
+        },
+        {
+          "param": 10.9,
+          "param_range": [
+            10.9,
+            10.9
+          ],
+          "predicted_cost": 0.3996677228
+        },
+        {
+          "param": 10.85,
+          "param_range": [
+            10.85,
+            10.85
+          ],
+          "predicted_cost": 0.3999373121
+        },
+        {
+          "param": 10.8,
+          "param_range": [
+            10.8,
+            10.8
+          ],
+          "predicted_cost": 0.400274354
+        },
+        {
+          "param": 10.75,
+          "param_range": [
+            10.75,
+            10.75
+          ],
+          "predicted_cost": 0.4004548543
+        },
+        {
+          "param": 10.7,
+          "param_range": [
+            10.7,
+            10.7
+          ],
+          "predicted_cost": 0.4009892103
+        },
+        {
+          "param": 10.65,
+          "param_range": [
+            10.65,
+            10.65
+          ],
+          "predicted_cost": 0.4014922418
+        },
+        {
+          "param": 10.6,
+          "param_range": [
+            10.6,
+            10.6
+          ],
+          "predicted_cost": 0.4020990847
+        },
+        {
+          "param": 10.55,
+          "param_range": [
+            10.55,
+            10.55
+          ],
+          "predicted_cost": 0.4024888738
+        },
+        {
+          "param": 10.5,
+          "param_range": [
+            10.5,
+            10.5
+          ],
+          "predicted_cost": 0.403100127
+        },
+        {
+          "param": 10.45,
+          "param_range": [
+            10.45,
+            10.45
+          ],
+          "predicted_cost": 0.4034902944
+        },
+        {
+          "param": 10.4,
+          "param_range": [
+            10.4,
+            10.4
+          ],
+          "predicted_cost": 0.4037044748
+        },
+        {
+          "param": 10.35,
+          "param_range": [
+            10.35,
+            10.35
+          ],
+          "predicted_cost": 0.4039500525
+        },
+        {
+          "param": 10.3,
+          "param_range": [
+            10.3,
+            10.3
+          ],
+          "predicted_cost": 0.4043349474
+        },
+        {
+          "param": 10.25,
+          "param_range": [
+            10.25,
+            10.25
+          ],
+          "predicted_cost": 0.4046790253
+        },
+        {
+          "param": 10.2,
+          "param_range": [
+            10.2,
+            10.2
+          ],
+          "predicted_cost": 0.4049123957
+        },
+        {
+          "param": 10.15,
+          "param_range": [
+            10.15,
+            10.15
+          ],
+          "predicted_cost": 0.4050905974
+        },
+        {
+          "param": 10.1,
+          "param_range": [
+            10.1,
+            10.1
+          ],
+          "predicted_cost": 0.4058176315
+        },
+        {
+          "param": 10.05,
+          "param_range": [
+            10.05,
+            10.05
+          ],
+          "predicted_cost": 0.4061904932
+        },
+        {
+          "param": 10.0,
+          "param_range": [
+            10.0,
+            10.0
+          ],
+          "predicted_cost": 0.4063470576
+        },
+        {
+          "param": 9.95,
+          "param_range": [
+            9.95,
+            9.95
+          ],
+          "predicted_cost": 0.4071764603
+        },
+        {
+          "param": 9.9,
+          "param_range": [
+            9.9,
+            9.9
+          ],
+          "predicted_cost": 0.4078554026
+        },
+        {
+          "param": 9.85,
+          "param_range": [
+            9.85,
+            9.85
+          ],
+          "predicted_cost": 0.4081253808
+        },
+        {
+          "param": 9.8,
+          "param_range": [
+            9.8,
+            9.8
+          ],
+          "predicted_cost": 0.4084334992
+        },
+        {
+          "param": 9.75,
+          "param_range": [
+            9.75,
+            9.75
+          ],
+          "predicted_cost": 0.4087850352
+        },
+        {
+          "param": 9.7,
+          "param_range": [
+            9.7,
+            9.7
+          ],
+          "predicted_cost": 0.4090526828
+        },
+        {
+          "param": 9.65,
+          "param_range": [
+            9.65,
+            9.65
+          ],
+          "predicted_cost": 0.40916345
+        },
+        {
+          "param": 9.6,
+          "param_range": [
+            9.6,
+            9.6
+          ],
+          "predicted_cost": 0.4095269744
+        },
+        {
+          "param": 9.55,
+          "param_range": [
+            9.55,
+            9.55
+          ],
+          "predicted_cost": 0.4097027411
+        },
+        {
+          "param": 9.5,
+          "param_range": [
+            9.5,
+            9.5
+          ],
+          "predicted_cost": 0.4103577801
+        },
+        {
+          "param": 9.45,
+          "param_range": [
+            9.45,
+            9.45
+          ],
+          "predicted_cost": 0.4105646664
+        },
+        {
+          "param": 9.4,
+          "param_range": [
+            9.4,
+            9.4
+          ],
+          "predicted_cost": 0.4108080596
+        },
+        {
+          "param": 9.35,
+          "param_range": [
+            9.35,
+            9.35
+          ],
+          "predicted_cost": 0.4110919853
+        },
+        {
+          "param": 9.3,
+          "param_range": [
+            9.3,
+            9.3
+          ],
+          "predicted_cost": 0.4112748782
+        },
+        {
+          "param": 9.25,
+          "param_range": [
+            9.25,
+            9.25
+          ],
+          "predicted_cost": 0.4114842186
+        },
+        {
+          "param": 9.2,
+          "param_range": [
+            9.2,
+            9.2
+          ],
+          "predicted_cost": 0.4117464197
+        },
+        {
+          "param": 9.15,
+          "param_range": [
+            9.15,
+            9.15
+          ],
+          "predicted_cost": 0.412585214
+        },
+        {
+          "param": 9.1,
+          "param_range": [
+            9.1,
+            9.1
+          ],
+          "predicted_cost": 0.4130617378
+        },
+        {
+          "param": 9.05,
+          "param_range": [
+            9.05,
+            9.05
+          ],
+          "predicted_cost": 0.4133072164
+        },
+        {
+          "param": 9.0,
+          "param_range": [
+            9.0,
+            9.0
+          ],
+          "predicted_cost": 0.4133673896
+        },
+        {
+          "param": 8.95,
+          "param_range": [
+            8.95,
+            8.95
+          ],
+          "predicted_cost": 0.413615131
+        },
+        {
+          "param": 8.9,
+          "param_range": [
+            8.9,
+            8.9
+          ],
+          "predicted_cost": 0.4138415347
+        },
+        {
+          "param": 8.85,
+          "param_range": [
+            8.85,
+            8.85
+          ],
+          "predicted_cost": 0.414467102
+        },
+        {
+          "param": 8.8,
+          "param_range": [
+            8.8,
+            8.8
+          ],
+          "predicted_cost": 0.4147660665
+        },
+        {
+          "param": 8.75,
+          "param_range": [
+            8.75,
+            8.75
+          ],
+          "predicted_cost": 0.4152258723
+        },
+        {
+          "param": 8.7,
+          "param_range": [
+            8.7,
+            8.7
+          ],
+          "predicted_cost": 0.4155027448
+        },
+        {
+          "param": 8.65,
+          "param_range": [
+            8.65,
+            8.65
+          ],
+          "predicted_cost": 0.4158059697
+        },
+        {
+          "param": 8.6,
+          "param_range": [
+            8.6,
+            8.6
+          ],
+          "predicted_cost": 0.4162419302
+        },
+        {
+          "param": 8.55,
+          "param_range": [
+            8.55,
+            8.55
+          ],
+          "predicted_cost": 0.4164127502
+        },
+        {
+          "param": 8.5,
+          "param_range": [
+            8.5,
+            8.5
+          ],
+          "predicted_cost": 0.4170532743
+        },
+        {
+          "param": 8.45,
+          "param_range": [
+            8.45,
+            8.45
+          ],
+          "predicted_cost": 0.4174337408
+        },
+        {
+          "param": 8.4,
+          "param_range": [
+            8.4,
+            8.4
+          ],
+          "predicted_cost": 0.4178165844
+        },
+        {
+          "param": 8.35,
+          "param_range": [
+            8.35,
+            8.35
+          ],
+          "predicted_cost": 0.4184986009
+        },
+        {
+          "param": 8.3,
+          "param_range": [
+            8.3,
+            8.3
+          ],
+          "predicted_cost": 0.418919668
+        },
+        {
+          "param": 8.25,
+          "param_range": [
+            8.25,
+            8.25
+          ],
+          "predicted_cost": 0.4192182819
+        },
+        {
+          "param": 8.2,
+          "param_range": [
+            8.2,
+            8.2
+          ],
+          "predicted_cost": 0.419528522
+        },
+        {
+          "param": 8.15,
+          "param_range": [
+            8.15,
+            8.15
+          ],
+          "predicted_cost": 0.41991408
+        },
+        {
+          "param": 8.1,
+          "param_range": [
+            8.1,
+            8.1
+          ],
+          "predicted_cost": 0.420771048
+        },
+        {
+          "param": 8.05,
+          "param_range": [
+            8.05,
+            8.05
+          ],
+          "predicted_cost": 0.4209972363
+        },
+        {
+          "param": 8.0,
+          "param_range": [
+            8.0,
+            8.0
+          ],
+          "predicted_cost": 0.421588018
+        },
+        {
+          "param": 7.95,
+          "param_range": [
+            7.95,
+            7.95
+          ],
+          "predicted_cost": 0.4219205925
+        },
+        {
+          "param": 7.9,
+          "param_range": [
+            7.9,
+            7.9
+          ],
+          "predicted_cost": 0.4227992582
+        },
+        {
+          "param": 7.85,
+          "param_range": [
+            7.85,
+            7.85
+          ],
+          "predicted_cost": 0.4235912571
+        },
+        {
+          "param": 7.8,
+          "param_range": [
+            7.8,
+            7.8
+          ],
+          "predicted_cost": 0.4237019846
+        },
+        {
+          "param": 7.75,
+          "param_range": [
+            7.75,
+            7.75
+          ],
+          "predicted_cost": 0.4238198701
+        },
+        {
+          "param": 7.7,
+          "param_range": [
+            7.7,
+            7.7
+          ],
+          "predicted_cost": 0.424238728
+        },
+        {
+          "param": 7.65,
+          "param_range": [
+            7.65,
+            7.65
+          ],
+          "predicted_cost": 0.4247057405
+        },
+        {
+          "param": 7.6,
+          "param_range": [
+            7.6,
+            7.6
+          ],
+          "predicted_cost": 0.425204061
+        },
+        {
+          "param": 7.55,
+          "param_range": [
+            7.55,
+            7.55
+          ],
+          "predicted_cost": 0.4254060499
+        },
+        {
+          "param": 7.5,
+          "param_range": [
+            7.5,
+            7.5
+          ],
+          "predicted_cost": 0.4255748581
+        },
+        {
+          "param": 7.45,
+          "param_range": [
+            7.45,
+            7.45
+          ],
+          "predicted_cost": 0.4262973083
+        },
+        {
+          "param": 7.4,
+          "param_range": [
+            7.4,
+            7.4
+          ],
+          "predicted_cost": 0.4264922036
+        },
+        {
+          "param": 7.35,
+          "param_range": [
+            7.35,
+            7.35
+          ],
+          "predicted_cost": 0.426896582
+        },
+        {
+          "param": 7.3,
+          "param_range": [
+            7.3,
+            7.3
+          ],
+          "predicted_cost": 0.4274645408
+        },
+        {
+          "param": 7.25,
+          "param_range": [
+            7.25,
+            7.25
+          ],
+          "predicted_cost": 0.4276329028
+        },
+        {
+          "param": 7.2,
+          "param_range": [
+            7.2,
+            7.2
+          ],
+          "predicted_cost": 0.4279002015
+        },
+        {
+          "param": 7.15,
+          "param_range": [
+            7.15,
+            7.15
+          ],
+          "predicted_cost": 0.4280706754
+        },
+        {
+          "param": 7.1,
+          "param_range": [
+            7.1,
+            7.1
+          ],
+          "predicted_cost": 0.4287142618
+        },
+        {
+          "param": 7.05,
+          "param_range": [
+            7.05,
+            7.05
+          ],
+          "predicted_cost": 0.4291594314
+        },
+        {
+          "param": 7.0,
+          "param_range": [
+            7.0,
+            7.0
+          ],
+          "predicted_cost": 0.4297423783
+        },
+        {
+          "param": 6.95,
+          "param_range": [
+            6.95,
+            6.95
+          ],
+          "predicted_cost": 0.4299229801
+        },
+        {
+          "param": 6.9,
+          "param_range": [
+            6.9,
+            6.9
+          ],
+          "predicted_cost": 0.4306544305
+        },
+        {
+          "param": 6.85,
+          "param_range": [
+            6.85,
+            6.85
+          ],
+          "predicted_cost": 0.4308636765
+        },
+        {
+          "param": 6.8,
+          "param_range": [
+            6.8,
+            6.8
+          ],
+          "predicted_cost": 0.4309744763
+        },
+        {
+          "param": 6.75,
+          "param_range": [
+            6.75,
+            6.75
+          ],
+          "predicted_cost": 0.4317955216
+        },
+        {
+          "param": 6.7,
+          "param_range": [
+            6.7,
+            6.7
+          ],
+          "predicted_cost": 0.4322530951
+        },
+        {
+          "param": 6.65,
+          "param_range": [
+            6.65,
+            6.65
+          ],
+          "predicted_cost": 0.4324456995
+        },
+        {
+          "param": 6.6,
+          "param_range": [
+            6.6,
+            6.6
+          ],
+          "predicted_cost": 0.4327271933
+        },
+        {
+          "param": 6.55,
+          "param_range": [
+            6.55,
+            6.55
+          ],
+          "predicted_cost": 0.4332570295
+        },
+        {
+          "param": 6.5,
+          "param_range": [
+            6.5,
+            6.5
+          ],
+          "predicted_cost": 0.4335339293
+        },
+        {
+          "param": 6.45,
+          "param_range": [
+            6.45,
+            6.45
+          ],
+          "predicted_cost": 0.4342584252
+        },
+        {
+          "param": 6.4,
+          "param_range": [
+            6.4,
+            6.4
+          ],
+          "predicted_cost": 0.434573607
+        },
+        {
+          "param": 6.35,
+          "param_range": [
+            6.35,
+            6.35
+          ],
+          "predicted_cost": 0.4351804827
+        },
+        {
+          "param": 6.3,
+          "param_range": [
+            6.3,
+            6.3
+          ],
+          "predicted_cost": 0.4352887697
+        },
+        {
+          "param": 6.25,
+          "param_range": [
+            6.25,
+            6.25
+          ],
+          "predicted_cost": 0.4363149046
+        },
+        {
+          "param": 6.2,
+          "param_range": [
+            6.2,
+            6.2
+          ],
+          "predicted_cost": 0.4368857346
+        },
+        {
+          "param": 6.15,
+          "param_range": [
+            6.15,
+            6.15
+          ],
+          "predicted_cost": 0.4374511319
+        },
+        {
+          "param": 6.1,
+          "param_range": [
+            6.1,
+            6.1
+          ],
+          "predicted_cost": 0.4376917417
+        },
+        {
+          "param": 6.05,
+          "param_range": [
+            6.05,
+            6.05
+          ],
+          "predicted_cost": 0.4381835801
+        },
+        {
+          "param": 6.0,
+          "param_range": [
+            6.0,
+            6.0
+          ],
+          "predicted_cost": 0.4386768349
+        },
+        {
+          "param": 5.95,
+          "param_range": [
+            5.95,
+            5.95
+          ],
+          "predicted_cost": 0.4394164574
+        },
+        {
+          "param": 5.9,
+          "param_range": [
+            5.9,
+            5.9
+          ],
+          "predicted_cost": 0.4397125499
+        },
+        {
+          "param": 5.85,
+          "param_range": [
+            5.85,
+            5.85
+          ],
+          "predicted_cost": 0.4399629668
+        },
+        {
+          "param": 5.8,
+          "param_range": [
+            5.8,
+            5.8
+          ],
+          "predicted_cost": 0.4403504417
+        },
+        {
+          "param": 5.75,
+          "param_range": [
+            5.75,
+            5.75
+          ],
+          "predicted_cost": 0.4409838346
+        },
+        {
+          "param": 5.7,
+          "param_range": [
+            5.7,
+            5.7
+          ],
+          "predicted_cost": 0.441383394
+        },
+        {
+          "param": 5.65,
+          "param_range": [
+            5.65,
+            5.65
+          ],
+          "predicted_cost": 0.4418316103
+        },
+        {
+          "param": 5.6,
+          "param_range": [
+            5.6,
+            5.6
+          ],
+          "predicted_cost": 0.4421925841
+        },
+        {
+          "param": 5.55,
+          "param_range": [
+            5.55,
+            5.55
+          ],
+          "predicted_cost": 0.4424789943
+        },
+        {
+          "param": 5.5,
+          "param_range": [
+            5.5,
+            5.5
+          ],
+          "predicted_cost": 0.442611345
+        },
+        {
+          "param": 5.45,
+          "param_range": [
+            5.45,
+            5.45
+          ],
+          "predicted_cost": 0.4429916709
+        },
+        {
+          "param": 5.4,
+          "param_range": [
+            5.4,
+            5.4
+          ],
+          "predicted_cost": 0.4438924972
+        },
+        {
+          "param": 5.35,
+          "param_range": [
+            5.35,
+            5.35
+          ],
+          "predicted_cost": 0.4443017128
+        },
+        {
+          "param": 5.3,
+          "param_range": [
+            5.3,
+            5.3
+          ],
+          "predicted_cost": 0.4447951461
+        },
+        {
+          "param": 5.25,
+          "param_range": [
+            5.25,
+            5.25
+          ],
+          "predicted_cost": 0.4453780341
+        },
+        {
+          "param": 5.2,
+          "param_range": [
+            5.2,
+            5.2
+          ],
+          "predicted_cost": 0.4461050297
+        },
+        {
+          "param": 5.15,
+          "param_range": [
+            5.15,
+            5.15
+          ],
+          "predicted_cost": 0.4465650304
+        },
+        {
+          "param": 5.1,
+          "param_range": [
+            5.1,
+            5.1
+          ],
+          "predicted_cost": 0.4472198813
+        },
+        {
+          "param": 5.05,
+          "param_range": [
+            5.05,
+            5.05
+          ],
+          "predicted_cost": 0.447812777
+        },
+        {
+          "param": 5.0,
+          "param_range": [
+            5.0,
+            5.0
+          ],
+          "predicted_cost": 0.4483423538
+        },
+        {
+          "param": 4.95,
+          "param_range": [
+            4.95,
+            4.95
+          ],
+          "predicted_cost": 0.4487640304
+        },
+        {
+          "param": 4.9,
+          "param_range": [
+            4.9,
+            4.9
+          ],
+          "predicted_cost": 0.4494162088
+        },
+        {
+          "param": 4.85,
+          "param_range": [
+            4.85,
+            4.85
+          ],
+          "predicted_cost": 0.4500156304
+        },
+        {
+          "param": 4.8,
+          "param_range": [
+            4.8,
+            4.8
+          ],
+          "predicted_cost": 0.4504583689
+        },
+        {
+          "param": 4.75,
+          "param_range": [
+            4.75,
+            4.75
+          ],
+          "predicted_cost": 0.4509281514
+        },
+        {
+          "param": 4.7,
+          "param_range": [
+            4.7,
+            4.7
+          ],
+          "predicted_cost": 0.4518164606
+        },
+        {
+          "param": 4.65,
+          "param_range": [
+            4.65,
+            4.65
+          ],
+          "predicted_cost": 0.4522618393
+        },
+        {
+          "param": 4.6,
+          "param_range": [
+            4.6,
+            4.6
+          ],
+          "predicted_cost": 0.45276529
+        },
+        {
+          "param": 4.55,
+          "param_range": [
+            4.55,
+            4.55
+          ],
+          "predicted_cost": 0.4534850794
+        },
+        {
+          "param": 4.5,
+          "param_range": [
+            4.5,
+            4.5
+          ],
+          "predicted_cost": 0.4540287498
+        },
+        {
+          "param": 4.45,
+          "param_range": [
+            4.45,
+            4.45
+          ],
+          "predicted_cost": 0.4546167866
+        },
+        {
+          "param": 4.4,
+          "param_range": [
+            4.4,
+            4.4
+          ],
+          "predicted_cost": 0.4548647468
+        },
+        {
+          "param": 4.35,
+          "param_range": [
+            4.35,
+            4.35
+          ],
+          "predicted_cost": 0.4553728419
+        },
+        {
+          "param": 4.3,
+          "param_range": [
+            4.3,
+            4.3
+          ],
+          "predicted_cost": 0.4559723689
+        },
+        {
+          "param": 4.25,
+          "param_range": [
+            4.25,
+            4.25
+          ],
+          "predicted_cost": 0.4568034366
+        },
+        {
+          "param": 4.2,
+          "param_range": [
+            4.2,
+            4.2
+          ],
+          "predicted_cost": 0.4574129734
+        },
+        {
+          "param": 4.15,
+          "param_range": [
+            4.15,
+            4.15
+          ],
+          "predicted_cost": 0.4579164648
+        },
+        {
+          "param": 4.1,
+          "param_range": [
+            4.1,
+            4.1
+          ],
+          "predicted_cost": 0.4586365585
+        },
+        {
+          "param": 4.05,
+          "param_range": [
+            4.05,
+            4.05
+          ],
+          "predicted_cost": 0.4595496021
+        },
+        {
+          "param": 4.0,
+          "param_range": [
+            4.0,
+            4.0
+          ],
+          "predicted_cost": 0.4597759545
+        },
+        {
+          "param": 3.95,
+          "param_range": [
+            3.95,
+            3.95
+          ],
+          "predicted_cost": 0.46002154
+        },
+        {
+          "param": 3.9,
+          "param_range": [
+            3.9,
+            3.9
+          ],
+          "predicted_cost": 0.4606719732
+        },
+        {
+          "param": 3.85,
+          "param_range": [
+            3.85,
+            3.85
+          ],
+          "predicted_cost": 0.461001777
+        },
+        {
+          "param": 3.8,
+          "param_range": [
+            3.8,
+            3.8
+          ],
+          "predicted_cost": 0.4614206239
+        },
+        {
+          "param": 3.75,
+          "param_range": [
+            3.75,
+            3.75
+          ],
+          "predicted_cost": 0.4617173883
+        },
+        {
+          "param": 3.7,
+          "param_range": [
+            3.7,
+            3.7
+          ],
+          "predicted_cost": 0.4623194232
+        },
+        {
+          "param": 3.65,
+          "param_range": [
+            3.65,
+            3.65
+          ],
+          "predicted_cost": 0.4628223929
+        },
+        {
+          "param": 3.6,
+          "param_range": [
+            3.6,
+            3.6
+          ],
+          "predicted_cost": 0.4636459365
+        },
+        {
+          "param": 3.55,
+          "param_range": [
+            3.55,
+            3.55
+          ],
+          "predicted_cost": 0.4639204724
+        },
+        {
+          "param": 3.5,
+          "param_range": [
+            3.5,
+            3.5
+          ],
+          "predicted_cost": 0.4642525519
+        },
+        {
+          "param": 3.45,
+          "param_range": [
+            3.45,
+            3.45
+          ],
+          "predicted_cost": 0.4649581013
+        },
+        {
+          "param": 3.4,
+          "param_range": [
+            3.4,
+            3.4
+          ],
+          "predicted_cost": 0.4650759408
+        },
+        {
+          "param": 3.35,
+          "param_range": [
+            3.35,
+            3.35
+          ],
+          "predicted_cost": 0.4652803918
+        },
+        {
+          "param": 3.3,
+          "param_range": [
+            3.3,
+            3.3
+          ],
+          "predicted_cost": 0.4656608223
+        },
+        {
+          "param": 3.25,
+          "param_range": [
+            3.25,
+            3.25
+          ],
+          "predicted_cost": 0.4661857509
+        },
+        {
+          "param": 3.2,
+          "param_range": [
+            3.2,
+            3.2
+          ],
+          "predicted_cost": 0.4665252055
+        },
+        {
+          "param": 3.15,
+          "param_range": [
+            3.15,
+            3.15
+          ],
+          "predicted_cost": 0.4668362744
+        },
+        {
+          "param": 3.1,
+          "param_range": [
+            3.1,
+            3.1
+          ],
+          "predicted_cost": 0.4674477021
+        },
+        {
+          "param": 3.05,
+          "param_range": [
+            3.05,
+            3.05
+          ],
+          "predicted_cost": 0.4679723576
+        },
+        {
+          "param": 3.0,
+          "param_range": [
+            3.0,
+            3.0
+          ],
+          "predicted_cost": 0.4683238078
+        },
+        {
+          "param": 2.95,
+          "param_range": [
+            2.95,
+            2.95
+          ],
+          "predicted_cost": 0.4688894305
+        },
+        {
+          "param": 2.9,
+          "param_range": [
+            2.9,
+            2.9
+          ],
+          "predicted_cost": 0.4696139176
+        },
+        {
+          "param": 2.85,
+          "param_range": [
+            2.85,
+            2.85
+          ],
+          "predicted_cost": 0.4704400699
+        },
+        {
+          "param": 2.8,
+          "param_range": [
+            2.8,
+            2.8
+          ],
+          "predicted_cost": 0.4705677138
+        },
+        {
+          "param": 2.75,
+          "param_range": [
+            2.75,
+            2.75
+          ],
+          "predicted_cost": 0.4709817182
+        },
+        {
+          "param": 2.7,
+          "param_range": [
+            2.7,
+            2.7
+          ],
+          "predicted_cost": 0.4713353898
+        },
+        {
+          "param": 2.65,
+          "param_range": [
+            2.65,
+            2.65
+          ],
+          "predicted_cost": 0.4718794583
+        },
+        {
+          "param": 2.6,
+          "param_range": [
+            2.6,
+            2.6
+          ],
+          "predicted_cost": 0.4726617042
+        },
+        {
+          "param": 2.55,
+          "param_range": [
+            2.55,
+            2.55
+          ],
+          "predicted_cost": 0.4737312709
+        },
+        {
+          "param": 2.5,
+          "param_range": [
+            2.5,
+            2.5
+          ],
+          "predicted_cost": 0.474361794
+        },
+        {
+          "param": 2.45,
+          "param_range": [
+            2.45,
+            2.45
+          ],
+          "predicted_cost": 0.4746386198
+        },
+        {
+          "param": 2.4,
+          "param_range": [
+            2.4,
+            2.4
+          ],
+          "predicted_cost": 0.4753341453
+        },
+        {
+          "param": 2.35,
+          "param_range": [
+            2.35,
+            2.35
+          ],
+          "predicted_cost": 0.4756422102
+        },
+        {
+          "param": 2.3,
+          "param_range": [
+            2.3,
+            2.3
+          ],
+          "predicted_cost": 0.475921416
+        },
+        {
+          "param": 2.25,
+          "param_range": [
+            2.25,
+            2.25
+          ],
+          "predicted_cost": 0.4760874428
+        },
+        {
+          "param": 2.2,
+          "param_range": [
+            2.2,
+            2.2
+          ],
+          "predicted_cost": 0.4766506593
+        },
+        {
+          "param": 2.15,
+          "param_range": [
+            2.15,
+            2.15
+          ],
+          "predicted_cost": 0.4769493668
+        },
+        {
+          "param": 2.1,
+          "param_range": [
+            2.1,
+            2.1
+          ],
+          "predicted_cost": 0.4772046946
+        },
+        {
+          "param": 2.05,
+          "param_range": [
+            2.05,
+            2.05
+          ],
+          "predicted_cost": 0.4774740974
+        },
+        {
+          "param": 2.0,
+          "param_range": [
+            2.0,
+            2.0
+          ],
+          "predicted_cost": 0.4778687279
+        },
+        {
+          "param": 1.95,
+          "param_range": [
+            1.95,
+            1.95
+          ],
+          "predicted_cost": 0.4780780454
+        },
+        {
+          "param": 1.9,
+          "param_range": [
+            1.9,
+            1.9
+          ],
+          "predicted_cost": 0.4784393879
+        },
+        {
+          "param": 1.85,
+          "param_range": [
+            1.85,
+            1.85
+          ],
+          "predicted_cost": 0.478834288
+        },
+        {
+          "param": 1.8,
+          "param_range": [
+            1.8,
+            1.8
+          ],
+          "predicted_cost": 0.4793208951
+        },
+        {
+          "param": 1.75,
+          "param_range": [
+            1.75,
+            1.75
+          ],
+          "predicted_cost": 0.4800453145
+        },
+        {
+          "param": 1.7,
+          "param_range": [
+            1.7,
+            1.7
+          ],
+          "predicted_cost": 0.4804688182
+        },
+        {
+          "param": 1.65,
+          "param_range": [
+            1.65,
+            1.65
+          ],
+          "predicted_cost": 0.4815208769
+        },
+        {
+          "param": 1.6,
+          "param_range": [
+            1.6,
+            1.6
+          ],
+          "predicted_cost": 0.4817157644
+        },
+        {
+          "param": 1.55,
+          "param_range": [
+            1.55,
+            1.55
+          ],
+          "predicted_cost": 0.4821635032
+        },
+        {
+          "param": 1.5,
+          "param_range": [
+            1.5,
+            1.5
+          ],
+          "predicted_cost": 0.4822839733
+        },
+        {
+          "param": 1.45,
+          "param_range": [
+            1.45,
+            1.45
+          ],
+          "predicted_cost": 0.4828523044
+        },
+        {
+          "param": 1.4,
+          "param_range": [
+            1.4,
+            1.4
+          ],
+          "predicted_cost": 0.4837003127
+        },
+        {
+          "param": 1.35,
+          "param_range": [
+            1.35,
+            1.35
+          ],
+          "predicted_cost": 0.4839530684
+        },
+        {
+          "param": 1.3,
+          "param_range": [
+            1.3,
+            1.3
+          ],
+          "predicted_cost": 0.4846272927
+        },
+        {
+          "param": 1.25,
+          "param_range": [
+            1.25,
+            1.25
+          ],
+          "predicted_cost": 0.4853312055
+        },
+        {
+          "param": 1.2,
+          "param_range": [
+            1.2,
+            1.2
+          ],
+          "predicted_cost": 0.4859620229
+        },
+        {
+          "param": 1.15,
+          "param_range": [
+            1.15,
+            1.15
+          ],
+          "predicted_cost": 0.4862514093
+        },
+        {
+          "param": 1.1,
+          "param_range": [
+            1.1,
+            1.1
+          ],
+          "predicted_cost": 0.4871018551
+        },
+        {
+          "param": 1.05,
+          "param_range": [
+            1.05,
+            1.05
+          ],
+          "predicted_cost": 0.4875471133
+        },
+        {
+          "param": 1.0,
+          "param_range": [
+            1.0,
+            1.0
+          ],
+          "predicted_cost": 0.4877371255
+        },
+        {
+          "param": 0.95,
+          "param_range": [
+            0.95,
+            0.95
+          ],
+          "predicted_cost": 0.4889262731
+        },
+        {
+          "param": 0.9,
+          "param_range": [
+            0.9,
+            0.9
+          ],
+          "predicted_cost": 0.4896148253
+        },
+        {
+          "param": 0.85,
+          "param_range": [
+            0.85,
+            0.85
+          ],
+          "predicted_cost": 0.4904024513
+        },
+        {
+          "param": 0.8,
+          "param_range": [
+            0.8,
+            0.8
+          ],
+          "predicted_cost": 0.4912979541
+        },
+        {
+          "param": 0.75,
+          "param_range": [
+            0.75,
+            0.75
+          ],
+          "predicted_cost": 0.4919333851
+        },
+        {
+          "param": 0.7,
+          "param_range": [
+            0.7,
+            0.7
+          ],
+          "predicted_cost": 0.4926026746
+        },
+        {
+          "param": 0.65,
+          "param_range": [
+            0.65,
+            0.65
+          ],
+          "predicted_cost": 0.4931945795
+        },
+        {
+          "param": 0.6,
+          "param_range": [
+            0.6,
+            0.6
+          ],
+          "predicted_cost": 0.4935940923
+        },
+        {
+          "param": 0.55,
+          "param_range": [
+            0.55,
+            0.55
+          ],
+          "predicted_cost": 0.4939430332
+        },
+        {
+          "param": 0.5,
+          "param_range": [
+            0.5,
+            0.5
+          ],
+          "predicted_cost": 0.4947181475
+        },
+        {
+          "param": 0.45,
+          "param_range": [
+            0.45,
+            0.45
+          ],
+          "predicted_cost": 0.495483544
+        },
+        {
+          "param": 0.4,
+          "param_range": [
+            0.4,
+            0.4
+          ],
+          "predicted_cost": 0.4958135351
+        },
+        {
+          "param": 0.35,
+          "param_range": [
+            0.35,
+            0.35
+          ],
+          "predicted_cost": 0.4960590485
+        },
+        {
+          "param": 0.3,
+          "param_range": [
+            0.3,
+            0.3
+          ],
+          "predicted_cost": 0.496798482
+        },
+        {
+          "param": 0.25,
+          "param_range": [
+            0.25,
+            0.25
+          ],
+          "predicted_cost": 0.4969787264
+        },
+        {
+          "param": 0.2,
+          "param_range": [
+            0.2,
+            0.2
+          ],
+          "predicted_cost": 0.4975707843
+        },
+        {
+          "param": 0.15,
+          "param_range": [
+            0.15,
+            0.15
+          ],
+          "predicted_cost": 0.4980354621
+        },
+        {
+          "param": 0.1,
+          "param_range": [
+            0.1,
+            0.1
+          ],
+          "predicted_cost": 0.4986421712
+        },
+        {
+          "param": 0.05,
+          "param_range": [
+            0.05,
+            0.05
+          ],
+          "predicted_cost": 0.4990391099
+        },
+        {
+          "param": 0.0,
+          "param_range": [
+            0.0,
+            0.0
+          ],
+          "predicted_cost": 0.4998360548
+        },
+        {
+          "param": -0.05,
+          "param_range": [
+            -0.05,
+            -0.05
+          ],
+          "predicted_cost": 0.5004571104
+        },
+        {
+          "param": -0.1,
+          "param_range": [
+            -0.1,
+            -0.1
+          ],
+          "predicted_cost": 0.5009506377
+        },
+        {
+          "param": -0.15,
+          "param_range": [
+            -0.15,
+            -0.15
+          ],
+          "predicted_cost": 0.501672733
+        },
+        {
+          "param": -0.2,
+          "param_range": [
+            -0.2,
+            -0.2
+          ],
+          "predicted_cost": 0.5022030679
+        },
+        {
+          "param": -0.25,
+          "param_range": [
+            -0.25,
+            -0.25
+          ],
+          "predicted_cost": 0.5030240637
+        },
+        {
+          "param": -0.3,
+          "param_range": [
+            -0.3,
+            -0.3
+          ],
+          "predicted_cost": 0.503604193
+        },
+        {
+          "param": -0.35,
+          "param_range": [
+            -0.35,
+            -0.35
+          ],
+          "predicted_cost": 0.5039555306
+        },
+        {
+          "param": -0.4,
+          "param_range": [
+            -0.4,
+            -0.4
+          ],
+          "predicted_cost": 0.5045750535
+        },
+        {
+          "param": -0.45,
+          "param_range": [
+            -0.45,
+            -0.45
+          ],
+          "predicted_cost": 0.5053119657
+        },
+        {
+          "param": -0.5,
+          "param_range": [
+            -0.5,
+            -0.5
+          ],
+          "predicted_cost": 0.5060486498
+        },
+        {
+          "param": -0.55,
+          "param_range": [
+            -0.55,
+            -0.55
+          ],
+          "predicted_cost": 0.506217106
+        },
+        {
+          "param": -0.6,
+          "param_range": [
+            -0.6,
+            -0.6
+          ],
+          "predicted_cost": 0.5070331561
+        },
+        {
+          "param": -0.65,
+          "param_range": [
+            -0.65,
+            -0.65
+          ],
+          "predicted_cost": 0.5072455751
+        },
+        {
+          "param": -0.7,
+          "param_range": [
+            -0.7,
+            -0.7
+          ],
+          "predicted_cost": 0.507710317
+        },
+        {
+          "param": -0.75,
+          "param_range": [
+            -0.75,
+            -0.75
+          ],
+          "predicted_cost": 0.5079393351
+        },
+        {
+          "param": -0.8,
+          "param_range": [
+            -0.8,
+            -0.8
+          ],
+          "predicted_cost": 0.5087314555
+        },
+        {
+          "param": -0.85,
+          "param_range": [
+            -0.85,
+            -0.85
+          ],
+          "predicted_cost": 0.5094441414
+        },
+        {
+          "param": -0.9,
+          "param_range": [
+            -0.9,
+            -0.9
+          ],
+          "predicted_cost": 0.5101354041
+        },
+        {
+          "param": -0.95,
+          "param_range": [
+            -0.95,
+            -0.95
+          ],
+          "predicted_cost": 0.5108768373
+        },
+        {
+          "param": -1.0,
+          "param_range": [
+            -1.0,
+            -1.0
+          ],
+          "predicted_cost": 0.511252438
+        },
+        {
+          "param": -1.05,
+          "param_range": [
+            -1.05,
+            -1.05
+          ],
+          "predicted_cost": 0.5119681127
+        },
+        {
+          "param": -1.1,
+          "param_range": [
+            -1.1,
+            -1.1
+          ],
+          "predicted_cost": 0.5121198719
+        },
+        {
+          "param": -1.15,
+          "param_range": [
+            -1.15,
+            -1.15
+          ],
+          "predicted_cost": 0.5132089498
+        },
+        {
+          "param": -1.2,
+          "param_range": [
+            -1.2,
+            -1.2
+          ],
+          "predicted_cost": 0.5138323111
+        },
+        {
+          "param": -1.25,
+          "param_range": [
+            -1.25,
+            -1.25
+          ],
+          "predicted_cost": 0.5148550125
+        },
+        {
+          "param": -1.3,
+          "param_range": [
+            -1.3,
+            -1.3
+          ],
+          "predicted_cost": 0.5154647558
+        },
+        {
+          "param": -1.35,
+          "param_range": [
+            -1.35,
+            -1.35
+          ],
+          "predicted_cost": 0.5167453032
+        },
+        {
+          "param": -1.4,
+          "param_range": [
+            -1.4,
+            -1.4
+          ],
+          "predicted_cost": 0.5170414922
+        },
+        {
+          "param": -1.45,
+          "param_range": [
+            -1.45,
+            -1.45
+          ],
+          "predicted_cost": 0.5172460619
+        },
+        {
+          "param": -1.5,
+          "param_range": [
+            -1.5,
+            -1.5
+          ],
+          "predicted_cost": 0.5177734272
+        },
+        {
+          "param": -1.55,
+          "param_range": [
+            -1.55,
+            -1.55
+          ],
+          "predicted_cost": 0.5186307529
+        },
+        {
+          "param": -1.6,
+          "param_range": [
+            -1.6,
+            -1.6
+          ],
+          "predicted_cost": 0.5191151454
+        },
+        {
+          "param": -1.65,
+          "param_range": [
+            -1.65,
+            -1.65
+          ],
+          "predicted_cost": 0.519544154
+        },
+        {
+          "param": -1.7,
+          "param_range": [
+            -1.7,
+            -1.7
+          ],
+          "predicted_cost": 0.5198426025
+        },
+        {
+          "param": -1.75,
+          "param_range": [
+            -1.75,
+            -1.75
+          ],
+          "predicted_cost": 0.5206060255
+        },
+        {
+          "param": -1.8,
+          "param_range": [
+            -1.8,
+            -1.8
+          ],
+          "predicted_cost": 0.5212630598
+        },
+        {
+          "param": -1.85,
+          "param_range": [
+            -1.85,
+            -1.85
+          ],
+          "predicted_cost": 0.5216888891
+        },
+        {
+          "param": -1.9,
+          "param_range": [
+            -1.9,
+            -1.9
+          ],
+          "predicted_cost": 0.5221489525
+        },
+        {
+          "param": -1.95,
+          "param_range": [
+            -1.95,
+            -1.95
+          ],
+          "predicted_cost": 0.5224159508
+        },
+        {
+          "param": -2.0,
+          "param_range": [
+            -2.0,
+            -2.0
+          ],
+          "predicted_cost": 0.5237986011
+        },
+        {
+          "param": -2.05,
+          "param_range": [
+            -2.05,
+            -2.05
+          ],
+          "predicted_cost": 0.5245231234
+        },
+        {
+          "param": -2.1,
+          "param_range": [
+            -2.1,
+            -2.1
+          ],
+          "predicted_cost": 0.5251269639
+        },
+        {
+          "param": -2.15,
+          "param_range": [
+            -2.15,
+            -2.15
+          ],
+          "predicted_cost": 0.525365388
+        },
+        {
+          "param": -2.2,
+          "param_range": [
+            -2.2,
+            -2.2
+          ],
+          "predicted_cost": 0.5255409936
+        },
+        {
+          "param": -2.25,
+          "param_range": [
+            -2.25,
+            -2.25
+          ],
+          "predicted_cost": 0.5265274565
+        },
+        {
+          "param": -2.3,
+          "param_range": [
+            -2.3,
+            -2.3
+          ],
+          "predicted_cost": 0.5271750142
+        },
+        {
+          "param": -2.35,
+          "param_range": [
+            -2.35,
+            -2.35
+          ],
+          "predicted_cost": 0.5280104776
+        },
+        {
+          "param": -2.4,
+          "param_range": [
+            -2.4,
+            -2.4
+          ],
+          "predicted_cost": 0.5286648193
+        },
+        {
+          "param": -2.45,
+          "param_range": [
+            -2.45,
+            -2.45
+          ],
+          "predicted_cost": 0.529156085
+        },
+        {
+          "param": -2.5,
+          "param_range": [
+            -2.5,
+            -2.5
+          ],
+          "predicted_cost": 0.5294791018
+        },
+        {
+          "param": -2.55,
+          "param_range": [
+            -2.55,
+            -2.55
+          ],
+          "predicted_cost": 0.5305309646
+        },
+        {
+          "param": -2.6,
+          "param_range": [
+            -2.6,
+            -2.6
+          ],
+          "predicted_cost": 0.5310271471
+        },
+        {
+          "param": -2.65,
+          "param_range": [
+            -2.65,
+            -2.65
+          ],
+          "predicted_cost": 0.53150841
+        },
+        {
+          "param": -2.7,
+          "param_range": [
+            -2.7,
+            -2.7
+          ],
+          "predicted_cost": 0.5316942154
+        },
+        {
+          "param": -2.75,
+          "param_range": [
+            -2.75,
+            -2.75
+          ],
+          "predicted_cost": 0.5322479321
+        },
+        {
+          "param": -2.8,
+          "param_range": [
+            -2.8,
+            -2.8
+          ],
+          "predicted_cost": 0.5333386111
+        },
+        {
+          "param": -2.85,
+          "param_range": [
+            -2.85,
+            -2.85
+          ],
+          "predicted_cost": 0.533863531
+        },
+        {
+          "param": -2.9,
+          "param_range": [
+            -2.9,
+            -2.9
+          ],
+          "predicted_cost": 0.5341382977
+        },
+        {
+          "param": -2.95,
+          "param_range": [
+            -2.95,
+            -2.95
+          ],
+          "predicted_cost": 0.534650725
+        },
+        {
+          "param": -3.0,
+          "param_range": [
+            -3.0,
+            -3.0
+          ],
+          "predicted_cost": 0.5357073989
+        },
+        {
+          "param": -3.05,
+          "param_range": [
+            -3.05,
+            -3.05
+          ],
+          "predicted_cost": 0.5358038384
+        },
+        {
+          "param": -3.1,
+          "param_range": [
+            -3.1,
+            -3.1
+          ],
+          "predicted_cost": 0.5364717728
+        },
+        {
+          "param": -3.15,
+          "param_range": [
+            -3.15,
+            -3.15
+          ],
+          "predicted_cost": 0.5372492956
+        },
+        {
+          "param": -3.2,
+          "param_range": [
+            -3.2,
+            -3.2
+          ],
+          "predicted_cost": 0.5383832814
+        },
+        {
+          "param": -3.25,
+          "param_range": [
+            -3.25,
+            -3.25
+          ],
+          "predicted_cost": 0.5387202271
+        },
+        {
+          "param": -3.3,
+          "param_range": [
+            -3.3,
+            -3.3
+          ],
+          "predicted_cost": 0.5397397936
+        },
+        {
+          "param": -3.35,
+          "param_range": [
+            -3.35,
+            -3.35
+          ],
+          "predicted_cost": 0.5403438938
+        },
+        {
+          "param": -3.4,
+          "param_range": [
+            -3.4,
+            -3.4
+          ],
+          "predicted_cost": 0.5417379743
+        },
+        {
+          "param": -3.45,
+          "param_range": [
+            -3.45,
+            -3.45
+          ],
+          "predicted_cost": 0.542241243
+        },
+        {
+          "param": -3.5,
+          "param_range": [
+            -3.5,
+            -3.5
+          ],
+          "predicted_cost": 0.5430380353
+        },
+        {
+          "param": -3.55,
+          "param_range": [
+            -3.55,
+            -3.55
+          ],
+          "predicted_cost": 0.5435795896
+        },
+        {
+          "param": -3.6,
+          "param_range": [
+            -3.6,
+            -3.6
+          ],
+          "predicted_cost": 0.5446119495
+        },
+        {
+          "param": -3.65,
+          "param_range": [
+            -3.65,
+            -3.65
+          ],
+          "predicted_cost": 0.544737125
+        },
+        {
+          "param": -3.7,
+          "param_range": [
+            -3.7,
+            -3.7
+          ],
+          "predicted_cost": 0.5454206552
+        },
+        {
+          "param": -3.75,
+          "param_range": [
+            -3.75,
+            -3.75
+          ],
+          "predicted_cost": 0.5470401747
+        },
+        {
+          "param": -3.8,
+          "param_range": [
+            -3.8,
+            -3.8
+          ],
+          "predicted_cost": 0.5475357091
+        },
+        {
+          "param": -3.85,
+          "param_range": [
+            -3.85,
+            -3.85
+          ],
+          "predicted_cost": 0.5484284744
+        },
+        {
+          "param": -3.9,
+          "param_range": [
+            -3.9,
+            -3.9
+          ],
+          "predicted_cost": 0.5492200119
+        },
+        {
+          "param": -3.95,
+          "param_range": [
+            -3.95,
+            -3.95
+          ],
+          "predicted_cost": 0.550549017
+        },
+        {
+          "param": -4.0,
+          "param_range": [
+            -4.0,
+            -4.0
+          ],
+          "predicted_cost": 0.5511311439
+        },
+        {
+          "param": -4.05,
+          "param_range": [
+            -4.05,
+            -4.05
+          ],
+          "predicted_cost": 0.5521384798
+        },
+        {
+          "param": -4.1,
+          "param_range": [
+            -4.1,
+            -4.1
+          ],
+          "predicted_cost": 0.5538196518
+        },
+        {
+          "param": -4.15,
+          "param_range": [
+            -4.15,
+            -4.15
+          ],
+          "predicted_cost": 0.5556626088
+        },
+        {
+          "param": -4.2,
+          "param_range": [
+            -4.2,
+            -4.2
+          ],
+          "predicted_cost": 0.5565102827
+        },
+        {
+          "param": -4.25,
+          "param_range": [
+            -4.25,
+            -4.25
+          ],
+          "predicted_cost": 0.5577621632
+        },
+        {
+          "param": -4.3,
+          "param_range": [
+            -4.3,
+            -4.3
+          ],
+          "predicted_cost": 0.5590552319
+        },
+        {
+          "param": -4.35,
+          "param_range": [
+            -4.35,
+            -4.35
+          ],
+          "predicted_cost": 0.5599868928
+        },
+        {
+          "param": -4.4,
+          "param_range": [
+            -4.4,
+            -4.4
+          ],
+          "predicted_cost": 0.5611038914
+        },
+        {
+          "param": -4.45,
+          "param_range": [
+            -4.45,
+            -4.45
+          ],
+          "predicted_cost": 0.5625713018
+        },
+        {
+          "param": -4.5,
+          "param_range": [
+            -4.5,
+            -4.5
+          ],
+          "predicted_cost": 0.5638547278
+        },
+        {
+          "param": -4.55,
+          "param_range": [
+            -4.55,
+            -4.55
+          ],
+          "predicted_cost": 0.5656318462
+        },
+        {
+          "param": -4.6,
+          "param_range": [
+            -4.6,
+            -4.6
+          ],
+          "predicted_cost": 0.5669316591
+        },
+        {
+          "param": -4.65,
+          "param_range": [
+            -4.65,
+            -4.65
+          ],
+          "predicted_cost": 0.5684177409
+        },
+        {
+          "param": -4.7,
+          "param_range": [
+            -4.7,
+            -4.7
+          ],
+          "predicted_cost": 0.5692553089
+        },
+        {
+          "param": -4.75,
+          "param_range": [
+            -4.75,
+            -4.75
+          ],
+          "predicted_cost": 0.5701986952
+        },
+        {
+          "param": -4.8,
+          "param_range": [
+            -4.8,
+            -4.8
+          ],
+          "predicted_cost": 0.5708557973
+        },
+        {
+          "param": -4.85,
+          "param_range": [
+            -4.85,
+            -4.85
+          ],
+          "predicted_cost": 0.5716702875
+        },
+        {
+          "param": -4.9,
+          "param_range": [
+            -4.9,
+            -4.9
+          ],
+          "predicted_cost": 0.5734034878
+        },
+        {
+          "param": -4.95,
+          "param_range": [
+            -4.95,
+            -4.95
+          ],
+          "predicted_cost": 0.5742745372
+        },
+        {
+          "param": -5.0,
+          "param_range": [
+            -5.0,
+            -5.0
+          ],
+          "predicted_cost": 0.5764620258
+        },
+        {
+          "param": -5.05,
+          "param_range": [
+            -5.05,
+            -5.05
+          ],
+          "predicted_cost": 0.5778961513
+        },
+        {
+          "param": -5.1,
+          "param_range": [
+            -5.1,
+            -5.1
+          ],
+          "predicted_cost": 0.5787399344
+        },
+        {
+          "param": -5.15,
+          "param_range": [
+            -5.15,
+            -5.15
+          ],
+          "predicted_cost": 0.5801287614
+        },
+        {
+          "param": -5.2,
+          "param_range": [
+            -5.2,
+            -5.2
+          ],
+          "predicted_cost": 0.5811906465
+        },
+        {
+          "param": -5.25,
+          "param_range": [
+            -5.25,
+            -5.25
+          ],
+          "predicted_cost": 0.5832568576
+        },
+        {
+          "param": -5.3,
+          "param_range": [
+            -5.3,
+            -5.3
+          ],
+          "predicted_cost": 0.5847616156
+        },
+        {
+          "param": -5.35,
+          "param_range": [
+            -5.35,
+            -5.35
+          ],
+          "predicted_cost": 0.5859197787
+        },
+        {
+          "param": -5.4,
+          "param_range": [
+            -5.4,
+            -5.4
+          ],
+          "predicted_cost": 0.5872009104
+        },
+        {
+          "param": -5.45,
+          "param_range": [
+            -5.45,
+            -5.45
+          ],
+          "predicted_cost": 0.5891695649
+        },
+        {
+          "param": -5.5,
+          "param_range": [
+            -5.5,
+            -5.5
+          ],
+          "predicted_cost": 0.5913382791
+        },
+        {
+          "param": -5.55,
+          "param_range": [
+            -5.55,
+            -5.55
+          ],
+          "predicted_cost": 0.5926679033
+        },
+        {
+          "param": -5.6,
+          "param_range": [
+            -5.6,
+            -5.6
+          ],
+          "predicted_cost": 0.5942810387
+        },
+        {
+          "param": -5.65,
+          "param_range": [
+            -5.65,
+            -5.65
+          ],
+          "predicted_cost": 0.5953528335
+        },
+        {
+          "param": -5.7,
+          "param_range": [
+            -5.7,
+            -5.7
+          ],
+          "predicted_cost": 0.5964549751
+        },
+        {
+          "param": -5.75,
+          "param_range": [
+            -5.75,
+            -5.75
+          ],
+          "predicted_cost": 0.5974175106
+        },
+        {
+          "param": -5.8,
+          "param_range": [
+            -5.8,
+            -5.8
+          ],
+          "predicted_cost": 0.5988431172
+        },
+        {
+          "param": -5.85,
+          "param_range": [
+            -5.85,
+            -5.85
+          ],
+          "predicted_cost": 0.5999238526
+        },
+        {
+          "param": -5.9,
+          "param_range": [
+            -5.9,
+            -5.9
+          ],
+          "predicted_cost": 0.6028377
+        },
+        {
+          "param": -5.95,
+          "param_range": [
+            -5.95,
+            -5.95
+          ],
+          "predicted_cost": 0.60501331
+        },
+        {
+          "param": -6.0,
+          "param_range": [
+            -6.0,
+            -6.0
+          ],
+          "predicted_cost": 0.6068265905
+        },
+        {
+          "param": -6.05,
+          "param_range": [
+            -6.05,
+            -6.05
+          ],
+          "predicted_cost": 0.608586173
+        },
+        {
+          "param": -6.1,
+          "param_range": [
+            -6.1,
+            -6.1
+          ],
+          "predicted_cost": 0.6101974468
+        },
+        {
+          "param": -6.15,
+          "param_range": [
+            -6.15,
+            -6.15
+          ],
+          "predicted_cost": 0.6120369711
+        },
+        {
+          "param": -6.2,
+          "param_range": [
+            -6.2,
+            -6.2
+          ],
+          "predicted_cost": 0.6135756046
+        },
+        {
+          "param": -6.25,
+          "param_range": [
+            -6.25,
+            -6.25
+          ],
+          "predicted_cost": 0.6155892412
+        },
+        {
+          "param": -6.3,
+          "param_range": [
+            -6.3,
+            -6.3
+          ],
+          "predicted_cost": 0.6164218573
+        },
+        {
+          "param": -6.35,
+          "param_range": [
+            -6.35,
+            -6.35
+          ],
+          "predicted_cost": 0.617803395
+        },
+        {
+          "param": -6.4,
+          "param_range": [
+            -6.4,
+            -6.4
+          ],
+          "predicted_cost": 0.6196928763
+        },
+        {
+          "param": -6.45,
+          "param_range": [
+            -6.45,
+            -6.45
+          ],
+          "predicted_cost": 0.6218177434
+        },
+        {
+          "param": -6.5,
+          "param_range": [
+            -6.5,
+            -6.5
+          ],
+          "predicted_cost": 0.6238488983
+        },
+        {
+          "param": -6.55,
+          "param_range": [
+            -6.55,
+            -6.55
+          ],
+          "predicted_cost": 0.6251009506
+        },
+        {
+          "param": -6.6,
+          "param_range": [
+            -6.6,
+            -6.6
+          ],
+          "predicted_cost": 0.6266801146
+        },
+        {
+          "param": -6.65,
+          "param_range": [
+            -6.65,
+            -6.65
+          ],
+          "predicted_cost": 0.6281663381
+        },
+        {
+          "param": -6.7,
+          "param_range": [
+            -6.7,
+            -6.7
+          ],
+          "predicted_cost": 0.6297595548
+        },
+        {
+          "param": -6.75,
+          "param_range": [
+            -6.75,
+            -6.75
+          ],
+          "predicted_cost": 0.632013565
+        },
+        {
+          "param": -6.8,
+          "param_range": [
+            -6.8,
+            -6.8
+          ],
+          "predicted_cost": 0.6341543348
+        },
+        {
+          "param": -6.85,
+          "param_range": [
+            -6.85,
+            -6.85
+          ],
+          "predicted_cost": 0.636786349
+        },
+        {
+          "param": -6.9,
+          "param_range": [
+            -6.9,
+            -6.9
+          ],
+          "predicted_cost": 0.6387887697
+        },
+        {
+          "param": -6.95,
+          "param_range": [
+            -6.95,
+            -6.95
+          ],
+          "predicted_cost": 0.6406138039
+        },
+        {
+          "param": -7.0,
+          "param_range": [
+            -7.0,
+            -7.0
+          ],
+          "predicted_cost": 0.6417927657
+        },
+        {
+          "param": -7.05,
+          "param_range": [
+            -7.05,
+            -7.05
+          ],
+          "predicted_cost": 0.6436070888
+        },
+        {
+          "param": -7.1,
+          "param_range": [
+            -7.1,
+            -7.1
+          ],
+          "predicted_cost": 0.6451116107
+        },
+        {
+          "param": -7.15,
+          "param_range": [
+            -7.15,
+            -7.15
+          ],
+          "predicted_cost": 0.6468596542
+        },
+        {
+          "param": -7.2,
+          "param_range": [
+            -7.2,
+            -7.2
+          ],
+          "predicted_cost": 0.6477287648
+        }
+      ],
+      "predicted_levels": 801,
+      "online_vs_predicted": [
+        {
+          "param": -0.05,
+          "online": 0.5026052178741794,
+          "predicted": 0.5004571104
+        },
+        {
+          "param": 0.0,
+          "online": 0.5020780515791796,
+          "predicted": 0.4998360548
+        },
+        {
+          "param": 0.05,
+          "online": 0.5014641351989958,
+          "predicted": 0.4990391099
+        },
+        {
+          "param": 0.1,
+          "online": 0.5007802313708115,
+          "predicted": 0.4986421712
+        },
+        {
+          "param": 0.15,
+          "online": 0.4999809172625688,
+          "predicted": 0.4980354621
+        }
+      ]
+    },
+    "R": {
+      "online_points": [
+        {
+          "param": 1.47,
+          "relative_cost": 0.5005741349262703,
+          "doc_mean_nll": 0.8750980829551669,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2406392694063927,
+            "8": 0.7593607305936073,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        {
+          "param": 1.48,
+          "relative_cost": 0.4968425473508913,
+          "doc_mean_nll": 0.8795661785717279,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.26894977168949774,
+            "8": 0.7310502283105023,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      ],
+      "bracket": {
+        "param_high_cost": 1.47,
+        "param_low_cost": 1.48,
+        "weight_high": 0.846141912879528
+      },
+      "cal_matched_nll": 0.8757855355998023,
+      "predicted_levels_near_budget": [
+        {
+          "param": 3.53,
+          "param_range": [
+            3.53,
+            3.53
+          ],
+          "predicted_cost": 0.3504766135
+        },
+        {
+          "param": 3.52,
+          "param_range": [
+            3.52,
+            3.52
+          ],
+          "predicted_cost": 0.3550480919
+        },
+        {
+          "param": 3.51,
+          "param_range": [
+            3.51,
+            3.51
+          ],
+          "predicted_cost": 0.3600999632
+        },
+        {
+          "param": 3.5,
+          "param_range": [
+            3.5,
+            3.5
+          ],
+          "predicted_cost": 0.3651158386
+        },
+        {
+          "param": 3.49,
+          "param_range": [
+            3.49,
+            3.49
+          ],
+          "predicted_cost": 0.3702614565
+        },
+        {
+          "param": 3.48,
+          "param_range": [
+            3.48,
+            3.48
+          ],
+          "predicted_cost": 0.3748663011
+        },
+        {
+          "param": 3.47,
+          "param_range": [
+            3.47,
+            3.47
+          ],
+          "predicted_cost": 0.3801309241
+        },
+        {
+          "param": 3.46,
+          "param_range": [
+            3.46,
+            3.46
+          ],
+          "predicted_cost": 0.3847869129
+        },
+        {
+          "param": 3.45,
+          "param_range": [
+            3.45,
+            3.45
+          ],
+          "predicted_cost": 0.3889199748
+        },
+        {
+          "param": 3.44,
+          "param_range": [
+            3.44,
+            3.44
+          ],
+          "predicted_cost": 0.3925216097
+        },
+        {
+          "param": 3.43,
+          "param_range": [
+            3.43,
+            3.43
+          ],
+          "predicted_cost": 0.3972199942
+        },
+        {
+          "param": 3.42,
+          "param_range": [
+            3.42,
+            3.42
+          ],
+          "predicted_cost": 0.4002965601
+        },
+        {
+          "param": 3.41,
+          "param_range": [
+            3.41,
+            3.41
+          ],
+          "predicted_cost": 0.4045645461
+        },
+        {
+          "param": 3.4,
+          "param_range": [
+            3.4,
+            3.4
+          ],
+          "predicted_cost": 0.4073339913
+        },
+        {
+          "param": 3.39,
+          "param_range": [
+            3.39,
+            3.39
+          ],
+          "predicted_cost": 0.4088645635
+        },
+        {
+          "param": 3.38,
+          "param_range": [
+            3.38,
+            3.38
+          ],
+          "predicted_cost": 0.4104027391
+        },
+        {
+          "param": 3.37,
+          "param_range": [
+            3.37,
+            3.37
+          ],
+          "predicted_cost": 0.4122981017
+        },
+        {
+          "param": 3.36,
+          "param_range": [
+            3.36,
+            3.36
+          ],
+          "predicted_cost": 0.4133374707
+        },
+        {
+          "param": 3.35,
+          "param_range": [
+            3.35,
+            3.35
+          ],
+          "predicted_cost": 0.4139499213
+        },
+        {
+          "param": 3.34,
+          "param_range": [
+            3.34,
+            3.34
+          ],
+          "predicted_cost": 0.4147291169
+        },
+        {
+          "param": 3.33,
+          "param_range": [
+            3.33,
+            3.33
+          ],
+          "predicted_cost": 0.4151222662
+        },
+        {
+          "param": 3.32,
+          "param_range": [
+            3.32,
+            3.32
+          ],
+          "predicted_cost": 0.4155518367
+        },
+        {
+          "param": 3.31,
+          "param_range": [
+            3.31,
+            3.31
+          ],
+          "predicted_cost": 0.4159039893
+        },
+        {
+          "param": 3.3,
+          "param_range": [
+            3.3,
+            3.3
+          ],
+          "predicted_cost": 0.4160028613
+        },
+        {
+          "param": 3.29,
+          "param_range": [
+            3.29,
+            3.29
+          ],
+          "predicted_cost": 0.4161330343
+        },
+        {
+          "param": 3.28,
+          "param_range": [
+            3.28,
+            3.28
+          ],
+          "predicted_cost": 0.4162947369
+        },
+        {
+          "param": 3.26,
+          "param_range": [
+            3.24,
+            3.27
+          ],
+          "predicted_cost": 0.4163284586
+        },
+        {
+          "param": 3.23,
+          "param_range": [
+            3.23,
+            3.23
+          ],
+          "predicted_cost": 0.4164202102
+        },
+        {
+          "param": 3.21,
+          "param_range": [
+            3.2,
+            3.22
+          ],
+          "predicted_cost": 0.4164925583
+        },
+        {
+          "param": 3.19,
+          "param_range": [
+            3.18,
+            3.19
+          ],
+          "predicted_cost": 0.4165553276
+        },
+        {
+          "param": 3.17,
+          "param_range": [
+            3.17,
+            3.17
+          ],
+          "predicted_cost": 0.41659153
+        },
+        {
+          "param": 3.16,
+          "param_range": [
+            3.16,
+            3.16
+          ],
+          "predicted_cost": 0.4166011628
+        },
+        {
+          "param": 3.15,
+          "param_range": [
+            3.14,
+            3.15
+          ],
+          "predicted_cost": 0.4166397534
+        },
+        {
+          "param": 3.13,
+          "param_range": [
+            3.13,
+            3.13
+          ],
+          "predicted_cost": 0.4166711022
+        },
+        {
+          "param": 3.12,
+          "param_range": [
+            3.12,
+            3.12
+          ],
+          "predicted_cost": 0.4168158462
+        },
+        {
+          "param": 3.11,
+          "param_range": [
+            3.11,
+            3.11
+          ],
+          "predicted_cost": 0.4169050628
+        },
+        {
+          "param": 3.1,
+          "param_range": [
+            3.1,
+            3.1
+          ],
+          "predicted_cost": 0.4171294949
+        },
+        {
+          "param": 3.09,
+          "param_range": [
+            3.08,
+            3.09
+          ],
+          "predicted_cost": 0.4173251737
+        },
+        {
+          "param": 3.07,
+          "param_range": [
+            3.07,
+            3.07
+          ],
+          "predicted_cost": 0.4174677678
+        },
+        {
+          "param": 3.06,
+          "param_range": [
+            3.05,
+            3.06
+          ],
+          "predicted_cost": 0.4175716987
+        },
+        {
+          "param": 3.04,
+          "param_range": [
+            3.04,
+            3.04
+          ],
+          "predicted_cost": 0.4176658992
+        },
+        {
+          "param": 3.03,
+          "param_range": [
+            3.03,
+            3.03
+          ],
+          "predicted_cost": 0.4177360252
+        },
+        {
+          "param": 2.8,
+          "param_range": [
+            2.58,
+            3.02
+          ],
+          "predicted_cost": 0.4178182556
+        },
+        {
+          "param": 2.57,
+          "param_range": [
+            2.57,
+            2.57
+          ],
+          "predicted_cost": 0.417854458
+        },
+        {
+          "param": 2.55,
+          "param_range": [
+            2.53,
+            2.56
+          ],
+          "predicted_cost": 0.4178640908
+        },
+        {
+          "param": 2.5,
+          "param_range": [
+            2.48,
+            2.52
+          ],
+          "predicted_cost": 0.4179026814
+        },
+        {
+          "param": 2.47,
+          "param_range": [
+            2.46,
+            2.47
+          ],
+          "predicted_cost": 0.4179340302
+        },
+        {
+          "param": 2.45,
+          "param_range": [
+            2.45,
+            2.45
+          ],
+          "predicted_cost": 0.4180787742
+        },
+        {
+          "param": 2.44,
+          "param_range": [
+            2.44,
+            2.44
+          ],
+          "predicted_cost": 0.4181100811
+        },
+        {
+          "param": 2.43,
+          "param_range": [
+            2.43,
+            2.43
+          ],
+          "predicted_cost": 0.4181679908
+        },
+        {
+          "param": 2.42,
+          "param_range": [
+            2.41,
+            2.42
+          ],
+          "predicted_cost": 0.4182596728
+        },
+        {
+          "param": 2.4,
+          "param_range": [
+            2.39,
+            2.4
+          ],
+          "predicted_cost": 0.4183924229
+        },
+        {
+          "param": 2.38,
+          "param_range": [
+            2.38,
+            2.38
+          ],
+          "predicted_cost": 0.4185253034
+        },
+        {
+          "param": 2.36,
+          "param_range": [
+            2.35,
+            2.37
+          ],
+          "predicted_cost": 0.4185881017
+        },
+        {
+          "param": 2.33,
+          "param_range": [
+            2.32,
+            2.34
+          ],
+          "predicted_cost": 0.4187306958
+        },
+        {
+          "param": 2.29,
+          "param_range": [
+            2.27,
+            2.31
+          ],
+          "predicted_cost": 0.4188346267
+        },
+        {
+          "param": 2.26,
+          "param_range": [
+            2.26,
+            2.26
+          ],
+          "predicted_cost": 0.4188877378
+        },
+        {
+          "param": 2.25,
+          "param_range": [
+            2.25,
+            2.25
+          ],
+          "predicted_cost": 0.4189288272
+        },
+        {
+          "param": 2.24,
+          "param_range": [
+            2.23,
+            2.24
+          ],
+          "predicted_cost": 0.4189989532
+        },
+        {
+          "param": 2.07,
+          "param_range": [
+            1.92,
+            2.22
+          ],
+          "predicted_cost": 0.4190811836
+        },
+        {
+          "param": 1.91,
+          "param_range": [
+            1.91,
+            1.91
+          ],
+          "predicted_cost": 0.4191221077
+        },
+        {
+          "param": 1.9,
+          "param_range": [
+            1.89,
+            1.9
+          ],
+          "predicted_cost": 0.419136555
+        },
+        {
+          "param": 1.88,
+          "param_range": [
+            1.88,
+            1.88
+          ],
+          "predicted_cost": 0.4191582553
+        },
+        {
+          "param": 1.87,
+          "param_range": [
+            1.86,
+            1.87
+          ],
+          "predicted_cost": 0.4192664044
+        },
+        {
+          "param": 1.85,
+          "param_range": [
+            1.85,
+            1.85
+          ],
+          "predicted_cost": 0.4193893396
+        },
+        {
+          "param": 1.84,
+          "param_range": [
+            1.84,
+            1.84
+          ],
+          "predicted_cost": 0.419509892
+        },
+        {
+          "param": 1.83,
+          "param_range": [
+            1.83,
+            1.83
+          ],
+          "predicted_cost": 0.4196326191
+        },
+        {
+          "param": 1.82,
+          "param_range": [
+            1.82,
+            1.82
+          ],
+          "predicted_cost": 0.4197938514
+        },
+        {
+          "param": 1.81,
+          "param_range": [
+            1.81,
+            1.81
+          ],
+          "predicted_cost": 0.4202105373
+        },
+        {
+          "param": 1.8,
+          "param_range": [
+            1.8,
+            1.8
+          ],
+          "predicted_cost": 0.4204342345
+        },
+        {
+          "param": 1.79,
+          "param_range": [
+            1.79,
+            1.79
+          ],
+          "predicted_cost": 0.4208500609
+        },
+        {
+          "param": 1.78,
+          "param_range": [
+            1.78,
+            1.78
+          ],
+          "predicted_cost": 0.4212547029
+        },
+        {
+          "param": 1.77,
+          "param_range": [
+            1.77,
+            1.77
+          ],
+          "predicted_cost": 0.4215462284
+        },
+        {
+          "param": 1.76,
+          "param_range": [
+            1.76,
+            1.76
+          ],
+          "predicted_cost": 0.4220850263
+        },
+        {
+          "param": 1.75,
+          "param_range": [
+            1.75,
+            1.75
+          ],
+          "predicted_cost": 0.4227328205
+        },
+        {
+          "param": 1.74,
+          "param_range": [
+            1.74,
+            1.74
+          ],
+          "predicted_cost": 0.4237797532
+        },
+        {
+          "param": 1.73,
+          "param_range": [
+            1.73,
+            1.73
+          ],
+          "predicted_cost": 0.4245258897
+        },
+        {
+          "param": 1.72,
+          "param_range": [
+            1.72,
+            1.72
+          ],
+          "predicted_cost": 0.4251011961
+        },
+        {
+          "param": 1.71,
+          "param_range": [
+            1.71,
+            1.71
+          ],
+          "predicted_cost": 0.4254192954
+        },
+        {
+          "param": 1.7,
+          "param_range": [
+            1.7,
+            1.7
+          ],
+          "predicted_cost": 0.4261095029
+        },
+        {
+          "param": 1.69,
+          "param_range": [
+            1.69,
+            1.69
+          ],
+          "predicted_cost": 0.426953958
+        },
+        {
+          "param": 1.68,
+          "param_range": [
+            1.68,
+            1.68
+          ],
+          "predicted_cost": 0.4276467596
+        },
+        {
+          "param": 1.67,
+          "param_range": [
+            1.67,
+            1.67
+          ],
+          "predicted_cost": 0.428584854
+        },
+        {
+          "param": 1.66,
+          "param_range": [
+            1.66,
+            1.66
+          ],
+          "predicted_cost": 0.4299781639
+        },
+        {
+          "param": 1.65,
+          "param_range": [
+            1.65,
+            1.65
+          ],
+          "predicted_cost": 0.4313981353
+        },
+        {
+          "param": 1.64,
+          "param_range": [
+            1.64,
+            1.64
+          ],
+          "predicted_cost": 0.4337017373
+        },
+        {
+          "param": 1.63,
+          "param_range": [
+            1.63,
+            1.63
+          ],
+          "predicted_cost": 0.4369454975
+        },
+        {
+          "param": 1.62,
+          "param_range": [
+            1.62,
+            1.62
+          ],
+          "predicted_cost": 0.4395998485
+        },
+        {
+          "param": 1.61,
+          "param_range": [
+            1.61,
+            1.61
+          ],
+          "predicted_cost": 0.443303592
+        },
+        {
+          "param": 1.6,
+          "param_range": [
+            1.6,
+            1.6
+          ],
+          "predicted_cost": 0.4468011417
+        },
+        {
+          "param": 1.59,
+          "param_range": [
+            1.59,
+            1.59
+          ],
+          "predicted_cost": 0.4506088023
+        },
+        {
+          "param": 1.58,
+          "param_range": [
+            1.58,
+            1.58
+          ],
+          "predicted_cost": 0.4553558337
+        },
+        {
+          "param": 1.57,
+          "param_range": [
+            1.57,
+            1.57
+          ],
+          "predicted_cost": 0.4591408609
+        },
+        {
+          "param": 1.56,
+          "param_range": [
+            1.56,
+            1.56
+          ],
+          "predicted_cost": 0.4612377279
+        },
+        {
+          "param": 1.55,
+          "param_range": [
+            1.55,
+            1.55
+          ],
+          "predicted_cost": 0.4672533361
+        },
+        {
+          "param": 1.54,
+          "param_range": [
+            1.54,
+            1.54
+          ],
+          "predicted_cost": 0.4722374236
+        },
+        {
+          "param": 1.53,
+          "param_range": [
+            1.53,
+            1.53
+          ],
+          "predicted_cost": 0.4768138455
+        },
+        {
+          "param": 1.52,
+          "param_range": [
+            1.52,
+            1.52
+          ],
+          "predicted_cost": 0.4797422916
+        },
+        {
+          "param": 1.51,
+          "param_range": [
+            1.51,
+            1.51
+          ],
+          "predicted_cost": 0.4849953194
+        },
+        {
+          "param": 1.5,
+          "param_range": [
+            1.5,
+            1.5
+          ],
+          "predicted_cost": 0.4886099393
+        },
+        {
+          "param": 1.49,
+          "param_range": [
+            1.49,
+            1.49
+          ],
+          "predicted_cost": 0.4928202657
+        },
+        {
+          "param": 1.48,
+          "param_range": [
+            1.48,
+            1.48
+          ],
+          "predicted_cost": 0.4968425474
+        },
+        {
+          "param": 1.47,
+          "param_range": [
+            1.47,
+            1.47
+          ],
+          "predicted_cost": 0.5005741349
+        },
+        {
+          "param": 1.46,
+          "param_range": [
+            1.46,
+            1.46
+          ],
+          "predicted_cost": 0.5029563949
+        },
+        {
+          "param": 1.45,
+          "param_range": [
+            1.45,
+            1.45
+          ],
+          "predicted_cost": 0.5061002788
+        },
+        {
+          "param": 1.44,
+          "param_range": [
+            1.44,
+            1.44
+          ],
+          "predicted_cost": 0.5083919754
+        },
+        {
+          "param": 1.43,
+          "param_range": [
+            1.43,
+            1.43
+          ],
+          "predicted_cost": 0.5106853253
+        },
+        {
+          "param": 1.42,
+          "param_range": [
+            1.42,
+            1.42
+          ],
+          "predicted_cost": 0.5121067049
+        },
+        {
+          "param": 1.41,
+          "param_range": [
+            1.41,
+            1.41
+          ],
+          "predicted_cost": 0.5139561625
+        },
+        {
+          "param": 1.4,
+          "param_range": [
+            1.4,
+            1.4
+          ],
+          "predicted_cost": 0.5168013389
+        },
+        {
+          "param": 1.39,
+          "param_range": [
+            1.39,
+            1.39
+          ],
+          "predicted_cost": 0.5183500728
+        },
+        {
+          "param": 1.38,
+          "param_range": [
+            1.38,
+            1.38
+          ],
+          "predicted_cost": 0.5197472605
+        },
+        {
+          "param": 1.37,
+          "param_range": [
+            1.37,
+            1.37
+          ],
+          "predicted_cost": 0.5209637512
+        },
+        {
+          "param": 1.36,
+          "param_range": [
+            1.36,
+            1.36
+          ],
+          "predicted_cost": 0.5220696018
+        },
+        {
+          "param": 1.35,
+          "param_range": [
+            1.35,
+            1.35
+          ],
+          "predicted_cost": 0.5235154639
+        },
+        {
+          "param": 1.34,
+          "param_range": [
+            1.34,
+            1.34
+          ],
+          "predicted_cost": 0.5244645972
+        },
+        {
+          "param": 1.33,
+          "param_range": [
+            1.33,
+            1.33
+          ],
+          "predicted_cost": 0.5250065624
+        },
+        {
+          "param": 1.32,
+          "param_range": [
+            1.32,
+            1.32
+          ],
+          "predicted_cost": 0.5256540775
+        },
+        {
+          "param": 1.31,
+          "param_range": [
+            1.31,
+            1.31
+          ],
+          "predicted_cost": 0.5264394346
+        },
+        {
+          "param": 1.3,
+          "param_range": [
+            1.3,
+            1.3
+          ],
+          "predicted_cost": 0.5265263103
+        },
+        {
+          "param": 1.29,
+          "param_range": [
+            1.29,
+            1.29
+          ],
+          "predicted_cost": 0.5266683158
+        },
+        {
+          "param": 1.28,
+          "param_range": [
+            1.28,
+            1.28
+          ],
+          "predicted_cost": 0.5274893588
+        },
+        {
+          "param": 1.27,
+          "param_range": [
+            1.27,
+            1.27
+          ],
+          "predicted_cost": 0.5279395692
+        },
+        {
+          "param": 1.26,
+          "param_range": [
+            1.26,
+            1.26
+          ],
+          "predicted_cost": 0.5284185343
+        },
+        {
+          "param": 1.25,
+          "param_range": [
+            1.25,
+            1.25
+          ],
+          "predicted_cost": 0.5288012651
+        },
+        {
+          "param": 1.24,
+          "param_range": [
+            1.24,
+            1.24
+          ],
+          "predicted_cost": 0.5292950411
+        },
+        {
+          "param": 1.23,
+          "param_range": [
+            1.23,
+            1.23
+          ],
+          "predicted_cost": 0.5294178368
+        },
+        {
+          "param": 1.22,
+          "param_range": [
+            1.22,
+            1.22
+          ],
+          "predicted_cost": 0.5297573617
+        },
+        {
+          "param": 1.21,
+          "param_range": [
+            1.21,
+            1.21
+          ],
+          "predicted_cost": 0.530043807
+        },
+        {
+          "param": 1.2,
+          "param_range": [
+            1.2,
+            1.2
+          ],
+          "predicted_cost": 0.530224359
+        },
+        {
+          "param": 1.19,
+          "param_range": [
+            1.19,
+            1.19
+          ],
+          "predicted_cost": 0.5304940194
+        },
+        {
+          "param": 1.18,
+          "param_range": [
+            1.17,
+            1.18
+          ],
+          "predicted_cost": 0.5309277409
+        },
+        {
+          "param": 1.16,
+          "param_range": [
+            1.16,
+            1.16
+          ],
+          "predicted_cost": 0.5310649749
+        },
+        {
+          "param": 1.15,
+          "param_range": [
+            1.15,
+            1.15
+          ],
+          "predicted_cost": 0.5313419968
+        },
+        {
+          "param": 1.14,
+          "param_range": [
+            1.14,
+            1.14
+          ],
+          "predicted_cost": 0.5316429419
+        },
+        {
+          "param": 1.13,
+          "param_range": [
+            1.13,
+            1.13
+          ],
+          "predicted_cost": 0.5317055389
+        },
+        {
+          "param": 1.12,
+          "param_range": [
+            1.12,
+            1.12
+          ],
+          "predicted_cost": 0.5320571365
+        },
+        {
+          "param": 1.11,
+          "param_range": [
+            1.11,
+            1.11
+          ],
+          "predicted_cost": 0.5321630774
+        },
+        {
+          "param": 1.1,
+          "param_range": [
+            1.1,
+            1.1
+          ],
+          "predicted_cost": 0.5322329053
+        },
+        {
+          "param": 1.09,
+          "param_range": [
+            1.08,
+            1.09
+          ],
+          "predicted_cost": 0.5324329333
+        },
+        {
+          "param": 1.07,
+          "param_range": [
+            1.07,
+            1.07
+          ],
+          "predicted_cost": 0.5325557257
+        },
+        {
+          "param": 1.06,
+          "param_range": [
+            1.06,
+            1.06
+          ],
+          "predicted_cost": 0.5326761122
+        },
+        {
+          "param": 1.05,
+          "param_range": [
+            1.05,
+            1.05
+          ],
+          "predicted_cost": 0.5327074119
+        },
+        {
+          "param": 1.04,
+          "param_range": [
+            1.04,
+            1.04
+          ],
+          "predicted_cost": 0.5328495009
+        },
+        {
+          "param": 1.03,
+          "param_range": [
+            1.02,
+            1.03
+          ],
+          "predicted_cost": 0.5329435884
+        },
+        {
+          "param": 1.01,
+          "param_range": [
+            1.01,
+            1.01
+          ],
+          "predicted_cost": 0.5331458898
+        },
+        {
+          "param": 1.0,
+          "param_range": [
+            1.0,
+            1.0
+          ],
+          "predicted_cost": 0.5332109153
+        },
+        {
+          "param": 0.99,
+          "param_range": [
+            0.99,
+            0.99
+          ],
+          "predicted_cost": 0.5333026668
+        },
+        {
+          "param": 0.98,
+          "param_range": [
+            0.98,
+            0.98
+          ],
+          "predicted_cost": 0.5334206783
+        },
+        {
+          "param": 0.96,
+          "param_range": [
+            0.94,
+            0.97
+          ],
+          "predicted_cost": 0.5334760718
+        },
+        {
+          "param": 0.93,
+          "param_range": [
+            0.93,
+            0.93
+          ],
+          "predicted_cost": 0.5335242432
+        },
+        {
+          "param": 0.92,
+          "param_range": [
+            0.91,
+            0.92
+          ],
+          "predicted_cost": 0.5336013313
+        },
+        {
+          "param": 0.9,
+          "param_range": [
+            0.89,
+            0.9
+          ],
+          "predicted_cost": 0.5336521252
+        },
+        {
+          "param": 0.88,
+          "param_range": [
+            0.88,
+            0.88
+          ],
+          "predicted_cost": 0.533683437
+        },
+        {
+          "param": 0.85,
+          "param_range": [
+            0.82,
+            0.87
+          ],
+          "predicted_cost": 0.5337798169
+        },
+        {
+          "param": 0.81,
+          "param_range": [
+            0.81,
+            0.81
+          ],
+          "predicted_cost": 0.5338183629
+        },
+        {
+          "param": 0.78,
+          "param_range": [
+            0.76,
+            0.8
+          ],
+          "predicted_cost": 0.5338737792
+        },
+        {
+          "param": 0.75,
+          "param_range": [
+            0.75,
+            0.75
+          ],
+          "predicted_cost": 0.533934022
+        },
+        {
+          "param": 0.73,
+          "param_range": [
+            0.71,
+            0.74
+          ],
+          "predicted_cost": 0.5339822145
+        },
+        {
+          "param": 0.7,
+          "param_range": [
+            0.7,
+            0.7
+          ],
+          "predicted_cost": 0.5341507947
+        },
+        {
+          "param": 0.69,
+          "param_range": [
+            0.69,
+            0.69
+          ],
+          "predicted_cost": 0.5341796893
+        },
+        {
+          "param": 0.68,
+          "param_range": [
+            0.68,
+            0.68
+          ],
+          "predicted_cost": 0.5342953707
+        },
+        {
+          "param": 0.67,
+          "param_range": [
+            0.67,
+            0.67
+          ],
+          "predicted_cost": 0.534678723
+        },
+        {
+          "param": 0.66,
+          "param_range": [
+            0.66,
+            0.66
+          ],
+          "predicted_cost": 0.5350065837
+        },
+        {
+          "param": 0.65,
+          "param_range": [
+            0.65,
+            0.65
+          ],
+          "predicted_cost": 0.5352524559
+        },
+        {
+          "param": 0.64,
+          "param_range": [
+            0.64,
+            0.64
+          ],
+          "predicted_cost": 0.5359711887
+        },
+        {
+          "param": 0.63,
+          "param_range": [
+            0.63,
+            0.63
+          ],
+          "predicted_cost": 0.5368352864
+        },
+        {
+          "param": 0.62,
+          "param_range": [
+            0.62,
+            0.62
+          ],
+          "predicted_cost": 0.5377381402
+        },
+        {
+          "param": 0.61,
+          "param_range": [
+            0.61,
+            0.61
+          ],
+          "predicted_cost": 0.5384043498
+        },
+        {
+          "param": 0.6,
+          "param_range": [
+            0.6,
+            0.6
+          ],
+          "predicted_cost": 0.5393989812
+        },
+        {
+          "param": 0.59,
+          "param_range": [
+            0.59,
+            0.59
+          ],
+          "predicted_cost": 0.540287288
+        },
+        {
+          "param": 0.58,
+          "param_range": [
+            0.58,
+            0.58
+          ],
+          "predicted_cost": 0.5409342328
+        },
+        {
+          "param": 0.57,
+          "param_range": [
+            0.57,
+            0.57
+          ],
+          "predicted_cost": 0.5418757712
+        },
+        {
+          "param": 0.56,
+          "param_range": [
+            0.56,
+            0.56
+          ],
+          "predicted_cost": 0.542783165
+        },
+        {
+          "param": 0.55,
+          "param_range": [
+            0.55,
+            0.55
+          ],
+          "predicted_cost": 0.5440802118
+        },
+        {
+          "param": 0.54,
+          "param_range": [
+            0.54,
+            0.54
+          ],
+          "predicted_cost": 0.545741005
+        },
+        {
+          "param": 0.53,
+          "param_range": [
+            0.53,
+            0.53
+          ],
+          "predicted_cost": 0.5494828425
+        },
+        {
+          "param": 0.52,
+          "param_range": [
+            0.52,
+            0.52
+          ],
+          "predicted_cost": 0.5570326514
+        },
+        {
+          "param": 0.51,
+          "param_range": [
+            0.51,
+            0.51
+          ],
+          "predicted_cost": 0.5700835484
+        },
+        {
+          "param": 0.5,
+          "param_range": [
+            0.5,
+            0.5
+          ],
+          "predicted_cost": 0.5803842327
+        },
+        {
+          "param": 0.49,
+          "param_range": [
+            0.49,
+            0.49
+          ],
+          "predicted_cost": 0.5968157164
+        },
+        {
+          "param": 0.48,
+          "param_range": [
+            0.48,
+            0.48
+          ],
+          "predicted_cost": 0.614933971
+        },
+        {
+          "param": 0.47,
+          "param_range": [
+            0.47,
+            0.47
+          ],
+          "predicted_cost": 0.6315427109
+        },
+        {
+          "param": 0.46,
+          "param_range": [
+            0.46,
+            0.46
+          ],
+          "predicted_cost": 0.6496545501
+        }
+      ],
+      "predicted_levels": 260,
+      "online_vs_predicted": [
+        {
+          "param": 1.47,
+          "online": 0.5005741349262703,
+          "predicted": 0.5005741349
+        },
+        {
+          "param": 1.48,
+          "online": 0.4968425473508913,
+          "predicted": 0.4968425474
+        }
+      ]
+    }
+  },
+  "technical_checks": {
+    "lbfgs_grad_inf": 2.2955267641572817e-07,
+    "lbfgs_converged": true,
+    "sharpness": {
+      "share_max_p_ge_0.999": 0.0,
+      "share_max_s_ge_0.999": 0.0061162079510703364,
+      "passed": true
+    },
+    "calibration_resolution": {
+      "level_below": 0.4998360548,
+      "level_above": 0.5004571104,
+      "passed": true
+    },
+    "online_vs_predicted": {
+      "max_abs": 0.0024250252989957977,
+      "passed": true
+    },
+    "brackets_found": true,
+    "passed": true
+  },
+  "screen": {
+    "R": {
+      "doc_mean_nll": 0.9170979196899625,
+      "relative_cost": 0.4992818191054407,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.24799561659059374,
+        "8": 0.7520043834094063,
+        "12": 0.0,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.4999020217547092,
+          "doc_mean_nll": 0.9164416776772732,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.24324324324324326,
+            "8": 0.7567567567567568,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.49587101720450394,
+          "doc_mean_nll": 0.9207069199207658,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.27413127413127414,
+            "8": 0.7258687258687259,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      }
+    },
+    "head": {
+      "doc_mean_nll": 0.9132844788103928,
+      "relative_cost": 0.501807619753603,
+      "depth_share": {
+        "4": 0.004633204633204633,
+        "6": 0.2803088803088803,
+        "8": 0.6933994225630582,
+        "12": 0.02088629172265604,
+        "16": 0.0007722007722007722
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5022406282698477,
+          "doc_mean_nll": 0.9133014665923396,
+          "depth_share": {
+            "4": 0.004633204633204633,
+            "6": 0.2803088803088803,
+            "8": 0.6918918918918919,
+            "12": 0.022393822393822392,
+            "16": 0.0007722007722007722
+          }
+        },
+        "low": {
+          "relative_cost": 0.5017970293209055,
+          "doc_mean_nll": 0.9132840633267368,
+          "depth_share": {
+            "4": 0.004633204633204633,
+            "6": 0.2803088803088803,
+            "8": 0.6934362934362934,
+            "12": 0.02084942084942085,
+            "16": 0.0007722007722007722
+          }
+        }
+      }
+    },
+    "g_head": {
+      "mean": 0.0038134408795697607,
+      "sd": 0.07623147005412051,
+      "n": 367,
+      "ci95": [
+        -0.003922240425864204,
+        0.011610767001672554
+      ],
+      "lower_one_sided_90": -0.0011842277672963523,
+      "lower_one_sided_95": -0.0026449921411534866
+    },
+    "cost_ratio_head_over_R": 1.0050588676605283
+  },
+  "gate": {
+    "technical": true,
+    "cost_ratio": true,
+    "effect": false
+  },
+  "decision": "fail",
+  "diagnostics": {
+    "action_agreement_table_vs_online": {
+      "b": 0.1,
+      "decisions": 1295,
+      "agreement": 0.9613899613899614
+    },
+    "screen_table_fit": {
+      "weighted_kl_s_p": 0.6548111928374694,
+      "share_max_p_ge_0.999": 0.0,
+      "share_max_s_ge_0.999": 0.004593569003395246,
+      "argmax_agreement_p_vs_s": 0.48092670261633713
+    },
+    "uniform": {
+      "mixture": [
+        8,
+        6,
+        0.705808325233951
+      ],
+      "screen": {
+        "doc_mean_nll": 0.9311481258349142,
+        "relative_cost": 0.49999996091927323,
+        "depth_share": {
+          "4": 0.0,
+          "6": 0.294191674766049,
+          "8": 0.705808325233951,
+          "12": 0.0,
+          "16": 0.0
+        },
+        "components": {
+          "high": {
+            "relative_cost": 0.5342545680772695,
+            "doc_mean_nll": 0.8835293359442987,
+            "depth_share": {
+              "4": 0.0,
+              "6": 0.0,
+              "8": 1.0,
+              "12": 0.0,
+              "16": 0.0
+            }
+          },
+          "low": {
+            "relative_cost": 0.4178182100965868,
+            "doc_mean_nll": 1.045392481556708,
+            "depth_share": {
+              "4": 0.0,
+              "6": 1.0,
+              "8": 0.0,
+              "12": 0.0,
+              "16": 0.0
+            }
+          }
+        }
+      },
+      "R_over_uniform": {
+        "mean": 0.014050206144951744,
+        "sd": 0.057353991704967966,
+        "n": 367,
+        "ci95": [
+          0.008103869214964383,
+          0.019913735899889186
+        ],
+        "lower_one_sided_90": 0.010241761711393356,
+        "lower_one_sided_95": 0.00911099115244663
+      },
+      "head_over_uniform": {
+        "mean": 0.017863647024521506,
+        "sd": 0.07009107569252136,
+        "n": 367,
+        "ci95": [
+          0.01087600519926891,
+          0.025034251919894918
+        ],
+        "lower_one_sided_90": 0.013236341150976015,
+        "lower_one_sided_95": 0.011910620634697024
+      }
+    },
+    "rep_ridge": {
+      "online_points": [
+        {
+          "param": 1.31,
+          "relative_cost": 0.5016316912051679,
+          "doc_mean_nll": 0.8669481534806991,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2557077625570776,
+            "8": 0.7401826484018265,
+            "12": 0.00410958904109589,
+            "16": 0.0
+          }
+        },
+        {
+          "param": 1.32,
+          "relative_cost": 0.5000247093579883,
+          "doc_mean_nll": 0.868575722981079,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2680365296803653,
+            "8": 0.7278538812785388,
+            "12": 0.00410958904109589,
+            "16": 0.0
+          }
+        },
+        {
+          "param": 1.33,
+          "relative_cost": 0.4986570058873996,
+          "doc_mean_nll": 0.8701365730442592,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.27990867579908674,
+            "8": 0.7159817351598173,
+            "12": 0.00410958904109589,
+            "16": 0.0
+          }
+        }
+      ],
+      "bracket": {
+        "param_high_cost": 1.32,
+        "param_low_cost": 1.33,
+        "weight_high": 0.9819336877330387
+      },
+      "cal_matched_nll": 0.8686039217857223,
+      "predicted_levels_near_budget": [
+        {
+          "param": 3.61,
+          "param_range": [
+            3.61,
+            3.61
+          ],
+          "predicted_cost": 0.350223179
+        },
+        {
+          "param": 3.6,
+          "param_range": [
+            3.6,
+            3.6
+          ],
+          "predicted_cost": 0.351137854
+        },
+        {
+          "param": 3.59,
+          "param_range": [
+            3.59,
+            3.59
+          ],
+          "predicted_cost": 0.35197072
+        },
+        {
+          "param": 3.58,
+          "param_range": [
+            3.58,
+            3.58
+          ],
+          "predicted_cost": 0.3527989297
+        },
+        {
+          "param": 3.57,
+          "param_range": [
+            3.57,
+            3.57
+          ],
+          "predicted_cost": 0.35406966
+        },
+        {
+          "param": 3.56,
+          "param_range": [
+            3.56,
+            3.56
+          ],
+          "predicted_cost": 0.3549409932
+        },
+        {
+          "param": 3.55,
+          "param_range": [
+            3.55,
+            3.55
+          ],
+          "predicted_cost": 0.3558151192
+        },
+        {
+          "param": 3.54,
+          "param_range": [
+            3.54,
+            3.54
+          ],
+          "predicted_cost": 0.3568432567
+        },
+        {
+          "param": 3.53,
+          "param_range": [
+            3.53,
+            3.53
+          ],
+          "predicted_cost": 0.3576451384
+        },
+        {
+          "param": 3.52,
+          "param_range": [
+            3.52,
+            3.52
+          ],
+          "predicted_cost": 0.3584203788
+        },
+        {
+          "param": 3.51,
+          "param_range": [
+            3.51,
+            3.51
+          ],
+          "predicted_cost": 0.3591331424
+        },
+        {
+          "param": 3.5,
+          "param_range": [
+            3.5,
+            3.5
+          ],
+          "predicted_cost": 0.3603297511
+        },
+        {
+          "param": 3.49,
+          "param_range": [
+            3.49,
+            3.49
+          ],
+          "predicted_cost": 0.3614978815
+        },
+        {
+          "param": 3.48,
+          "param_range": [
+            3.48,
+            3.48
+          ],
+          "predicted_cost": 0.3622123194
+        },
+        {
+          "param": 3.47,
+          "param_range": [
+            3.47,
+            3.47
+          ],
+          "predicted_cost": 0.3628743379
+        },
+        {
+          "param": 3.46,
+          "param_range": [
+            3.46,
+            3.46
+          ],
+          "predicted_cost": 0.3640153913
+        },
+        {
+          "param": 3.45,
+          "param_range": [
+            3.45,
+            3.45
+          ],
+          "predicted_cost": 0.3649018281
+        },
+        {
+          "param": 3.44,
+          "param_range": [
+            3.44,
+            3.44
+          ],
+          "predicted_cost": 0.3660437929
+        },
+        {
+          "param": 3.43,
+          "param_range": [
+            3.43,
+            3.43
+          ],
+          "predicted_cost": 0.3669180303
+        },
+        {
+          "param": 3.42,
+          "param_range": [
+            3.42,
+            3.42
+          ],
+          "predicted_cost": 0.367541831
+        },
+        {
+          "param": 3.41,
+          "param_range": [
+            3.41,
+            3.41
+          ],
+          "predicted_cost": 0.3683388806
+        },
+        {
+          "param": 3.4,
+          "param_range": [
+            3.4,
+            3.4
+          ],
+          "predicted_cost": 0.3699043118
+        },
+        {
+          "param": 3.39,
+          "param_range": [
+            3.39,
+            3.39
+          ],
+          "predicted_cost": 0.3706723107
+        },
+        {
+          "param": 3.38,
+          "param_range": [
+            3.38,
+            3.38
+          ],
+          "predicted_cost": 0.3715853517
+        },
+        {
+          "param": 3.37,
+          "param_range": [
+            3.37,
+            3.37
+          ],
+          "predicted_cost": 0.3723899338
+        },
+        {
+          "param": 3.36,
+          "param_range": [
+            3.36,
+            3.36
+          ],
+          "predicted_cost": 0.3734878726
+        },
+        {
+          "param": 3.35,
+          "param_range": [
+            3.35,
+            3.35
+          ],
+          "predicted_cost": 0.3743546468
+        },
+        {
+          "param": 3.34,
+          "param_range": [
+            3.34,
+            3.34
+          ],
+          "predicted_cost": 0.3752413209
+        },
+        {
+          "param": 3.33,
+          "param_range": [
+            3.33,
+            3.33
+          ],
+          "predicted_cost": 0.3760436836
+        },
+        {
+          "param": 3.32,
+          "param_range": [
+            3.32,
+            3.32
+          ],
+          "predicted_cost": 0.3768070988
+        },
+        {
+          "param": 3.31,
+          "param_range": [
+            3.31,
+            3.31
+          ],
+          "predicted_cost": 0.3772596717
+        },
+        {
+          "param": 3.3,
+          "param_range": [
+            3.3,
+            3.3
+          ],
+          "predicted_cost": 0.3780518721
+        },
+        {
+          "param": 3.29,
+          "param_range": [
+            3.29,
+            3.29
+          ],
+          "predicted_cost": 0.378952427
+        },
+        {
+          "param": 3.28,
+          "param_range": [
+            3.28,
+            3.28
+          ],
+          "predicted_cost": 0.3795546708
+        },
+        {
+          "param": 3.27,
+          "param_range": [
+            3.27,
+            3.27
+          ],
+          "predicted_cost": 0.380197172
+        },
+        {
+          "param": 3.26,
+          "param_range": [
+            3.26,
+            3.26
+          ],
+          "predicted_cost": 0.3807460563
+        },
+        {
+          "param": 3.25,
+          "param_range": [
+            3.25,
+            3.25
+          ],
+          "predicted_cost": 0.3812734442
+        },
+        {
+          "param": 3.24,
+          "param_range": [
+            3.24,
+            3.24
+          ],
+          "predicted_cost": 0.381875198
+        },
+        {
+          "param": 3.23,
+          "param_range": [
+            3.23,
+            3.23
+          ],
+          "predicted_cost": 0.382474754
+        },
+        {
+          "param": 3.22,
+          "param_range": [
+            3.22,
+            3.22
+          ],
+          "predicted_cost": 0.383180296
+        },
+        {
+          "param": 3.21,
+          "param_range": [
+            3.21,
+            3.21
+          ],
+          "predicted_cost": 0.3841779048
+        },
+        {
+          "param": 3.2,
+          "param_range": [
+            3.2,
+            3.2
+          ],
+          "predicted_cost": 0.3849699565
+        },
+        {
+          "param": 3.19,
+          "param_range": [
+            3.19,
+            3.19
+          ],
+          "predicted_cost": 0.3857502404
+        },
+        {
+          "param": 3.18,
+          "param_range": [
+            3.18,
+            3.18
+          ],
+          "predicted_cost": 0.3866728183
+        },
+        {
+          "param": 3.17,
+          "param_range": [
+            3.17,
+            3.17
+          ],
+          "predicted_cost": 0.3872892041
+        },
+        {
+          "param": 3.16,
+          "param_range": [
+            3.16,
+            3.16
+          ],
+          "predicted_cost": 0.3880669622
+        },
+        {
+          "param": 3.15,
+          "param_range": [
+            3.15,
+            3.15
+          ],
+          "predicted_cost": 0.3884403923
+        },
+        {
+          "param": 3.14,
+          "param_range": [
+            3.14,
+            3.14
+          ],
+          "predicted_cost": 0.3891508932
+        },
+        {
+          "param": 3.13,
+          "param_range": [
+            3.13,
+            3.13
+          ],
+          "predicted_cost": 0.3895987171
+        },
+        {
+          "param": 3.12,
+          "param_range": [
+            3.12,
+            3.12
+          ],
+          "predicted_cost": 0.390294713
+        },
+        {
+          "param": 3.11,
+          "param_range": [
+            3.11,
+            3.11
+          ],
+          "predicted_cost": 0.3910366434
+        },
+        {
+          "param": 3.1,
+          "param_range": [
+            3.1,
+            3.1
+          ],
+          "predicted_cost": 0.3917662184
+        },
+        {
+          "param": 3.09,
+          "param_range": [
+            3.09,
+            3.09
+          ],
+          "predicted_cost": 0.3922504022
+        },
+        {
+          "param": 3.08,
+          "param_range": [
+            3.08,
+            3.08
+          ],
+          "predicted_cost": 0.3929156546
+        },
+        {
+          "param": 3.07,
+          "param_range": [
+            3.07,
+            3.07
+          ],
+          "predicted_cost": 0.393531837
+        },
+        {
+          "param": 3.06,
+          "param_range": [
+            3.06,
+            3.06
+          ],
+          "predicted_cost": 0.3937295252
+        },
+        {
+          "param": 3.05,
+          "param_range": [
+            3.05,
+            3.05
+          ],
+          "predicted_cost": 0.3944232696
+        },
+        {
+          "param": 3.04,
+          "param_range": [
+            3.04,
+            3.04
+          ],
+          "predicted_cost": 0.3949266241
+        },
+        {
+          "param": 3.03,
+          "param_range": [
+            3.03,
+            3.03
+          ],
+          "predicted_cost": 0.3954685875
+        },
+        {
+          "param": 3.02,
+          "param_range": [
+            3.02,
+            3.02
+          ],
+          "predicted_cost": 0.3960539243
+        },
+        {
+          "param": 3.01,
+          "param_range": [
+            3.01,
+            3.01
+          ],
+          "predicted_cost": 0.3964801095
+        },
+        {
+          "param": 3.0,
+          "param_range": [
+            3.0,
+            3.0
+          ],
+          "predicted_cost": 0.3968919417
+        },
+        {
+          "param": 2.99,
+          "param_range": [
+            2.99,
+            2.99
+          ],
+          "predicted_cost": 0.3972170624
+        },
+        {
+          "param": 2.98,
+          "param_range": [
+            2.98,
+            2.98
+          ],
+          "predicted_cost": 0.397758764
+        },
+        {
+          "param": 2.97,
+          "param_range": [
+            2.97,
+            2.97
+          ],
+          "predicted_cost": 0.3982213763
+        },
+        {
+          "param": 2.96,
+          "param_range": [
+            2.96,
+            2.96
+          ],
+          "predicted_cost": 0.3986304426
+        },
+        {
+          "param": 2.95,
+          "param_range": [
+            2.95,
+            2.95
+          ],
+          "predicted_cost": 0.3996156794
+        },
+        {
+          "param": 2.94,
+          "param_range": [
+            2.94,
+            2.94
+          ],
+          "predicted_cost": 0.3999190842
+        },
+        {
+          "param": 2.93,
+          "param_range": [
+            2.93,
+            2.93
+          ],
+          "predicted_cost": 0.4002803277
+        },
+        {
+          "param": 2.92,
+          "param_range": [
+            2.92,
+            2.92
+          ],
+          "predicted_cost": 0.400774203
+        },
+        {
+          "param": 2.91,
+          "param_range": [
+            2.91,
+            2.91
+          ],
+          "predicted_cost": 0.4010922048
+        },
+        {
+          "param": 2.9,
+          "param_range": [
+            2.9,
+            2.9
+          ],
+          "predicted_cost": 0.4015907501
+        },
+        {
+          "param": 2.89,
+          "param_range": [
+            2.89,
+            2.89
+          ],
+          "predicted_cost": 0.4019136953
+        },
+        {
+          "param": 2.88,
+          "param_range": [
+            2.88,
+            2.88
+          ],
+          "predicted_cost": 0.402421798
+        },
+        {
+          "param": 2.87,
+          "param_range": [
+            2.87,
+            2.87
+          ],
+          "predicted_cost": 0.4030146386
+        },
+        {
+          "param": 2.86,
+          "param_range": [
+            2.86,
+            2.86
+          ],
+          "predicted_cost": 0.403851268
+        },
+        {
+          "param": 2.85,
+          "param_range": [
+            2.85,
+            2.85
+          ],
+          "predicted_cost": 0.404299377
+        },
+        {
+          "param": 2.84,
+          "param_range": [
+            2.84,
+            2.84
+          ],
+          "predicted_cost": 0.4050390783
+        },
+        {
+          "param": 2.83,
+          "param_range": [
+            2.83,
+            2.83
+          ],
+          "predicted_cost": 0.40521259
+        },
+        {
+          "param": 2.82,
+          "param_range": [
+            2.82,
+            2.82
+          ],
+          "predicted_cost": 0.4053980887
+        },
+        {
+          "param": 2.81,
+          "param_range": [
+            2.81,
+            2.81
+          ],
+          "predicted_cost": 0.4055883596
+        },
+        {
+          "param": 2.8,
+          "param_range": [
+            2.8,
+            2.8
+          ],
+          "predicted_cost": 0.4059016574
+        },
+        {
+          "param": 2.79,
+          "param_range": [
+            2.79,
+            2.79
+          ],
+          "predicted_cost": 0.4062439257
+        },
+        {
+          "param": 2.78,
+          "param_range": [
+            2.78,
+            2.78
+          ],
+          "predicted_cost": 0.4065378478
+        },
+        {
+          "param": 2.77,
+          "param_range": [
+            2.77,
+            2.77
+          ],
+          "predicted_cost": 0.4068053659
+        },
+        {
+          "param": 2.76,
+          "param_range": [
+            2.76,
+            2.76
+          ],
+          "predicted_cost": 0.4071016178
+        },
+        {
+          "param": 2.75,
+          "param_range": [
+            2.75,
+            2.75
+          ],
+          "predicted_cost": 0.4072413084
+        },
+        {
+          "param": 2.74,
+          "param_range": [
+            2.74,
+            2.74
+          ],
+          "predicted_cost": 0.4075254985
+        },
+        {
+          "param": 2.73,
+          "param_range": [
+            2.73,
+            2.73
+          ],
+          "predicted_cost": 0.4076290706
+        },
+        {
+          "param": 2.72,
+          "param_range": [
+            2.72,
+            2.72
+          ],
+          "predicted_cost": 0.4078771562
+        },
+        {
+          "param": 2.71,
+          "param_range": [
+            2.71,
+            2.71
+          ],
+          "predicted_cost": 0.4081037601
+        },
+        {
+          "param": 2.7,
+          "param_range": [
+            2.7,
+            2.7
+          ],
+          "predicted_cost": 0.4084627274
+        },
+        {
+          "param": 2.69,
+          "param_range": [
+            2.69,
+            2.69
+          ],
+          "predicted_cost": 0.4087086645
+        },
+        {
+          "param": 2.68,
+          "param_range": [
+            2.68,
+            2.68
+          ],
+          "predicted_cost": 0.4090409349
+        },
+        {
+          "param": 2.67,
+          "param_range": [
+            2.67,
+            2.67
+          ],
+          "predicted_cost": 0.4093951593
+        },
+        {
+          "param": 2.66,
+          "param_range": [
+            2.66,
+            2.66
+          ],
+          "predicted_cost": 0.4096864609
+        },
+        {
+          "param": 2.65,
+          "param_range": [
+            2.65,
+            2.65
+          ],
+          "predicted_cost": 0.4099084833
+        },
+        {
+          "param": 2.64,
+          "param_range": [
+            2.64,
+            2.64
+          ],
+          "predicted_cost": 0.410412064
+        },
+        {
+          "param": 2.63,
+          "param_range": [
+            2.63,
+            2.63
+          ],
+          "predicted_cost": 0.4112081278
+        },
+        {
+          "param": 2.62,
+          "param_range": [
+            2.62,
+            2.62
+          ],
+          "predicted_cost": 0.4112273769
+        },
+        {
+          "param": 2.61,
+          "param_range": [
+            2.61,
+            2.61
+          ],
+          "predicted_cost": 0.4120448953
+        },
+        {
+          "param": 2.6,
+          "param_range": [
+            2.6,
+            2.6
+          ],
+          "predicted_cost": 0.4122954946
+        },
+        {
+          "param": 2.59,
+          "param_range": [
+            2.59,
+            2.59
+          ],
+          "predicted_cost": 0.4125051134
+        },
+        {
+          "param": 2.58,
+          "param_range": [
+            2.58,
+            2.58
+          ],
+          "predicted_cost": 0.4126523215
+        },
+        {
+          "param": 2.57,
+          "param_range": [
+            2.57,
+            2.57
+          ],
+          "predicted_cost": 0.4129030519
+        },
+        {
+          "param": 2.56,
+          "param_range": [
+            2.56,
+            2.56
+          ],
+          "predicted_cost": 0.4131077362
+        },
+        {
+          "param": 2.55,
+          "param_range": [
+            2.55,
+            2.55
+          ],
+          "predicted_cost": 0.4133560693
+        },
+        {
+          "param": 2.54,
+          "param_range": [
+            2.54,
+            2.54
+          ],
+          "predicted_cost": 0.413457475
+        },
+        {
+          "param": 2.52,
+          "param_range": [
+            2.52,
+            2.52
+          ],
+          "predicted_cost": 0.4138089909
+        },
+        {
+          "param": 2.53,
+          "param_range": [
+            2.53,
+            2.53
+          ],
+          "predicted_cost": 0.4138140994
+        },
+        {
+          "param": 2.51,
+          "param_range": [
+            2.51,
+            2.51
+          ],
+          "predicted_cost": 0.41397524
+        },
+        {
+          "param": 2.5,
+          "param_range": [
+            2.5,
+            2.5
+          ],
+          "predicted_cost": 0.4141583086
+        },
+        {
+          "param": 2.49,
+          "param_range": [
+            2.49,
+            2.49
+          ],
+          "predicted_cost": 0.414302819
+        },
+        {
+          "param": 2.48,
+          "param_range": [
+            2.48,
+            2.48
+          ],
+          "predicted_cost": 0.414495573
+        },
+        {
+          "param": 2.47,
+          "param_range": [
+            2.47,
+            2.47
+          ],
+          "predicted_cost": 0.4145846843
+        },
+        {
+          "param": 2.46,
+          "param_range": [
+            2.46,
+            2.46
+          ],
+          "predicted_cost": 0.4148357252
+        },
+        {
+          "param": 2.45,
+          "param_range": [
+            2.45,
+            2.45
+          ],
+          "predicted_cost": 0.4151706298
+        },
+        {
+          "param": 2.44,
+          "param_range": [
+            2.44,
+            2.44
+          ],
+          "predicted_cost": 0.4152525758
+        },
+        {
+          "param": 2.43,
+          "param_range": [
+            2.43,
+            2.43
+          ],
+          "predicted_cost": 0.415447848
+        },
+        {
+          "param": 2.42,
+          "param_range": [
+            2.42,
+            2.42
+          ],
+          "predicted_cost": 0.4155705923
+        },
+        {
+          "param": 2.41,
+          "param_range": [
+            2.41,
+            2.41
+          ],
+          "predicted_cost": 0.4156187308
+        },
+        {
+          "param": 2.4,
+          "param_range": [
+            2.4,
+            2.4
+          ],
+          "predicted_cost": 0.415753654
+        },
+        {
+          "param": 2.39,
+          "param_range": [
+            2.39,
+            2.39
+          ],
+          "predicted_cost": 0.4157873315
+        },
+        {
+          "param": 2.38,
+          "param_range": [
+            2.38,
+            2.38
+          ],
+          "predicted_cost": 0.4159943941
+        },
+        {
+          "param": 2.37,
+          "param_range": [
+            2.37,
+            2.37
+          ],
+          "predicted_cost": 0.416206548
+        },
+        {
+          "param": 2.36,
+          "param_range": [
+            2.36,
+            2.36
+          ],
+          "predicted_cost": 0.4164158788
+        },
+        {
+          "param": 2.35,
+          "param_range": [
+            2.35,
+            2.35
+          ],
+          "predicted_cost": 0.4166521841
+        },
+        {
+          "param": 2.34,
+          "param_range": [
+            2.34,
+            2.34
+          ],
+          "predicted_cost": 0.4168687989
+        },
+        {
+          "param": 2.33,
+          "param_range": [
+            2.33,
+            2.33
+          ],
+          "predicted_cost": 0.4170540092
+        },
+        {
+          "param": 2.32,
+          "param_range": [
+            2.32,
+            2.32
+          ],
+          "predicted_cost": 0.4172684439
+        },
+        {
+          "param": 2.31,
+          "param_range": [
+            2.31,
+            2.31
+          ],
+          "predicted_cost": 0.4173816814
+        },
+        {
+          "param": 2.3,
+          "param_range": [
+            2.3,
+            2.3
+          ],
+          "predicted_cost": 0.4175385348
+        },
+        {
+          "param": 2.29,
+          "param_range": [
+            2.29,
+            2.29
+          ],
+          "predicted_cost": 0.4176879298
+        },
+        {
+          "param": 2.28,
+          "param_range": [
+            2.28,
+            2.28
+          ],
+          "predicted_cost": 0.4177891869
+        },
+        {
+          "param": 2.27,
+          "param_range": [
+            2.27,
+            2.27
+          ],
+          "predicted_cost": 0.4179675704
+        },
+        {
+          "param": 2.26,
+          "param_range": [
+            2.26,
+            2.26
+          ],
+          "predicted_cost": 0.4181720981
+        },
+        {
+          "param": 2.25,
+          "param_range": [
+            2.25,
+            2.25
+          ],
+          "predicted_cost": 0.4183452467
+        },
+        {
+          "param": 2.24,
+          "param_range": [
+            2.24,
+            2.24
+          ],
+          "predicted_cost": 0.418499195
+        },
+        {
+          "param": 2.23,
+          "param_range": [
+            2.23,
+            2.23
+          ],
+          "predicted_cost": 0.4185906789
+        },
+        {
+          "param": 2.22,
+          "param_range": [
+            2.22,
+            2.22
+          ],
+          "predicted_cost": 0.418761466
+        },
+        {
+          "param": 2.21,
+          "param_range": [
+            2.21,
+            2.21
+          ],
+          "predicted_cost": 0.4190071945
+        },
+        {
+          "param": 2.2,
+          "param_range": [
+            2.2,
+            2.2
+          ],
+          "predicted_cost": 0.4191227235
+        },
+        {
+          "param": 2.19,
+          "param_range": [
+            2.19,
+            2.19
+          ],
+          "predicted_cost": 0.4194621917
+        },
+        {
+          "param": 2.18,
+          "param_range": [
+            2.18,
+            2.18
+          ],
+          "predicted_cost": 0.4197076365
+        },
+        {
+          "param": 2.17,
+          "param_range": [
+            2.17,
+            2.17
+          ],
+          "predicted_cost": 0.4200136197
+        },
+        {
+          "param": 2.16,
+          "param_range": [
+            2.16,
+            2.16
+          ],
+          "predicted_cost": 0.4201218236
+        },
+        {
+          "param": 2.15,
+          "param_range": [
+            2.15,
+            2.15
+          ],
+          "predicted_cost": 0.4204588615
+        },
+        {
+          "param": 2.14,
+          "param_range": [
+            2.14,
+            2.14
+          ],
+          "predicted_cost": 0.4209210406
+        },
+        {
+          "param": 2.13,
+          "param_range": [
+            2.13,
+            2.13
+          ],
+          "predicted_cost": 0.4209619404
+        },
+        {
+          "param": 2.12,
+          "param_range": [
+            2.12,
+            2.12
+          ],
+          "predicted_cost": 0.4212364419
+        },
+        {
+          "param": 2.11,
+          "param_range": [
+            2.11,
+            2.11
+          ],
+          "predicted_cost": 0.4219155292
+        },
+        {
+          "param": 2.1,
+          "param_range": [
+            2.1,
+            2.1
+          ],
+          "predicted_cost": 0.422159189
+        },
+        {
+          "param": 2.09,
+          "param_range": [
+            2.09,
+            2.09
+          ],
+          "predicted_cost": 0.4225033875
+        },
+        {
+          "param": 2.08,
+          "param_range": [
+            2.08,
+            2.08
+          ],
+          "predicted_cost": 0.4226527255
+        },
+        {
+          "param": 2.07,
+          "param_range": [
+            2.07,
+            2.07
+          ],
+          "predicted_cost": 0.4230426984
+        },
+        {
+          "param": 2.06,
+          "param_range": [
+            2.06,
+            2.06
+          ],
+          "predicted_cost": 0.4233916871
+        },
+        {
+          "param": 2.05,
+          "param_range": [
+            2.05,
+            2.05
+          ],
+          "predicted_cost": 0.4238375723
+        },
+        {
+          "param": 2.04,
+          "param_range": [
+            2.04,
+            2.04
+          ],
+          "predicted_cost": 0.4241241599
+        },
+        {
+          "param": 2.03,
+          "param_range": [
+            2.03,
+            2.03
+          ],
+          "predicted_cost": 0.4243482193
+        },
+        {
+          "param": 2.02,
+          "param_range": [
+            2.02,
+            2.02
+          ],
+          "predicted_cost": 0.424699841
+        },
+        {
+          "param": 2.01,
+          "param_range": [
+            2.01,
+            2.01
+          ],
+          "predicted_cost": 0.425115998
+        },
+        {
+          "param": 2.0,
+          "param_range": [
+            2.0,
+            2.0
+          ],
+          "predicted_cost": 0.4254365049
+        },
+        {
+          "param": 1.99,
+          "param_range": [
+            1.99,
+            1.99
+          ],
+          "predicted_cost": 0.4256529553
+        },
+        {
+          "param": 1.98,
+          "param_range": [
+            1.98,
+            1.98
+          ],
+          "predicted_cost": 0.4261583632
+        },
+        {
+          "param": 1.97,
+          "param_range": [
+            1.97,
+            1.97
+          ],
+          "predicted_cost": 0.4266398739
+        },
+        {
+          "param": 1.96,
+          "param_range": [
+            1.96,
+            1.96
+          ],
+          "predicted_cost": 0.4273286884
+        },
+        {
+          "param": 1.95,
+          "param_range": [
+            1.95,
+            1.95
+          ],
+          "predicted_cost": 0.4279285456
+        },
+        {
+          "param": 1.94,
+          "param_range": [
+            1.94,
+            1.94
+          ],
+          "predicted_cost": 0.428643767
+        },
+        {
+          "param": 1.93,
+          "param_range": [
+            1.93,
+            1.93
+          ],
+          "predicted_cost": 0.4291709443
+        },
+        {
+          "param": 1.92,
+          "param_range": [
+            1.92,
+            1.92
+          ],
+          "predicted_cost": 0.4297222131
+        },
+        {
+          "param": 1.91,
+          "param_range": [
+            1.91,
+            1.91
+          ],
+          "predicted_cost": 0.4303699698
+        },
+        {
+          "param": 1.9,
+          "param_range": [
+            1.9,
+            1.9
+          ],
+          "predicted_cost": 0.4310011305
+        },
+        {
+          "param": 1.89,
+          "param_range": [
+            1.89,
+            1.89
+          ],
+          "predicted_cost": 0.4317905221
+        },
+        {
+          "param": 1.88,
+          "param_range": [
+            1.88,
+            1.88
+          ],
+          "predicted_cost": 0.4324118957
+        },
+        {
+          "param": 1.87,
+          "param_range": [
+            1.87,
+            1.87
+          ],
+          "predicted_cost": 0.43296288
+        },
+        {
+          "param": 1.86,
+          "param_range": [
+            1.86,
+            1.86
+          ],
+          "predicted_cost": 0.433542988
+        },
+        {
+          "param": 1.85,
+          "param_range": [
+            1.85,
+            1.85
+          ],
+          "predicted_cost": 0.4345975548
+        },
+        {
+          "param": 1.84,
+          "param_range": [
+            1.84,
+            1.84
+          ],
+          "predicted_cost": 0.4354186804
+        },
+        {
+          "param": 1.83,
+          "param_range": [
+            1.83,
+            1.83
+          ],
+          "predicted_cost": 0.4358790516
+        },
+        {
+          "param": 1.82,
+          "param_range": [
+            1.82,
+            1.82
+          ],
+          "predicted_cost": 0.436711952
+        },
+        {
+          "param": 1.81,
+          "param_range": [
+            1.81,
+            1.81
+          ],
+          "predicted_cost": 0.4375543072
+        },
+        {
+          "param": 1.8,
+          "param_range": [
+            1.8,
+            1.8
+          ],
+          "predicted_cost": 0.4382307757
+        },
+        {
+          "param": 1.79,
+          "param_range": [
+            1.79,
+            1.79
+          ],
+          "predicted_cost": 0.4402077806
+        },
+        {
+          "param": 1.78,
+          "param_range": [
+            1.78,
+            1.78
+          ],
+          "predicted_cost": 0.4412956897
+        },
+        {
+          "param": 1.77,
+          "param_range": [
+            1.77,
+            1.77
+          ],
+          "predicted_cost": 0.4419913349
+        },
+        {
+          "param": 1.76,
+          "param_range": [
+            1.76,
+            1.76
+          ],
+          "predicted_cost": 0.443243422
+        },
+        {
+          "param": 1.75,
+          "param_range": [
+            1.75,
+            1.75
+          ],
+          "predicted_cost": 0.4443271292
+        },
+        {
+          "param": 1.74,
+          "param_range": [
+            1.74,
+            1.74
+          ],
+          "predicted_cost": 0.4451557317
+        },
+        {
+          "param": 1.73,
+          "param_range": [
+            1.73,
+            1.73
+          ],
+          "predicted_cost": 0.4460222378
+        },
+        {
+          "param": 1.72,
+          "param_range": [
+            1.72,
+            1.72
+          ],
+          "predicted_cost": 0.4470343469
+        },
+        {
+          "param": 1.71,
+          "param_range": [
+            1.71,
+            1.71
+          ],
+          "predicted_cost": 0.4480381914
+        },
+        {
+          "param": 1.7,
+          "param_range": [
+            1.7,
+            1.7
+          ],
+          "predicted_cost": 0.4490540996
+        },
+        {
+          "param": 1.69,
+          "param_range": [
+            1.69,
+            1.69
+          ],
+          "predicted_cost": 0.4502985334
+        },
+        {
+          "param": 1.68,
+          "param_range": [
+            1.68,
+            1.68
+          ],
+          "predicted_cost": 0.451372507
+        },
+        {
+          "param": 1.67,
+          "param_range": [
+            1.67,
+            1.67
+          ],
+          "predicted_cost": 0.4528053453
+        },
+        {
+          "param": 1.66,
+          "param_range": [
+            1.66,
+            1.66
+          ],
+          "predicted_cost": 0.4538978278
+        },
+        {
+          "param": 1.65,
+          "param_range": [
+            1.65,
+            1.65
+          ],
+          "predicted_cost": 0.454776521
+        },
+        {
+          "param": 1.64,
+          "param_range": [
+            1.64,
+            1.64
+          ],
+          "predicted_cost": 0.455688517
+        },
+        {
+          "param": 1.63,
+          "param_range": [
+            1.63,
+            1.63
+          ],
+          "predicted_cost": 0.4567384176
+        },
+        {
+          "param": 1.62,
+          "param_range": [
+            1.62,
+            1.62
+          ],
+          "predicted_cost": 0.4576535551
+        },
+        {
+          "param": 1.61,
+          "param_range": [
+            1.61,
+            1.61
+          ],
+          "predicted_cost": 0.4589034362
+        },
+        {
+          "param": 1.6,
+          "param_range": [
+            1.6,
+            1.6
+          ],
+          "predicted_cost": 0.4603450892
+        },
+        {
+          "param": 1.59,
+          "param_range": [
+            1.59,
+            1.59
+          ],
+          "predicted_cost": 0.4613777196
+        },
+        {
+          "param": 1.58,
+          "param_range": [
+            1.58,
+            1.58
+          ],
+          "predicted_cost": 0.4623453859
+        },
+        {
+          "param": 1.57,
+          "param_range": [
+            1.57,
+            1.57
+          ],
+          "predicted_cost": 0.4638985217
+        },
+        {
+          "param": 1.56,
+          "param_range": [
+            1.56,
+            1.56
+          ],
+          "predicted_cost": 0.4648062548
+        },
+        {
+          "param": 1.55,
+          "param_range": [
+            1.55,
+            1.55
+          ],
+          "predicted_cost": 0.4661423856
+        },
+        {
+          "param": 1.54,
+          "param_range": [
+            1.54,
+            1.54
+          ],
+          "predicted_cost": 0.4670449249
+        },
+        {
+          "param": 1.53,
+          "param_range": [
+            1.53,
+            1.53
+          ],
+          "predicted_cost": 0.4680343187
+        },
+        {
+          "param": 1.52,
+          "param_range": [
+            1.52,
+            1.52
+          ],
+          "predicted_cost": 0.469363661
+        },
+        {
+          "param": 1.51,
+          "param_range": [
+            1.51,
+            1.51
+          ],
+          "predicted_cost": 0.4712565934
+        },
+        {
+          "param": 1.5,
+          "param_range": [
+            1.5,
+            1.5
+          ],
+          "predicted_cost": 0.4728573509
+        },
+        {
+          "param": 1.49,
+          "param_range": [
+            1.49,
+            1.49
+          ],
+          "predicted_cost": 0.4743864154
+        },
+        {
+          "param": 1.48,
+          "param_range": [
+            1.48,
+            1.48
+          ],
+          "predicted_cost": 0.4760234112
+        },
+        {
+          "param": 1.47,
+          "param_range": [
+            1.47,
+            1.47
+          ],
+          "predicted_cost": 0.4784606708
+        },
+        {
+          "param": 1.46,
+          "param_range": [
+            1.46,
+            1.46
+          ],
+          "predicted_cost": 0.4800737828
+        },
+        {
+          "param": 1.45,
+          "param_range": [
+            1.45,
+            1.45
+          ],
+          "predicted_cost": 0.4816920182
+        },
+        {
+          "param": 1.44,
+          "param_range": [
+            1.44,
+            1.44
+          ],
+          "predicted_cost": 0.4830788959
+        },
+        {
+          "param": 1.43,
+          "param_range": [
+            1.43,
+            1.43
+          ],
+          "predicted_cost": 0.4845738348
+        },
+        {
+          "param": 1.42,
+          "param_range": [
+            1.42,
+            1.42
+          ],
+          "predicted_cost": 0.4853877903
+        },
+        {
+          "param": 1.41,
+          "param_range": [
+            1.41,
+            1.41
+          ],
+          "predicted_cost": 0.4864981197
+        },
+        {
+          "param": 1.4,
+          "param_range": [
+            1.4,
+            1.4
+          ],
+          "predicted_cost": 0.4883939527
+        },
+        {
+          "param": 1.39,
+          "param_range": [
+            1.39,
+            1.39
+          ],
+          "predicted_cost": 0.4893854506
+        },
+        {
+          "param": 1.38,
+          "param_range": [
+            1.38,
+            1.38
+          ],
+          "predicted_cost": 0.4909119976
+        },
+        {
+          "param": 1.37,
+          "param_range": [
+            1.37,
+            1.37
+          ],
+          "predicted_cost": 0.4931008082
+        },
+        {
+          "param": 1.36,
+          "param_range": [
+            1.36,
+            1.36
+          ],
+          "predicted_cost": 0.4940759479
+        },
+        {
+          "param": 1.35,
+          "param_range": [
+            1.35,
+            1.35
+          ],
+          "predicted_cost": 0.4956580312
+        },
+        {
+          "param": 1.34,
+          "param_range": [
+            1.34,
+            1.34
+          ],
+          "predicted_cost": 0.4973078405
+        },
+        {
+          "param": 1.33,
+          "param_range": [
+            1.33,
+            1.33
+          ],
+          "predicted_cost": 0.4981893754
+        },
+        {
+          "param": 1.32,
+          "param_range": [
+            1.32,
+            1.32
+          ],
+          "predicted_cost": 0.4995379877
+        },
+        {
+          "param": 1.31,
+          "param_range": [
+            1.31,
+            1.31
+          ],
+          "predicted_cost": 0.5007404587
+        },
+        {
+          "param": 1.3,
+          "param_range": [
+            1.3,
+            1.3
+          ],
+          "predicted_cost": 0.5023344054
+        },
+        {
+          "param": 1.29,
+          "param_range": [
+            1.29,
+            1.29
+          ],
+          "predicted_cost": 0.5035577348
+        },
+        {
+          "param": 1.28,
+          "param_range": [
+            1.28,
+            1.28
+          ],
+          "predicted_cost": 0.5048102945
+        },
+        {
+          "param": 1.27,
+          "param_range": [
+            1.27,
+            1.27
+          ],
+          "predicted_cost": 0.5056339503
+        },
+        {
+          "param": 1.26,
+          "param_range": [
+            1.26,
+            1.26
+          ],
+          "predicted_cost": 0.506577356
+        },
+        {
+          "param": 1.25,
+          "param_range": [
+            1.25,
+            1.25
+          ],
+          "predicted_cost": 0.5077478532
+        },
+        {
+          "param": 1.24,
+          "param_range": [
+            1.24,
+            1.24
+          ],
+          "predicted_cost": 0.5092529761
+        },
+        {
+          "param": 1.23,
+          "param_range": [
+            1.23,
+            1.23
+          ],
+          "predicted_cost": 0.5103253668
+        },
+        {
+          "param": 1.22,
+          "param_range": [
+            1.22,
+            1.22
+          ],
+          "predicted_cost": 0.5113369048
+        },
+        {
+          "param": 1.21,
+          "param_range": [
+            1.21,
+            1.21
+          ],
+          "predicted_cost": 0.5121243427
+        },
+        {
+          "param": 1.2,
+          "param_range": [
+            1.2,
+            1.2
+          ],
+          "predicted_cost": 0.5131864129
+        },
+        {
+          "param": 1.19,
+          "param_range": [
+            1.19,
+            1.19
+          ],
+          "predicted_cost": 0.5137183758
+        },
+        {
+          "param": 1.18,
+          "param_range": [
+            1.18,
+            1.18
+          ],
+          "predicted_cost": 0.5143589369
+        },
+        {
+          "param": 1.17,
+          "param_range": [
+            1.17,
+            1.17
+          ],
+          "predicted_cost": 0.5150666826
+        },
+        {
+          "param": 1.16,
+          "param_range": [
+            1.16,
+            1.16
+          ],
+          "predicted_cost": 0.5158976658
+        },
+        {
+          "param": 1.15,
+          "param_range": [
+            1.15,
+            1.15
+          ],
+          "predicted_cost": 0.5165865151
+        },
+        {
+          "param": 1.14,
+          "param_range": [
+            1.14,
+            1.14
+          ],
+          "predicted_cost": 0.5168755978
+        },
+        {
+          "param": 1.13,
+          "param_range": [
+            1.13,
+            1.13
+          ],
+          "predicted_cost": 0.5180892577
+        },
+        {
+          "param": 1.12,
+          "param_range": [
+            1.12,
+            1.12
+          ],
+          "predicted_cost": 0.5189243073
+        },
+        {
+          "param": 1.11,
+          "param_range": [
+            1.11,
+            1.11
+          ],
+          "predicted_cost": 0.519825463
+        },
+        {
+          "param": 1.1,
+          "param_range": [
+            1.1,
+            1.1
+          ],
+          "predicted_cost": 0.5208511938
+        },
+        {
+          "param": 1.09,
+          "param_range": [
+            1.09,
+            1.09
+          ],
+          "predicted_cost": 0.5212414365
+        },
+        {
+          "param": 1.08,
+          "param_range": [
+            1.08,
+            1.08
+          ],
+          "predicted_cost": 0.5217063605
+        },
+        {
+          "param": 1.07,
+          "param_range": [
+            1.07,
+            1.07
+          ],
+          "predicted_cost": 0.5222896666
+        },
+        {
+          "param": 1.06,
+          "param_range": [
+            1.06,
+            1.06
+          ],
+          "predicted_cost": 0.523284671
+        },
+        {
+          "param": 1.05,
+          "param_range": [
+            1.05,
+            1.05
+          ],
+          "predicted_cost": 0.524149402
+        },
+        {
+          "param": 1.04,
+          "param_range": [
+            1.04,
+            1.04
+          ],
+          "predicted_cost": 0.5245398457
+        },
+        {
+          "param": 1.03,
+          "param_range": [
+            1.03,
+            1.03
+          ],
+          "predicted_cost": 0.5249491469
+        },
+        {
+          "param": 1.02,
+          "param_range": [
+            1.02,
+            1.02
+          ],
+          "predicted_cost": 0.5259634688
+        },
+        {
+          "param": 1.01,
+          "param_range": [
+            1.01,
+            1.01
+          ],
+          "predicted_cost": 0.5266477102
+        },
+        {
+          "param": 1.0,
+          "param_range": [
+            1.0,
+            1.0
+          ],
+          "predicted_cost": 0.5272063651
+        },
+        {
+          "param": 0.99,
+          "param_range": [
+            0.99,
+            0.99
+          ],
+          "predicted_cost": 0.5279694662
+        },
+        {
+          "param": 0.98,
+          "param_range": [
+            0.98,
+            0.98
+          ],
+          "predicted_cost": 0.5285641216
+        },
+        {
+          "param": 0.97,
+          "param_range": [
+            0.97,
+            0.97
+          ],
+          "predicted_cost": 0.5291615207
+        },
+        {
+          "param": 0.96,
+          "param_range": [
+            0.96,
+            0.96
+          ],
+          "predicted_cost": 0.5298454952
+        },
+        {
+          "param": 0.95,
+          "param_range": [
+            0.95,
+            0.95
+          ],
+          "predicted_cost": 0.5300454336
+        },
+        {
+          "param": 0.94,
+          "param_range": [
+            0.94,
+            0.94
+          ],
+          "predicted_cost": 0.5305970171
+        },
+        {
+          "param": 0.93,
+          "param_range": [
+            0.93,
+            0.93
+          ],
+          "predicted_cost": 0.5312072402
+        },
+        {
+          "param": 0.92,
+          "param_range": [
+            0.92,
+            0.92
+          ],
+          "predicted_cost": 0.5315152836
+        },
+        {
+          "param": 0.91,
+          "param_range": [
+            0.91,
+            0.91
+          ],
+          "predicted_cost": 0.5320718303
+        },
+        {
+          "param": 0.9,
+          "param_range": [
+            0.9,
+            0.9
+          ],
+          "predicted_cost": 0.5329222363
+        },
+        {
+          "param": 0.89,
+          "param_range": [
+            0.89,
+            0.89
+          ],
+          "predicted_cost": 0.5335077596
+        },
+        {
+          "param": 0.88,
+          "param_range": [
+            0.88,
+            0.88
+          ],
+          "predicted_cost": 0.5339727681
+        },
+        {
+          "param": 0.87,
+          "param_range": [
+            0.87,
+            0.87
+          ],
+          "predicted_cost": 0.5344853598
+        },
+        {
+          "param": 0.86,
+          "param_range": [
+            0.86,
+            0.86
+          ],
+          "predicted_cost": 0.5350368066
+        },
+        {
+          "param": 0.85,
+          "param_range": [
+            0.85,
+            0.85
+          ],
+          "predicted_cost": 0.535311421
+        },
+        {
+          "param": 0.84,
+          "param_range": [
+            0.84,
+            0.84
+          ],
+          "predicted_cost": 0.5358579605
+        },
+        {
+          "param": 0.83,
+          "param_range": [
+            0.83,
+            0.83
+          ],
+          "predicted_cost": 0.5366499857
+        },
+        {
+          "param": 0.82,
+          "param_range": [
+            0.82,
+            0.82
+          ],
+          "predicted_cost": 0.5378206622
+        },
+        {
+          "param": 0.81,
+          "param_range": [
+            0.81,
+            0.81
+          ],
+          "predicted_cost": 0.5383218832
+        },
+        {
+          "param": 0.8,
+          "param_range": [
+            0.8,
+            0.8
+          ],
+          "predicted_cost": 0.5396656827
+        },
+        {
+          "param": 0.79,
+          "param_range": [
+            0.79,
+            0.79
+          ],
+          "predicted_cost": 0.5402727948
+        },
+        {
+          "param": 0.78,
+          "param_range": [
+            0.78,
+            0.78
+          ],
+          "predicted_cost": 0.5410429857
+        },
+        {
+          "param": 0.77,
+          "param_range": [
+            0.77,
+            0.77
+          ],
+          "predicted_cost": 0.5425182183
+        },
+        {
+          "param": 0.76,
+          "param_range": [
+            0.76,
+            0.76
+          ],
+          "predicted_cost": 0.5430115588
+        },
+        {
+          "param": 0.75,
+          "param_range": [
+            0.75,
+            0.75
+          ],
+          "predicted_cost": 0.5434184428
+        },
+        {
+          "param": 0.74,
+          "param_range": [
+            0.74,
+            0.74
+          ],
+          "predicted_cost": 0.5449141447
+        },
+        {
+          "param": 0.73,
+          "param_range": [
+            0.73,
+            0.73
+          ],
+          "predicted_cost": 0.5462366061
+        },
+        {
+          "param": 0.72,
+          "param_range": [
+            0.72,
+            0.72
+          ],
+          "predicted_cost": 0.5471178926
+        },
+        {
+          "param": 0.71,
+          "param_range": [
+            0.71,
+            0.71
+          ],
+          "predicted_cost": 0.5483174083
+        },
+        {
+          "param": 0.7,
+          "param_range": [
+            0.7,
+            0.7
+          ],
+          "predicted_cost": 0.5496368041
+        },
+        {
+          "param": 0.69,
+          "param_range": [
+            0.69,
+            0.69
+          ],
+          "predicted_cost": 0.550498828
+        },
+        {
+          "param": 0.68,
+          "param_range": [
+            0.68,
+            0.68
+          ],
+          "predicted_cost": 0.5519771007
+        },
+        {
+          "param": 0.67,
+          "param_range": [
+            0.67,
+            0.67
+          ],
+          "predicted_cost": 0.5540097134
+        },
+        {
+          "param": 0.66,
+          "param_range": [
+            0.66,
+            0.66
+          ],
+          "predicted_cost": 0.5558059014
+        },
+        {
+          "param": 0.65,
+          "param_range": [
+            0.65,
+            0.65
+          ],
+          "predicted_cost": 0.5584590776
+        },
+        {
+          "param": 0.64,
+          "param_range": [
+            0.64,
+            0.64
+          ],
+          "predicted_cost": 0.5601349652
+        },
+        {
+          "param": 0.63,
+          "param_range": [
+            0.63,
+            0.63
+          ],
+          "predicted_cost": 0.5622354453
+        },
+        {
+          "param": 0.62,
+          "param_range": [
+            0.62,
+            0.62
+          ],
+          "predicted_cost": 0.5635062377
+        },
+        {
+          "param": 0.61,
+          "param_range": [
+            0.61,
+            0.61
+          ],
+          "predicted_cost": 0.5659629217
+        },
+        {
+          "param": 0.6,
+          "param_range": [
+            0.6,
+            0.6
+          ],
+          "predicted_cost": 0.5682496792
+        },
+        {
+          "param": 0.59,
+          "param_range": [
+            0.59,
+            0.59
+          ],
+          "predicted_cost": 0.5711877704
+        },
+        {
+          "param": 0.58,
+          "param_range": [
+            0.58,
+            0.58
+          ],
+          "predicted_cost": 0.5743902684
+        },
+        {
+          "param": 0.57,
+          "param_range": [
+            0.57,
+            0.57
+          ],
+          "predicted_cost": 0.5774768617
+        },
+        {
+          "param": 0.56,
+          "param_range": [
+            0.56,
+            0.56
+          ],
+          "predicted_cost": 0.5802286317
+        },
+        {
+          "param": 0.55,
+          "param_range": [
+            0.55,
+            0.55
+          ],
+          "predicted_cost": 0.5833275634
+        },
+        {
+          "param": 0.54,
+          "param_range": [
+            0.54,
+            0.54
+          ],
+          "predicted_cost": 0.5869721258
+        },
+        {
+          "param": 0.53,
+          "param_range": [
+            0.53,
+            0.53
+          ],
+          "predicted_cost": 0.5925157174
+        },
+        {
+          "param": 0.52,
+          "param_range": [
+            0.52,
+            0.52
+          ],
+          "predicted_cost": 0.5962278275
+        },
+        {
+          "param": 0.51,
+          "param_range": [
+            0.51,
+            0.51
+          ],
+          "predicted_cost": 0.6004648688
+        },
+        {
+          "param": 0.5,
+          "param_range": [
+            0.5,
+            0.5
+          ],
+          "predicted_cost": 0.6063210736
+        },
+        {
+          "param": 0.49,
+          "param_range": [
+            0.49,
+            0.49
+          ],
+          "predicted_cost": 0.6108913655
+        },
+        {
+          "param": 0.48,
+          "param_range": [
+            0.48,
+            0.48
+          ],
+          "predicted_cost": 0.6167484394
+        },
+        {
+          "param": 0.47,
+          "param_range": [
+            0.47,
+            0.47
+          ],
+          "predicted_cost": 0.6215674499
+        },
+        {
+          "param": 0.46,
+          "param_range": [
+            0.46,
+            0.46
+          ],
+          "predicted_cost": 0.6261421527
+        },
+        {
+          "param": 0.45,
+          "param_range": [
+            0.45,
+            0.45
+          ],
+          "predicted_cost": 0.6301046364
+        },
+        {
+          "param": 0.44,
+          "param_range": [
+            0.44,
+            0.44
+          ],
+          "predicted_cost": 0.6353103584
+        },
+        {
+          "param": 0.43,
+          "param_range": [
+            0.43,
+            0.43
+          ],
+          "predicted_cost": 0.6414091651
+        },
+        {
+          "param": 0.42,
+          "param_range": [
+            0.42,
+            0.42
+          ],
+          "predicted_cost": 0.6477403713
+        }
+      ],
+      "predicted_levels": 401,
+      "screen": {
+        "doc_mean_nll": 0.9112883174960572,
+        "relative_cost": 0.5012659607475338,
+        "depth_share": {
+          "4": 0.0,
+          "6": 0.26663247953380037,
+          "8": 0.7248733119719912,
+          "12": 0.008494208494208495,
+          "16": 0.0
+        },
+        "components": {
+          "high": {
+            "relative_cost": 0.5012944177176919,
+            "doc_mean_nll": 0.9112513004283492,
+            "depth_share": {
+              "4": 0.0,
+              "6": 0.26640926640926643,
+              "8": 0.7250965250965251,
+              "12": 0.008494208494208495,
+              "16": 0.0
+            }
+          },
+          "low": {
+            "relative_cost": 0.49971927777006253,
+            "doc_mean_nll": 0.9133002558079021,
+            "depth_share": {
+              "4": 0.0,
+              "6": 0.27876447876447874,
+              "8": 0.7127413127413127,
+              "12": 0.008494208494208495,
+              "16": 0.0
+            }
+          }
+        }
+      },
+      "R_minus_rep_ridge": {
+        "mean": 0.005809602193905237,
+        "sd": 0.06726522155516469,
+        "n": 367,
+        "ci95": [
+          -0.000937251474658101,
+          0.012678389771663483
+        ],
+        "lower_one_sided_90": 0.001403138775031621,
+        "lower_one_sided_95": 0.00011967866441507737
+      },
+      "rep_ridge_minus_head": {
+        "mean": -0.0019961613143354767,
+        "sd": 0.06097763298461379,
+        "n": 367,
+        "ci95": [
+          -0.007999556904038991,
+          0.004202458821258567
+        ],
+        "lower_one_sided_90": -0.006064860815203904,
+        "lower_one_sided_95": -0.007118716757930416
+      }
+    },
+    "development": {
+      "documents": 505,
+      "R": {
+        "doc_mean_nll": 0.92164330444368,
+        "relative_cost": 0.4999543984425497,
+        "depth_share": {
+          "4": 0.0,
+          "6": 0.23879593242063318,
+          "8": 0.7612040675793668,
+          "12": 0.0,
+          "16": 0.0
+        },
+        "components": {
+          "high": {
+            "relative_cost": 0.5005210808157128,
+            "doc_mean_nll": 0.9209906522765843,
+            "depth_share": {
+              "4": 0.0,
+              "6": 0.23463056965595036,
+              "8": 0.7653694303440496,
+              "12": 0.0,
+              "16": 0.0
+            }
+          },
+          "low": {
+            "relative_cost": 0.49683793107838803,
+            "doc_mean_nll": 0.9252325623335104,
+            "depth_share": {
+              "4": 0.0,
+              "6": 0.2617033276931754,
+              "8": 0.7382966723068246,
+              "12": 0.0,
+              "16": 0.0
+            }
+          }
+        }
+      },
+      "head": {
+        "doc_mean_nll": 0.9209855643014421,
+        "relative_cost": 0.5037539888235499,
+        "depth_share": {
+          "4": 0.001692047377326565,
+          "6": 0.2948321416838028,
+          "8": 0.6538424212039581,
+          "12": 0.049633389734912575,
+          "16": 0.0
+        },
+        "components": {
+          "high": {
+            "relative_cost": 0.5045951981172707,
+            "doc_mean_nll": 0.9202916263762079,
+            "depth_share": {
+              "4": 0.001692047377326565,
+              "6": 0.2887760857304005,
+              "8": 0.6598984771573604,
+              "12": 0.049633389734912575,
+              "16": 0.0
+            }
+          },
+          "low": {
+            "relative_cost": 0.5037334147006971,
+            "doc_mean_nll": 0.9210025364916361,
+            "depth_share": {
+              "4": 0.001692047377326565,
+              "6": 0.2949802594472645,
+              "8": 0.6536943034404963,
+              "12": 0.049633389734912575,
+              "16": 0.0
+            }
+          }
+        }
+      },
+      "g_head": {
+        "mean": 0.0006577401422380159,
+        "sd": 0.09931512944106782,
+        "n": 505,
+        "ci95": [
+          -0.007808282386680145,
+          0.009091736210442824
+        ],
+        "lower_one_sided_90": -0.004832268651834232,
+        "lower_one_sided_95": -0.006388842305432238
+      },
+      "cost_ratio": 1.0075998738941725
+    }
+  },
+  "seconds_per_online_run": 0.45901223390522566,
+  "seconds": 5143.147983700008
+}

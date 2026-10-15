@@ -1,0 +1,137 @@
+{
+  "schema_version": 3,
+  "protocol": "jev-chunk-depth-v3",
+  "follows": "jev-shared-depth-v2.1 (pilot no-go)",
+  "date": "2026-10-12",
+  "status": "phase0_completed_training_not_started",
+  "plan": "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+  "model": {
+    "id": "tomg-group-umd/huginn-0125",
+    "revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+    "freeze_base": true,
+    "core_trainable": false
+  },
+  "data": {
+    "id": "openai/gsm8k",
+    "config": "main",
+    "revision": "740312add88f781978c0658806c59bc2815b9866",
+    "license": "mit",
+    "files": {
+      "train": {"path": "main/train-00000-of-00001.parquet", "bytes": 2306545,
+                "sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d"},
+      "test": {"path": "main/test-00000-of-00001.parquet", "bytes": 419088,
+               "sha256": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"}
+    },
+    "format": "Question: {question}\\nAnswer: {solution}",
+    "remove_calculator_annotations": "<<...>>",
+    "remove_final_answer_line": "#### N",
+    "tokenization": "[65504] + tokenizer.encode(text, add_special_tokens=False, split_special_tokens=True)",
+    "max_tokens": 320,
+    "chunk_rule": "token assigned by its last character; chunk 0 = up to 'Answer:'; chunk c = solution line c",
+    "split_hash": "SHA256(UTF8('jev-chunk-v3') || 0x00 || UTF8(question)) big-endian mod 100",
+    "splits": {
+      "phase0_survey_used": {"buckets": [0, 9], "documents": 720},
+      "formal_train": {"buckets": [10, 64], "documents": 4111},
+      "warm": {"buckets": [65, 69], "documents": 362},
+      "pilot_train": {"buckets": [70, 74], "documents": 373},
+      "pilot_cal": {"buckets": [75, 77], "documents": 223},
+      "pilot_screen": {"buckets": [78, 84], "documents": 505},
+      "formal_cal": {"buckets": [85, 89], "documents": 389},
+      "formal_screen": {"buckets": [90, 99], "documents": 745},
+      "confirm": {"source": "test", "documents_available": 1310, "order": "file_row_order", "minimum": 512, "maximum": 1310, "power_selected": null}
+    },
+    "initial_state": {
+      "algorithm": "same as v2 section 5.5",
+      "key": "jev-chunk-v3-state | gsm8k_commit | split | row | position | replica (0x00 separated, decimal)",
+      "test_vectors_torch": "2.8.0+cu128",
+      "test_vectors": [
+        {"split": "train", "row": 0, "position": 0, "replica": 0, "seed64": "985831553517531630",
+         "first_8_bf16_le_hex": "b63e6a3f363f3d3f7cbfc93ec03f8d3e",
+         "sha256_bf16_le": "b551421efdd92c19ce3d2d8b87fb7943099efd3a2c24b3ff1ddb053ecb21e884"},
+        {"split": "train", "row": 0, "position": 100, "replica": 0, "seed64": "4992260914061672449",
+         "first_8_bf16_le_hex": "ae3ee4be6a3e45bdc8bd83bf10bef73e",
+         "sha256_bf16_le": "ad89c2df476f6951ebac2dc6b79bd2f4582e62c564dc5d3525889e8d1909dd27"}
+      ]
+    }
+  },
+  "execution": {
+    "question_chunk_depth": 16,
+    "candidate_depths": [4, 6, 8, 12, 16],
+    "kv_cache": "HuginnDynamicCache",
+    "lookup_strategy": "latest-m4",
+    "teacher_forcing": "chunk-wise prefill in chunk order",
+    "decision_position": "last position of previous chunk; reuses its coda output",
+    "decision_flops": 52900
+  },
+  "cost": {
+    "per_position": "stack(1, t+1, d) + lm_head(1) from experiments/shared_depth_v2/cost.py",
+    "budget_normalisation": "sum over decision chunks of f(d) / sum of f(16)",
+    "primary_budget": 0.5,
+    "secondary_budgets": [0.4, 0.6],
+    "relative_cost_by_depth": {"4": 0.301, "6": 0.418, "8": 0.534, "12": 0.767, "16": 1.0}
+  },
+  "controller": {
+    "lora": "as v2: both coda blocks, Wqkv/proj/fc/proj, rank 8, alpha 16, 1,536,000 parameters",
+    "readout_input": "concat(coda_output_at_decision_position[5280], position_features[10])",
+    "position_features": "one-hot chunk index 1..8 and >=9 (9 dims) + previous line length / 50",
+    "readout_output": 5,
+    "dirichlet": {"kappa": 256, "epsilon": 0.01, "eta": 0.001},
+    "auxiliary": {"ce": 0.1, "brier": 0.01, "kl_to_reference": 0.1, "soft_label_temperature_per_token": 0.05},
+    "lambda_grid": [0.25, 0.5, 1, 1.5, 2, 3],
+    "lambda_rule": "warm readout uncalibrated mean relative cost closest to 0.5 in log space; tie -> smaller",
+    "kv_penalty": {"form": "per-token kappa by depth step above max history depth", "estimated_in": "pilot stage 3",
+                   "bins": ["<=0", "+1 step", "+2 steps", ">=+3 steps"], "values": null}
+  },
+  "arms": {
+    "E": {"seeds": [17, 29, 43], "route": "exact_expected_cost_plus_auxiliary"},
+    "J": {"seeds": [17], "route": "dirichlet_LOO_score_plus_auxiliary", "role": "mechanism_only"},
+    "SCHED-A": {"seeds": [17, 29, 43], "direct": "frozen position schedule depths", "route": "none"},
+    "FMIX-A": {"seeds": [17, 29, 43], "direct": "uniform over candidate depths", "route": "none"},
+    "pilot_only": ["E_without_kv_penalty"],
+    "free_controls": ["frozen_position_schedule", "E_static_position_schedule", "frozen_representation_ridge_probe"]
+  },
+  "optimizer": {
+    "name": "AdamW", "lr": 0.0001, "weight_decay": 0.01, "clip_grad_norm": 1, "warmup_fraction": 0.05,
+    "decay": "cosine", "end_lr": 1e-05, "microbatch": 1, "effective_batch": 8,
+    "formal_epochs": 2, "updates_per_run": 1028, "runs": 10, "total_updates": 10280,
+    "pilot_epochs": 2, "pilot_updates_per_run": 93, "checkpoint_selection": "final"
+  },
+  "evaluation": {
+    "comparator_R": {
+      "classes": "chunk index (1..8, >=9) x previous-line-length tercile (cut points from formal_train)",
+      "pool": ["frozen", "SCHED-A", "FMIX-A", "E_static"],
+      "solver": "Lagrangian per class with one randomised class; LP extreme point",
+      "fit_on": "formal_cal, seed-averaged table NLL"
+    },
+    "controller_calibration": "hard argmax(log mu - b r(d)); bisection on formal_cal to cost <= c_R within 0.5%",
+    "same_cost_band": [0.98, 1.02],
+    "primary_metric": "per-document mean NLL of decision-chunk scored tokens, realised latest-m4 execution, bf16",
+    "secondary_generation": {"documents": 512, "decoding": "greedy, max 256 new tokens", "answer": "last number",
+                             "policies": ["E x3", "R x3", "frozen depth 8", "frozen depth 16"]}
+  },
+  "statistics": {
+    "primary_effect": "R_minus_E", "test": "one_sided_paired_document_bootstrap", "alpha": 0.05,
+    "bootstrap_repeats": 10000, "min_observed_effect": 0.005, "planning_effect": 0.01, "planning_delta_min": 0.005,
+    "power": 0.8, "screen_sd_multiplier": 1.2, "sample_rounding": 128, "confirm_min": 512, "confirm_max": 1310,
+    "require_each_seed_positive": true,
+    "phase0_sd_estimate": 0.080, "phase0_planned_n": 640,
+    "secondary": "E_minus_J two-sided 95% interval, seed 17 only"
+  },
+  "pilot": {
+    "gpu": "RTX 5080", "gpu_hours_cap": 8,
+    "phase_caps": {"implementation": 1, "data_features": 1.5, "kv_penalty": 0.5, "training": 2, "screen_forecast": 2, "reserve": 1},
+    "go": {"technical_checks": true, "resource_forecast_under_cap": true,
+           "E_minus_R_realised_on_pilot_screen": {"min_point_estimate": 0.005, "one_sided_90_lower_bound_above": 0}}
+  },
+  "formal": {
+    "gpu": "A10", "count": 3, "gpu_hours_cap": 144,
+    "phase_caps": {"features_environment": 16, "training": 24, "evaluation": 32, "generation": 44, "reserve": 28}
+  },
+  "phase0": {
+    "results": "results/chunk-depth-v3/",
+    "headroom_budget_0_5": {"chunk_split_table": 0.117, "chunk_split_realised": 0.052, "question_split": -0.011},
+    "kv_penalty_deeper_than_history_per_token": 0.129,
+    "probe_budget_0_5": {"position_only": 0.0149, "representation_only": 0.0169, "representation_plus_position": 0.0166,
+                         "representation_realised": 0.0150, "per_item_rep_minus_schedule": 0.0040}
+  }
+}

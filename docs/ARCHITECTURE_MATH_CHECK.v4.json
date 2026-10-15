@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "seed": 40723,
+  "width": 4,
+  "loop_layers": 2,
+  "tail_layers": 2,
+  "micro_model_experts": 3,
+  "formal_architecture_experts": 2,
+  "passed": true,
+  "checks": [
+    {
+      "name": "zero_mix_zero_lora_path_collapse",
+      "max_error": 0.0,
+      "tolerance": 1e-10,
+      "passed": true,
+      "paths": 12,
+      "tested_depths": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "tested_experts": [
+        0,
+        1,
+        2
+      ],
+      "note": "All tail weights equal the original tail in this initialization test."
+    },
+    {
+      "name": "nonzero_online_matches_independent_masked_reference",
+      "max_error": 0.0,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "future_token_invariance",
+      "max_error": 0.0,
+      "tolerance": 1e-10,
+      "passed": true,
+      "cuts": [
+        2,
+        5,
+        8,
+        11
+      ]
+    },
+    {
+      "name": "prompt_and_newline_boundary_order_and_line_constant_action",
+      "max_error": 0,
+      "tolerance": 0.0,
+      "passed": true,
+      "input_boundary_positions": [
+        2,
+        5,
+        8,
+        11
+      ],
+      "predicted_first_token_positions": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    {
+      "name": "first_generated_token_depends_on_depth_and_tail",
+      "max_error": 0.0,
+      "tolerance": 0.0,
+      "passed": true,
+      "depth_logit_change": 0.027985292526758243,
+      "tail_logit_change": 0.00957128020172239
+    },
+    {
+      "name": "negative_control_final_exit_used_for_all_layer_backfills",
+      "max_error": 0.0,
+      "tolerance": 0.0,
+      "passed": true,
+      "incorrect_implementation_error": 0.002034026450323828,
+      "expected": "The deliberately incorrect implementation must disagree."
+    },
+    {
+      "name": "finite_difference_shared_lora_and_mixing_gradient",
+      "max_error": 4.3517078829324873e-11,
+      "tolerance": 1e-09,
+      "passed": true,
+      "max_absolute_error": 4.3517078829324873e-11,
+      "max_relative_error": 1.2717050517515083e-08,
+      "epsilon": 1e-06,
+      "shared_reentries": 3,
+      "analytic": [
+        -0.1095356011329115,
+        -0.028960570345801667,
+        -0.002944370569961822,
+        0.0008962200674582386,
+        -0.0004123771507040444,
+        0.001938807187342663,
+        0.16208986153855562,
+        -0.2637393119907322,
+        0.10619988544880825
+      ],
+      "finite_difference": [
+        -0.10953560108939442,
+        -0.02896057034462718,
+        -0.002944370552926401,
+        0.000896220070378817,
+        -0.00041237714631936484,
+        0.0019388072119985722,
+        0.16208986154675475,
+        -0.26373931202861023,
+        0.10619988545512715
+      ]
+    },
+    {
+      "name": "zero_gamma_zero_B_initialization_gradient_example",
+      "max_error": 1.8596860162922724e-11,
+      "tolerance": 1e-09,
+      "passed": true,
+      "gamma_gradient_max_abs": 0.10388000000000001,
+      "A_gradient_max_abs": 0.0,
+      "B_gradient_max_abs": 0.1989,
+      "note": "A gradient vanishes at B=0. Nonzero gamma and B gradients are an example, not a universal guarantee.",
+      "max_absolute_error": 1.8596860162922724e-11,
+      "max_relative_error": 3.580798146367014e-09,
+      "epsilon": 1e-06,
+      "shared_reentries": 3,
+      "analytic": [
+        -0.10388000000000001,
+        0.004180000000000004,
+        -0.017459999999999993,
+        0.0,
+        0.0,
+        0.0,
+        0.08579999999999997,
+        -0.1989,
+        0.1248
+      ],
+      "finite_difference": [
+        -0.10388000001859687,
+        0.004179999985032268,
+        -0.017460000001356946,
+        0.0,
+        0.0,
+        0.0,
+        0.08579999999369647,
+        -0.19889999998412566,
+        0.12479999998704638
+      ]
+    },
+    {
+      "name": "cost_includes_every_token_decision_and_tail_catchup",
+      "max_error": 0,
+      "tolerance": 0.0,
+      "passed": true,
+      "observed": {
+        "shared_layer_tokens": 14,
+        "actual_loop_layer_tokens": 64,
+        "missing_loop_kv_slots": 36,
+        "missing_loop_projection_matvecs": 72,
+        "decision_layer_tokens": 14,
+        "tail_current_layer_tokens": 24,
+        "tail_catchup_layer_tokens": 42,
+        "lm_readouts": 12
+      },
+      "independently_counted": {
+        "shared_layer_tokens": 14,
+        "actual_loop_layer_tokens": 64,
+        "missing_loop_kv_slots": 36,
+        "missing_loop_projection_matvecs": 72,
+        "decision_layer_tokens": 14,
+        "tail_current_layer_tokens": 24,
+        "tail_catchup_layer_tokens": 42,
+        "lm_readouts": 12
+      },
+      "note": "Operation categories are counted separately; this is not a FLOP or latency estimate."
+    }
+  ],
+  "scope": "Deterministic micro-model algebra and causal cache semantics only; not Qwen production-executor validation.",
+  "qualifications": [
+    "Finite tests complement, and do not replace, the symbolic proof in the architecture document.",
+    "History completion defines a surrogate deep-round history; it is not full deep-prefix recomputation.",
+    "The controller uses scripted causal position biases to exercise mixed actions; policy learning is untested.",
+    "No Qwen weights, MoE kernels, training quality, GPU memory, or wall-clock speed are tested.",
+    "Before the final prompt position, only S, the first F round, and D execute; exits are saved and no tail or vocabulary head executes.",
+    "At the final prompt position the chosen tail first catches up all saved prompt exits, then produces the first generated-token logits.",
+    "The micro-model deliberately tests three tails and twelve actions, generalizing the formal architecture's two tails and eight actions.",
+    "Tail cursor catch-up can cost more than a single tail pass; controller computation is paid for every input token."
+  ]
+}

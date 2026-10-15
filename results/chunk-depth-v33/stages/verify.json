@@ -1,0 +1,13 @@
+{
+  "stage": "verify",
+  "finished_at": "2026-10-14T00:16:34",
+  "node": "gecko-04",
+  "scratch": "/tmp/dcs-tmp.<cluster-user>/jev-v33-63272/work",
+  "role_documents": {
+    "fit": 3024,
+    "calibration": 612,
+    "confirm_train": 1087,
+    "confirm_test": 1310,
+    "btrain": 373
+  }
+}

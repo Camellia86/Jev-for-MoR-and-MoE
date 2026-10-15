@@ -1,0 +1,135 @@
+{
+  "protocol_id": "jev-chunk-depth-v3.2-followup",
+  "kind": "mechanism_training",
+  "created_at_utc": "2026-10-13T17:07:10.475697+00:00",
+  "config_sha256": "fc1b60b907ee3bc59d361380dcaf735e49690c9ba74fb109336802b97b0f7586",
+  "source_sha256": {
+    "__init__.py": "bd136288365f0fa5b4c18002d7947733796dbb7a8cd03bed1f33d87792f9e130",
+    "audit_head.py": "d0017d8ff28ff504d84f51987cba642432606580de6939d9fbacd377e85b8fdd",
+    "common.py": "0d095183cc491d2dcfde46130e269b7249e18f88601b57edf2503af892c3a89a",
+    "cross.py": "e9915ba2501b95439b0dca24484099217a40da24dda12de946e46527d8b66624",
+    "evaluate.py": "b9f11651b46c40f51f9b510b56a14aa11804c93831a30d0ea3a462092a8210d8",
+    "gradient_diag.py": "3cf4184fa1aa701b2fd90e4263018ea948907bb69c7ffbdc14b669c6bf56c14d",
+    "math_check.py": "dcb2fe485d2d9552a5afcf24e19ff0b72f58661c9402e15bd7d5cb6ded3b6303",
+    "train.py": "55337795ad7ce73a5be5070aef5a8d86c086a2e9d01ae7c6ca87bb9172095441"
+  },
+  "input_sha256": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v31/pilot_E_s17.pt": "46326dbc27973d44dc9355ac64f17c1baf87101f47cc2e7584a3e799bf76747d",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "results/chunk-depth-v31/screen.json": "cd5f8e513af8295203383a2c744f13e3e6c988787b58b061ae406947e1433b8e",
+    "results/chunk-depth-v31/decompose.json": "e9e25ef1f92eaee35a394c169180a3368442a6d1a688de33a6b56757b4b4d799",
+    "results/chunk-depth-v32/stage1.json": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "arm": "E-C",
+  "seed": 17,
+  "smoke": true,
+  "updates": 1,
+  "planned_updates": 93,
+  "epochs": 2,
+  "batch_size": 8,
+  "documents": 373,
+  "unused_order_entries": 2,
+  "initialization": "theta_S existing LoRA; fresh AdamW",
+  "head_frozen": true,
+  "lambda_": 1.0,
+  "tau": 0.05,
+  "control_coefficients": {
+    "ce": 0.1,
+    "brier": 0.01,
+    "kl": 0.1
+  },
+  "kappa_s": 0.013001121873651982,
+  "kappa_e": -0.0022825558298829535,
+  "kv_source_sha256": "2e764b7d75e6d2deadcb38a62fe3a061f7ba9729ce742068f20efc6957d962c6",
+  "kv_precision": "Existing kv.json full precision; config's short decimals are rounded descriptions",
+  "training_source_sha256": {
+    "items_pilot_train.pt": "a84589983ca057256cc4d2ec4b020433698f8fa55e02b862f66c4a1746b9f6a9",
+    "features_pilot_train.pt": "81c865c2307264ea8115de5443c7adbea3d9c49a50e0bd9c6c182d5c807f6124"
+  },
+  "identities": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v31/pilot_E_s17.pt": "46326dbc27973d44dc9355ac64f17c1baf87101f47cc2e7584a3e799bf76747d",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "results/chunk-depth-v31/screen.json": "cd5f8e513af8295203383a2c744f13e3e6c988787b58b061ae406947e1433b8e",
+    "results/chunk-depth-v31/decompose.json": "e9e25ef1f92eaee35a394c169180a3368442a6d1a688de33a6b56757b4b4d799",
+    "results/chunk-depth-v32/stage1.json": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1"
+  },
+  "reference_logp": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\chunk-depth-v32-followup\\smoke_E-C_s17_reference_logp.pt",
+  "checkpoint": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\chunk-depth-v32-followup\\smoke_E-C_s17.pt",
+  "checkpoint_sha256": "31b02308744da5c0ac897223bfee15b0c3309b16b6f980882dc961901d41fcbd",
+  "seconds": 31.16081600000325,
+  "cap_seconds": 3600.0,
+  "log": [
+    {
+      "update": 0,
+      "batch_indices": [
+        241,
+        166,
+        93,
+        35,
+        345,
+        126,
+        237,
+        56
+      ],
+      "lr": 2e-05,
+      "gen": 0.8911093566510883,
+      "ctrl": 1.5405760221763865,
+      "route": 1.423249630487069,
+      "ce": 1.149982267188426,
+      "brier": 0.23281649704749488,
+      "kl": -1.7081577201977857e-17,
+      "depth8_nll": 0.8267571021666953,
+      "optimized_loss": 2.4316853788274746,
+      "grad_norm_before_clip": 2.7083208560943604,
+      "gradient_clip_coefficient": 0.36923233394500915,
+      "actual_parameter_delta_norm": 0.024768954435794046,
+      "parameter_norm_before": 4.87801020912883,
+      "relative_parameter_delta_norm": 0.00507767580917334,
+      "generation_weights_document_normalized": [
+        0.04758983920328319,
+        0.3210647255182266,
+        0.47710948809981346,
+        0.14803607016801834,
+        0.006199877821927657
+      ],
+      "generation_weights_token_pooled": [
+        0.05044652674043851,
+        0.3380333814839978,
+        0.47976181253262007,
+        0.1265268826036712,
+        0.005231397448103712
+      ],
+      "sampled_weights_token_pooled": [
+        0.081419624217119,
+        0.34237995824634654,
+        0.4697286012526096,
+        0.10647181628392484,
+        0.0
+      ],
+      "sampled_weights_line_pooled": [
+        0.07692307692307693,
+        0.34615384615384615,
+        0.46153846153846156,
+        0.11538461538461539,
+        0.0
+      ],
+      "n_scored_tokens": 479,
+      "n_lines": 26,
+      "seconds": 1.2000961000012467
+    }
+  ]
+}

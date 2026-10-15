@@ -1,0 +1,24 @@
+
+===== 2026-10-13 23:33:20 experiments.chunk_depth_v33.analyze A --nshards 3
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\z5885\git\Jev-for-MoR-and-MoE\experiments\chunk_depth_v33\analyze.py", line 237, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\z5885\git\Jev-for-MoR-and-MoE\experiments\chunk_depth_v33\analyze.py", line 232, in main
+    analyze_a(args.nshards) if args.part == "A" else analyze_b(args.nshards)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\z5885\git\Jev-for-MoR-and-MoE\experiments\chunk_depth_v33\analyze.py", line 114, in analyze_a
+    stats = {n: [r["policies"][n] for r in rows] for n in names}
+                 ~~~~~~~~~~~~~^^^
+KeyError: 'R_B0.6_t0.585'
+
+===== 2026-10-13 23:38:29 experiments.chunk_depth_v33.analyze A --nshards 3
+{
+ "mean": null,
+ "ci95": null,
+ "lower_one_sided_95": null,
+ "status": "not estimable: no bracketing pair on the full sample",
+ "conclusion": "not_estimable"
+}

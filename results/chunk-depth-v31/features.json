@@ -1,0 +1,82 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_features",
+  "created_at_utc": "2026-10-13T06:55:34.903566+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "roles": {
+    "warm": {
+      "documents": 362,
+      "seconds": 77.33112000000256,
+      "frozen_token_nll_by_depth": {
+        "4": 1.973615288734436,
+        "6": 1.6011523008346558,
+        "8": 1.414347529411316,
+        "12": 1.2921900749206543,
+        "16": 1.2663609981536865
+      }
+    },
+    "pilot_train": {
+      "documents": 373,
+      "seconds": 77.69873799999914,
+      "frozen_token_nll_by_depth": {
+        "4": 1.994959831237793,
+        "6": 1.614128589630127,
+        "8": 1.417655110359192,
+        "12": 1.289237141609192,
+        "16": 1.2609074115753174
+      }
+    },
+    "pilot_cal": {
+      "documents": 223,
+      "seconds": 46.78227070000139,
+      "frozen_token_nll_by_depth": {
+        "4": 1.9539012908935547,
+        "6": 1.5771108865737915,
+        "8": 1.3759337663650513,
+        "12": 1.241857647895813,
+        "16": 1.2140769958496094
+      }
+    },
+    "pilot_screen": {
+      "documents": 505,
+      "seconds": 108.17058270000416,
+      "frozen_token_nll_by_depth": {
+        "4": 1.993491768836975,
+        "6": 1.617503046989441,
+        "8": 1.4178903102874756,
+        "12": 1.2874993085861206,
+        "16": 1.2571508884429932
+      }
+    }
+  }
+}

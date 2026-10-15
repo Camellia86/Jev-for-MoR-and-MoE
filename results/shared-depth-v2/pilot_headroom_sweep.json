@@ -1,0 +1,316 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "pilot_headroom_budget_sweep",
+  "created_at_utc": "2026-10-11T23:58:02.417890+00:00",
+  "config_sha256": "a1bdbc2bbc4ad6b8a84375eec5d7790bbc978a46a5033acaec84ffbe5c0bf0f2",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "_sweep.py",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "protocol_revision": "2.1",
+  "note": "frozen model, request-level depth choice, Lagrangian with boundary randomisation; static mixture chosen on the same set (diagnostic only)",
+  "rows": [
+    {
+      "role": "warm",
+      "budget": 0.35,
+      "static": [
+        [
+          "f@4",
+          0.774
+        ],
+        [
+          "f@8",
+          0.226
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0388,
+      "hindsight_gain_no_overhead": 0.0449,
+      "split_half_gain_plan_cost": 0.0156,
+      "split_half_gain_no_overhead": 0.0204
+    },
+    {
+      "role": "warm",
+      "budget": 0.45,
+      "static": [
+        [
+          "f@4",
+          0.347
+        ],
+        [
+          "f@8",
+          0.653
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.035,
+      "hindsight_gain_no_overhead": 0.047,
+      "split_half_gain_plan_cost": 0.0031,
+      "split_half_gain_no_overhead": 0.0166
+    },
+    {
+      "role": "warm",
+      "budget": 0.55,
+      "static": [
+        [
+          "f@8",
+          0.96
+        ],
+        [
+          "f@16",
+          0.04
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0013,
+      "hindsight_gain_no_overhead": 0.0076,
+      "split_half_gain_plan_cost": -0.0117,
+      "split_half_gain_no_overhead": -0.0023
+    },
+    {
+      "role": "warm",
+      "budget": 0.75,
+      "static": [
+        [
+          "f@8",
+          0.533
+        ],
+        [
+          "f@16",
+          0.467
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0184,
+      "hindsight_gain_no_overhead": 0.0208,
+      "split_half_gain_plan_cost": 0.0013,
+      "split_half_gain_no_overhead": 0.004
+    },
+    {
+      "role": "warm",
+      "budget": 1.0,
+      "static": [
+        [
+          "f@16",
+          1.0
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0017,
+      "hindsight_gain_no_overhead": 0.0022,
+      "split_half_gain_plan_cost": -0.0109,
+      "split_half_gain_no_overhead": -0.0104
+    },
+    {
+      "role": "warm",
+      "budget": 1.25,
+      "static": [
+        [
+          "f@16",
+          0.733
+        ],
+        [
+          "f@32",
+          0.267
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.005,
+      "hindsight_gain_no_overhead": 0.0051,
+      "split_half_gain_plan_cost": -0.0072,
+      "split_half_gain_no_overhead": -0.007
+    },
+    {
+      "role": "warm",
+      "budget": 1.5,
+      "static": [
+        [
+          "f@16",
+          0.467
+        ],
+        [
+          "f@32",
+          0.533
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0053,
+      "hindsight_gain_no_overhead": 0.0053,
+      "split_half_gain_plan_cost": -0.0067,
+      "split_half_gain_no_overhead": -0.0067
+    },
+    {
+      "role": "warm",
+      "budget": 1.9,
+      "static": [
+        [
+          "f@16",
+          0.04
+        ],
+        [
+          "f@32",
+          0.96
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0039,
+      "hindsight_gain_no_overhead": 0.0039,
+      "split_half_gain_plan_cost": -0.0081,
+      "split_half_gain_no_overhead": -0.0081
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 0.35,
+      "static": [
+        [
+          "f@4",
+          0.774
+        ],
+        [
+          "f@8",
+          0.226
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0425,
+      "hindsight_gain_no_overhead": 0.0486,
+      "split_half_gain_plan_cost": 0.0163,
+      "split_half_gain_no_overhead": 0.0221
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 0.45,
+      "static": [
+        [
+          "f@4",
+          0.347
+        ],
+        [
+          "f@8",
+          0.653
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0373,
+      "hindsight_gain_no_overhead": 0.0488,
+      "split_half_gain_plan_cost": 0.0007,
+      "split_half_gain_no_overhead": 0.0161
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 0.55,
+      "static": [
+        [
+          "f@8",
+          0.96
+        ],
+        [
+          "f@16",
+          0.04
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0012,
+      "hindsight_gain_no_overhead": 0.008,
+      "split_half_gain_plan_cost": -0.0123,
+      "split_half_gain_no_overhead": -0.0042
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 0.75,
+      "static": [
+        [
+          "f@8",
+          0.533
+        ],
+        [
+          "f@16",
+          0.467
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0199,
+      "hindsight_gain_no_overhead": 0.0221,
+      "split_half_gain_plan_cost": 0.0003,
+      "split_half_gain_no_overhead": 0.0022
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 1.0,
+      "static": [
+        [
+          "f@16",
+          1.0
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0019,
+      "hindsight_gain_no_overhead": 0.0024,
+      "split_half_gain_plan_cost": -0.0097,
+      "split_half_gain_no_overhead": -0.0098
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 1.25,
+      "static": [
+        [
+          "f@16",
+          0.733
+        ],
+        [
+          "f@32",
+          0.267
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0051,
+      "hindsight_gain_no_overhead": 0.0053,
+      "split_half_gain_plan_cost": -0.0053,
+      "split_half_gain_no_overhead": -0.0049
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 1.5,
+      "static": [
+        [
+          "f@16",
+          0.467
+        ],
+        [
+          "f@32",
+          0.533
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0055,
+      "hindsight_gain_no_overhead": 0.0055,
+      "split_half_gain_plan_cost": -0.0049,
+      "split_half_gain_no_overhead": -0.0049
+    },
+    {
+      "role": "pilot_screen",
+      "budget": 1.9,
+      "static": [
+        [
+          "f@16",
+          0.04
+        ],
+        [
+          "f@32",
+          0.96
+        ]
+      ],
+      "hindsight_gain_plan_cost": 0.0039,
+      "hindsight_gain_no_overhead": 0.0039,
+      "split_half_gain_plan_cost": -0.0064,
+      "split_half_gain_no_overhead": -0.0064
+    }
+  ]
+}

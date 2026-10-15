@@ -1,0 +1,69 @@
+{
+  "repo": "tomg-group-umd/huginn-0125",
+  "revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+  "files": {
+    "config.json": {
+      "bytes": 1447,
+      "sha256": "e9fe79df06a783ca33a76038c59a715b6a62f15c4a5b17b9681e697fea46c79c"
+    },
+    "generation_config.json": {
+      "bytes": 178,
+      "sha256": "3ed2b71c39d566df6ab667a2b843322cbafd2dd7dace7a27bc39dc7c3c3627ee"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 6188,
+      "sha256": "a28061573e97ba3645b482c11d82ba903b40942de0113472b30afb5a3cf4c1eb"
+    },
+    "model-00001-of-00004.safetensors": {
+      "bytes": 4771970936,
+      "sha256": "5b461584b74249e87eabec34b59a13e188791dd8a7ccf2c7be95bb7fa8383e43"
+    },
+    "model-00002-of-00004.safetensors": {
+      "bytes": 4744780096,
+      "sha256": "44bac332b204abb687b2820eb0fadcb5795fdb0cfc06b3b6f2ac5241eec5c591"
+    },
+    "model-00003-of-00004.safetensors": {
+      "bytes": 4744737616,
+      "sha256": "07160dce9da01918d0b0bf2159ffe11d007e1fbe661d687ad4a7b0e65bde4e84"
+    },
+    "model-00004-of-00004.safetensors": {
+      "bytes": 1384120448,
+      "sha256": "40ce4f159938857dbbfa1020962045e1b96303ff902cfa76051ce54d2d51dea4"
+    },
+    "raven_config_minimal.py": {
+      "bytes": 3913,
+      "sha256": "36a39939e76dc9e8f7563187c6498e012ca7f64a3d86b32ff1daa7f4c41a4278"
+    },
+    "raven_modeling_minimal.py": {
+      "bytes": 88021,
+      "sha256": "a1d447da93c605a6dc11fbc17cbc7185663f4a41ae12335b34b5847edf0f84aa"
+    },
+    "special_tokens_map.json": {
+      "bytes": 435,
+      "sha256": "1291ad5fcb7b7628c3885a2d973f165d006cb87530ca368db90374dc9942224e"
+    },
+    "tokenizer.json": {
+      "bytes": 2726482,
+      "sha256": "9cc201a5061b70aba0d227ef9766fcfe21e0989e0c0ba442b4d7732c4de12308"
+    },
+    "tokenizer_config.json": {
+      "bytes": 6624,
+      "sha256": "ff9e171e16f200e7865c27fa38e661722848ab665af1610d5bb2b62502d6cdcf"
+    }
+  },
+  "download_record_match": {
+    "config.json": true,
+    "generation_config.json": true,
+    "model.safetensors.index.json": true,
+    "model-00001-of-00004.safetensors": true,
+    "model-00002-of-00004.safetensors": true,
+    "model-00003-of-00004.safetensors": true,
+    "model-00004-of-00004.safetensors": true,
+    "raven_config_minimal.py": true,
+    "raven_modeling_minimal.py": true,
+    "special_tokens_map.json": true,
+    "tokenizer.json": true,
+    "tokenizer_config.json": true
+  },
+  "total_bytes": 15648442384
+}

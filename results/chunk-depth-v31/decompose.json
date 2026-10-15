@@ -1,0 +1,189 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_pilot_decompose",
+  "created_at_utc": "2026-10-13T09:13:02.897405+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "documents": 505,
+  "reproduction": {
+    "R": {
+      "rerun": 0.9183639850487824,
+      "screen_json": 0.9183639850487824,
+      "abs_diff": 0.0
+    },
+    "E": {
+      "rerun": 0.9247895696258833,
+      "screen_json": 0.9247895696258833,
+      "abs_diff": 0.0
+    }
+  },
+  "policies": {
+    "SCHED-A": {
+      "doc_mean_nll": 0.9183639850487824,
+      "relative_cost": 0.5013612578227464,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.22785151976461437,
+        "8": 0.7721484802353856,
+        "12": 0.0,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5019540543918114,
+          "doc_mean_nll": 0.9175817224421566,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2233502538071066,
+            "8": 0.7766497461928934,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.5009141574345104,
+          "doc_mean_nll": 0.9189539849465156,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.23124647490129724,
+            "8": 0.7687535250987028,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      }
+    },
+    "E-static": {
+      "doc_mean_nll": 0.9299296811675672,
+      "relative_cost": 0.5027758369607499,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.2241888447058673,
+        "8": 0.7758111552941327,
+        "12": 0.0,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5031985583858912,
+          "doc_mean_nll": 0.9295513820122314,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.22109419063733785,
+            "8": 0.7789058093626622,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.49950049242873573,
+          "doc_mean_nll": 0.9328608315569297,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.24816694867456288,
+            "8": 0.7518330513254371,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      }
+    },
+    "E": {
+      "doc_mean_nll": 0.9247895696258833,
+      "relative_cost": 0.5054471806695834,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.22673434856175972,
+        "8": 0.7732656514382402,
+        "12": 0.0,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5054471806695834,
+          "doc_mean_nll": 0.9247895696258833,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.22673434856175972,
+            "8": 0.7732656514382402,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.5054471806695834,
+          "doc_mean_nll": 0.9247895696258833,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.22673434856175972,
+            "8": 0.7732656514382402,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      }
+    }
+  },
+  "E_minus_R_gain": {
+    "mean": -0.006425584577100877,
+    "sd": 0.07905584372646363,
+    "n": 505,
+    "ci95": [
+      -0.013414851041499306,
+      0.0005380632303216872
+    ],
+    "lower_one_sided_90": -0.010992620293376582,
+    "lower_one_sided_95": -0.01229450063168689
+  },
+  "controller_gain_E_over_E_static": {
+    "mean": 0.005140111541683917,
+    "sd": 0.07407577051422168,
+    "n": 505,
+    "ci95": [
+      -0.001431334945246824,
+      0.011631069146212553
+    ],
+    "lower_one_sided_90": 0.000903178010554176,
+    "lower_one_sided_95": -0.00033078775603579856
+  },
+  "lora_gain_SCHED_A_over_E_LoRA_under_position_schedule": {
+    "mean": 0.011565696118784793,
+    "sd": 0.026628534053395474,
+    "n": 505,
+    "ci95": [
+      0.009275582957222424,
+      0.013921794047410622
+    ],
+    "lower_one_sided_90": 0.01005143397186978,
+    "lower_one_sided_95": 0.009639650798501539
+  }
+}

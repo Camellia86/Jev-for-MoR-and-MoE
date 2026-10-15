@@ -1,0 +1,175 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_phase0_probe_combined",
+  "created_at_utc": "2026-10-12T01:09:22.052442+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "units": 2558,
+  "tokens": 56276,
+  "rows": [
+    {
+      "budget": 0.4,
+      "static_support": [
+        [
+          4,
+          0.15302993645324303
+        ],
+        [
+          6,
+          0.846970063546757
+        ]
+      ],
+      "position_only": {
+        "gain": 0.006809675275584919,
+        "relative_cost": 0.3995483965583393,
+        "alphas": [
+          100.0,
+          0.1,
+          10.0,
+          10.0,
+          0.1
+        ]
+      },
+      "representation_only": {
+        "gain": 0.011232626187627099,
+        "relative_cost": 0.39904530678901906,
+        "alphas": [
+          100000.0,
+          100000.0,
+          100000.0,
+          100000.0,
+          100000.0
+        ]
+      },
+      "representation_plus_position": {
+        "gain": 0.010771570781352748,
+        "relative_cost": 0.3989347922577299,
+        "alphas": [
+          100000.0,
+          100000.0,
+          100000.0,
+          100000.0,
+          100000.0
+        ]
+      }
+    },
+    {
+      "budget": 0.5,
+      "static_support": [
+        [
+          6,
+          0.29419161371103586
+        ],
+        [
+          8,
+          0.7058083862889641
+        ]
+      ],
+      "position_only": {
+        "gain": 0.014860843071884618,
+        "relative_cost": 0.49983668244465135,
+        "alphas": [
+          100.0,
+          100.0,
+          100.0,
+          100.0,
+          10.0
+        ]
+      },
+      "representation_only": {
+        "gain": 0.016938091456409166,
+        "relative_cost": 0.49916049032650445,
+        "alphas": [
+          10000.0,
+          10000.0,
+          10000.0,
+          10000.0,
+          100000.0
+        ]
+      },
+      "representation_plus_position": {
+        "gain": 0.01658726745570895,
+        "relative_cost": 0.49833496878038636,
+        "alphas": [
+          10000.0,
+          10000.0,
+          10000.0,
+          10000.0,
+          10000.0
+        ]
+      }
+    },
+    {
+      "budget": 0.6,
+      "static_support": [
+        [
+          8,
+          0.7176766454844143
+        ],
+        [
+          12,
+          0.28232335451558566
+        ]
+      ],
+      "position_only": {
+        "gain": 0.015369737499305935,
+        "relative_cost": 0.599423690733761,
+        "alphas": [
+          10.0,
+          10.0,
+          0.1,
+          0.1,
+          1.0
+        ]
+      },
+      "representation_only": {
+        "gain": 0.01873232347356583,
+        "relative_cost": 0.5996123025830482,
+        "alphas": [
+          100000.0,
+          10000.0,
+          100000.0,
+          10000.0,
+          100000.0
+        ]
+      },
+      "representation_plus_position": {
+        "gain": 0.018651704314072298,
+        "relative_cost": 0.5993958506060787,
+        "alphas": [
+          100000.0,
+          10000.0,
+          100000.0,
+          10000.0,
+          100000.0
+        ]
+      }
+    }
+  ],
+  "note": "nested alpha selection; table evaluation; position features scaled by 30"
+}

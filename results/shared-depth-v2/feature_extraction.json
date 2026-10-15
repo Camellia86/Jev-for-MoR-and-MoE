@@ -1,0 +1,108 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "feature_extraction",
+  "created_at_utc": "2026-10-11T22:41:33.074870+00:00",
+  "config_sha256": "a1bdbc2bbc4ad6b8a84375eec5d7790bbc978a46a5033acaec84ffbe5c0bf0f2",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "roles": {
+    "pilot_cal": {
+      "documents": 64,
+      "seconds": 31.483108300017193,
+      "seconds_per_doc": 0.49192356718776864,
+      "state_seconds": 2.69795809983043,
+      "gpu_seconds": 27.392961200210266,
+      "write_hash_seconds": 1.0267480000038631,
+      "bytes": 775864320,
+      "write_mib_per_second": 720.6460348568646,
+      "peak_allocated_gib": 6.8328070640563965,
+      "base_mean_nll_by_depth": {
+        "4": 2.650592803955078,
+        "8": 2.249420642852783,
+        "16": 2.172231674194336,
+        "32": 2.169440269470215
+      },
+      "header_sha256": "c835022b528653790d39479be1b0781f070473d86f6880141c7abbb6c6dd9632"
+    },
+    "pilot_train": {
+      "documents": 256,
+      "seconds": 131.8507447000011,
+      "seconds_per_doc": 0.5150419714843792,
+      "state_seconds": 16.056636100111064,
+      "gpu_seconds": 109.95625079912134,
+      "write_hash_seconds": 4.318180299771484,
+      "bytes": 3103457280,
+      "write_mib_per_second": 685.4015567985026,
+      "peak_allocated_gib": 6.8328070640563965,
+      "base_mean_nll_by_depth": {
+        "4": 2.647033214569092,
+        "8": 2.2712032794952393,
+        "16": 2.1939857006073,
+        "32": 2.1908836364746094
+      },
+      "header_sha256": "cae459b52a8fa55ad45bf4ba18f69d445f4e495dd6dedf797e9a18f8b61a0bc3"
+    },
+    "pilot_screen": {
+      "documents": 384,
+      "seconds": 196.18447659997037,
+      "seconds_per_doc": 0.5108970744790895,
+      "state_seconds": 23.462943699618336,
+      "gpu_seconds": 164.42311029951088,
+      "write_hash_seconds": 6.043297399242874,
+      "bytes": 4655185920,
+      "write_mib_per_second": 734.6206808482071,
+      "peak_allocated_gib": 6.8328070640563965,
+      "base_mean_nll_by_depth": {
+        "4": 2.677382230758667,
+        "8": 2.300959348678589,
+        "16": 2.2213032245635986,
+        "32": 2.2175910472869873
+      },
+      "header_sha256": "13d17f4412a8156a10654905526ae8f58cd439aca8b54b46675ba865b5c0bf82"
+    },
+    "warm": {
+      "documents": 1024,
+      "seconds": 520.860452199995,
+      "seconds_per_doc": 0.5086527853515577,
+      "state_seconds": 62.48318510007812,
+      "gpu_seconds": 438.0476497004274,
+      "write_hash_seconds": 16.02237030043034,
+      "bytes": 12413829120,
+      "write_mib_per_second": 738.8888022193587,
+      "peak_allocated_gib": 6.8328070640563965,
+      "base_mean_nll_by_depth": {
+        "4": 2.684889793395996,
+        "8": 2.304783821105957,
+        "16": 2.225172996520996,
+        "32": 2.221893787384033
+      },
+      "header_sha256": "2fdcd1089e51dfb0d7ce142853df62d15cf556780f33b12dd0896051043f21ad"
+    }
+  },
+  "costs": {
+    "model_load_seconds": 23.41543819999788
+  }
+}

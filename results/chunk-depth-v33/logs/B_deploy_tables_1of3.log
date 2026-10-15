@@ -1,0 +1,30 @@
+
+===== 2026-10-14 04:38:35 experiments.chunk_depth_v33.worker B_deploy_tables --shard 1 --nshards 3
+04:38:36 start B_deploy_tables 1 3 full
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  2.15it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.91it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  2.15it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.63it/s]
+04:38:48 deploy_tables_C 25/612 0.28 s/doc
+04:38:55 deploy_tables_C 50/612 0.28 s/doc
+04:39:01 deploy_tables_C 75/612 0.26 s/doc
+04:39:07 deploy_tables_C 100/612 0.26 s/doc
+04:39:13 deploy_tables_C 125/612 0.26 s/doc
+04:39:20 deploy_tables_C 150/612 0.26 s/doc
+04:39:26 deploy_tables_C 175/612 0.26 s/doc
+04:39:33 deploy_tables_C 200/612 0.26 s/doc
+04:39:40 deploy_tables_C 225/612 0.26 s/doc
+04:39:47 deploy_tables_C 250/612 0.27 s/doc
+04:39:54 deploy_tables_C 275/612 0.26 s/doc
+04:40:00 deploy_tables_C 300/612 0.26 s/doc
+04:40:07 deploy_tables_C 325/612 0.26 s/doc
+04:40:13 deploy_tables_C 350/612 0.26 s/doc
+04:40:20 deploy_tables_C 375/612 0.26 s/doc
+04:40:27 deploy_tables_C 400/612 0.26 s/doc
+04:40:34 deploy_tables_C 425/612 0.27 s/doc
+04:40:40 deploy_tables_C 450/612 0.26 s/doc
+04:40:47 deploy_tables_C 475/612 0.27 s/doc
+04:40:54 deploy_tables_C 500/612 0.27 s/doc
+04:41:01 deploy_tables_C 525/612 0.27 s/doc
+04:41:07 deploy_tables_C 550/612 0.27 s/doc
+04:41:14 deploy_tables_C 575/612 0.27 s/doc
+04:41:21 deploy_tables_C 600/612 0.27 s/doc
+04:41:24 deploy_tables_C shard finished 612
+04:41:24 end B_deploy_tables 1

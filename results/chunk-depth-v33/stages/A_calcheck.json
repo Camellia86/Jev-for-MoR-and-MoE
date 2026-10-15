@@ -1,0 +1,8 @@
+{
+  "stage": "A_calcheck",
+  "finished_at": "2026-10-14T00:30:56",
+  "node": "gecko-04",
+  "scratch": "/tmp/dcs-tmp.<cluster-user>/jev-v33-63272/work",
+  "seconds": 387.15408354697865,
+  "workers": 3
+}

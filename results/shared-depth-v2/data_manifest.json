@@ -1,0 +1,95 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "data_manifest",
+  "created_at_utc": "2026-10-11T22:06:51.948328+00:00",
+  "config_sha256": "45269dc7e6fb6fda81fbd70a0b3eacce3467784a1a453a3db889a1f4f183ae3b",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "experiments/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "parquet": {
+    "path": "C:\\Users\\z5885\\git\\loopjev\\data\\mor-fineweb-edu\\train-00000-of-00234.parquet",
+    "sha256": "220d0c36f13f24046f080dcd9a9339862d6a0e43f214dd430ed20552c265e309",
+    "bytes": 2395121191
+  },
+  "tokenizer_sha256": "9cc201a5061b70aba0d227ef9766fcfe21e0989e0c0ba442b4d7732c4de12308",
+  "counts": {
+    "rows_read": 24067,
+    "too_short": 3799,
+    "special_in_window": 0,
+    "dup_text": 0,
+    "dup_window": 3,
+    "role_full": 11625,
+    "eligible_unique": 20265
+  },
+  "last_row_scanned": 48162,
+  "roles": {
+    "formal_train": {
+      "documents": 4096,
+      "first_row": 24096,
+      "last_row": 33838
+    },
+    "warm": {
+      "documents": 1024,
+      "first_row": 24102,
+      "last_row": 35779
+    },
+    "pilot_train": {
+      "documents": 256,
+      "first_row": 24117,
+      "last_row": 29812
+    },
+    "pilot_cal": {
+      "documents": 64,
+      "first_row": 24146,
+      "last_row": 27879
+    },
+    "pilot_screen": {
+      "documents": 384,
+      "first_row": 24155,
+      "last_row": 40449
+    },
+    "formal_cal": {
+      "documents": 256,
+      "first_row": 24100,
+      "last_row": 26821
+    },
+    "formal_screen": {
+      "documents": 512,
+      "first_row": 24099,
+      "last_row": 30404
+    },
+    "confirm": {
+      "documents": 2048,
+      "first_row": 24097,
+      "last_row": 48162
+    }
+  },
+  "manifest_sha256": "e2fe08f6d6b4d8f6fa041e0f1d67480a1aaf5f07cf9f7ef7a49218d91dce9d4a",
+  "windows_sha256": "6157b46a9b9e6c85581fb644c5050851b9a970dc3c85a115083d7eab2edd1bd8",
+  "rejects": 0,
+  "costs": {
+    "parquet_hash_seconds": 1.9960872000083327,
+    "scan_seconds": 15.490946299978532
+  }
+}

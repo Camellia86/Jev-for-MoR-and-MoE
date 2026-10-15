@@ -1,0 +1,314 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_pilot_saturation",
+  "created_at_utc": "2026-10-13T09:20:55.871797+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "dirichlet_mean_ceiling": 0.9919845315521182,
+  "dirichlet_mean_floor": 0.0020038671119704692,
+  "max_log_ratio": 6.2046284675598145,
+  "models": {
+    "frozen": {
+      "rows": 4045,
+      "rep_norm_quantiles": [
+        111.76584332222764,
+        112.44272026913981,
+        112.603604788632
+      ],
+      "readouts": {
+        "0.25": {
+          "logit_range_quantiles": [
+            87.09761199951173,
+            126.99798202514648,
+            150.93674926757814
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            5.299487676655578,
+            6.2046286443202145,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.8815822002472188,
+          "argmax_share": [
+            0.0,
+            0.0,
+            0.18022249690976513,
+            0.8197775030902349,
+            0.0
+          ],
+          "weight_norm": 4.7186784744262695
+        },
+        "0.5": {
+          "logit_range_quantiles": [
+            79.04352645874023,
+            150.4515609741211,
+            178.44300994873046
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            6.204389141440917,
+            6.204628644337928,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.9557478368355995,
+          "argmax_share": [
+            0.0,
+            0.0,
+            0.6857849196538937,
+            0.3142150803461063,
+            0.0
+          ],
+          "weight_norm": 5.017619609832764
+        },
+        "1.0": {
+          "logit_range_quantiles": [
+            88.34933853149414,
+            151.58944702148438,
+            178.43716735839843
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            6.204628644337928,
+            6.204628644337928,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 1.0,
+          "argmax_share": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 3.1385951042175293
+        },
+        "1.5": {
+          "logit_range_quantiles": [
+            78.40171737670899,
+            132.5547103881836,
+            154.42305603027344
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            3.9430445777634944,
+            6.204628397346624,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.830655129789864,
+          "argmax_share": [
+            0.0,
+            0.28825710754017303,
+            0.7117428924598269,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 4.4365315437316895
+        },
+        "2.0": {
+          "logit_range_quantiles": [
+            95.45075454711915,
+            151.08995819091797,
+            170.8787094116211
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            6.164227986861292,
+            6.2046286443379275,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.9290482076637825,
+          "argmax_share": [
+            0.0,
+            0.6561186650185414,
+            0.34388133498145856,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 4.378803730010986
+        },
+        "3.0": {
+          "logit_range_quantiles": [
+            74.19259490966797,
+            138.91481018066406,
+            161.27764739990235
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            1.695233992427424,
+            6.15661127720631,
+            6.204628455946656
+          ],
+          "share_top_at_ceiling": 0.6140914709517923,
+          "argmax_share": [
+            0.607663782447466,
+            0.33794808405438814,
+            0.054388133498145856,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 4.852702617645264
+        }
+      }
+    },
+    "E": {
+      "rows": 4045,
+      "rep_norm_quantiles": [
+        111.95943318265343,
+        112.49391321831061,
+        112.64273124749954
+      ],
+      "readouts": {
+        "0.25": {
+          "logit_range_quantiles": [
+            79.1305980682373,
+            121.33984375,
+            143.58961486816406
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            4.201520187382478,
+            6.204628638299229,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.8449938195302843,
+          "argmax_share": [
+            0.0,
+            0.0,
+            0.2650185414091471,
+            0.734981458590853,
+            0.0
+          ],
+          "weight_norm": 4.7186784744262695
+        },
+        "0.5": {
+          "logit_range_quantiles": [
+            72.865234375,
+            149.6804656982422,
+            177.98487701416016
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            6.204439260623782,
+            6.204628644337928,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.9567367119901112,
+          "argmax_share": [
+            0.0,
+            0.0,
+            0.719159456118665,
+            0.280840543881335,
+            0.0
+          ],
+          "weight_norm": 5.017619609832764
+        },
+        "1.0": {
+          "logit_range_quantiles": [
+            84.19982376098633,
+            146.72406768798828,
+            174.23322601318358
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            6.204628644337928,
+            6.204628644337928,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 1.0,
+          "argmax_share": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 3.1385951042175293
+        },
+        "1.5": {
+          "logit_range_quantiles": [
+            72.8393669128418,
+            129.78123092651367,
+            151.89847564697266
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            3.5135577394797353,
+            6.204627195770082,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.8215080346106304,
+          "argmax_share": [
+            0.0,
+            0.29295426452410384,
+            0.7070457354758962,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 4.4365315437316895
+        },
+        "2.0": {
+          "logit_range_quantiles": [
+            89.3813865661621,
+            148.1017608642578,
+            168.51635284423827
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            6.199394305923279,
+            6.2046286443379275,
+            6.204628644337928
+          ],
+          "share_top_at_ceiling": 0.9416563658838072,
+          "argmax_share": [
+            0.0,
+            0.6758961681087763,
+            0.3241038318912237,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 4.378803730010986
+        },
+        "3.0": {
+          "logit_range_quantiles": [
+            71.28234939575195,
+            134.97860717773438,
+            158.45975494384766
+          ],
+          "top_minus_second_log_mu_quantiles": [
+            1.5930479331001104,
+            6.160818275641065,
+            6.204628474112088
+          ],
+          "share_top_at_ceiling": 0.6121137206427688,
+          "argmax_share": [
+            0.596044499381953,
+            0.342150803461063,
+            0.06180469715698393,
+            0.0,
+            0.0
+          ],
+          "weight_norm": 4.852702617645264
+        }
+      }
+    }
+  },
+  "selected_lambda": 1.5
+}

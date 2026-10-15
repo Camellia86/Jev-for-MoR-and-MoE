@@ -1,0 +1,162 @@
+{
+  "protocol_id": "jev-chunk-depth-v3.2-followup",
+  "kind": "head_reuse_audit",
+  "created_at_utc": "2026-10-13T17:01:59.975334+00:00",
+  "config_sha256": "fc1b60b907ee3bc59d361380dcaf735e49690c9ba74fb109336802b97b0f7586",
+  "source_sha256": {
+    "__init__.py": "bd136288365f0fa5b4c18002d7947733796dbb7a8cd03bed1f33d87792f9e130",
+    "audit_head.py": "d0017d8ff28ff504d84f51987cba642432606580de6939d9fbacd377e85b8fdd",
+    "common.py": "0d095183cc491d2dcfde46130e269b7249e18f88601b57edf2503af892c3a89a",
+    "cross.py": "e9915ba2501b95439b0dca24484099217a40da24dda12de946e46527d8b66624",
+    "evaluate.py": "b9f11651b46c40f51f9b510b56a14aa11804c93831a30d0ea3a462092a8210d8",
+    "gradient_diag.py": "3cf4184fa1aa701b2fd90e4263018ea948907bb69c7ffbdc14b669c6bf56c14d",
+    "math_check.py": "dcb2fe485d2d9552a5afcf24e19ff0b72f58661c9402e15bd7d5cb6ded3b6303",
+    "train.py": "c1111691580beacbc0604c1c7225c05024821b3dfbbbd0f6b863e7fde2f538ca"
+  },
+  "input_sha256": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v31/pilot_E_s17.pt": "46326dbc27973d44dc9355ac64f17c1baf87101f47cc2e7584a3e799bf76747d",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "results/chunk-depth-v31/screen.json": "cd5f8e513af8295203383a2c744f13e3e6c988787b58b061ae406947e1433b8e",
+    "results/chunk-depth-v31/decompose.json": "e9e25ef1f92eaee35a394c169180a3368442a6d1a688de33a6b56757b4b4d799",
+    "results/chunk-depth-v32/stage1.json": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "status": "passed",
+  "source_artifact_sha256": {
+    "head": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "head_receipt": "055c396443da529cb8593e898ac25bf1290c89910d7889ec8462b55377a49c80",
+    "stage1_receipt": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1",
+    "tables": "707400a8ad5b80d26744a04226e25033d33776ebe61ba8d7100742928d111a9f",
+    "tables_receipt": "eb2c7988c5c17e5bc0276b40f6c96335b5ec1900e4277c64465c5671e2d8c739"
+  },
+  "table_source_theta_s_sha256": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+  "selection": {
+    "gamma": 0.01,
+    "lambda": 1.0,
+    "tau": 0.05,
+    "selection_reproduced": true,
+    "selected_fit": {
+      "lambda": 1.0,
+      "greedy_relative_cost": 0.5013997573456662,
+      "abs_log_ratio": 0.00279560334828668,
+      "fit": {
+        "iterations": 1791,
+        "grad_inf": 2.2955267641572817e-07,
+        "objective": 1.033505389741938
+      },
+      "train_kl_s_p": 0.44185666420419767,
+      "share_max_p_ge_0.999": 0.0,
+      "share_max_s_ge_0.999": 0.007779783077219603,
+      "median_max_p": 0.5173652312896829,
+      "median_max_s": 0.795415009404436
+    }
+  },
+  "normalization": {
+    "documents": 4111,
+    "rows": 57071,
+    "scored_lines": 14703,
+    "weight_sum": 4111.0,
+    "max_document_weight_error": 6.661338147750939e-16,
+    "mean_max_absolute_difference": 3.552713678800501e-15,
+    "sd_max_absolute_difference": 1.6209256159527285e-14,
+    "elementwise_mean_sd_passed": true,
+    "mean_sd_atol": 1e-10,
+    "mean_sd_rtol": 1e-10
+  },
+  "objective": {
+    "objective": {
+      "actual": 1.0335053897419386,
+      "expected": 1.033505389741938,
+      "absolute_difference": 6.661338147750939e-16
+    },
+    "gradient_infinity_norm": {
+      "actual": 2.2955267642572994e-07,
+      "expected": 2.2955267641572817e-07,
+      "absolute_difference": 1.0001765041178778e-17
+    },
+    "converged": true,
+    "gradient_threshold": 1e-05,
+    "formula": "sum_rows w/sum(w) * CE(soft_labels, p) + gamma * ||W||_F^2"
+  },
+  "sequential_greedy_cost": {
+    "actual": 0.5013997573456662,
+    "expected": 0.5013997573456662,
+    "absolute_difference": 0.0
+  },
+  "frozen_head": {
+    "adapter": "train.FrozenHead(device='cpu')",
+    "head_requires_grad": false,
+    "head_gradients_are_none": true,
+    "head_tensors_unchanged": true,
+    "input_gradient_norm": 0.9561832088202102,
+    "input_gradient_preserved": true
+  },
+  "original_stage1": {
+    "brackets": {
+      "head": {
+        "param_high_cost": 0.1,
+        "param_low_cost": 0.15,
+        "weight_high": 0.023873890419786475,
+        "matched_calibration_cost": 0.5
+      },
+      "R": {
+        "param_high_cost": 1.47,
+        "param_low_cost": 1.48,
+        "weight_high": 0.846141912879528,
+        "matched_calibration_cost": 0.5
+      }
+    },
+    "cost_ratio": {
+      "actual": 1.0050588676605283,
+      "expected": 1.0050588676605283,
+      "absolute_difference": 0.0
+    },
+    "cost_evidence_scope": "Ratio independently recomputed from reported aggregate costs; original per-document artifact stores NLL only, so FLOPs are not independently re-executed.",
+    "per_document": {
+      "available": true,
+      "sha256": "2c2fa1f0db010db0eaad2fffa4180bfcd7f2db218086cbe7588a5bce3cb67ef1",
+      "documents": 367,
+      "nll_and_mixture_reproduced": true,
+      "bootstrap": {
+        "mean": 0.0038134408795697607,
+        "sd": 0.07623147005412051,
+        "n": 367,
+        "ci95": [
+          -0.003922240425864204,
+          0.011610767001672554
+        ],
+        "lower_one_sided_90": -0.0011842277672963523,
+        "lower_one_sided_95": -0.0026449921411534866
+      }
+    },
+    "gate": {
+      "technical": true,
+      "cost_ratio": true,
+      "effect": false
+    },
+    "original_decision": "fail",
+    "no_go_preserved": true
+  },
+  "execution": {
+    "device": "cpu",
+    "threads": 4,
+    "batch_documents": 16,
+    "table_tensor_bytes": 776906520,
+    "full_design_matrix_allocated": false,
+    "new_lbfgs_training": false,
+    "stage2_screen_opened": false
+  },
+  "interpretation": "Completed frozen-theta_S readout is reusable for the authorized mechanism follow-up; the original stage-one no-go remains unchanged.",
+  "seconds": 10.7578036999912
+}

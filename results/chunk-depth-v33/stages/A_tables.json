@@ -1,0 +1,8 @@
+{
+  "stage": "A_tables",
+  "finished_at": "2026-10-14T00:22:10",
+  "node": "gecko-04",
+  "scratch": "/tmp/dcs-tmp.<cluster-user>/jev-v33-63272/work",
+  "seconds": 336.67697086097905,
+  "workers": 3
+}

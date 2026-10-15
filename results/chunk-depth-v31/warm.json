@@ -1,0 +1,82 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_1_pilot_warm",
+  "created_at_utc": "2026-10-13T07:06:27.190570+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "kappa_s": 0.013001121873651982,
+  "kappa_e": -0.0022825558298829535,
+  "rows": [
+    {
+      "lambda": 0.25,
+      "rows": 4842,
+      "greedy_relative_cost": 0.7477124742118844,
+      "abs_log_ratio": 0.4024104128895884
+    },
+    {
+      "lambda": 0.5,
+      "rows": 4842,
+      "greedy_relative_cost": 0.6232885434484556,
+      "abs_log_ratio": 0.2204014647463207
+    },
+    {
+      "lambda": 1.0,
+      "rows": 4842,
+      "greedy_relative_cost": 0.534254584130881,
+      "abs_log_ratio": 0.06626437623792451
+    },
+    {
+      "lambda": 1.5,
+      "rows": 4842,
+      "greedy_relative_cost": 0.5053939000175744,
+      "abs_log_ratio": 0.010730026846033369
+    },
+    {
+      "lambda": 2.0,
+      "rows": 4842,
+      "greedy_relative_cost": 0.4591201028451499,
+      "abs_log_ratio": 0.08529626061716562
+    },
+    {
+      "lambda": 3.0,
+      "rows": 4842,
+      "greedy_relative_cost": 0.3543572569045396,
+      "abs_log_ratio": 0.34430249389336626
+    }
+  ],
+  "selected_lambda": 1.5,
+  "sched_a": {
+    "nu": 1.6,
+    "warm_table_cost": 0.49961708792326637,
+    "note": "pilot simplification: SCHED-A schedule nu chosen on warm table cost, not by real execution"
+  }
+}

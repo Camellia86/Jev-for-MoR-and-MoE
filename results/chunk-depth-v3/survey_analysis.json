@@ -1,0 +1,280 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_phase0_analysis",
+  "created_at_utc": "2026-10-12T00:26:50.095354+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "headroom": {
+    "tokens": 59407,
+    "chunks": 3998,
+    "items": 720,
+    "nll_curve": {
+      "4": 1.6870859687594915,
+      "6": 1.268958978026165,
+      "8": 1.0883864274405795,
+      "12": 0.989760146961589,
+      "16": 0.9878887420982019,
+      "24": 1.0014150974040532,
+      "32": 1.0034611516169805,
+      "48": 1.0058522193534583,
+      "64": 1.0064701017906814
+    },
+    "relative_cost": {
+      "4": 0.301388236995338,
+      "6": 0.41782353082944834,
+      "8": 0.5342588246635587,
+      "12": 0.7671294123317793,
+      "16": 1.0,
+      "24": 1.4657411753364413,
+      "32": 1.9314823506728827,
+      "48": 2.8629647013457653,
+      "64": 3.794447052018648
+    },
+    "answer_chunk_nll_curve": {
+      "4": 1.0517216177859923,
+      "6": 0.6518044817841547,
+      "8": 1.1253228772262496,
+      "12": 1.870714762472668,
+      "16": 2.5300477374847317,
+      "24": 3.042948251906764,
+      "32": 3.0302366357772796,
+      "48": 3.0536706400755427,
+      "64": 3.059478909825801
+    },
+    "rows": [
+      {
+        "budget": 0.4,
+        "static_support": [
+          [
+            4,
+            0.15307670245451688
+          ],
+          [
+            6,
+            0.8469232975454831
+          ]
+        ],
+        "static_nll_per_token": 1.332964478974853,
+        "question_oracle_gain": 0.04066528218099652,
+        "question_split_gain": -0.017185381991543916,
+        "chunk_oracle_gain": 0.25091228907153096,
+        "chunk_split_gain": 0.13181763453402798
+      },
+      {
+        "budget": 0.5,
+        "static_support": [
+          [
+            6,
+            0.294230585378764
+          ],
+          [
+            8,
+            0.705769414621236
+          ]
+        ],
+        "static_nll_per_token": 1.1415163947027127,
+        "question_oracle_gain": 0.03827378819244909,
+        "question_split_gain": -0.00757277531772319,
+        "chunk_oracle_gain": 0.2036244050470407,
+        "chunk_split_gain": 0.0940118687834693
+      },
+      {
+        "budget": 0.6,
+        "static_support": [
+          [
+            8,
+            0.7176922341515056
+          ],
+          [
+            12,
+            0.2823077658484944
+          ]
+        ],
+        "static_nll_per_token": 1.0605434625446084,
+        "question_oracle_gain": 0.03897444193077315,
+        "question_split_gain": -0.008729258087360418,
+        "chunk_oracle_gain": 0.16643015737411926,
+        "chunk_split_gain": 0.05644254034980883
+      },
+      {
+        "budget": 0.75,
+        "static_support": [
+          [
+            8,
+            0.07355764634469097
+          ],
+          [
+            12,
+            0.926442353655309
+          ]
+        ],
+        "static_nll_per_token": 0.9970148640213548,
+        "question_oracle_gain": 0.02403821978593168,
+        "question_split_gain": -0.022299590171703392,
+        "chunk_oracle_gain": 0.12477093205886469,
+        "chunk_split_gain": 0.012976340173944155
+      },
+      {
+        "budget": 1.0,
+        "static_support": [
+          [
+            16,
+            1.0
+          ]
+        ],
+        "static_nll_per_token": 0.9878887420982019,
+        "question_oracle_gain": 0.03317898545104847,
+        "question_split_gain": -0.01198258741009907,
+        "chunk_oracle_gain": 0.12597596696729452,
+        "chunk_split_gain": 0.011532689377333965
+      },
+      {
+        "budget": 1.25,
+        "static_support": [
+          [
+            16,
+            1.0
+          ]
+        ],
+        "static_nll_per_token": 0.9878887420982019,
+        "question_oracle_gain": 0.035887667187020744,
+        "question_split_gain": -0.010942651036481565,
+        "chunk_oracle_gain": 0.12783892000763686,
+        "chunk_split_gain": 0.012861532597230099
+      },
+      {
+        "budget": 1.5,
+        "static_support": [
+          [
+            16,
+            1.0
+          ]
+        ],
+        "static_nll_per_token": 0.9878887420982019,
+        "question_oracle_gain": 0.036069894946274994,
+        "question_split_gain": -0.011223351134054581,
+        "chunk_oracle_gain": 0.1279453608855936,
+        "chunk_split_gain": 0.01302258852188583
+      },
+      {
+        "budget": 2.0,
+        "static_support": [
+          [
+            16,
+            1.0
+          ]
+        ],
+        "static_nll_per_token": 0.9878887420982019,
+        "question_oracle_gain": 0.036069894946274994,
+        "question_split_gain": -0.011223351134054581,
+        "chunk_oracle_gain": 0.1279453608855936,
+        "chunk_split_gain": 0.01302258852188583
+      },
+      {
+        "budget": 3.0,
+        "static_support": [
+          [
+            16,
+            1.0
+          ]
+        ],
+        "static_nll_per_token": 0.9878887420982019,
+        "question_oracle_gain": 0.036069894946274994,
+        "question_split_gain": -0.011223351134054581,
+        "chunk_oracle_gain": 0.1279453608855936,
+        "chunk_split_gain": 0.01302258852188583
+      }
+    ]
+  },
+  "spread": {
+    "argmin_share": {
+      "4": 0.0792896448224112,
+      "6": 0.1325662831415708,
+      "8": 0.09979989994997499,
+      "12": 0.14982491245622812,
+      "16": 0.16208104052026012,
+      "24": 0.11905952976488245,
+      "32": 0.08204102051025512,
+      "48": 0.08254127063531766,
+      "64": 0.09279639819909954
+    },
+    "chunk_mean_gain": {
+      "4->8": {
+        "mean": 0.38751135831555755,
+        "sd": 1.0513169801356783,
+        "q05": -1.4263670552056282,
+        "q95": 1.4971020151661427
+      },
+      "8->16": {
+        "mean": -0.16977339289805907,
+        "sd": 1.2348030197112705,
+        "q05": -2.5363813136937097,
+        "q95": 1.0955351948738095
+      },
+      "16->32": {
+        "mean": -0.1905451156914916,
+        "sd": 0.9374792817136824,
+        "q05": -1.2132864668325054,
+        "q95": 0.30088419914245523
+      },
+      "32->64": {
+        "mean": -0.030309233978136913,
+        "sd": 0.5496459445133912,
+        "q05": -0.246960973739624,
+        "q95": 0.16790482777340082
+      }
+    }
+  },
+  "mixed_depth_error": {
+    "items": 48,
+    "mixed_minus_table_per_item": {
+      "n": 48,
+      "mean": 0.047527913283071634,
+      "sd": 0.13548511068240607,
+      "se": 0.019555591280918348
+    },
+    "uniform16_chunked_minus_table_per_item": {
+      "n": 48,
+      "mean": -0.0001041254063238739,
+      "sd": 0.003890174040179445,
+      "se": 0.0005614982573230242
+    },
+    "tokens_in_chunks_deeper_than_all_history": {
+      "n": 934,
+      "mean": 0.1290446724513427,
+      "sd": 0.7863413307044582,
+      "se": 0.025729874328271996
+    },
+    "tokens_in_other_chunks": {
+      "n": 2910,
+      "mean": 0.01887124233518264,
+      "sd": 0.42591055850716103,
+      "se": 0.007895359545532046
+    }
+  }
+}

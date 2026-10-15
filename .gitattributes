@@ -1,0 +1,10 @@
+scripts/*.py text eol=lf
+docs/*.json text eol=lf
+docs/*.md text eol=lf
+# Experiment receipts record sha256 of code and configs; keep bytes stable on every checkout.
+experiments/**/*.py text eol=lf
+scripts/a10/** text eol=lf
+results/** -text
+# These two check receipts were written with CRLF; keep their original bytes.
+docs/EXPERIMENT_MATH_CHECK.v2.json -text
+docs/ARCHITECTURE_MATH_CHECK.v4.json -text

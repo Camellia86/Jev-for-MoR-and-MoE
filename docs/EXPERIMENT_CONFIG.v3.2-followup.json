@@ -1,0 +1,48 @@
+{
+  "protocol": "jev-chunk-depth-v3.2-followup",
+  "date": "2026-10-13",
+  "purpose": "User-authorized mechanism follow-up; original v3.2 stage1 remains no-go",
+  "sequence": ["two crossed evaluations", "verify and reuse completed frozen-SCHED-A readout", "matched E-G/E-C continued training", "paired online evaluation and gradient diagnostics"],
+  "input_sha256": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v31/pilot_E_s17.pt": "46326dbc27973d44dc9355ac64f17c1baf87101f47cc2e7584a3e799bf76747d",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "results/chunk-depth-v31/screen.json": "cd5f8e513af8295203383a2c744f13e3e6c988787b58b061ae406947e1433b8e",
+    "results/chunk-depth-v31/decompose.json": "e9e25ef1f92eaee35a394c169180a3368442a6d1a688de33a6b56757b4b4d799",
+    "results/chunk-depth-v32/stage1.json": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1"
+  },
+  "head": {"reuse": "artifacts/chunk-depth-v32/head.pt", "frozen": true, "lambda": 1.0, "tau": 0.05, "gamma": 0.01, "probability": "un-smoothed p", "deployment": "argmax(log p - b r)"},
+  "training": {
+    "initial_lora": "theta_S, not zero LoRA; new optimizer state",
+    "reference_policy": "fixed initial theta_S, indexed by document/line/previous depth",
+    "data": "pilot_train, buckets 70-74, 373 documents",
+    "seed": 17, "epochs": 2, "batch": 8, "updates": 93,
+    "optimizer": "AdamW", "lr": 0.0001, "end_lr": 0.00001, "warmup_fraction": 0.05,
+    "weight_decay": 0.01, "clip_norm": 1.0,
+    "generation": "sum_c sum_d stopgrad(p_cd) L_cd / scored_tokens",
+    "control_E_C": "sum_c [sum_d p_cd stopgrad(C_cd) + n_c*(0.1 CE(s,p)+0.01 Brier+0.1 KL(p||p_ref))] / scored_tokens",
+    "control_E_G": "zero",
+    "history": "same sampling rule and random seeds; each arm follows its current policy",
+    "objective_scope": "local surrogate; total effect of adding control gradient, including later policy changes",
+    "kv": {"shortfall": 0.013, "excess": -0.00228}
+  },
+  "evaluation": {
+    "calibration": "612 documents, buckets 75-77 and 85-89",
+    "screen": "378 documents, buckets 95-99; accessed only after calibration is frozen",
+    "official_test": "untouched",
+    "budget": 0.5, "same_cost_ratio": [0.98, 1.02],
+    "b_scan": {"min": -20, "max": 20, "step": 0.05},
+    "calibration_method": "table shortlist, real online bracketing; document-level mixture fixed on calibration",
+    "fixed_position_schedule": "v3.2 R.pt and stage1.json R calibration bracket, identical for both LoRAs",
+    "primary": "g_joint = NLL(E-G online) - NLL(E-C online)",
+    "generation_diagnostic": "h_gen = NLL(E-C fixed R) - NLL(E-G fixed R)",
+    "bootstrap": {"repeats": 10000, "seed": 20261013},
+    "diagnostic_success": "g_joint >= 0.005 and lower one-sided 90% > 0 and same cost; does not overturn original stage1 no-go"
+  },
+  "gradient_diagnostics": {"arm": "E-G", "before_updates": [0, 23, 46, 92], "data": "first four batches of two warm documents (buckets 65-69), fixed before results", "measure": "separate gradients, cosine, cloned-AdamW one-step directions and fixed-surrogate loss changes"},
+  "gpu_hours_cap": 8,
+  "train_cap_seconds": 3600,
+  "evaluation_cap_seconds": 10800,
+  "status_policy": "config frozen; execution results written separately"
+}

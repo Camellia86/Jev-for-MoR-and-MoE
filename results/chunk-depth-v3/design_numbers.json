@@ -1,0 +1,73 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_design_numbers",
+  "created_at_utc": "2026-10-12T01:09:39.424267+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "counts": {
+    "survey": 720,
+    "formal_train": 4111,
+    "warm": 362,
+    "pilot_train": 373,
+    "pilot_cal": 223,
+    "pilot_screen": 505,
+    "formal_cal": 389,
+    "formal_screen": 745,
+    "confirm_test_le_320": 1310,
+    "train_total": 7473,
+    "test_total": 1319
+  },
+  "train_tokens": {
+    "mean": 142.23390873812392,
+    "q95": 243.39999999999964,
+    "share_le_320": 0.9939783219590526
+  },
+  "per_item_effect_spread": {
+    "0.4": {
+      "schedule_vs_static_mean": 0.05787803038987798,
+      "schedule_vs_static_sd": 0.18684435406066754,
+      "rep_vs_schedule_mean": -0.008666349700363006,
+      "rep_vs_schedule_sd": 0.12947774828588526,
+      "items": 720
+    },
+    "0.5": {
+      "schedule_vs_static_mean": 0.03792581522361375,
+      "schedule_vs_static_sd": 0.08330570489085139,
+      "rep_vs_schedule_mean": 0.003961020021858997,
+      "rep_vs_schedule_sd": 0.08013378801338075,
+      "items": 720
+    },
+    "0.6": {
+      "schedule_vs_static_mean": 0.03565101010453542,
+      "schedule_vs_static_sd": 0.10192051867482727,
+      "rep_vs_schedule_mean": 0.003439285953459844,
+      "rep_vs_schedule_sd": 0.06723845259785846,
+      "items": 720
+    }
+  }
+}

@@ -1,0 +1,500 @@
+{
+  "schema_version": "3.1",
+  "protocol": "jev-chunk-depth-v3.1",
+  "follows": "jev-shared-depth-v2.1 (pilot no-go)",
+  "date": "2026-10-12",
+  "status": "pilot_no_go",
+  "plan": "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+  "model": {
+    "id": "tomg-group-umd/huginn-0125",
+    "revision": "bb6621b65e90b6a4b9b29ef88dc83866d450470c",
+    "freeze_base": true,
+    "core_trainable": false
+  },
+  "data": {
+    "id": "openai/gsm8k",
+    "config": "main",
+    "revision": "740312add88f781978c0658806c59bc2815b9866",
+    "license": "mit",
+    "files": {
+      "train": {
+        "path": "main/train-00000-of-00001.parquet",
+        "bytes": 2306545,
+        "sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d"
+      },
+      "test": {
+        "path": "main/test-00000-of-00001.parquet",
+        "bytes": 419088,
+        "sha256": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"
+      }
+    },
+    "format": "Question: {question}\\nAnswer: {solution}",
+    "remove_calculator_annotations": "<<...>>",
+    "remove_final_answer_line": "#### N",
+    "tokenization": "[65504] + tokenizer.encode(text, add_special_tokens=False, split_special_tokens=True)",
+    "max_tokens": 320,
+    "chunk_rule": "token assigned by its last character; chunk 0 = up to 'Answer:'; chunk c = solution line c",
+    "split_hash": "SHA256(UTF8('jev-chunk-v3') || 0x00 || UTF8(question)) big-endian mod 100",
+    "splits": {
+      "phase0_survey_used": {
+        "buckets": [
+          0,
+          9
+        ],
+        "documents": 720
+      },
+      "formal_train": {
+        "buckets": [
+          10,
+          64
+        ],
+        "documents": 4111,
+        "also_used_for": "position schedule candidate generation"
+      },
+      "warm": {
+        "buckets": [
+          65,
+          69
+        ],
+        "documents": 362
+      },
+      "pilot_train": {
+        "buckets": [
+          70,
+          74
+        ],
+        "documents": 373,
+        "also_used_for": "KV coverage estimation"
+      },
+      "pilot_cal": {
+        "buckets": [
+          75,
+          77
+        ],
+        "documents": 223
+      },
+      "pilot_screen": {
+        "buckets": [
+          78,
+          84
+        ],
+        "documents": 505
+      },
+      "formal_cal": {
+        "buckets": [
+          85,
+          89
+        ],
+        "documents": 389
+      },
+      "formal_screen": {
+        "buckets": [
+          90,
+          99
+        ],
+        "documents": 745
+      },
+      "confirm": {
+        "source": "test",
+        "documents_available": 1310,
+        "order": "file_row_order",
+        "minimum": 512,
+        "maximum": 1310,
+        "power_selected": null
+      }
+    },
+    "initial_state": {
+      "algorithm": "same as v2 section 5.5",
+      "key": "jev-chunk-v3-state | gsm8k_commit | split | row | position | replica (0x00 separated, decimal)",
+      "test_vectors_torch": "2.8.0+cu128",
+      "test_vectors": [
+        {
+          "split": "train",
+          "row": 0,
+          "position": 0,
+          "replica": 0,
+          "seed64": "985831553517531630",
+          "first_8_bf16_le_hex": "b63e6a3f363f3d3f7cbfc93ec03f8d3e",
+          "sha256_bf16_le": "b551421efdd92c19ce3d2d8b87fb7943099efd3a2c24b3ff1ddb053ecb21e884"
+        },
+        {
+          "split": "train",
+          "row": 0,
+          "position": 100,
+          "replica": 0,
+          "seed64": "4992260914061672449",
+          "first_8_bf16_le_hex": "ae3ee4be6a3e45bdc8bd83bf10bef73e",
+          "sha256_bf16_le": "ad89c2df476f6951ebac2dc6b79bd2f4582e62c564dc5d3525889e8d1909dd27"
+        }
+      ]
+    }
+  },
+  "execution": {
+    "question_chunk_depth": 16,
+    "candidate_depths": [
+      4,
+      6,
+      8,
+      12,
+      16
+    ],
+    "kv_cache": "HuginnDynamicCache",
+    "lookup_strategy": "latest-m4",
+    "teacher_forcing": "chunk-wise prefill in chunk order",
+    "decision_position": "last position of previous chunk; reuses its coda output",
+    "decision_flops": 52900,
+    "decision_rule": {
+      "form": "argmax_d log mu_c(d) - b * r(d)",
+      "inputs": "pre-decision history only: coda output at last position of previous line under the actual mixed history, plus position features",
+      "line_length": "used only for after-the-fact cost accounting"
+    }
+  },
+  "cost": {
+    "per_position": "stack(1, t+1, d) + lm_head(1) from experiments/shared_depth_v2/cost.py",
+    "budget_normalisation": "sum over decision chunks of f(d) / sum of f(16)",
+    "primary_budget": 0.5,
+    "secondary_budgets": [
+      0.6
+    ],
+    "relative_cost_by_depth": {
+      "4": 0.301,
+      "6": 0.418,
+      "8": 0.534,
+      "12": 0.767,
+      "16": 1.0
+    },
+    "budget_alignment": "document-level mixture of two adjacent scanned parameters whose cal costs bracket the budget; weight fixed on cal"
+  },
+  "controller": {
+    "lora": "as v2: both coda blocks, Wqkv/proj/fc/proj, rank 8, alpha 16, 1,536,000 parameters",
+    "readout_input": "concat(coda_output_at_decision_position[5280], position_features[10])",
+    "position_features": "one-hot chunk index 1..8 and >=9 (9 dims) + previous line length / 50",
+    "readout_output": 5,
+    "dirichlet": {
+      "kappa": 256,
+      "epsilon": 0.01,
+      "eta": 0.001
+    },
+    "auxiliary": {
+      "ce": 0.1,
+      "brier": 0.01,
+      "kl_to_reference": 0.1,
+      "soft_label_temperature_per_token": 0.05
+    },
+    "lambda_grid": [
+      0.25,
+      0.5,
+      1,
+      1.5,
+      2,
+      3
+    ],
+    "lambda_rule": "warm readout uncalibrated mean relative cost closest to 0.5 in log space; tie -> smaller",
+    "kv_correction": {
+      "form": "n * (kappa_s * shortfall + kappa_e * excess)",
+      "shortfall": "sum_j m_j * max(d - d_j, 0) / sum_j m_j over previous solution lines",
+      "excess": "sum_j m_j * max(d_j - d, 0) / sum_j m_j over previous solution lines",
+      "phase0_estimate": {
+        "kappa_s": 0.0157,
+        "kappa_e": -0.0032,
+        "intercept": -0.0003,
+        "residual_sd": 0.098,
+        "lines": 578
+      },
+      "pilot_reestimate": "pilot_train 128 docs x 2 random online rollouts; token-weighted regression; then fixed",
+      "values": {
+        "kappa_s": 0.013,
+        "kappa_e": -0.00228,
+        "intercept": -0.00322,
+        "se": {
+          "kappa_0": 0.00522,
+          "kappa_s": 0.00183,
+          "kappa_e": 0.00099
+        },
+        "residual_sd": 0.0967,
+        "lines": 634,
+        "source": "results/chunk-depth-v31/kv.json"
+      }
+    },
+    "training_representation": "fixed-depth run at the previous line's depth (approximation); pilot reports action agreement and NLL gap versus the online representation",
+    "objective": "local surrogate: current-line cost with history sampled from the current policy without gradient; not an unbiased gradient of the sequential objective"
+  },
+  "arms": {
+    "E": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "route": "exact_expected_cost_plus_auxiliary"
+    },
+    "J": {
+      "seeds": [
+        17
+      ],
+      "route": "dirichlet_LOO_score_plus_auxiliary",
+      "role": "mechanism_only"
+    },
+    "SCHED-A": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "direct": "frozen position schedule depths",
+      "route": "none"
+    },
+    "FMIX-A": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "direct": "uniform over candidate depths",
+      "route": "none"
+    },
+    "pilot_only": [
+      "E_without_kv_penalty"
+    ],
+    "free_controls": [
+      "frozen_position_schedule",
+      "E_static_position_schedule",
+      "frozen_representation_ridge_probe",
+      "frozen_representation_question_level_policy"
+    ]
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "clip_grad_norm": 1,
+    "warmup_fraction": 0.05,
+    "decay": "cosine",
+    "end_lr": 1e-05,
+    "microbatch": 1,
+    "effective_batch": 8,
+    "formal_epochs": 2,
+    "updates_per_run": 1028,
+    "runs": 10,
+    "total_updates": 10280,
+    "pilot_epochs": 2,
+    "pilot_updates_per_run": 93,
+    "checkpoint_selection": "final"
+  },
+  "evaluation": {
+    "comparator_R": {
+      "family": "ridge on position features (line index one-hot 1..8, >=9; previous line length/50) predicting per-token NLL per depth; argmin pred + nu*r(d)",
+      "candidate_generation": "formal_train table NLL, one family per pool member",
+      "pool": [
+        "frozen",
+        "SCHED-A",
+        "FMIX-A",
+        "E_static"
+      ],
+      "selection": "formal_cal real online execution, nu scan, budget-aligned mixture, seed-averaged",
+      "claim_scope": "best member of this family only"
+    },
+    "controller_calibration": "real online execution scan over b on formal_cal; budget-aligned mixture of adjacent b; no bisection (cost is not monotone in b for sequential policies)",
+    "primary_metric": "per-document mean NLL of decision-line scored tokens, online real execution, bf16, budget-aligned expectation",
+    "secondary_generation": {
+      "documents": 512,
+      "decoding": "greedy, max 256 new tokens",
+      "answer": "last number",
+      "policies": [
+        "E x3",
+        "R x3",
+        "frozen depth 8",
+        "frozen depth 16"
+      ],
+      "stop": "EOS or a new line starting with 'Question:' or 256 new tokens",
+      "floor_check": "pilot measures frozen depth-16 accuracy first"
+    },
+    "same_cost_condition": "C_E_confirm / C_R_confirm in [0.98, 1.02]"
+  },
+  "statistics": {
+    "primary_effect": "R_minus_E",
+    "test": "one_sided_paired_document_bootstrap",
+    "alpha": 0.05,
+    "bootstrap_repeats": 10000,
+    "min_observed_effect": 0.005,
+    "planning_effect": 0.01,
+    "planning_delta_min": 0.005,
+    "power": 0.8,
+    "screen_sd_multiplier": 1.2,
+    "sample_rounding": 128,
+    "confirm_min": 512,
+    "confirm_max": 1310,
+    "require_each_seed_positive": true,
+    "phase0_sd_estimate": 0.047,
+    "phase0_planned_n": 512,
+    "secondary": "E_minus_J two-sided 95% interval, seed 17 only"
+  },
+  "pilot": {
+    "gpu": "RTX 5080",
+    "gpu_hours_cap": 8,
+    "phase_caps": {
+      "implementation": 1,
+      "data_features": 1.5,
+      "kv_coverage": 0.5,
+      "training": 2,
+      "screen_forecast": 2.5,
+      "reserve": 0.5
+    },
+    "go": {
+      "technical_checks": true,
+      "resource_forecast_under_cap": true,
+      "E_minus_R_realised_on_pilot_screen": {
+        "min_point_estimate": 0.005,
+        "one_sided_90_lower_bound_above": 0,
+        "budget_aligned": true
+      }
+    },
+    "result": {
+      "decision": "no_go",
+      "report": "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "receipts": "results/chunk-depth-v31/",
+      "go": {
+        "technical_checks": true,
+        "resource_forecast_under_cap": true,
+        "E_minus_R_realised_on_pilot_screen": false
+      },
+      "E_minus_R": {
+        "mean": -0.0064,
+        "ci95": [
+          -0.0134,
+          0.0005
+        ],
+        "lower_one_sided_90": -0.011,
+        "cost_ratio": 1.008
+      },
+      "decomposition": {
+        "readout_over_position_same_lora": 0.0051,
+        "lora_gap_sched_a_over_e": 0.0116,
+        "parameters_at_fixed_schedule": 0.0121,
+        "schedule_at_fixed_parameters": -0.0005,
+        "interaction": 0.0,
+        "source": "results/chunk-depth-v31/crosseval.json"
+      },
+      "gpu_hours": 2.43
+    }
+  },
+  "formal": {
+    "gpu": "A10",
+    "count": 3,
+    "gpu_hours_cap": 144,
+    "phase_caps": {
+      "features_environment": 16,
+      "training": 24,
+      "evaluation": 40,
+      "generation": 44,
+      "reserve": 20
+    }
+  },
+  "phase0": {
+    "results": [
+      "results/chunk-depth-v3/phase0_online.json",
+      "results/chunk-depth-v3/phase0_matched.json",
+      "results/chunk-depth-v3/phase0_question.json",
+      "artifacts/chunk-depth-v3/phase0_uniform_cal_test.pt (uniform runs, not committed)"
+    ],
+    "split": {
+      "fit": [
+        0,
+        299
+      ],
+      "cal": [
+        300,
+        419
+      ],
+      "test": [
+        420,
+        719
+      ]
+    },
+    "budget_0_5_test": {
+      "static_nll": 1.0632,
+      "position_gain": 0.0342,
+      "position_ci95": [
+        0.0276,
+        0.0408
+      ],
+      "rep_gain": 0.0358,
+      "rep_ci95": [
+        0.0291,
+        0.0426
+      ],
+      "rep_minus_position": 0.0016,
+      "rep_minus_position_ci95": [
+        -0.0036,
+        0.0069
+      ],
+      "rep_minus_position_sd": 0.047
+    },
+    "budget_0_6_test": {
+      "static_nll": 0.9509,
+      "position_gain": 0.0226,
+      "rep_gain": 0.0229,
+      "rep_minus_position": 0.0003,
+      "rep_minus_position_ci95": [
+        -0.0067,
+        0.0075
+      ]
+    },
+    "withdrawn_v3_numbers": {
+      "chunk_split_table": 0.117,
+      "chunk_split_realised": 0.052,
+      "probe_table": 0.0169,
+      "probe_realised": 0.015,
+      "reasons": [
+        "future line length in decision cost",
+        "offline replay instead of online decisions",
+        "question depth mismatch",
+        "different feasible set incl. question chunk and answer line",
+        "'upper bound' misnomer"
+      ]
+    },
+    "question_level_test": {
+      "budget_0_5": {
+        "nll": 1.0196,
+        "relative_cost": 0.51,
+        "gain_vs_static": 0.0436,
+        "ci95": [
+          0.0348,
+          0.052
+        ]
+      },
+      "budget_0_6": {
+        "nll": 0.9281,
+        "relative_cost": 0.594,
+        "gain_vs_static": 0.0228,
+        "ci95": [
+          0.0109,
+          0.0358
+        ]
+      },
+      "matched_cost_diagnostic": {
+        "cal_0_5": {
+          "question": 1.0415,
+          "position": 1.0341,
+          "rep": 1.026
+        },
+        "test_exact_0_5": {
+          "question": 1.0358,
+          "position": 1.029,
+          "rep": 1.0273
+        },
+        "cal_0_6": {
+          "question": 0.9319,
+          "position": 0.9286,
+          "rep": 0.9287
+        },
+        "test_exact_0_6": {
+          "question": 0.9247,
+          "position": 0.9283,
+          "rep": 0.928
+        }
+      }
+    }
+  },
+  "supersedes": "jev-chunk-depth-v3"
+}

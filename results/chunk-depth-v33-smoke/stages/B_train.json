@@ -1,0 +1,8 @@
+{
+  "stage": "B_train",
+  "finished_at": "2026-10-13T23:40:32",
+  "node": "JIMPC",
+  "scratch": "C:\\Users\\z5885\\git\\Jev-for-MoR-and-MoE\\artifacts\\chunk-depth-v33-scratch-smoke",
+  "seconds": 103.92352430000028,
+  "workers": 3
+}

@@ -1,0 +1,229 @@
+{
+  "protocol_id": "jev-chunk-depth-v3.2-followup",
+  "kind": "matched_training_evaluation",
+  "created_at_utc": "2026-10-13T19:41:09.580420+00:00",
+  "config_sha256": "fc1b60b907ee3bc59d361380dcaf735e49690c9ba74fb109336802b97b0f7586",
+  "source_sha256": {
+    "__init__.py": "bd136288365f0fa5b4c18002d7947733796dbb7a8cd03bed1f33d87792f9e130",
+    "audit_head.py": "d0017d8ff28ff504d84f51987cba642432606580de6939d9fbacd377e85b8fdd",
+    "common.py": "0d095183cc491d2dcfde46130e269b7249e18f88601b57edf2503af892c3a89a",
+    "cross.py": "e9915ba2501b95439b0dca24484099217a40da24dda12de946e46527d8b66624",
+    "evaluate.py": "b9f11651b46c40f51f9b510b56a14aa11804c93831a30d0ea3a462092a8210d8",
+    "gradient_diag.py": "3cf4184fa1aa701b2fd90e4263018ea948907bb69c7ffbdc14b669c6bf56c14d",
+    "math_check.py": "dcb2fe485d2d9552a5afcf24e19ff0b72f58661c9402e15bd7d5cb6ded3b6303",
+    "train.py": "55337795ad7ce73a5be5070aef5a8d86c086a2e9d01ae7c6ca87bb9172095441",
+    "validate_results.py": "60883624e48aeaf6d5f7510ea52502e26a42559c2ffcff1490b61a0b847ba5fb"
+  },
+  "input_sha256": {
+    "artifacts/chunk-depth-v31/pilot_SCHED-A_s17.pt": "833160b2f0bd5c3001106407ceb2e87434683032efe11408c44bb1b47ce63625",
+    "artifacts/chunk-depth-v31/pilot_E_s17.pt": "46326dbc27973d44dc9355ac64f17c1baf87101f47cc2e7584a3e799bf76747d",
+    "artifacts/chunk-depth-v32/head.pt": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+    "artifacts/chunk-depth-v32/R.pt": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "results/chunk-depth-v31/screen.json": "cd5f8e513af8295203383a2c744f13e3e6c988787b58b061ae406947e1433b8e",
+    "results/chunk-depth-v31/decompose.json": "e9e25ef1f92eaee35a394c169180a3368442a6d1a688de33a6b56757b4b4d799",
+    "results/chunk-depth-v32/stage1.json": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "documents": 378,
+  "checkpoint_sha256": {
+    "E-G": "0f5dd617c140b7c351164cc62c42230f18e71f5c31d900f2153e9a0a76975c8b",
+    "E-C": "f0958e657964eac5e8509476d18b97a31b6e4be079c2f2d0163092ee69c96dc6"
+  },
+  "head_sha256": "bcdb36ed3d3b5524fec6d019453ab96b2f84378df50f7c7e632c8566c51f6a06",
+  "calibration_sha256": "9bc2a91fdeceb89cbc5038db607abdb05ec4e51b1b0a912d23ab2e9d5ca35b50",
+  "fixed_schedule": {
+    "ridge_sha256": "196acad67a49d5eae14155afc389c17b572c010fdd360634b15845b843b490c7",
+    "source_stage1_sha256": "70f295c62eb6e8fa51c26d6537a05cdb613bfe8813a4574761041e3944da6bd1",
+    "bracket": {
+      "param_high_cost": 1.47,
+      "param_low_cost": 1.48,
+      "weight_high": 0.846141912879528
+    }
+  },
+  "policies": {
+    "E-G": {
+      "doc_mean_nll": 0.902985951237511,
+      "relative_cost": 0.5033875844064574,
+      "depth_share": {
+        "4": 0.001516300227445034,
+        "6": 0.30116282643220527,
+        "8": 0.6629136588081581,
+        "12": 0.032132764191023976,
+        "16": 0.002274450341167551
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.503601749493224,
+          "doc_mean_nll": 0.9028322061243927,
+          "depth_share": {
+            "4": 0.001516300227445034,
+            "6": 0.30022744503411675,
+            "8": 0.6633813495072024,
+            "12": 0.032600454890068235,
+            "16": 0.002274450341167551
+          }
+        },
+        "low": {
+          "relative_cost": 0.5032545771307645,
+          "doc_mean_nll": 0.903081434674871,
+          "depth_share": {
+            "4": 0.001516300227445034,
+            "6": 0.3017437452615618,
+            "8": 0.6626231993934799,
+            "12": 0.03184230477634572,
+            "16": 0.002274450341167551
+          }
+        }
+      }
+    },
+    "E-C": {
+      "doc_mean_nll": 0.8991864237665618,
+      "relative_cost": 0.5047458008514093,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.24527573308634112,
+        "8": 0.7456264655489886,
+        "12": 0.009097801364670203,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5048658930417254,
+          "doc_mean_nll": 0.8989466918437019,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2441243366186505,
+            "8": 0.7467778620166793,
+            "12": 0.009097801364670205,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.5046286648315469,
+          "doc_mean_nll": 0.8994202544861434,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.24639878695981804,
+            "8": 0.7445034116755117,
+            "12": 0.009097801364670205,
+            "16": 0.0
+          }
+        }
+      }
+    }
+  },
+  "fixed_schedule_policies": {
+    "E-G": {
+      "doc_mean_nll": 0.9033193550078149,
+      "relative_cost": 0.5016546308764978,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.23275232014035804,
+        "8": 0.7672476798596419,
+        "12": 0.0,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5020397028393021,
+          "doc_mean_nll": 0.9029167014447108,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.22971948445792267,
+            "8": 0.7702805155420773,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.4995369292119209,
+          "doc_mean_nll": 0.9055337466104215,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2494313874147081,
+            "8": 0.7505686125852918,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      }
+    },
+    "E-C": {
+      "doc_mean_nll": 0.9049462832874093,
+      "relative_cost": 0.5016546308764978,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.23275232014035804,
+        "8": 0.7672476798596419,
+        "12": 0.0,
+        "16": 0.0
+      },
+      "components": {
+        "high": {
+          "relative_cost": 0.5020397028393021,
+          "doc_mean_nll": 0.9045503711226172,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.22971948445792267,
+            "8": 0.7702805155420773,
+            "12": 0.0,
+            "16": 0.0
+          }
+        },
+        "low": {
+          "relative_cost": 0.4995369292119209,
+          "doc_mean_nll": 0.9071236005979206,
+          "depth_share": {
+            "4": 0.0,
+            "6": 0.2494313874147081,
+            "8": 0.7505686125852918,
+            "12": 0.0,
+            "16": 0.0
+          }
+        }
+      }
+    }
+  },
+  "g_joint_EG_minus_EC": {
+    "mean": 0.0037995274709492965,
+    "sd": 0.06237594574440558,
+    "n": 378,
+    "ci95": [
+      -0.0025364665436160942,
+      0.010101828064646216
+    ],
+    "lower_one_sided_90": -0.0002749726363204042,
+    "lower_one_sided_95": -0.0014151572094041988
+  },
+  "h_gen_EC_minus_EG": {
+    "mean": 0.001626928279594399,
+    "sd": 0.011125031856824287,
+    "n": 378,
+    "ci95": [
+      0.0005189271746133427,
+      0.0027642929987950634
+    ],
+    "lower_one_sided_90": 0.000902067009349393,
+    "lower_one_sided_95": 0.00069766577820843
+  },
+  "cost_ratio_EC_over_EG": 1.0026981524515615,
+  "fixed_schedule_cost_difference": 0.0,
+  "diagnostic_thresholds": {
+    "same_cost": true,
+    "point_at_least_0_005": false,
+    "one_sided_90_lower_positive": false
+  },
+  "diagnostic_thresholds_all_met": false,
+  "interpretation": "Positive g_joint favors E-C under separately calibrated policies; positive h_gen means E-C has higher NLL at an identical fixed schedule. These diagnostics do not change the v3.2 stage-one no-go.",
+  "seconds_per_online_run": 0.43383674295343666,
+  "seconds": 3501.2312563000014
+}

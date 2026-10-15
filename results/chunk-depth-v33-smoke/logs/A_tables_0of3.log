@@ -1,0 +1,7 @@
+
+===== 2026-10-13 23:29:56 experiments.chunk_depth_v33.worker A_tables --shard 0 --nshards 3
+23:29:57 start A_tables 0 3 smoke
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|##5       | 1/4 [00:01<00:04,  1.64s/it]Loading checkpoint shards:  50%|#####     | 2/4 [00:03<00:03,  1.95s/it]Loading checkpoint shards:  75%|#######5  | 3/4 [00:06<00:02,  2.12s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:06<00:00,  1.55s/it]Loading checkpoint shards: 100%|##########| 4/4 [00:06<00:00,  1.70s/it]
+23:30:11 tables_fit shard finished 4
+23:30:12 tables_calibration shard finished 2
+23:30:12 end A_tables 0

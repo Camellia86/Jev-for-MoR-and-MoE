@@ -1,0 +1,55 @@
+
+===== 2026-10-14 00:16:34 experiments.chunk_depth_v33.worker A_tables --shard 2 --nshards 3
+00:16:35 start A_tables 2 3 full
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  1.70it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.51it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.75it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:01<00:00,  2.15it/s]
+00:16:50 tables_fit 25/1008 0.28 s/doc
+00:16:56 tables_fit 50/1008 0.27 s/doc
+00:17:02 tables_fit 75/1008 0.25 s/doc
+00:17:08 tables_fit 100/1008 0.26 s/doc
+00:17:15 tables_fit 125/1008 0.25 s/doc
+00:17:21 tables_fit 150/1008 0.25 s/doc
+00:17:27 tables_fit 175/1008 0.25 s/doc
+00:17:33 tables_fit 200/1008 0.25 s/doc
+00:17:40 tables_fit 225/1008 0.25 s/doc
+00:17:47 tables_fit 250/1008 0.26 s/doc
+00:17:54 tables_fit 275/1008 0.26 s/doc
+00:18:00 tables_fit 300/1008 0.26 s/doc
+00:18:07 tables_fit 325/1008 0.26 s/doc
+00:18:13 tables_fit 350/1008 0.26 s/doc
+00:18:19 tables_fit 375/1008 0.26 s/doc
+00:18:26 tables_fit 400/1008 0.26 s/doc
+00:18:32 tables_fit 425/1008 0.26 s/doc
+00:18:39 tables_fit 450/1008 0.26 s/doc
+00:18:47 tables_fit 475/1008 0.26 s/doc
+00:18:53 tables_fit 500/1008 0.26 s/doc
+00:19:00 tables_fit 525/1008 0.26 s/doc
+00:19:07 tables_fit 550/1008 0.26 s/doc
+00:19:13 tables_fit 575/1008 0.26 s/doc
+00:19:20 tables_fit 600/1008 0.26 s/doc
+00:19:27 tables_fit 625/1008 0.26 s/doc
+00:19:34 tables_fit 650/1008 0.26 s/doc
+00:19:41 tables_fit 675/1008 0.26 s/doc
+00:19:48 tables_fit 700/1008 0.26 s/doc
+00:19:54 tables_fit 725/1008 0.26 s/doc
+00:20:01 tables_fit 750/1008 0.26 s/doc
+00:20:08 tables_fit 775/1008 0.26 s/doc
+00:20:15 tables_fit 800/1008 0.26 s/doc
+00:20:21 tables_fit 825/1008 0.26 s/doc
+00:20:28 tables_fit 850/1008 0.26 s/doc
+00:20:34 tables_fit 875/1008 0.26 s/doc
+00:20:41 tables_fit 900/1008 0.26 s/doc
+00:20:48 tables_fit 925/1008 0.27 s/doc
+00:20:55 tables_fit 950/1008 0.27 s/doc
+00:21:02 tables_fit 975/1008 0.27 s/doc
+00:21:09 tables_fit 1000/1008 0.27 s/doc
+00:21:11 tables_fit shard finished 1008
+00:21:18 tables_calibration 25/204 0.26 s/doc
+00:21:24 tables_calibration 50/204 0.25 s/doc
+00:21:31 tables_calibration 75/204 0.26 s/doc
+00:21:37 tables_calibration 100/204 0.26 s/doc
+00:21:44 tables_calibration 125/204 0.26 s/doc
+00:21:51 tables_calibration 150/204 0.26 s/doc
+00:21:58 tables_calibration 175/204 0.27 s/doc
+00:22:05 tables_calibration 200/204 0.27 s/doc
+00:22:06 tables_calibration shard finished 204
+00:22:06 end A_tables 2

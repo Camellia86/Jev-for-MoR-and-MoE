@@ -1,0 +1,156 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_phase0_realised",
+  "created_at_utc": "2026-10-12T00:31:27.283893+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "choices": [
+    4,
+    6,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "tokens": 56996,
+  "nll_curve_without_answer_line": {
+    "4": 1.6371040728596167,
+    "6": 1.2223678702625422,
+    "8": 0.9977587060565911,
+    "12": 0.8677633432543639,
+    "16": 0.8428727145987911,
+    "24": 0.8377936661359462,
+    "32": 0.8403260907205433
+  },
+  "table_estimates": [
+    {
+      "budget": 0.5,
+      "static_support": [
+        [
+          6,
+          0.294230585378764
+        ],
+        [
+          8,
+          0.705769414621236
+        ]
+      ],
+      "static_nll_per_token": 1.063845591922343,
+      "chunk_oracle_gain": 0.20214543671153853,
+      "chunk_split_gain_even_tokens": 0.1166501288546096,
+      "question_split_gain": -0.010571015958177025
+    },
+    {
+      "budget": 0.75,
+      "static_support": [
+        [
+          8,
+          0.07355764634469097
+        ],
+        [
+          12,
+          0.926442353655309
+        ]
+      ],
+      "static_nll_per_token": 0.8773254961778199,
+      "chunk_oracle_gain": 0.08803594396765688,
+      "chunk_split_gain_even_tokens": 0.007484064418180753,
+      "question_split_gain": -0.011790646356930055
+    },
+    {
+      "budget": 1.0,
+      "static_support": [
+        [
+          16,
+          1.0
+        ]
+      ],
+      "static_nll_per_token": 0.8428727145987911,
+      "chunk_oracle_gain": 0.0633300658059223,
+      "chunk_split_gain_even_tokens": -0.020699838748635218,
+      "question_split_gain": -0.006783982837728726
+    }
+  ],
+  "realised_latest_m4": [
+    {
+      "budget": 0.5,
+      "nu": 3.3615595165794797e-12,
+      "held_out_items": 96,
+      "tokens": 3963,
+      "realised_gain_per_token": 0.05151501924631382,
+      "dynamic_relative_cost": 0.5022357097412454,
+      "cost_ratio_dynamic_over_static": 1.0190870145523383,
+      "depth_share": {
+        "4": 0.3721860930465233,
+        "6": 0.0750375187593797,
+        "8": 0.2256128064032016,
+        "12": 0.2366183091545773,
+        "16": 0.08204102051025512,
+        "24": 0.0080040020010005,
+        "32": 0.0005002501250625312
+      }
+    },
+    {
+      "budget": 0.75,
+      "nu": 1.1799681346360216e-13,
+      "held_out_items": 96,
+      "tokens": 3963,
+      "realised_gain_per_token": -0.0710886520351579,
+      "dynamic_relative_cost": 0.7758720625053102,
+      "cost_ratio_dynamic_over_static": 1.0495481340621553,
+      "depth_share": {
+        "4": 0.3619309654827414,
+        "6": 0.021010505252626314,
+        "8": 0.0750375187593797,
+        "12": 0.1338169084542271,
+        "16": 0.16358179089544772,
+        "24": 0.14032016008004003,
+        "32": 0.10430215107553777
+      }
+    },
+    {
+      "budget": 1.0,
+      "nu": 0.0,
+      "held_out_items": 96,
+      "tokens": 3963,
+      "realised_gain_per_token": -0.10327540783945763,
+      "dynamic_relative_cost": 0.8340385370293346,
+      "cost_ratio_dynamic_over_static": 0.8461737357411243,
+      "depth_share": {
+        "4": 0.3619309654827414,
+        "6": 0.019259629814907454,
+        "8": 0.06853426713356678,
+        "12": 0.1128064032016008,
+        "16": 0.1375687843921961,
+        "24": 0.1265632816408204,
+        "32": 0.17333666833416708
+      }
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "chunk_depth_v3_2_head",
+  "created_at_utc": "2026-10-13T13:57:33.571180+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.2.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "experiments/",
+      "results/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "rows": 57071,
+  "documents": 4111,
+  "tau": 0.05,
+  "gamma_grid": [
+    1e-06,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01
+  ],
+  "lambda_grid": [
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    3.0
+  ],
+  "cv": {
+    "lambda": 1.5,
+    "by_gamma": {
+      "1e-06": {
+        "held_out_ce": 1.4208233440584683,
+        "max_grad_inf": 5.9845123125843594e-05,
+        "max_iterations": 2000
+      },
+      "1e-05": {
+        "held_out_ce": 1.4083324426920198,
+        "max_grad_inf": 8.631165250358816e-05,
+        "max_iterations": 2000
+      },
+      "0.0001": {
+        "held_out_ce": 1.356672832443006,
+        "max_grad_inf": 3.789033868758252e-05,
+        "max_iterations": 2000
+      },
+      "0.001": {
+        "held_out_ce": 1.2573773522071432,
+        "max_grad_inf": 1.2556850590656008e-06,
+        "max_iterations": 2000
+      },
+      "0.01": {
+        "held_out_ce": 1.1540886440630997,
+        "max_grad_inf": 4.100446510288099e-06,
+        "max_iterations": 1954
+      }
+    },
+    "selected_gamma": 0.01,
+    "label_entropy": 0.5021037994591803
+  },
+  "lambda_rule": {
+    "rows": [
+      {
+        "lambda": 0.5,
+        "greedy_relative_cost": 0.5657269477956719,
+        "abs_log_ratio": 0.12350343898763429,
+        "fit": {
+          "iterations": 1468,
+          "grad_inf": 3.8362589679604743e-07,
+          "objective": 1.1570361855160118
+        },
+        "train_kl_s_p": 0.4352331825253573,
+        "share_max_p_ge_0.999": 0.0,
+        "share_max_s_ge_0.999": 0.004871125440241103,
+        "median_max_p": 0.47618097434293266,
+        "median_max_s": 0.7230061932959189
+      },
+      {
+        "lambda": 1.0,
+        "greedy_relative_cost": 0.5013997573456662,
+        "abs_log_ratio": 0.00279560334828668,
+        "fit": {
+          "iterations": 1791,
+          "grad_inf": 2.2955267641572817e-07,
+          "objective": 1.033505389741938
+        },
+        "train_kl_s_p": 0.44185666420419767,
+        "share_max_p_ge_0.999": 0.0,
+        "share_max_s_ge_0.999": 0.007779783077219603,
+        "median_max_p": 0.5173652312896829,
+        "median_max_s": 0.795415009404436
+      },
+      {
+        "lambda": 1.5,
+        "greedy_relative_cost": 0.4560303692372358,
+        "abs_log_ratio": 0.09204869192096979,
+        "fit": {
+          "iterations": 1951,
+          "grad_inf": 3.6344761352541345e-06,
+          "objective": 0.9801753817994067
+        },
+        "train_kl_s_p": 0.44722796883172417,
+        "share_max_p_ge_0.999": 0.0,
+        "share_max_s_ge_0.999": 0.012598342415587601,
+        "median_max_p": 0.5221939744557981,
+        "median_max_s": 0.8232995196688384
+      },
+      {
+        "lambda": 2.0,
+        "greedy_relative_cost": 0.42226499579814414,
+        "abs_log_ratio": 0.16897502933731404,
+        "fit": {
+          "iterations": 1540,
+          "grad_inf": 1.4876771145754496e-06,
+          "objective": 0.9485901290452196
+        },
+        "train_kl_s_p": 0.45705160589474125,
+        "share_max_p_ge_0.999": 0.0,
+        "share_max_s_ge_0.999": 0.0193618475232605,
+        "median_max_p": 0.5308948698969956,
+        "median_max_s": 0.8461359416123572
+      },
+      {
+        "lambda": 3.0,
+        "greedy_relative_cost": 0.3661847933517039,
+        "abs_log_ratio": 0.311469992571833,
+        "fit": {
+          "iterations": 1956,
+          "grad_inf": 3.353437948352171e-07,
+          "objective": 0.837722500826733
+        },
+        "train_kl_s_p": 0.44071505077931694,
+        "share_max_p_ge_0.999": 0.0,
+        "share_max_s_ge_0.999": 0.04702913914247166,
+        "median_max_p": 0.564478250884134,
+        "median_max_s": 0.9055758435995618
+      }
+    ],
+    "selected_lambda": 1.0
+  },
+  "selected_head_recheck": {
+    "objective": 1.033505389741938,
+    "grad_inf": 2.2955267641572817e-07
+  },
+  "R": {
+    "alpha": 100.0
+  },
+  "provenance": "cv and lambda rows parsed from v32_head.log, the run that saved head.pt and R.pt; it stopped at the representation ridge (device error), which finish mode fitted",
+  "rep_ridge": {
+    "rows": 57071,
+    "alpha": 100000.0
+  },
+  "finish_seconds": 417.72625439999683
+}

@@ -1,0 +1,12 @@
+
+===== 2026-10-14 03:33:44 experiments.chunk_depth_v33.analyze A --nshards 3
+{
+ "mean": 0.0019148722200694746,
+ "ci95": [
+  -0.0001673789141669796,
+  0.003955686000382815
+ ],
+ "lower_one_sided_95": 0.00017039549369849422,
+ "status": "ok",
+ "conclusion": "gain_detected_below_practical_threshold"
+}

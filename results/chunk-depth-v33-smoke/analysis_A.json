@@ -1,0 +1,496 @@
+{
+  "protocol_id": "jev-shared-depth-v2",
+  "kind": "v33_analysis_A",
+  "created_at_utc": "2026-10-13T22:38:31.631817+00:00",
+  "config_sha256": "70136af92645624318da7bc92f716e9d152d6b183e7c65b7f614b48f352d6246",
+  "git": {
+    "commit": "383a40541e383f1dc1ff5713f92a20eb5bcf4b94",
+    "dirty": true,
+    "dirty_files": [
+      "EADME.md",
+      "docs/EXPERIMENT_CONFIG.v1.json -> docs/EXPERIMENT_CONFIG.v2.json",
+      "docs/EXPERIMENT_MATH_CHECK.v1.json -> docs/EXPERIMENT_MATH_CHECK.v2.json",
+      "docs/EXPERIMENT_PLAN.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.zh-CN.md",
+      "scripts/check_experiment_math.py",
+      ".gitattributes",
+      "docs/EXPERIMENT_CONFIG.v3.1.json",
+      "docs/EXPERIMENT_CONFIG.v3.2-followup.json",
+      "docs/EXPERIMENT_CONFIG.v3.2-followup.secondary.json",
+      "docs/EXPERIMENT_CONFIG.v3.2.json",
+      "docs/EXPERIMENT_CONFIG.v3.3.json",
+      "docs/EXPERIMENT_CONFIG.v3.json",
+      "docs/EXPERIMENT_PLAN.v3.1.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2-followup.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.2.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.3.zh-CN.md",
+      "docs/EXPERIMENT_PLAN.v3.zh-CN.md",
+      "docs/MATHEMATICAL_AUDIT.v3.2-followup.zh-CN.md",
+      "docs/PILOT_REPORT.v2.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.1.zh-CN.md",
+      "docs/PILOT_REPORT.v3.2-followup.zh-CN.md",
+      "docs/PILOT_REPORT.v3.2-stage1.zh-CN.md",
+      "experiments/",
+      "results/",
+      "scripts/a10/"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "torch": "2.8.0+cu128",
+    "cuda_available": true,
+    "cuda": "12.8",
+    "device": "NVIDIA GeForce RTX 5080",
+    "device_total_mib": 16302,
+    "transformers": "4.52.4"
+  },
+  "protocol_v33": "jev-chunk-depth-v3.3",
+  "smoke": true,
+  "config_v33_sha256": "eaec677b55fbc9f550a61b676f9db4735f89c3f4498dc23cb5af7c49340decae",
+  "code_v33_sha256": {
+    "__init__.py": "eaebc43d791c97330bd9fd96b4d7ea20ea0f579dde56394be92bb840595aa434",
+    "analyze.py": "88ab0803cc1dbd73e51bdd556a5d9f3626e8d557ae85f802b65b671f0ddff361",
+    "common.py": "30c601a30c949d5f52eeec158bb46b07fe96b83c4e97c4da7362c01d6d7c7ac1",
+    "driver.py": "d4751494a9a8ab3ac3026228a4e16e1d6f938a646d6f5ad584eedbdcd36aa6e2",
+    "lock.py": "2400cbfec2528eb6706b29595301cef349b31fc3cf458ddbea117da03964a976",
+    "policies.py": "a1f3e4d70da393d1a9658e421ae7e7c115a3a6e2eb1df6ede66923ba7d86e5d8",
+    "worker.py": "cc11fa56862739e9711094e3d887ec8f16c61ded49108e030c95af299a4b4804"
+  },
+  "documents": 6,
+  "parts": {
+    "train_50_64": 3,
+    "test": 3
+  },
+  "policies": {
+    "R_B0.5_t0.470": {
+      "relative_cost": 0.5015953089464252,
+      "doc_mean_nll": 1.0274860841850988,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "R_B0.5_t0.485": {
+      "relative_cost": 0.5015953089464252,
+      "doc_mean_nll": 1.0274860841850988,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "R_B0.5_t0.495": {
+      "relative_cost": 0.5015953089464252,
+      "doc_mean_nll": 1.0274860841850988,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "R_B0.5_t0.505": {
+      "relative_cost": 0.5015953089464252,
+      "doc_mean_nll": 1.0274860841850988,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "R_B0.5_t0.515": {
+      "relative_cost": 0.5064199129080319,
+      "doc_mean_nll": 1.0265051107813143,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.2777777777777778,
+        "8": 0.7222222222222222,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "R_B0.5_t0.530": {
+      "relative_cost": 0.5649724670020232,
+      "doc_mean_nll": 0.976029844766969,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.8888888888888888,
+        "12": 0.1111111111111111,
+        "16": 0.0
+      }
+    },
+    "R_B0.6_t0.570": {
+      "relative_cost": 0.5740474127905032,
+      "doc_mean_nll": 0.9652299915291688,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.8333333333333334,
+        "12": 0.16666666666666666,
+        "16": 0.0
+      }
+    },
+    "R_B0.6_t0.605": {
+      "relative_cost": 0.5740474127905032,
+      "doc_mean_nll": 0.9652299915291688,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.8333333333333334,
+        "12": 0.16666666666666666,
+        "16": 0.0
+      }
+    },
+    "R_B0.6_t0.615": {
+      "relative_cost": 0.5740474127905032,
+      "doc_mean_nll": 0.9652299915291688,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.8333333333333334,
+        "12": 0.16666666666666666,
+        "16": 0.0
+      }
+    },
+    "R_B0.6_t0.630": {
+      "relative_cost": 0.5740474127905032,
+      "doc_mean_nll": 0.9652299915291688,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.8333333333333334,
+        "12": 0.16666666666666666,
+        "16": 0.0
+      }
+    },
+    "H_B0.5_t0.470": {
+      "relative_cost": 0.4876989512459059,
+      "doc_mean_nll": 1.0531369903841934,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.4444444444444444,
+        "8": 0.5555555555555556,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "H_B0.5_t0.485": {
+      "relative_cost": 0.5044556629282142,
+      "doc_mean_nll": 1.044965692527634,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "H_B0.5_t0.495": {
+      "relative_cost": 0.5044556629282142,
+      "doc_mean_nll": 1.044965692527634,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "H_B0.5_t0.505": {
+      "relative_cost": 0.5044556629282142,
+      "doc_mean_nll": 1.044965692527634,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.3333333333333333,
+        "8": 0.6666666666666666,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "H_B0.5_t0.515": {
+      "relative_cost": 0.5087080646131605,
+      "doc_mean_nll": 1.0386171939321853,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.2777777777777778,
+        "8": 0.7222222222222222,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "H_B0.5_t0.530": {
+      "relative_cost": 0.5175052728714442,
+      "doc_mean_nll": 1.0120124689903263,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.16666666666666666,
+        "8": 0.8333333333333334,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "H_B0.6_t0.570": {
+      "relative_cost": 0.5933793268962331,
+      "doc_mean_nll": 0.979296643141427,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.7777777777777778,
+        "12": 0.2222222222222222,
+        "16": 0.0
+      }
+    },
+    "H_B0.6_t0.585": {
+      "relative_cost": 0.5933793268962331,
+      "doc_mean_nll": 0.979296643141427,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.7777777777777778,
+        "12": 0.2222222222222222,
+        "16": 0.0
+      }
+    },
+    "H_B0.6_t0.595": {
+      "relative_cost": 0.5933793268962331,
+      "doc_mean_nll": 0.979296643141427,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.7777777777777778,
+        "12": 0.2222222222222222,
+        "16": 0.0
+      }
+    },
+    "H_B0.6_t0.615": {
+      "relative_cost": 0.5933793268962331,
+      "doc_mean_nll": 0.979296643141427,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.7777777777777778,
+        "12": 0.2222222222222222,
+        "16": 0.0
+      }
+    },
+    "H_B0.6_t0.630": {
+      "relative_cost": 0.6269186080536827,
+      "doc_mean_nll": 0.9747888996535297,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.6666666666666666,
+        "12": 0.3333333333333333,
+        "16": 0.0
+      }
+    },
+    "U_d6": {
+      "relative_cost": 0.4178177840198782,
+      "doc_mean_nll": 1.1316888728675103,
+      "depth_share": {
+        "4": 0.0,
+        "6": 1.0,
+        "8": 0.0,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "U_d8": {
+      "relative_cost": 0.5342542272159025,
+      "doc_mean_nll": 0.9744959297756659,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 1.0,
+        "12": 0.0,
+        "16": 0.0
+      }
+    },
+    "U_d12": {
+      "relative_cost": 0.7671271136079513,
+      "doc_mean_nll": 0.9199813205907897,
+      "depth_share": {
+        "4": 0.0,
+        "6": 0.0,
+        "8": 0.0,
+        "12": 1.0,
+        "16": 0.0
+      }
+    }
+  },
+  "strict_common_cost": {
+    "0.5": {
+      "g_A_R_minus_H": {
+        "L_first": NaN,
+        "L_second": 1.0471384666151244,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample",
+        "conclusion": "not_estimable"
+      },
+      "U_minus_R": {
+        "L_first": 1.020740238186388,
+        "L_second": NaN,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample"
+      },
+      "U_minus_H": {
+        "L_first": 1.020740238186388,
+        "L_second": 1.0471384666151244,
+        "bracketed_full_sample": true,
+        "bootstrap_failure_share": 0.06,
+        "mean": -0.026398228428736514,
+        "status": "interval not estimable: some resamples have no bracketing pair"
+      },
+      "g_A_train_50_64": {
+        "L_first": NaN,
+        "L_second": 1.0544598993051075,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample"
+      },
+      "g_A_test": {
+        "L_first": 1.0308512266858494,
+        "L_second": 1.0317822137549357,
+        "bracketed_full_sample": true,
+        "bootstrap_failure_share": 0.21,
+        "mean": -0.000930987069086342,
+        "status": "interval not estimable: some resamples have no bracketing pair"
+      }
+    },
+    "0.6": {
+      "g_A_R_minus_H": {
+        "L_first": NaN,
+        "L_second": 0.9784068120228381,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample",
+        "conclusion": "not_estimable"
+      },
+      "U_minus_R": {
+        "L_first": 0.9591051079225421,
+        "L_second": NaN,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample"
+      },
+      "U_minus_H": {
+        "L_first": 0.9591051079225421,
+        "L_second": 0.9784068120228381,
+        "bracketed_full_sample": true,
+        "bootstrap_failure_share": 0.21333333333333335,
+        "mean": -0.01930170410029597,
+        "status": "interval not estimable: some resamples have no bracketing pair"
+      },
+      "g_A_train_50_64": {
+        "L_first": NaN,
+        "L_second": 0.9346486338152193,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample"
+      },
+      "g_A_test": {
+        "L_first": NaN,
+        "L_second": 1.0195748247678167,
+        "bracketed_full_sample": false,
+        "status": "not estimable: no bracketing pair on the full sample"
+      }
+    }
+  },
+  "primary": {
+    "budget": 0.5,
+    "L_first": NaN,
+    "L_second": 1.0471384666151244,
+    "bracketed_full_sample": false,
+    "status": "not estimable: no bracketing pair on the full sample",
+    "conclusion": "not_estimable"
+  },
+  "H_table_vs_online_agreement": {
+    "H_B0.5_t0.470": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.5_t0.485": {
+      "agree": 17,
+      "decisions": 18,
+      "rate": 0.9444444444444444
+    },
+    "H_B0.5_t0.495": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.5_t0.505": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.5_t0.515": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.5_t0.530": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.6_t0.570": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.6_t0.585": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.6_t0.595": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.6_t0.615": {
+      "agree": 18,
+      "decisions": 18,
+      "rate": 1.0
+    },
+    "H_B0.6_t0.630": {
+      "agree": 17,
+      "decisions": 18,
+      "rate": 0.9444444444444444
+    }
+  },
+  "calibration_check": {
+    "R_B0.5_t0.495": {
+      "online": 0.49853304508696084,
+      "predicted": 0.49853304508696084,
+      "abs_diff": 0.0,
+      "passed": true
+    },
+    "R_B0.5_t0.505": {
+      "online": 0.5073412202555313,
+      "predicted": 0.5073412202555313,
+      "abs_diff": 0.0,
+      "passed": true
+    },
+    "H_B0.5_t0.495": {
+      "online": 0.49211672627705394,
+      "predicted": 0.49546174253894887,
+      "abs_diff": 0.0033450162618949286,
+      "passed": true
+    },
+    "H_B0.5_t0.505": {
+      "online": 0.49211672627705394,
+      "predicted": 0.5011768437303926,
+      "abs_diff": 0.009060117453338679,
+      "passed": true
+    }
+  }
+}
